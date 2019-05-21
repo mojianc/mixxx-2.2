@@ -28,6 +28,11 @@ Controller::~Controller() {
     // destructors.
 }
 
+unsigned short Controller::getControllerId()
+{
+    return m_deviceId;
+}
+
 void Controller::startEngine()
 {
     controllerDebug("  Starting engine");
