@@ -1,4 +1,4 @@
-#include <QtDebug>
+﻿#include <QtDebug>
 #include <QMap>
 #include <QMutexLocker>
 #include <QPair>
