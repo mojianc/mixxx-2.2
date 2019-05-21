@@ -66,7 +66,10 @@ class Controller : public QObject, ConstControllerPresetVisitor {
 
     virtual bool matchPreset(const PresetInfo& preset) = 0;
 
+    unsigned short getControllerId();
   signals:
+    //添加信号，该信号在receive()中发出用来给外部控件传递数据
+    void incomingData(QByteArray data);
     // Emitted when a new preset is loaded. pPreset is a /clone/ of the loaded
     // preset, not a pointer to the preset itself.
     void presetLoaded(ControllerPresetPointer pPreset);
@@ -124,6 +127,7 @@ class Controller : public QObject, ConstControllerPresetVisitor {
         m_bIsOpen = open;
     }
 
+    unsigned short m_deviceId;
   private: // but used by ControllerManager
 
     virtual int open() = 0;

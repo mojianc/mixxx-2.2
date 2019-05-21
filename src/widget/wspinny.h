@@ -35,8 +35,9 @@ class WSpinny : public QGLWidget, public WBaseWidget, public VinylSignalQualityL
     void setup(const QDomNode& node, const SkinContext& context);
     void dragEnterEvent(QDragEnterEvent *event) override;
     void dropEvent(QDropEvent *event) override;
-
+    void setChannelName(QString name);
   public slots:
+    void getComingData(QByteArray data);
     void slotLoadTrack(TrackPointer);
     void slotLoadingTrack(TrackPointer pNewTrack, TrackPointer pOldTrack);
     void updateVinylControlSpeed(double rpm);
@@ -74,6 +75,7 @@ class WSpinny : public QGLWidget, public WBaseWidget, public VinylSignalQualityL
     QPixmap scaledCoverArt(const QPixmap& normal);
 
   private:
+    QString m_chanenlName;
     QString m_group;
     UserSettingsPointer m_pConfig;
     std::shared_ptr<QImage> m_pBgImage;

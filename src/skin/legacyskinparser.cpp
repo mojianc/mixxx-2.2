@@ -1157,6 +1157,15 @@ QWidget* LegacySkinParser::parseSpinny(const QDomElement& node) {
     BaseTrackPlayer* pPlayer = m_pPlayerManager->getPlayer(channelStr);
     WSpinny* spinny = new WSpinny(m_pParent, channelStr, m_pConfig,
                                   m_pVCManager, pPlayer);
+    spinny->setChannelName(channelStr);
+    QList<Controller *> contrllerList = m_pControllerManager->getControllerList(false, true);
+    for(int i = 0; i < contrllerList.count(); i++)
+    {
+        Controller *controller = contrllerList.at(i);
+        if(controller->getControllerId() == (0x2575 + 0x0001))
+            connect(controller, SIGNAL(incomingData(QByteArray data)), spinny, SLOT(getComingData(QByteArray data)));
+    }
+
     if (!spinny->isValid()) {
         delete spinny;
         WLabel* dummy = new WLabel(m_pParent);

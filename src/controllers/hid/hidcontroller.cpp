@@ -54,6 +54,7 @@ HidController::HidController(const hid_device_info deviceInfo)
     // this class is initialized by caller.
     hid_vendor_id = deviceInfo.vendor_id;
     hid_product_id = deviceInfo.product_id;
+    m_deviceId = hid_vendor_id + hid_product_id;
     hid_interface_number = deviceInfo.interface_number;
     if (hid_interface_number == -1) {
         // OS/X and windows don't use interface numbers, but usage_page/usage

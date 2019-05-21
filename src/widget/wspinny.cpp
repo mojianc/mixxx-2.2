@@ -18,6 +18,17 @@
 #include "widget/wspinny.h"
 #include "wimagestore.h"
 
+bool rectContainPoint(QByteArray data)
+{
+    unsigned short  x = (data[3] << 8) + data[2];
+    unsigned short  y = (data[5] << 8) + data[4];
+    if (x > 0x252b && x < 0x3ad5 && y > 0x099c && y < 0x2eee)
+        return true;
+    else
+        return false;
+
+}
+
 // The SampleBuffers format enables antialiasing.
 WSpinny::WSpinny(QWidget* parent, const QString& group,
                  UserSettingsPointer pConfig,
@@ -701,4 +712,52 @@ void WSpinny::dropEvent(QDropEvent * event) {
         }
     }
     event->ignore();
+}
+
+void WSpinny::setChannelName(QString name)
+{
+    m_chanenlName = name;
+}
+
+void WSpinny::getComingData(QByteArray data)
+{
+    if(rectContainPoint(data))
+    {
+        unsigned short  x = (data[3] << 8) + data[2];
+        unsigned short  y = (data[5] << 8) + data[4];
+
+        // Keeping these around in case we want to switch to control relative
+        // to the original mouse position.
+        //int dX = x-m_iStartMouseX;
+        //int dY = y-m_iStartMouseY;
+
+        //Coordinates from center of widget
+        double c_x = x - (0x252b + 0x3ad5)/2;
+        double c_y = y - (0x099c + 0x2eee)/2;
+        double theta = (180.0/M_PI)*atan2(c_x, -c_y);
+
+        //qDebug() << "c_x:" << c_x << "c_y:" << c_y <<
+        //            "dX:" << dX << "dY:" << dY;
+
+        // When we finish one full rotation (clockwise or anticlockwise),
+        // we'll need to manually add/sub 360 degrees because atan2()'s range is
+        // only within -180 to 180 degrees. We need a wider range so your position
+        // in the song can be tracked.
+        if (m_dPrevTheta > 100 && theta < 0) {
+            m_iFullRotations++;
+        } else if (m_dPrevTheta < -100 && theta > 0) {
+            m_iFullRotations--;
+        }
+
+        m_dPrevTheta = theta;
+        theta += m_iFullRotations*360;
+
+        //qDebug() << "c t:" << theta << "pt:" << m_dPrevTheta <<
+        //            "icr" << m_iFullRotations;
+
+        //Convert deltaTheta into a percentage of song length.
+        double absPos = calculatePositionFromAngle(theta);
+        double absPosInSamples = absPos * m_pTrackSamples->get();
+        m_pScratchPos->set(absPosInSamples - m_dInitialPos);
+    }
 }

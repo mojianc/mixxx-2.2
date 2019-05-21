@@ -131,6 +131,8 @@ void Controller::receive(const QByteArray data, mixxx::Duration timestamp) {
         controllerDebug(message);
     }
 
+    emit incomingData(data);
+
     foreach (QString function, m_pEngine->getScriptFunctionPrefixes()) {
         if (function == "") {
             continue;
