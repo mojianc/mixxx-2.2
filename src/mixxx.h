@@ -113,6 +113,7 @@ class MixxxMainWindow : public QMainWindow {
     virtual bool eventFilter(QObject *obj, QEvent *event);
     virtual void closeEvent(QCloseEvent *event);
     virtual bool event(QEvent* e);
+    virtual void keyPressEvent(QKeyEvent *);
 
   private:
     void initialize(QApplication *app, const CmdlineArgs& args);

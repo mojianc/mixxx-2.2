@@ -96,12 +96,14 @@ HidController::HidController(const hid_device_info deviceInfo)
         setDeviceName(
             QString("%1 %2").arg(hid_product)
             .arg(hid_serial.right(4)));
+        qWarning() << "windows deviceName:" <<getName() <<"----v_id:"<<hid_vendor_id<<"---p_id:"<<hid_product_id;
     } else {
         setDeviceName(
             QString("%1 %2_%3").arg(hid_product)
             .arg(hid_serial.right(4))
             .arg(QString::number(hid_interface_number)));
         m_sUID.append(QString::number(hid_interface_number));
+        qWarning() << "linux deviceName:" <<getName() <<"----v_id:"<<hid_vendor_id<<"---p_id:"<<hid_product_id;
     }
 
     // All HID devices are full-duplex

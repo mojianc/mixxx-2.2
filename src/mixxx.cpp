@@ -72,7 +72,8 @@
 #include "util/screensaver.h"
 #include "util/logger.h"
 #include "util/db/dbconnectionpooled.h"
-
+#include <QLineEdit>
+#include <QVBoxLayout>
 #ifdef __VINYLCONTROL__
 #include "vinylcontrol/vinylcontrolmanager.h"
 #endif
@@ -91,6 +92,23 @@
 #undef min
 #endif
 
+#include <windows.h>
+
+HHOOK hook = NULL;
+LRESULT CALLBACK GetMsgProc(
+    int nCode,
+    WPARAM wParam,
+    LPARAM lParam
+)
+{
+    int Msg = wParam;
+    if (WM_LBUTTONDOWN == wParam || WM_MOUSEMOVE == wParam || WM_LBUTTONUP == wParam)
+    {
+        return true;
+    }
+
+    return CallNextHookEx(hook, nCode, wParam, lParam);
+}
 namespace {
 
 const mixxx::Logger kLogger("MixxxMainWindow");
@@ -184,6 +202,7 @@ MixxxMainWindow::MixxxMainWindow(QApplication* pApp, const CmdlineArgs& args)
     pApp->processEvents();
 
     initialize(pApp, args);
+
 }
 
 MixxxMainWindow::~MixxxMainWindow() {
@@ -1299,7 +1318,15 @@ void MixxxMainWindow::rebootMixxxView() {
         return;
     }
 
-    setCentralWidget(m_pWidgetParent);
+    QWidget *w = new QWidget;
+    QLineEdit *lineE = new QLineEdit;
+    lineE->setFixedSize(500,500);
+    lineE->setText("mixxx");
+    QVBoxLayout *layout = new QVBoxLayout;
+    layout->addWidget(m_pWidgetParent);
+    layout->addWidget(lineE);
+    w->setLayout(layout);
+    setCentralWidget(w);
     adjustSize();
 
     if (wasFullScreen) {
@@ -1354,6 +1381,23 @@ bool MixxxMainWindow::event(QEvent* e) {
         break;
     }
     return QWidget::event(e);
+}
+
+void MixxxMainWindow::keyPressEvent(QKeyEvent *e)
+{
+    if(e->key() == Qt::Key_Insert)
+    {
+        if(hook == NULL)
+            hook = SetWindowsHookEx(WH_MOUSE_LL, GetMsgProc, NULL, 0);
+
+    }
+    else if(e->key() == Qt::Key_Delete)
+    {
+        if(hook)
+            UnhookWindowsHookEx(hook);
+        hook = NULL;
+    }
+    QMainWindow::keyPressEvent(e);
 }
 
 void MixxxMainWindow::closeEvent(QCloseEvent *event) {
