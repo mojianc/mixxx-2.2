@@ -59,6 +59,7 @@ bool WWidget::event(QEvent* e) {
         case QEvent::TouchUpdate:
         case QEvent::TouchEnd:
         {
+            break;
             QTouchEvent* touchEvent = dynamic_cast<QTouchEvent*>(e);
             if (touchEvent == nullptr ||
                     touchEvent->deviceType() !=  QTouchEvent::TouchScreen) {
@@ -88,16 +89,16 @@ bool WWidget::event(QEvent* e) {
                 break;
             }
 
-            const QTouchEvent::TouchPoint &touchPoint =
-                    touchEvent->touchPoints().first();
-            QMouseEvent mouseEvent(eventType,
-                    touchPoint.pos().toPoint(),
-                    touchPoint.screenPos().toPoint(),
-                    m_activeTouchButton, // Button that causes the event
-                    Qt::NoButton, // Not used, so no need to fake a proper value.
-                    touchEvent->modifiers());
+//            const QTouchEvent::TouchPoint &touchPoint =
+//                    touchEvent->touchPoints().first();
+//            QMouseEvent mouseEvent(eventType,
+//                    touchPoint.pos().toPoint(),
+//                    touchPoint.screenPos().toPoint(),
+//                    m_activeTouchButton, // Button that causes the event
+//                    Qt::NoButton, // Not used, so no need to fake a proper value.
+//                    touchEvent->modifiers());
 
-            return QWidget::event(&mouseEvent);
+//            return QWidget::event(&mouseEvent);
         }
         default:
             break;

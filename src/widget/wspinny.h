@@ -6,6 +6,7 @@
 #include <QShowEvent>
 #include <QHideEvent>
 #include <QEvent>
+#include <QTimer>
 
 #include "library/dlgcoverartfullsize.h"
 #include "mixer/basetrackplayer.h"
@@ -46,7 +47,7 @@ class WSpinny : public QGLWidget, public WBaseWidget, public VinylSignalQualityL
     void updateSlipEnabled(double enabled);
     void render();
     void swap();
-
+    void timeupdate();
   protected slots:
     void slotCoverFound(const QObject* pRequestor,
                         const CoverInfoRelative& info, QPixmap pixmap, bool fromCache);
@@ -131,6 +132,9 @@ class WSpinny : public QGLWidget, public WBaseWidget, public VinylSignalQualityL
     BaseTrackPlayer* m_pPlayer;
     DlgCoverArtFullSize* m_pDlgCoverArt;
     WCoverArtMenu* m_pCoverMenu;
+
+    QTimer *m_timer;
+    bool m_inMove;
 };
 
 #endif //_WSPINNY_H

@@ -86,6 +86,7 @@
 #include "util/cmdlineargs.h"
 #include "util/timer.h"
 
+
 using mixxx::skin::SkinManifest;
 
 QList<const char*> LegacySkinParser::s_channelStrs;
@@ -1163,7 +1164,10 @@ QWidget* LegacySkinParser::parseSpinny(const QDomElement& node) {
     {
         Controller *controller = contrllerList.at(i);
         if(controller->getControllerId() == (0x2575 + 0x0001))
-            connect(controller, SIGNAL(incomingData(QByteArray data)), spinny, SLOT(getComingData(QByteArray data)));
+        {
+            controller->open();
+            connect(controller, SIGNAL(incomingData(QByteArray)), spinny, SLOT(getComingData(QByteArray)));
+        }
     }
 
     if (!spinny->isValid()) {

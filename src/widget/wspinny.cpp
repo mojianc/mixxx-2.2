@@ -70,6 +70,7 @@ WSpinny::WSpinny(QWidget* parent, const QString& group,
           m_bClampFailedWarning(false),
           m_bGhostPlayback(false),
           m_pPlayer(pPlayer),
+          m_inMove(false),
           m_pDlgCoverArt(new DlgCoverArtFullSize(parent, pPlayer)),
           m_pCoverMenu(new WCoverArtMenu(this)) {
 #ifdef __VINYLCONTROL__
@@ -108,6 +109,10 @@ WSpinny::WSpinny(QWidget* parent, const QString& group,
 
     setAutoFillBackground(false);
     setAutoBufferSwap(false);
+
+
+    m_timer = new QTimer(this);
+    connect(m_timer, SIGNAL(timeout()), this, SLOT(timeupdate()));
 }
 
 WSpinny::~WSpinny() {
@@ -411,7 +416,6 @@ void WSpinny::swap() {
     }
     VSyncThread::swapGl(this, 0);
 }
-
 
 QPixmap WSpinny::scaledCoverArt(const QPixmap& normal) {
     if (normal.isNull()) {
@@ -721,8 +725,19 @@ void WSpinny::setChannelName(QString name)
 
 void WSpinny::getComingData(QByteArray data)
 {
+   // qDebug()<<"wspinny getComingData: "<<data;
     if(rectContainPoint(data))
     {
+        m_timer->stop();
+        m_timer->start(100);
+        if(!m_inMove)
+        {
+            m_pScratchPos->set(0);
+            m_pScratchToggle->set(1.0);
+            m_inMove =true;
+        }
+
+        qDebug()<<"wspinny getComingData(rectContainPoint): "<<data;
         unsigned short  x = (data[3] << 8) + data[2];
         unsigned short  y = (data[5] << 8) + data[4];
 
@@ -760,4 +775,11 @@ void WSpinny::getComingData(QByteArray data)
         double absPosInSamples = absPos * m_pTrackSamples->get();
         m_pScratchPos->set(absPosInSamples - m_dInitialPos);
     }
+}
+
+void WSpinny::timeupdate()
+{
+    m_inMove = false;
+    m_pScratchToggle->set(0.0);
+    m_iFullRotations = 0;
 }
