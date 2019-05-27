@@ -25,6 +25,7 @@
 #include <QTouchEvent>
 #include <QPaintEvent>
 #include <QApplication>
+#include <QEvent>
 
 #include "control/controlbehavior.h"
 #include "control/controlobject.h"
@@ -38,6 +39,9 @@ WPushButton::WPushButton(QWidget* pParent)
           m_leftButtonMode(ControlPushButton::PUSH),
           m_rightButtonMode(ControlPushButton::PUSH) {
     setStates(0);
+    m_timer = new QTimer(this);
+    connect(m_timer, SIGNAL(timeout()), this, SLOT(timeupdate()));
+    m_inMove = false;
 }
 
 WPushButton::WPushButton(QWidget* pParent, ControlPushButton::ButtonMode leftButtonMode,
@@ -46,6 +50,34 @@ WPushButton::WPushButton(QWidget* pParent, ControlPushButton::ButtonMode leftBut
           m_leftButtonMode(leftButtonMode),
           m_rightButtonMode(rightButtonMode) {
     setStates(0);
+    m_timer = new QTimer(this);
+    connect(m_timer, SIGNAL(timeout()), this, SLOT(timeupdate()));
+    m_inMove = false;
+}
+
+
+void WPushButton::getComingData(QByteArray data)
+{
+    unsigned short  x = (data[3] << 8) + data[2];
+    unsigned short  y = (data[5] << 8) + data[4];
+    if (x < 0x3ad5 )
+        return;
+
+    m_timer->stop();
+    m_timer->start(100);
+    if(!m_inMove)
+    {
+        m_inMove =true;
+        QMouseEvent event(QEvent::MouseButtonPress, QPointF(9, 9), Qt::LeftButton, Qt::LeftButton, Qt::NoModifier);
+        QApplication::sendEvent(this, &event);
+    }
+}
+
+void WPushButton::timeupdate()
+{
+     m_inMove = false;
+     QMouseEvent event(QEvent::MouseButtonRelease, QPointF(9, 9), Qt::LeftButton, Qt::LeftButton, Qt::NoModifier);
+     QApplication::sendEvent(this, &event);
 }
 
 void WPushButton::setup(const QDomNode& node, const SkinContext& context) {

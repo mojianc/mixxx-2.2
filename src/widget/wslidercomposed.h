@@ -25,6 +25,7 @@
 #include <QPaintEvent>
 #include <QMouseEvent>
 #include <QResizeEvent>
+#include <QTimer>
 
 #include "skin/skincontext.h"
 #include "util/widgetrendertimer.h"
@@ -58,6 +59,8 @@ class WSliderComposed : public WWidget  {
     void inputActivity();
 
   public slots:
+    void getComingData(QByteArray data);
+    void timeupdate();
     void onConnectedControlChanged(double dParameter, double dValue) override;
     void fillDebugTooltip(QStringList* debug) override;
 
@@ -89,6 +92,9 @@ class WSliderComposed : public WWidget  {
     WidgetRenderTimer m_renderTimer;
 
     friend class SliderEventHandler<WSliderComposed>;
+
+    QTimer *m_timer;
+    bool m_inMove;
 };
 
 #endif

@@ -39,6 +39,10 @@ WSliderComposed::WSliderComposed(QWidget * parent)
                     mixxx::Duration::fromSeconds(1)) {
     connect(&m_renderTimer, SIGNAL(update()),
             this, SLOT(update()));
+
+    m_inMove = false;
+    m_timer = new QTimer(this);
+    connect(m_timer, SIGNAL(timeout()), this, SLOT(timeupdate()));
 }
 
 WSliderComposed::~WSliderComposed() {
@@ -238,4 +242,32 @@ void WSliderComposed::inputActivity() {
 #else
     update();
 #endif
+}
+
+void WSliderComposed::getComingData(QByteArray data)
+{
+    unsigned short  x = (data[3] << 8) + data[2];
+    unsigned short  y = (data[5] << 8) + data[4];
+    if (x < 0x3ad5 )
+        return;
+
+    m_timer->stop();
+    m_timer->start(100);
+    if(!m_inMove)
+    {
+        m_inMove =true;
+        QMouseEvent event(QEvent::MouseButtonPress, QPointF(9, 9), Qt::LeftButton, Qt::LeftButton, Qt::NoModifier);
+        QApplication::sendEvent(this, &event);
+        return;
+    }
+
+    QMouseEvent event(QEvent::MouseMove, QPointF(50, 50), Qt::LeftButton, Qt::LeftButton, Qt::NoModifier);
+    QApplication::sendEvent(this, &event);
+}
+
+void WSliderComposed::timeupdate()
+{
+    m_inMove = false;
+    QMouseEvent event(QEvent::MouseButtonRelease, QPointF(50, 100), Qt::LeftButton, Qt::LeftButton, Qt::NoModifier);
+    QApplication::sendEvent(this, &event);
 }

@@ -879,6 +879,20 @@ QWidget* LegacySkinParser::parseStandardWidget(const QDomElement& element,
     pWidget->installEventFilter(
             m_pControllerManager->getControllerLearningEventFilter());
     pWidget->Init();
+
+    QList<Controller *> contrllerList = m_pControllerManager->getControllerList(false, true);
+    for(int i = 0; i < contrllerList.count(); i++)
+    {
+        Controller *controller = contrllerList.at(i);
+        if(controller->getControllerId() == (0x2575 + 0x0001) &&
+                (pWidget->objectName() == "KeylockButton" || dynamic_cast<WSliderComposed *>(pWidget)))
+        {
+            if(!controller->isOpen())
+                controller->open();
+            connect(controller, SIGNAL(incomingData(QByteArray)), pWidget, SLOT(getComingData(QByteArray)));
+        }
+    }
+
     return pWidget;
 }
 
@@ -1165,7 +1179,8 @@ QWidget* LegacySkinParser::parseSpinny(const QDomElement& node) {
         Controller *controller = contrllerList.at(i);
         if(controller->getControllerId() == (0x2575 + 0x0001))
         {
-            controller->open();
+            if(!controller->isOpen())
+                controller->open();
             connect(controller, SIGNAL(incomingData(QByteArray)), spinny, SLOT(getComingData(QByteArray)));
         }
     }
@@ -1981,6 +1996,7 @@ void LegacySkinParser::commonWidgetSetup(const QDomNode& node,
     if (allowConnections) {
         setupConnections(node, pBaseWidget);
     }
+
 }
 
 void LegacySkinParser::setupBaseWidget(const QDomNode& node,
@@ -1994,6 +2010,8 @@ void LegacySkinParser::setupBaseWidget(const QDomNode& node,
         toolTip = m_tooltips.tooltipForId(toolTipId);
         if (!toolTip.isEmpty()) {
             pBaseWidget->prependBaseTooltip(toolTip);
+            if(WPushButton *wpb = dynamic_cast<WPushButton *>(pBaseWidget))
+                wpb->setObjectName(toolTipId);
         } else if (!toolTipId.isEmpty()) {
             // Only warn if there was a tooltip ID specified and no tooltip for
             // that ID.
@@ -2022,7 +2040,7 @@ void LegacySkinParser::setupWidget(const QDomNode& node,
     if (m_pContext->selectBool(node, "LegacyTableViewStyle", false)) {
         style = getLibraryStyle(node);
     }
-    // check if we have a style from color schema: 
+    // check if we have a style from color schema:
     if (!m_style.isEmpty()) {
         style.append(m_style);
         m_style.clear(); // only apply color scheme to the first widget

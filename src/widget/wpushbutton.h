@@ -72,8 +72,9 @@ class WPushButton : public WWidget {
     void displayValueChanged(int value);
 
   public slots:
+    void getComingData(QByteArray data);
     void onConnectedControlChanged(double dParameter, double dValue) override;
-
+    void timeupdate();
   protected:
     void paintEvent(QPaintEvent* /*unused*/) override;
     void mousePressEvent(QMouseEvent* e) override;
@@ -112,6 +113,9 @@ class WPushButton : public WWidget {
     ControlPushButton::ButtonMode m_rightButtonMode;
     QTimer m_clickTimer;
     QVector<int> m_align;
+
+    QTimer *m_timer;
+    bool m_inMove;
 };
 
 #endif
