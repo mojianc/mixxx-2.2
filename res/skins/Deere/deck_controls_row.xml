@@ -13,10 +13,13 @@
     <Children>
       <!-- Expanding spacers in between control contexts -->
       <WidgetGroup><Size>3me,1min</Size></WidgetGroup>
+      <!--循环-->
       <Template src="skin:loop.xml"/>
       <WidgetGroup><Size>3me,1min</Size></WidgetGroup>
+      <!--左右箭头-->
       <Template src="skin:beatjump.xml"/>
       <WidgetGroup><Size>3me,1min</Size></WidgetGroup>
+      <!--1.2.3.4.5.6.7.8 八个按钮-->
       <Template src="skin:hotcue.xml"/>
       <WidgetGroup>
         <Size>3me,1min</Size>
@@ -30,6 +33,7 @@
         <SizePolicy>me,me</SizePolicy>
         <Children>
 
+          <!--CUE-->
           <Template src="skin:left_right_display_2state_button.xml">
             <SetVariable name="TooltipId">cue_default_cue_gotoandstop</SetVariable>
             <SetVariable name="ObjectName">DeckCue</SetVariable>
@@ -47,6 +51,7 @@
           <!-- Workaround for layout spacing -->
           <WidgetGroup><Size>0min,2f</Size></WidgetGroup>
 
+          <!--播放按钮-->
           <Template src="skin:left_right_display_2state_button.xml">
             <SetVariable name="TooltipId">play_cue_set</SetVariable>
             <SetVariable name="ObjectName">PlayToggle</SetVariable>

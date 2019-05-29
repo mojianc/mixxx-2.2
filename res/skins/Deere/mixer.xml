@@ -213,6 +213,7 @@
                     <SizePolicy>me,min</SizePolicy>
                     <Layout>horizontal</Layout>
                     <Children>
+                      <!--界面的主推子-->
                       <SliderComposed>
                         <TooltipId>crossfader</TooltipId>
                         <Size>1me,40f</Size>

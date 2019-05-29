@@ -4,7 +4,9 @@
     <Layout>horizontal</Layout>
     <SizePolicy>min,min</SizePolicy>
     <Children>
-
+    <!--
+      spiny左侧的四个按钮：VINYL  CONST PASS CUE
+    -->
       <WidgetGroup>
         <ObjectName>VinylControlsGrid</ObjectName>
         <Layout>vertical</Layout>

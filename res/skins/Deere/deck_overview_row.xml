@@ -22,7 +22,7 @@
             <Layout>horizontal</Layout>
             <SizePolicy>min,min</SizePolicy>
             <Children>
-
+              <!--spinny下方的六个按钮，包括音乐符号的图标-->
               <Template src="skin:left_2state_button.xml">
                 <SetVariable name="TooltipId">slip_mode</SetVariable>
                 <SetVariable name="ObjectName">SlipModeButton</SetVariable>

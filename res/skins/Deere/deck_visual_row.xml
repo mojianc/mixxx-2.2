@@ -12,8 +12,13 @@
     <SizePolicy>me,me</SizePolicy>
     <Children>
 
+    <!--
+      spiny左侧的四个按钮：VINYL  CONST PASS CUE
+    -->
       <Template src="skin:vinylcontrol.xml"/>
-
+      <!--
+        spiny
+      -->
       <Template src="skin:spinny.xml"/>
 
       <Visual>
@@ -82,6 +87,9 @@
         <Layout>vertical</Layout>
         <SizePolicy>min,min</SizePolicy>
         <Children>
+        <!--
+           spinny最右侧的 “+ X -” 三个按钮
+        -->
           <Template src="skin:left_1state_button.xml">
             <SetVariable name="TooltipId">waveform_zoom_down</SetVariable>
             <SetVariable name="ObjectName">WaveformZoomDownButton</SetVariable>

@@ -8,8 +8,11 @@
     <Layout>horizontal</Layout>
     <SizePolicy>me,max</SizePolicy>
     <Children>
+      <!--左侧spinny-->
       <Template src="skin:left_gutter.xml"/>
+      <!--中间推子-->
       <Template src="skin:mixer.xml"/>
+      <!--右侧spinny-->
       <Template src="skin:right_gutter.xml"/>
     </Children>
   </WidgetGroup>

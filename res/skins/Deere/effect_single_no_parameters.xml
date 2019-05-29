@@ -70,14 +70,15 @@ Variables:
           <WidgetGroup>
             <Layout>horizontal</Layout>
             <Children>
-
+              <!-- 开关 -->
               <Template src="skin:effect_buttons.xml"/>
-
+              <!-- 旋钮 -->
               <Template src="skin:effect_meta_knob.xml"/>
 
             </Children>
           </WidgetGroup>
 
+          <!-- 下拉框 -->
           <EffectSelector>
             <EffectRack><Variable name="EffectRack"/></EffectRack>
             <EffectUnit><Variable name="EffectUnit"/></EffectUnit>

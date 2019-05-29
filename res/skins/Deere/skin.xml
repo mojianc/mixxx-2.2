@@ -127,6 +127,9 @@
     <SingletonDefinition>
       <ObjectName>DeckVisualRow1</ObjectName>
       <Children>
+      <!--
+        "YINYL PASS CONSt CUE"四个按钮 + spiny + 右侧“+X-”三个小按钮
+      -->
         <Template src="skin:deck_visual_row.xml">
           <SetVariable name="i">1</SetVariable>
           <SetVariable name="group">[Channel<Variable name="i"/>]</SetVariable>
@@ -256,7 +259,9 @@
               <Layout>vertical</Layout>
               <SizePolicy>min,max</SizePolicy>
               <Children>
+                <!--整个spinny区域-->
                 <Template src="skin:main_decks.xml"/>
+                <!--开关按钮+旋钮+下拉框-->
                 <Template src="skin:effect_rack.xml"/>
                 <Template src="skin:sample_decks.xml"/>
                 <Template src="skin:microphone_rack.xml"/>
