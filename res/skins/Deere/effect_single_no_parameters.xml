@@ -68,6 +68,7 @@ Variables:
         <Children>
 
           <WidgetGroup>
+            <ObjectName>EffectNotHighlightable_EffectRack<Variable name="EffectRack"/>__EffectUnit<Variable name="EffectUnit"/>_effect<Variable name="Effect"/></ObjectName>
             <Layout>horizontal</Layout>
             <Children>
               <!-- ¿ª¹Ø -->

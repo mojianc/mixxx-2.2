@@ -216,6 +216,7 @@
                       <!--界面的主推子-->
                       <SliderComposed>
                         <TooltipId>crossfader</TooltipId>
+                        <ObjectName>MainSliderComposed</ObjectName>
                         <Size>1me,40f</Size>
                         <Slider scalemode="STRETCH">slider-crossfader.svg</Slider>
                         <Handle scalemode="STRETCH_ASPECT">handle-crossfader-orange.svg</Handle>

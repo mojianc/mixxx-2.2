@@ -22,6 +22,7 @@
             <ObjectName>EffectUnitGroupControlsLeft</ObjectName>
             <Layout>horizontal</Layout>
             <Children>
+              <!--上下三角图标  显示隐藏按钮-->
               <Template src="skin:hide_show_button.xml">
                 <SetVariable name="object_name">EffectUnitToggle</SetVariable>
                 <SetVariable name="TooltipId">EffectUnit_show_parameters</SetVariable>
@@ -30,18 +31,21 @@
             </Children>
           </WidgetGroup>
 
+          <!--水平空格填充空间，使文本可以居中-->
           <Template src="skin:spacer_h.xml"/>
+          <!--文本FX1 FX2-->
           <Label>
             <ObjectName>EffectUnitLabel</ObjectName>
             <Text>FX<Variable name="EffectUnit"/></Text>
           </Label>
+          <!--水平空格填充空间，使文本可以居中-->
           <Template src="skin:spacer_h.xml"/>
 
           <WidgetGroup>
             <ObjectName>EffectUnitGroupControlsRight</ObjectName>
             <Layout>horizontal</Layout>
             <Children>
-
+              <!--耳机按钮-->
               <Template src="skin:left_2state_button.xml">
                 <SetVariable name="TooltipId">EffectUnit_headphones_enabled</SetVariable>
                 <SetVariable name="ObjectName">FxAssignmentButton</SetVariable>
@@ -54,7 +58,7 @@
                 <SetVariable name="state_1_unpressed">icon/ic_headphones_48px.svg</SetVariable>
                 <SetVariable name="left_connection_control">[EffectRack1_EffectUnit<Variable name="EffectUnit"/>],group_[Headphone]_enable</SetVariable>
               </Template>
-
+              <!--Master按钮-->
               <Template src="skin:left_2state_button.xml">
                 <SetVariable name="TooltipId">EffectUnit_master_enabled</SetVariable>
                 <SetVariable name="ObjectName">FxAssignmentButton</SetVariable>

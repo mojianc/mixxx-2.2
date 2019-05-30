@@ -9,6 +9,7 @@
 <Template>
   <KnobComposed>
     <TooltipId><Variable name="TooltipId"/></TooltipId>
+    <ObjectName><Variable name="ObjectName"/></ObjectName>
     <Size>40f,34f</Size>
     <Knob>knob.svg</Knob>
     <BackPath>knob_bg_<Variable name="color"/>.svg</BackPath>
