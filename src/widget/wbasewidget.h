@@ -93,7 +93,8 @@ class WBaseWidget {
     QList<ControlParameterWidgetConnection*> m_rightConnections;
 
     QList<ControlWidgetPropertyConnection*> m_propertyConnections;
-
+    QTimer *m_timer;
+    bool m_inMove;
   private:
     QWidget* m_pWidget;
     QString m_baseTooltip;

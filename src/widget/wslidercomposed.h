@@ -58,8 +58,8 @@ class WSliderComposed : public WWidget  {
     inline bool isHorizontal() const { return m_bHorizontal; };
     void inputActivity();
 
-  public slots:
     void getComingData(QByteArray data);
+  public slots:
     void timeupdate();
     void onConnectedControlChanged(double dParameter, double dValue) override;
     void fillDebugTooltip(QStringList* debug) override;
@@ -92,9 +92,6 @@ class WSliderComposed : public WWidget  {
     WidgetRenderTimer m_renderTimer;
 
     friend class SliderEventHandler<WSliderComposed>;
-
-    QTimer *m_timer;
-    bool m_inMove;
 };
 
 #endif

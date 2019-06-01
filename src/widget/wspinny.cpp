@@ -70,7 +70,6 @@ WSpinny::WSpinny(QWidget* parent, const QString& group,
           m_bClampFailedWarning(false),
           m_bGhostPlayback(false),
           m_pPlayer(pPlayer),
-          m_inMove(false),
           m_pDlgCoverArt(new DlgCoverArtFullSize(parent, pPlayer)),
           m_pCoverMenu(new WCoverArtMenu(this)) {
 #ifdef __VINYLCONTROL__
@@ -109,7 +108,6 @@ WSpinny::WSpinny(QWidget* parent, const QString& group,
 
     setAutoFillBackground(false);
     setAutoBufferSwap(false);
-
 
     m_timer = new QTimer(this);
     connect(m_timer, SIGNAL(timeout()), this, SLOT(timeupdate()));

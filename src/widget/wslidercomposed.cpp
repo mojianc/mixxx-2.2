@@ -40,7 +40,6 @@ WSliderComposed::WSliderComposed(QWidget * parent)
     connect(&m_renderTimer, SIGNAL(update()),
             this, SLOT(update()));
 
-    m_inMove = false;
     m_timer = new QTimer(this);
     connect(m_timer, SIGNAL(timeout()), this, SLOT(timeupdate()));
 }

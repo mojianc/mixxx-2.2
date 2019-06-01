@@ -880,19 +880,24 @@ QWidget* LegacySkinParser::parseStandardWidget(const QDomElement& element,
             m_pControllerManager->getControllerLearningEventFilter());
     pWidget->Init();
 
-    QList<Controller *> contrllerList = m_pControllerManager->getControllerList(false, true);
-    for(int i = 0; i < contrllerList.count(); i++)
-    {
-        Controller *controller = contrllerList.at(i);
-        if(controller->getControllerId() == (0x2575 + 0x0001) &&
-                (pWidget->objectName() == "KeylockButton" || dynamic_cast<WSliderComposed *>(pWidget)))
-        {
-            if(!controller->isOpen())
-                controller->open();
-            connect(controller, SIGNAL(incomingData(QByteArray)), pWidget, SLOT(getComingData(QByteArray)));
-        }
-    }
+//    QList<Controller *> contrllerList = m_pControllerManager->getControllerList(false, true);
+//    for(int i = 0; i < contrllerList.count(); i++)
+//    {
+//        WSliderComposed *slider = dynamic_cast<WSliderComposed *>(pWidget);
+//        Controller *controller = contrllerList.at(i);
+//        if(controller->getControllerId() == (0x2575 + 0x0001) &&
+//                (pWidget->objectName() == "KeylockButton"
+//                 || (slider && slider->isHorizontal())
+//                 || m_pParent->objectName() == "EffectNotHighlightable_EffectRack1_EffectUnit1_effect1"))
 
+//        {
+//            if(!controller->isOpen())
+//                controller->open();
+//            connect(controller, SIGNAL(incomingData(QByteArray)), pWidget, SLOT(getComingData(QByteArray)));
+//        }
+//    }
+
+    m_mapWidget.insert(pWidget->objectName(), pWidget);
     return pWidget;
 }
 
@@ -1172,18 +1177,18 @@ QWidget* LegacySkinParser::parseSpinny(const QDomElement& node) {
     BaseTrackPlayer* pPlayer = m_pPlayerManager->getPlayer(channelStr);
     WSpinny* spinny = new WSpinny(m_pParent, channelStr, m_pConfig,
                                   m_pVCManager, pPlayer);
-    spinny->setChannelName(channelStr);
-    QList<Controller *> contrllerList = m_pControllerManager->getControllerList(false, true);
-    for(int i = 0; i < contrllerList.count(); i++)
-    {
-        Controller *controller = contrllerList.at(i);
-        if(controller->getControllerId() == (0x2575 + 0x0001))
-        {
-            if(!controller->isOpen())
-                controller->open();
-            connect(controller, SIGNAL(incomingData(QByteArray)), spinny, SLOT(getComingData(QByteArray)));
-        }
-    }
+//    spinny->setChannelName(channelStr);
+//    QList<Controller *> contrllerList = m_pControllerManager->getControllerList(false, true);
+//    for(int i = 0; i < contrllerList.count(); i++)
+//    {
+//        Controller *controller = contrllerList.at(i);
+//        if(controller->getControllerId() == (0x2575 + 0x0001))
+//        {
+//            if(!controller->isOpen())
+//                controller->open();
+//            connect(controller, SIGNAL(incomingData(QByteArray)), spinny, SLOT(getComingData(QByteArray)));
+//        }
+//    }
 
     if (!spinny->isValid()) {
         delete spinny;
@@ -1206,6 +1211,8 @@ QWidget* LegacySkinParser::parseSpinny(const QDomElement& node) {
     spinny->installEventFilter(m_pKeyboard);
     spinny->installEventFilter(m_pControllerManager->getControllerLearningEventFilter());
     spinny->Init();
+    QString strObjName = spinny->objectName();
+    m_mapWidget.insert(strObjName, spinny);
     return spinny;
 }
 
@@ -1981,6 +1988,11 @@ QString LegacySkinParser::getStyleFromNode(const QDomNode& node) {
     style = style.replace("QGroupBox", "WWidgetGroup");
 
     return style;
+}
+
+QMap<QString, QWidget *> LegacySkinParser::getWidget()
+{
+    return m_mapWidget;
 }
 
 void LegacySkinParser::commonWidgetSetup(const QDomNode& node,

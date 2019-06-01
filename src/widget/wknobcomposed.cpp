@@ -16,6 +16,8 @@ WKnobComposed::WKnobComposed(QWidget* pParent)
                         mixxx::Duration::fromSeconds(1)) {
     connect(&m_renderTimer, SIGNAL(update()),
             this, SLOT(update()));
+    m_timer = new QTimer(this);
+    connect(m_timer, SIGNAL(timeout()), this, SLOT(timeupdate()));
 }
 
 void WKnobComposed::setup(const QDomNode& node, const SkinContext& context) {
@@ -118,6 +120,32 @@ void WKnobComposed::paintEvent(QPaintEvent* e) {
         m_pKnob->drawCentered(transform.mapRect(targetRect), &p,
                               m_pKnob->rect());
     }
+}
+
+void WKnobComposed::getComingData(QByteArray data)
+{
+    unsigned short  x = (data[3] << 8) + data[2];
+    unsigned short  y = (data[5] << 8) + data[4];
+    if (x < 0x3ad5 )
+        return;
+
+    m_timer->stop();
+    m_timer->start(100);
+    if(!m_inMove)
+    {
+        m_inMove =true;
+        QMouseEvent event(QEvent::MouseButtonPress, QPointF(0, 0), Qt::LeftButton, Qt::LeftButton, Qt::NoModifier);
+        QApplication::sendEvent(this, &event);
+    }
+    QMouseEvent event(QEvent::MouseMove, QPointF(0, 0), Qt::LeftButton, Qt::LeftButton, Qt::NoModifier);
+    QApplication::sendEvent(this, &event);
+}
+
+void WKnobComposed::timeupdate()
+{
+    m_inMove = false;
+    QMouseEvent event(QEvent::MouseButtonRelease, QPointF(30, 30), Qt::LeftButton, Qt::LeftButton, Qt::NoModifier);
+    QApplication::sendEvent(this, &event);
 }
 
 void WKnobComposed::mouseMoveEvent(QMouseEvent* e) {

@@ -26,7 +26,9 @@ class WKnobComposed : public WWidget {
     void setup(const QDomNode& node, const SkinContext& context);
 
     void onConnectedControlChanged(double dParameter, double dValue) override;
-
+    void getComingData(QByteArray data);
+  public slots:
+    void timeupdate();
   protected:
     void wheelEvent(QWheelEvent *e) override;
     void mouseMoveEvent(QMouseEvent *e) override;

@@ -37,8 +37,9 @@ class WSpinny : public QGLWidget, public WBaseWidget, public VinylSignalQualityL
     void dragEnterEvent(QDragEnterEvent *event) override;
     void dropEvent(QDropEvent *event) override;
     void setChannelName(QString name);
-  public slots:
     void getComingData(QByteArray data);
+  public slots:
+    void timeupdate();
     void slotLoadTrack(TrackPointer);
     void slotLoadingTrack(TrackPointer pNewTrack, TrackPointer pOldTrack);
     void updateVinylControlSpeed(double rpm);
@@ -47,7 +48,6 @@ class WSpinny : public QGLWidget, public WBaseWidget, public VinylSignalQualityL
     void updateSlipEnabled(double enabled);
     void render();
     void swap();
-    void timeupdate();
   protected slots:
     void slotCoverFound(const QObject* pRequestor,
                         const CoverInfoRelative& info, QPixmap pixmap, bool fromCache);
@@ -132,9 +132,6 @@ class WSpinny : public QGLWidget, public WBaseWidget, public VinylSignalQualityL
     BaseTrackPlayer* m_pPlayer;
     DlgCoverArtFullSize* m_pDlgCoverArt;
     WCoverArtMenu* m_pCoverMenu;
-
-    QTimer *m_timer;
-    bool m_inMove;
 };
 
 #endif //_WSPINNY_H

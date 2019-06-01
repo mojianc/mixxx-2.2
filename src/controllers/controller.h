@@ -171,7 +171,7 @@ class Controller : public QObject, ConstControllerPresetVisitor {
     // For testing
     friend class ControllerPresetValidationTest;
 
-    friend class LegacySkinParser;
+    friend class SkinLoader;
 };
 
 #endif

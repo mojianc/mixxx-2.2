@@ -6,7 +6,7 @@
 #include <QDir>
 
 #include "preferences/usersettings.h"
-
+#include "widget\wbasewidget.h"
 class KeyboardEventFilter;
 class PlayerManager;
 class ControllerManager;
@@ -15,9 +15,11 @@ class VinylControlManager;
 class EffectsManager;
 class RecordingManager;
 class LaunchImage;
+class LegacySkinParser;
 
-class SkinLoader {
-  public:
+class SkinLoader : public QObject{
+    Q_OBJECT
+public:
     SkinLoader(UserSettingsPointer pConfig);
     virtual ~SkinLoader();
 
@@ -38,10 +40,17 @@ class SkinLoader {
     QString getDefaultSkinName() const;
     QList<QDir> getSkinSearchPaths() const;
 
+    void loadConfigCoordinate();
+    void connectHid(ControllerManager* pControllerManager);
+  public slots:
+    void getComingData(QByteArray data);
   private:
     QString pickResizableSkin(QString oldSkin) const;
 
     UserSettingsPointer m_pConfig;
+
+    QMap<QString, QRect> m_mapRects;
+    QMap<QString, QWidget *> m_mapWidget;
 };
 
 

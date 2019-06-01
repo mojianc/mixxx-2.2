@@ -486,7 +486,7 @@ void MixxxMainWindow::initialize(QApplication* pApp, const CmdlineArgs& args) {
 
     // Wait until all other ControlObjects are set up before initializing
     // controllers
-//    m_pControllerManager->setUpDevices();
+    m_pControllerManager->setUpDevices();
 
     // Scan the library for new files and directories
     bool rescan = pConfig->getValue<bool>(
@@ -563,21 +563,8 @@ void MixxxMainWindow::initialize(QApplication* pApp, const CmdlineArgs& args) {
             SIGNAL(currentPlayingDeckChanged(int)),
             this, SLOT(slotChangedPlayingDeck(int)));
 
-
-    m_pControllerManager->setUpDevices();
-    if (!(m_pWidgetParent = m_pSkinLoader->loadConfiguredSkin(this, m_pKeyboard,
-                                                              m_pPlayerManager,
-                                                              m_pControllerManager,
-                                                              m_pLibrary,
-                                                              m_pVCManager,
-                                                              m_pEffectsManager,
-                                                              m_pRecordingManager))) {
-        reportCriticalErrorAndQuit(
-                "default skin cannot be loaded see <b>mixxx</b> trace for more information.");
-
-        m_pWidgetParent = oldWidget;
-        //TODO (XXX) add dialog to warn user and launch skin choice page
-    }
+    m_pSkinLoader->loadConfigCoordinate();
+    m_pSkinLoader->connectHid(m_pControllerManager);
     // this has to be after the OpenGL widgets are created or depending on a
     // million different variables the first waveform may be horribly
     // corrupted. See bug 521509 -- bkgood ?? -- vrince
@@ -1355,6 +1342,7 @@ void MixxxMainWindow::rebootMixxxView() {
         move(newX,newY);
     }
 
+    m_pSkinLoader->loadConfigCoordinate();
     qDebug() << "rebootMixxxView DONE";
     emit(newSkinLoaded());
 }

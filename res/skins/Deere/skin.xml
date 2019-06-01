@@ -132,7 +132,7 @@
       -->
         <Template src="skin:deck_visual_row.xml">
           <SetVariable name="i">1</SetVariable>
-          <SetVariable name="group">_Channel<Variable name="i"/></SetVariable>
+          <SetVariable name="group">[Channel<Variable name="i"/>]</SetVariable>
           <!-- Traditional Blue -->
           <SetVariable name="DeckSignalColor">#007BCD</SetVariable>
           <SetVariable name="DeckBackgroundColor">#333333</SetVariable>

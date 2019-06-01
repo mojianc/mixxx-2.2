@@ -68,11 +68,11 @@ class WPushButton : public WWidget {
     // associated pixmaps.
     void setStates(int iStates);
 
+    void getComingData(QByteArray data);
   signals:
     void displayValueChanged(int value);
 
   public slots:
-    void getComingData(QByteArray data);
     void onConnectedControlChanged(double dParameter, double dValue) override;
     void timeupdate();
   protected:
@@ -114,8 +114,6 @@ class WPushButton : public WWidget {
     QTimer m_clickTimer;
     QVector<int> m_align;
 
-    QTimer *m_timer;
-    bool m_inMove;
 };
 
 #endif

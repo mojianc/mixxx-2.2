@@ -9,6 +9,7 @@
 WBaseWidget::WBaseWidget(QWidget* pWidget)
         : m_pDisplayConnection(nullptr),
           m_pWidget(pWidget) {
+    m_inMove = false;
 }
 
 WBaseWidget::~WBaseWidget() {

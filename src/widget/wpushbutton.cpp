@@ -41,7 +41,6 @@ WPushButton::WPushButton(QWidget* pParent)
     setStates(0);
     m_timer = new QTimer(this);
     connect(m_timer, SIGNAL(timeout()), this, SLOT(timeupdate()));
-    m_inMove = false;
 }
 
 WPushButton::WPushButton(QWidget* pParent, ControlPushButton::ButtonMode leftButtonMode,
@@ -52,7 +51,6 @@ WPushButton::WPushButton(QWidget* pParent, ControlPushButton::ButtonMode leftBut
     setStates(0);
     m_timer = new QTimer(this);
     connect(m_timer, SIGNAL(timeout()), this, SLOT(timeupdate()));
-    m_inMove = false;
 }
 
 
