@@ -963,6 +963,11 @@ QWidget* LegacySkinParser::parseOverview(const QDomElement& node) {
     overviewWidget->slotLoadingTrack(pPlayer->getLoadedTrack(), TrackPointer());
     overviewWidget->slotTrackLoaded(pPlayer->getLoadedTrack());
 
+    if(channelStr == "[Channel1]")
+    {
+        overviewWidget->loadMusicConfig();
+        connect(overviewWidget, SIGNAL(videoChange(bool)), overviewWidget, SLOT(showVideo(bool)));
+    }
     return overviewWidget;
 }
 

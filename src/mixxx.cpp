@@ -203,6 +203,11 @@ MixxxMainWindow::MixxxMainWindow(QApplication* pApp, const CmdlineArgs& args)
 
     initialize(pApp, args);
 
+    m_videoWidget = new VideoWidget(this);
+    m_videoWidget->setGeometry(500,500,
+                               1000, 500);
+    m_videoWidget->show();
+
 }
 
 MixxxMainWindow::~MixxxMainWindow() {
@@ -1320,15 +1325,7 @@ void MixxxMainWindow::rebootMixxxView() {
         return;
     }
 
-    QWidget *w = new QWidget;
-    QLineEdit *lineE = new QLineEdit;
-    lineE->setFixedSize(500,500);
-    lineE->setText("mixxx");
-    QVBoxLayout *layout = new QVBoxLayout;
-    layout->addWidget(m_pWidgetParent);
-    layout->addWidget(lineE);
-    w->setLayout(layout);
-    setCentralWidget(w);
+    setCentralWidget(m_pWidgetParent);
     adjustSize();
 
     if (wasFullScreen) {
@@ -1531,4 +1528,16 @@ void MixxxMainWindow::launchProgress(int progress) {
         m_pLaunchImage->progress(progress);
     }
     qApp->processEvents();
+}
+
+
+VideoWidget::VideoWidget(QWidget *parent)
+    : QWidget(parent)
+{
+
+}
+
+VideoWidget::~VideoWidget()
+{
+
 }

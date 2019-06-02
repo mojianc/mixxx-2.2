@@ -36,14 +36,15 @@ class WOverview : public WWidget {
     WOverview(const char* pGroup, UserSettingsPointer pConfig, QWidget* parent=nullptr);
 
     void setup(const QDomNode& node, const SkinContext& context);
-
+    void loadMusicConfig();
   public slots:
     void onConnectedControlChanged(double dParameter, double dValue) override;
     void slotTrackLoaded(TrackPointer pTrack);
     void slotLoadingTrack(TrackPointer pNewTrack, TrackPointer pOldTrack);
-
+    void showVideo(bool isShow);
   signals:
     void trackDropped(QString filename, QString group);
+    void videoChange(bool isShow);
 
   protected:
     void mouseMoveEvent(QMouseEvent *e) override;
@@ -133,6 +134,9 @@ class WOverview : public WWidget {
     bool m_bAnalyzerFinalizing;
     bool m_trackLoaded;
     double m_scaleFactor;
+
+    QMap<QString, double> m_musicMap;
+    bool m_videoPlay;
 };
 
 #endif

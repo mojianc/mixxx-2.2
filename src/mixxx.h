@@ -53,6 +53,14 @@ class WMainMenuBar;
 
 typedef QSharedPointer<SettingsManager> SettingsManagerPointer;
 
+class VideoWidget : public QWidget
+{
+    Q_OBJECT
+public:
+    VideoWidget(QWidget *parent = 0);
+    ~VideoWidget();
+};
+
 // This Class is the base class for Mixxx. It sets up the main
 // window and providing a menubar.
 // For the main view, an instance of class MixxxView is
@@ -199,6 +207,8 @@ class MixxxMainWindow : public QMainWindow {
 
     static const int kMicrophoneCount;
     static const int kAuxiliaryCount;
+
+    VideoWidget *m_videoWidget;
 };
 
 #endif

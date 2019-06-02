@@ -59,6 +59,7 @@ WOverview::WOverview(const char *pGroup, UserSettingsPointer pConfig, QWidget* p
             new ControlProxy(m_group, "track_samples", this);
     m_playControl = new ControlProxy(m_group, "play", this);
     setAcceptDrops(true);
+    m_videoPlay = false;
 }
 
 void WOverview::setup(const QDomNode& node, const SkinContext& context) {
@@ -138,6 +139,21 @@ void WOverview::setup(const QDomNode& node, const SkinContext& context) {
     }
 }
 
+void WOverview::loadMusicConfig()
+{
+    m_musicMap.clear();
+    QSettings *iniSetting = new QSettings(QCoreApplication::applicationDirPath() + "/musicConfig.ini", QSettings::IniFormat);
+    QStringList groups = iniSetting->childGroups();
+    for (int i=0; i<groups.size(); ++i)
+    {
+        QString strGroup = groups.at(i);
+        iniSetting->beginGroup(strGroup);
+        double startPoint = iniSetting->value("startpoint").toDouble();
+        m_musicMap.insert(strGroup, startPoint);
+        iniSetting->endGroup();
+    }
+}
+
 void WOverview::onConnectedControlChanged(double dParameter, double dValue) {
     Q_UNUSED(dValue);
     if (!m_bDrag) {
@@ -150,6 +166,15 @@ void WOverview::onConnectedControlChanged(double dParameter, double dValue) {
             m_iPos = iPos;
             //qDebug() << "WOverview::onConnectedControlChanged" << dParameter << ">>" << m_iPos;
             update();
+            if(m_pCurrentTrack.get() == NULL)
+                return;
+            QString musicName = m_pCurrentTrack.get()->getFileName();
+            double startPoint = m_musicMap.value(musicName, 10);
+            if(startPoint <= dParameter && !m_videoPlay)
+            {
+                m_videoPlay = true;
+                emit videoChange(true);
+            }
         }
     }
 }
@@ -221,6 +246,7 @@ void WOverview::slotLoadingTrack(TrackPointer pNewTrack, TrackPointer pOldTrack)
     m_pixmapDone = false;
     m_trackLoaded = false;
     m_endOfTrack = false;
+    m_videoPlay = false;
 
     if (pNewTrack) {
         m_pCurrentTrack = pNewTrack;
@@ -237,6 +263,12 @@ void WOverview::slotLoadingTrack(TrackPointer pNewTrack, TrackPointer pOldTrack)
         m_pWaveform.clear();
     }
     update();
+    emit videoChange(false);
+}
+
+void WOverview::showVideo(bool isShow)
+{
+    qDebug() << "showVideo" << isShow;
 }
 
 void WOverview::onEndOfTrackChange(double v) {
