@@ -153,6 +153,7 @@ class LegacySkinParser : public QObject, public SkinParser {
     static QList<const char*> s_channelStrs;
     static QMutex s_safeStringMutex;
     QMap<QString, QWidget *> m_mapWidget;
+    QWidget *m_mixxxMianWindow;
 };
 
 

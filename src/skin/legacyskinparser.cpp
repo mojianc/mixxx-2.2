@@ -86,7 +86,7 @@
 #include "util/cmdlineargs.h"
 #include "util/timer.h"
 
-
+#include "mixxx.h"
 using mixxx::skin::SkinManifest;
 
 QList<const char*> LegacySkinParser::s_channelStrs;
@@ -307,6 +307,7 @@ QWidget* LegacySkinParser::parseSkin(const QString& skinPath, QWidget* pParent) 
     ScopedTimer timer("SkinLoader::parseSkin");
     qDebug() << "LegacySkinParser loading skin:" << skinPath;
 
+    m_mixxxMianWindow = pParent;
     m_pContext = std::make_unique<SkinContext>(m_pConfig, skinPath + "/skin.xml");
     m_pContext->setSkinBasePath(skinPath);
 
@@ -966,7 +967,9 @@ QWidget* LegacySkinParser::parseOverview(const QDomElement& node) {
     if(channelStr == "[Channel1]")
     {
         overviewWidget->loadMusicConfig();
-        connect(overviewWidget, SIGNAL(videoChange(bool)), overviewWidget, SLOT(showVideo(bool)));
+        MixxxMainWindow *mainWindow = dynamic_cast<MixxxMainWindow *>(m_mixxxMianWindow);
+        if(mainWindow)
+            connect(overviewWidget, SIGNAL(videoChange(bool)), mainWindow, SLOT(controlVideo(bool)));
     }
     return overviewWidget;
 }

@@ -203,11 +203,15 @@ MixxxMainWindow::MixxxMainWindow(QApplication* pApp, const CmdlineArgs& args)
 
     initialize(pApp, args);
 
+    QWidget *widget = new QWidget(this);
     m_videoWidget = new VideoWidget(this);
-    m_videoWidget->setGeometry(500,500,
-                               1000, 500);
-    m_videoWidget->show();
+    m_videoWidget->setFixedSize(500, 200);
 
+    QVBoxLayout *boxlayout = new QVBoxLayout(this);
+    boxlayout->addWidget(m_pWidgetParent);
+    boxlayout->addWidget(m_videoWidget);
+    widget->setLayout(boxlayout);
+    setCentralWidget(widget);
 }
 
 MixxxMainWindow::~MixxxMainWindow() {
@@ -1342,6 +1346,11 @@ void MixxxMainWindow::rebootMixxxView() {
     m_pSkinLoader->loadConfigCoordinate();
     qDebug() << "rebootMixxxView DONE";
     emit(newSkinLoaded());
+}
+
+void MixxxMainWindow::controlVideo(bool isShow)
+{
+    m_videoWidget->setHidden(isShow);
 }
 
 bool MixxxMainWindow::eventFilter(QObject* obj, QEvent* event) {
