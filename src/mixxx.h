@@ -51,6 +51,10 @@ class SoundManager;
 class VinylControlManager;
 class WMainMenuBar;
 
+#include <QVideoWidget>
+#include <QMediaPlayer>
+#include <QMediaPlaylist>
+
 typedef QSharedPointer<SettingsManager> SettingsManagerPointer;
 
 class VideoWidget : public QWidget
@@ -59,6 +63,12 @@ class VideoWidget : public QWidget
 public:
     VideoWidget(QWidget *parent = 0);
     ~VideoWidget();
+    void addToPlaylist(const QStringList& fileNames);
+    void setShow(bool isShow);
+private:
+    QMediaPlayer *player;
+    QVideoWidget *videoWidget;
+    QMediaPlaylist *Playlist;
 };
 
 // This Class is the base class for Mixxx. It sets up the main

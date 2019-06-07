@@ -37,6 +37,13 @@ Q_IMPORT_PLUGIN(qico)
 Q_IMPORT_PLUGIN(qtga)
 // accessible plugins
 Q_IMPORT_PLUGIN(qtaccessiblewidgets)
+//media
+Q_IMPORT_PLUGIN(qtmedia_audioengine)
+Q_IMPORT_PLUGIN(dsengine)
+Q_IMPORT_PLUGIN(wmfengine)
+Q_IMPORT_PLUGIN(qtaudio_wasapi)
+Q_IMPORT_PLUGIN(qtaudio_windows)
+Q_IMPORT_PLUGIN(qtmultimedia_m3u)
 #endif
 #endif
 

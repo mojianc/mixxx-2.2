@@ -212,6 +212,7 @@ MixxxMainWindow::MixxxMainWindow(QApplication* pApp, const CmdlineArgs& args)
     boxlayout->addWidget(m_videoWidget);
     widget->setLayout(boxlayout);
     setCentralWidget(widget);
+    m_videoWidget->show();
 }
 
 MixxxMainWindow::~MixxxMainWindow() {
@@ -1026,6 +1027,7 @@ void MixxxMainWindow::createMenuBar() {
 
 void MixxxMainWindow::connectMenuBar() {
     ScopedTimer t("MixxxMainWindow::connectMenuBar");
+    connect(m_pMenuBar, SIGNAL(videoControl(bool)), this, SLOT(controlVideo(bool)));
     connect(this, SIGNAL(newSkinLoaded()),
             m_pMenuBar, SLOT(onNewSkinLoaded()));
 
@@ -1350,7 +1352,7 @@ void MixxxMainWindow::rebootMixxxView() {
 
 void MixxxMainWindow::controlVideo(bool isShow)
 {
-    m_videoWidget->setHidden(isShow);
+    m_videoWidget->setShow(isShow);
 }
 
 bool MixxxMainWindow::eventFilter(QObject* obj, QEvent* event) {
@@ -1543,10 +1545,60 @@ void MixxxMainWindow::launchProgress(int progress) {
 VideoWidget::VideoWidget(QWidget *parent)
     : QWidget(parent)
 {
+    player = new QMediaPlayer;
+
+    Playlist = new QMediaPlaylist();
+    player->setPlaylist(Playlist);
+
+    videoWidget = new QVideoWidget(this);
+    player->setVideoOutput(videoWidget);
+
+
+    //垂直布局：视频播放器、进度条、控制按钮布局
+    QBoxLayout *mainLayout = new QVBoxLayout;
+    mainLayout->addWidget(videoWidget);
+    //设置布局
+    this->setLayout(mainLayout);
 
 }
 
 VideoWidget::~VideoWidget()
 {
 
+}
+
+void VideoWidget::addToPlaylist(const QStringList& fileNames)
+{
+    foreach (QString const &argument, fileNames) {
+        QFileInfo fileInfo(argument);
+        if (fileInfo.exists()) {
+            QUrl url = QUrl::fromLocalFile(fileInfo.absoluteFilePath());
+            if (fileInfo.suffix().toLower() == QLatin1String("m3u")) {
+                Playlist->load(url);
+            } else
+                Playlist->addMedia(url);
+        } else {
+            QUrl url(argument);
+            if (url.isValid()) {
+                Playlist->addMedia(url);
+            }
+        }
+    }
+}
+
+void VideoWidget::setShow(bool isShow)
+{
+    if(isShow)
+    {
+        show();
+        QStringList lis;
+        lis.append("G:/Mixxx/Madia/01.mp4");
+        addToPlaylist(lis);
+        player->play();
+    }
+    else
+    {
+        hide();
+        player->stop();
+    }
 }

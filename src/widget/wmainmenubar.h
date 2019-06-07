@@ -50,6 +50,7 @@ class WMainMenuBar : public QMenuBar {
     void onNumberOfDecksChanged(int decks);
 
   signals:
+    bool videoControl(bool);
     void createCrate();
     void createPlaylist();
     void loadTrackToDeck(int deck);
