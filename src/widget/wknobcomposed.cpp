@@ -126,18 +126,21 @@ void WKnobComposed::getComingData(QByteArray data, QRect rect)
 {
     unsigned short  x = (data[3] << 8) + data[2];
     unsigned short  y = (data[5] << 8) + data[4];
-    if (x < 0x3ad5 )
-        return;
+
+    double ratioX = (x - rect.left())*1.0000 / rect.width();
+    double ratioy = (y - rect.top())*1.0000 / rect.height();
+    int PointX = ratioX * m_size.width();
+    int Pointy = ratioy * m_size.height();
 
     m_timer->stop();
     m_timer->start(100);
     if(!m_inMove)
     {
         m_inMove =true;
-        QMouseEvent event(QEvent::MouseButtonPress, QPointF(0, 0), Qt::LeftButton, Qt::LeftButton, Qt::NoModifier);
+        QMouseEvent event(QEvent::MouseButtonPress, QPointF(PointX, Pointy), Qt::LeftButton, Qt::LeftButton, Qt::NoModifier);
         QApplication::sendEvent(this, &event);
     }
-    QMouseEvent event(QEvent::MouseMove, QPointF(0, 0), Qt::LeftButton, Qt::LeftButton, Qt::NoModifier);
+    QMouseEvent event(QEvent::MouseMove, QPointF(PointX, Pointy), Qt::LeftButton, Qt::LeftButton, Qt::NoModifier);
     QApplication::sendEvent(this, &event);
 }
 

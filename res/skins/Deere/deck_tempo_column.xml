@@ -85,6 +85,8 @@
         <Layout>horizontal</Layout>
         <Children>
           <SliderComposed>
+            <!--转盘右侧的推子-->
+            <ObjectName>RateDisplay<Variable name="i"/>_handh</ObjectName>
             <TooltipId>rate</TooltipId>
             <Size>40f,-1me</Size>
             <MaximumSize>40,200</MaximumSize>

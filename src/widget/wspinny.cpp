@@ -724,7 +724,7 @@ void WSpinny::setChannelName(QString name)
 void WSpinny::getComingData(QByteArray data, QRect rect)
 {
    // qDebug()<<"wspinny getComingData: "<<data;
-    if(rectContainPoint(data))
+//    if(rectContainPoint(data))
     {
         m_timer->stop();
         m_timer->start(100);
@@ -745,8 +745,8 @@ void WSpinny::getComingData(QByteArray data, QRect rect)
         //int dY = y-m_iStartMouseY;
 
         //Coordinates from center of widget
-        double c_x = x - (0x252b + 0x3ad5)/2;
-        double c_y = y - (0x099c + 0x2eee)/2;
+        double c_x = x - (rect.left() + rect.right())/2;
+        double c_y = y - (rect.top() + rect.bottom())/2;
         double theta = (180.0/M_PI)*atan2(c_x, -c_y);
 
         //qDebug() << "c_x:" << c_x << "c_y:" << c_y <<

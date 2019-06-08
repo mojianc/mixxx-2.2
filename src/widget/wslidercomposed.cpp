@@ -171,7 +171,8 @@ void WSliderComposed::paintEvent(QPaintEvent * /*unused*/) {
 }
 
 void WSliderComposed::resizeEvent(QResizeEvent* pEvent) {
-    Q_UNUSED(pEvent);
+
+    m_size = pEvent->size();
 
     m_dHandleLength = calculateHandleLength();
     m_handler.setHandleLength(m_dHandleLength);
@@ -247,12 +248,12 @@ void WSliderComposed::getComingData(QByteArray data, QRect rect)
 {
     int  x = (data[3] << 8) + data[2];
     int  y = (data[5] << 8) + data[4];
-    if (x < 0x3ad5 )
-        return;
 
-    QRect widgetRect = this->rect();
-    int PointX = (x - rect.left()) * (widgetRect.width() / rect.width());
-    int Pointy = (y - rect.top()) * (widgetRect.height() / rect.height());
+    double ratioX = (x - rect.left())*1.0000 / rect.width();
+    double ratioy = (y - rect.top())*1.0000 / rect.height();
+    int PointX = ratioX * m_size.width();
+    int Pointy = ratioy * m_size.height();
+
     m_timer->stop();
     m_timer->start(100);
     if(!m_inMove)
