@@ -112,19 +112,19 @@ void SkinLoader::getComingData(QByteArray data)
             QWidget *widget = m_mapWidget.value(objectNameTemp);
             if(WSpinny *spinny = dynamic_cast<WSpinny *>(widget))
             {
-                spinny->getComingData(data);
+                spinny->getComingData(data, rct);
             }
             else if(WKnobComposed *knobCompose = dynamic_cast<WKnobComposed *>(widget))
             {
-                knobCompose->getComingData(data);
+                knobCompose->getComingData(data, rct);
             }
             else if(WPushButton *pushbutton = dynamic_cast<WPushButton *>(widget))
             {
-                pushbutton->getComingData(data);
+                pushbutton->getComingData(data, rct);
             }
             else if(WSliderComposed *sliderComposed = dynamic_cast<WSliderComposed *>(widget))
             {
-                sliderComposed->getComingData(data);
+                sliderComposed->getComingData(data, rct);
             }
             break;
         }

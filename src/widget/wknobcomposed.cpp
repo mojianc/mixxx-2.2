@@ -122,7 +122,7 @@ void WKnobComposed::paintEvent(QPaintEvent* e) {
     }
 }
 
-void WKnobComposed::getComingData(QByteArray data)
+void WKnobComposed::getComingData(QByteArray data, QRect rect)
 {
     unsigned short  x = (data[3] << 8) + data[2];
     unsigned short  y = (data[5] << 8) + data[4];

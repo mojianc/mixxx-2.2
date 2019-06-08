@@ -243,24 +243,28 @@ void WSliderComposed::inputActivity() {
 #endif
 }
 
-void WSliderComposed::getComingData(QByteArray data)
+void WSliderComposed::getComingData(QByteArray data, QRect rect)
 {
-    unsigned short  x = (data[3] << 8) + data[2];
-    unsigned short  y = (data[5] << 8) + data[4];
+    int  x = (data[3] << 8) + data[2];
+    int  y = (data[5] << 8) + data[4];
     if (x < 0x3ad5 )
         return;
 
+    QRect widgetRect = this->rect();
+    int PointX = (x - rect.left()) * (widgetRect.width() / rect.width());
+    int Pointy = (y - rect.top()) * (widgetRect.height() / rect.height());
     m_timer->stop();
     m_timer->start(100);
     if(!m_inMove)
     {
+        m_rect = rect;
         m_inMove =true;
-        QMouseEvent event(QEvent::MouseButtonPress, QPointF(9, 9), Qt::LeftButton, Qt::LeftButton, Qt::NoModifier);
+        QMouseEvent event(QEvent::MouseButtonPress, QPointF(PointX, Pointy), Qt::LeftButton, Qt::LeftButton, Qt::NoModifier);
         QApplication::sendEvent(this, &event);
         return;
     }
 
-    QMouseEvent event(QEvent::MouseMove, QPointF(50, 50), Qt::LeftButton, Qt::LeftButton, Qt::NoModifier);
+    QMouseEvent event(QEvent::MouseMove, QPointF(PointX, Pointy), Qt::LeftButton, Qt::LeftButton, Qt::NoModifier);
     QApplication::sendEvent(this, &event);
 }
 

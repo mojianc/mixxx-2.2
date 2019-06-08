@@ -721,7 +721,7 @@ void WSpinny::setChannelName(QString name)
     m_chanenlName = name;
 }
 
-void WSpinny::getComingData(QByteArray data)
+void WSpinny::getComingData(QByteArray data, QRect rect)
 {
    // qDebug()<<"wspinny getComingData: "<<data;
     if(rectContainPoint(data))

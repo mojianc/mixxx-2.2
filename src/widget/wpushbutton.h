@@ -68,7 +68,7 @@ class WPushButton : public WWidget {
     // associated pixmaps.
     void setStates(int iStates);
 
-    void getComingData(QByteArray data);
+    void getComingData(QByteArray data, QRect rect);
   signals:
     void displayValueChanged(int value);
 
