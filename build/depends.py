@@ -485,19 +485,7 @@ class Qt(Dependence):
                 if qt5:
                     build.env.Append(LIBPATH=[
                         os.path.join(build.env['QTDIR'],'plugins/mediaservice')])
-                    build.env.Append(LIBS = 'qtmedia_audioengine')
                     build.env.Append(LIBS = 'dsengine')
-                    build.env.Append(LIBS = 'wmfengine')
-                if qt5:
-                    build.env.Append(LIBPATH=[
-                        os.path.join(build.env['QTDIR'],'plugins/audio')])
-                    build.env.Append(LIBS = 'qtaudio_wasapi')
-                    build.env.Append(LIBS = 'qtaudio_windows')
-                if qt5:
-                    build.env.Append(LIBPATH=[
-                        os.path.join(build.env['QTDIR'],'plugins/playlistformats')])
-                    build.env.Append(LIBS = 'qtmultimedia_m3u')
-
 
         # Set the rpath for linux/bsd/osx.
         # This is not supported on OS X before the 10.5 SDK.
