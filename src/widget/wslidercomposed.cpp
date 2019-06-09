@@ -171,7 +171,8 @@ void WSliderComposed::paintEvent(QPaintEvent * /*unused*/) {
 }
 
 void WSliderComposed::resizeEvent(QResizeEvent* pEvent) {
-    Q_UNUSED(pEvent);
+
+    m_size = pEvent->size();
 
     m_dHandleLength = calculateHandleLength();
     m_handler.setHandleLength(m_dHandleLength);
@@ -243,30 +244,36 @@ void WSliderComposed::inputActivity() {
 #endif
 }
 
-void WSliderComposed::getComingData(QByteArray data)
+void WSliderComposed::getComingData(QByteArray data, QRect rect)
 {
-    unsigned short  x = (data[3] << 8) + data[2];
-    unsigned short  y = (data[5] << 8) + data[4];
-    if (x < 0x3ad5 )
-        return;
+    int  x = (data[3] << 8) + data[2];
+    int  y = (data[5] << 8) + data[4];
+
+    double ratioX = (x - rect.left())*1.0000 / rect.width();
+    double ratioy = (y - rect.top())*1.0000 / rect.height();
+    int PointX = ratioX * m_size.width();
+    int Pointy = ratioy * m_size.height();
 
     m_timer->stop();
     m_timer->start(100);
     if(!m_inMove)
     {
+        m_rect = rect;
         m_inMove =true;
-        QMouseEvent event(QEvent::MouseButtonPress, QPointF(9, 9), Qt::LeftButton, Qt::LeftButton, Qt::NoModifier);
+        m_lastPoint = QPointF(PointX, Pointy);
+        QMouseEvent event(QEvent::MouseButtonPress, QPointF(PointX, Pointy), Qt::LeftButton, Qt::LeftButton, Qt::NoModifier);
         QApplication::sendEvent(this, &event);
         return;
     }
 
-    QMouseEvent event(QEvent::MouseMove, QPointF(50, 50), Qt::LeftButton, Qt::LeftButton, Qt::NoModifier);
+    QMouseEvent event(QEvent::MouseMove, QPointF(PointX, Pointy), Qt::LeftButton, Qt::LeftButton, Qt::NoModifier);
     QApplication::sendEvent(this, &event);
+    m_lastPoint = QPointF(PointX, Pointy);
 }
 
 void WSliderComposed::timeupdate()
 {
     m_inMove = false;
-    QMouseEvent event(QEvent::MouseButtonRelease, QPointF(50, 100), Qt::LeftButton, Qt::LeftButton, Qt::NoModifier);
+    QMouseEvent event(QEvent::MouseButtonRelease, m_lastPoint, Qt::LeftButton, Qt::LeftButton, Qt::NoModifier);
     QApplication::sendEvent(this, &event);
 }

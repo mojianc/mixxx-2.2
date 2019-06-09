@@ -26,7 +26,7 @@ class WKnobComposed : public WWidget {
     void setup(const QDomNode& node, const SkinContext& context);
 
     void onConnectedControlChanged(double dParameter, double dValue) override;
-    void getComingData(QByteArray data);
+    void getComingData(QByteArray data, QRect rect);
   public slots:
     void timeupdate();
   protected:
@@ -35,7 +35,7 @@ class WKnobComposed : public WWidget {
     void mousePressEvent(QMouseEvent *e) override;
     void mouseReleaseEvent(QMouseEvent *e) override;
     void paintEvent(QPaintEvent* /*unused*/) override;
-
+    void resizeEvent(QResizeEvent* pEvent) override;
   private:
     void inputActivity();
     void clear();

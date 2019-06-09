@@ -58,7 +58,7 @@ class WSliderComposed : public WWidget  {
     inline bool isHorizontal() const { return m_bHorizontal; };
     void inputActivity();
 
-    void getComingData(QByteArray data);
+    void getComingData(QByteArray data, QRect rect);
   public slots:
     void timeupdate();
     void onConnectedControlChanged(double dParameter, double dValue) override;

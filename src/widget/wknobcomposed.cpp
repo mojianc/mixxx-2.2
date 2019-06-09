@@ -122,30 +122,34 @@ void WKnobComposed::paintEvent(QPaintEvent* e) {
     }
 }
 
-void WKnobComposed::getComingData(QByteArray data)
+void WKnobComposed::resizeEvent(QResizeEvent *pEvent)
+{
+    m_size = pEvent->size();
+    WWidget::resizeEvent(pEvent);
+}
+
+void WKnobComposed::getComingData(QByteArray data, QRect rect)
 {
     unsigned short  x = (data[3] << 8) + data[2];
     unsigned short  y = (data[5] << 8) + data[4];
-    if (x < 0x3ad5 )
-        return;
+
+    double ratioX = (x - rect.left())*1.0000 / rect.width();
+    double ratioy = (y - rect.top())*1.0000 / rect.height();
+    int PointX = ratioX * m_size.width();
+    int Pointy = ratioy * m_size.height();
 
     m_timer->stop();
-    m_timer->start(100);
+    m_timer->start(1000);
     if(!m_inMove)
     {
         m_inMove =true;
-        QMouseEvent event(QEvent::MouseButtonPress, QPointF(0, 0), Qt::LeftButton, Qt::LeftButton, Qt::NoModifier);
+        m_lastPoint = QPointF(PointX, Pointy);
+        QMouseEvent event(QEvent::MouseButtonPress, QPointF(PointX, Pointy), Qt::LeftButton, Qt::LeftButton, Qt::NoModifier);
         QApplication::sendEvent(this, &event);
     }
-    QMouseEvent event(QEvent::MouseMove, QPointF(0, 0), Qt::LeftButton, Qt::LeftButton, Qt::NoModifier);
+    QMouseEvent event(QEvent::MouseMove, QPointF(PointX, Pointy), Qt::LeftButton, Qt::LeftButton, Qt::NoModifier);
     QApplication::sendEvent(this, &event);
-}
-
-void WKnobComposed::timeupdate()
-{
-    m_inMove = false;
-    QMouseEvent event(QEvent::MouseButtonRelease, QPointF(30, 30), Qt::LeftButton, Qt::LeftButton, Qt::NoModifier);
-    QApplication::sendEvent(this, &event);
+    m_lastPoint = QPointF(PointX, Pointy);
 }
 
 void WKnobComposed::mouseMoveEvent(QMouseEvent* e) {
@@ -164,6 +168,12 @@ void WKnobComposed::wheelEvent(QWheelEvent* e) {
     m_handler.wheelEvent(this, e);
 }
 
+void WKnobComposed::timeupdate()
+{
+	m_inMove = false;
+	QMouseEvent event(QEvent::MouseButtonRelease, m_lastPoint, Qt::LeftButton, Qt::LeftButton, Qt::NoModifier);
+	QApplication::sendEvent(this, &event);
+}
 void WKnobComposed::inputActivity() {
 #ifdef __APPLE__
     m_renderTimer.activity();

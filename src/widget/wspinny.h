@@ -37,7 +37,7 @@ class WSpinny : public QGLWidget, public WBaseWidget, public VinylSignalQualityL
     void dragEnterEvent(QDragEnterEvent *event) override;
     void dropEvent(QDropEvent *event) override;
     void setChannelName(QString name);
-    void getComingData(QByteArray data);
+    void getComingData(QByteArray data, QRect rect);
   public slots:
     void timeupdate();
     void slotLoadTrack(TrackPointer);
