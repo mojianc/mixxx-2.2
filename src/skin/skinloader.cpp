@@ -23,7 +23,7 @@
 SkinLoader::SkinLoader(UserSettingsPointer pConfig)
     : QObject(NULL)
     , m_pConfig(pConfig) {
-
+    m_musicBtControl = new MusicButtonControl(this);
 }
 
 SkinLoader::~SkinLoader() {
@@ -107,6 +107,13 @@ void SkinLoader::getComingData(QByteArray data)
         if(rct.contains(x, y))
         {
             QString objectName = iter.key();
+            if(objectName.contains("MusicCube"))
+            {
+                QStringList strList = objectName.split('-');
+                int index = strList.at(1).toInt();
+                m_musicBtControl->play(index);
+                break;
+            }
             QString objectNameTemp = objectName.replace('{','[');
             objectNameTemp = objectNameTemp.replace('}',']');
             QWidget *widget = m_mapWidget.value(objectNameTemp);
@@ -226,4 +233,61 @@ QString SkinLoader::pickResizableSkin(QString oldSkin) const {
         return "Shade";
     }
     return QString();
+}
+
+#include <QMediaPlayer>
+#include <QMediaPlaylist>
+MusicButtonControl::MusicButtonControl(SkinLoader *skinLoder)
+    : QObject(NULL),
+      m_skinLoader(skinLoder)
+{
+    m_inMove = false;
+    m_timer = new QTimer(this);
+    connect(m_timer, SIGNAL(timeout()), this, SLOT(timeupdate()));
+
+    m_player = new QMediaPlayer(NULL);//初始化音乐
+
+    m_playlist = new QMediaPlaylist(NULL);//初始化播放列表
+
+    m_playlist->setPlaybackMode(QMediaPlaylist::CurrentItemOnce);//设置播放模式(顺序播放，单曲循环，随机播放等)
+
+//    m_playlist->addMedia(QUrl::fromLocalFile("E:/CloudMusic/迷途.mp3"));//添加歌曲，这里添加的是歌曲的路径
+
+//    m_playlist->addMedia(QUrl::fromLocalFile("E:/CloudMusic/9er_tan.mp3"));//添加歌曲，这里添加的是歌曲的路径
+
+    loadMusicList();
+    m_player->setPlaylist(m_playlist);  //设置播放列表
+}
+
+void MusicButtonControl::play(int index)
+{
+    m_timer->stop();
+    m_timer->start(100);
+    if(!m_inMove)
+    {
+        m_playlist->setCurrentIndex(index);
+        m_player->play();//播放歌曲
+        m_inMove =true;
+    }
+}
+
+void MusicButtonControl::loadMusicList()
+{
+    //解析歌曲列表
+    QString skinPath = m_skinLoader->getConfiguredSkinPath();
+    QSettings *iniSetting = new QSettings(skinPath + "/music/musicList.ini", QSettings::IniFormat);
+    QStringList groups = iniSetting->childGroups();
+    for (int i=0; i<groups.size(); ++i)
+    {
+        QString strGroup = groups.at(i);
+        iniSetting->beginGroup(strGroup);
+        QString path = iniSetting->value("path").toString();
+        m_playlist->addMedia(QUrl::fromLocalFile(path));
+        iniSetting->endGroup();
+    }
+}
+
+void MusicButtonControl::timeupdate()
+{
+    m_inMove = false;
 }

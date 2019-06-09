@@ -16,6 +16,26 @@ class EffectsManager;
 class RecordingManager;
 class LaunchImage;
 class LegacySkinParser;
+class QMediaPlayer;
+class QMediaPlaylist;
+class SkinLoader;
+
+class MusicButtonControl: public QObject
+{
+    Q_OBJECT
+public:
+    MusicButtonControl(SkinLoader *skinLoder);
+    void play(int index);
+    void loadMusicList();
+public slots:
+    void timeupdate();
+private:
+    QTimer *m_timer;
+    bool m_inMove;
+    QMediaPlayer  *m_player;
+    QMediaPlaylist *m_playlist;
+    SkinLoader *m_skinLoader;
+};
 
 class SkinLoader : public QObject{
     Q_OBJECT
@@ -51,6 +71,8 @@ public:
 
     QMap<QString, QRect> m_mapRects;
     QMap<QString, QWidget *> m_mapWidget;
+
+    MusicButtonControl *m_musicBtControl;
 };
 
 
