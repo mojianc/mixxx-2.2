@@ -1592,7 +1592,7 @@ void VideoWidget::setShow(bool isShow)
     {
         show();
         QStringList lis;
-        lis.append("G:/Mixxx/Madia/01.mp4");
+        lis.append("G:\\Mixxx\\mixxx-2.2\\win64_build\\01.mp4");
         addToPlaylist(lis);
         player->play();
     }

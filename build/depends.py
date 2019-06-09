@@ -1256,6 +1256,12 @@ class MixxxCore(Feature):
                          for proto_source in proto_sources]
         sources.extend(proto_objects)
 
+        build.env.Append(LIBPATH='C:/Program Files (x86)/Microsoft SDKs/Windows/v7.0A/Lib/x64')
+        build.env.Append(LIBS = 'dxva2')
+        build.env.Append(LIBS = 'mf')
+        build.env.Append(LIBS = 'D3d9')
+        build.env.Append(LIBS = 'evr')
+
         # Uic these guys (they're moc'd automatically after this) - Generates
         # the code for the QT UI forms.
         ui_files = [
