@@ -45,7 +45,7 @@ class KnobEventHandler {
 
     void mouseMoveEvent(T* pWidget, QMouseEvent* e) {
         if (!m_bRightButtonPressed) {
-            QCursor::setPos(m_startPos);
+//            QCursor::setPos(m_startPos);
             double value = valueFromMouseEvent(pWidget, e);
             pWidget->setControlParameterDown(value);
             pWidget->inputActivity();
@@ -63,7 +63,7 @@ class KnobEventHandler {
                 m_startPos = e->globalPos();
                 // Somehow using Qt::BlankCursor does not work on Windows
                 // https://mixxx.org/forums/viewtopic.php?p=40298#p40298
-                QApplication::setOverrideCursor(m_blankCursor);
+//                QApplication::setOverrideCursor(m_blankCursor);
                 break;
             default:
                 break;
@@ -75,8 +75,8 @@ class KnobEventHandler {
         switch (e->button()) {
             case Qt::LeftButton:
             case Qt::MidButton:
-                QCursor::setPos(m_startPos);
-                QApplication::restoreOverrideCursor();
+//                QCursor::setPos(m_startPos);
+//                QApplication::restoreOverrideCursor();
                 value = valueFromMouseEvent(pWidget, e);
                 pWidget->setControlParameterUp(value);
                 pWidget->inputActivity();

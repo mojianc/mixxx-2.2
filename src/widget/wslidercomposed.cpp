@@ -260,6 +260,7 @@ void WSliderComposed::getComingData(QByteArray data, QRect rect)
     {
         m_rect = rect;
         m_inMove =true;
+        m_lastPoint = QPointF(PointX, Pointy);
         QMouseEvent event(QEvent::MouseButtonPress, QPointF(PointX, Pointy), Qt::LeftButton, Qt::LeftButton, Qt::NoModifier);
         QApplication::sendEvent(this, &event);
         return;
@@ -267,11 +268,12 @@ void WSliderComposed::getComingData(QByteArray data, QRect rect)
 
     QMouseEvent event(QEvent::MouseMove, QPointF(PointX, Pointy), Qt::LeftButton, Qt::LeftButton, Qt::NoModifier);
     QApplication::sendEvent(this, &event);
+    m_lastPoint = QPointF(PointX, Pointy);
 }
 
 void WSliderComposed::timeupdate()
 {
     m_inMove = false;
-    QMouseEvent event(QEvent::MouseButtonRelease, QPointF(50, 100), Qt::LeftButton, Qt::LeftButton, Qt::NoModifier);
+    QMouseEvent event(QEvent::MouseButtonRelease, m_lastPoint, Qt::LeftButton, Qt::LeftButton, Qt::NoModifier);
     QApplication::sendEvent(this, &event);
 }

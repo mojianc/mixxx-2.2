@@ -122,6 +122,12 @@ void WKnobComposed::paintEvent(QPaintEvent* e) {
     }
 }
 
+void WKnobComposed::resizeEvent(QResizeEvent *pEvent)
+{
+    m_size = pEvent->size();
+    WWidget::resizeEvent(pEvent);
+}
+
 void WKnobComposed::getComingData(QByteArray data, QRect rect)
 {
     unsigned short  x = (data[3] << 8) + data[2];
@@ -133,22 +139,17 @@ void WKnobComposed::getComingData(QByteArray data, QRect rect)
     int Pointy = ratioy * m_size.height();
 
     m_timer->stop();
-    m_timer->start(100);
+    m_timer->start(1000);
     if(!m_inMove)
     {
         m_inMove =true;
+        m_lastPoint = QPointF(PointX, Pointy);
         QMouseEvent event(QEvent::MouseButtonPress, QPointF(PointX, Pointy), Qt::LeftButton, Qt::LeftButton, Qt::NoModifier);
         QApplication::sendEvent(this, &event);
     }
     QMouseEvent event(QEvent::MouseMove, QPointF(PointX, Pointy), Qt::LeftButton, Qt::LeftButton, Qt::NoModifier);
     QApplication::sendEvent(this, &event);
-}
-
-void WKnobComposed::timeupdate()
-{
-    m_inMove = false;
-    QMouseEvent event(QEvent::MouseButtonRelease, QPointF(30, 30), Qt::LeftButton, Qt::LeftButton, Qt::NoModifier);
-    QApplication::sendEvent(this, &event);
+    m_lastPoint = QPointF(PointX, Pointy);
 }
 
 void WKnobComposed::mouseMoveEvent(QMouseEvent* e) {
@@ -167,6 +168,12 @@ void WKnobComposed::wheelEvent(QWheelEvent* e) {
     m_handler.wheelEvent(this, e);
 }
 
+void WKnobComposed::timeupdate()
+{
+	m_inMove = false;
+	QMouseEvent event(QEvent::MouseButtonRelease, m_lastPoint, Qt::LeftButton, Qt::LeftButton, Qt::NoModifier);
+	QApplication::sendEvent(this, &event);
+}
 void WKnobComposed::inputActivity() {
 #ifdef __APPLE__
     m_renderTimer.activity();

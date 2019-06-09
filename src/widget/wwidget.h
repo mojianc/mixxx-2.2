@@ -58,6 +58,7 @@ class WWidget : public QWidget, public WBaseWidget {
     enum Qt::MouseButton m_activeTouchButton;
     QSize m_size;
     QRect m_rect;
+    QPointF m_lastPoint;
   private:
     ControlProxy* m_pTouchShift;
     double m_scaleFactor;

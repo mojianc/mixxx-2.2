@@ -35,7 +35,7 @@ class WKnobComposed : public WWidget {
     void mousePressEvent(QMouseEvent *e) override;
     void mouseReleaseEvent(QMouseEvent *e) override;
     void paintEvent(QPaintEvent* /*unused*/) override;
-
+    void resizeEvent(QResizeEvent* pEvent) override;
   private:
     void inputActivity();
     void clear();
