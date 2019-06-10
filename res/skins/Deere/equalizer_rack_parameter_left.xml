@@ -18,11 +18,11 @@
     <Layout>horizontal</Layout>
     <SizePolicy>me,me</SizePolicy>
     <Children>
-
+      <!--主推子区域左侧的圆点按钮-->
       <EffectPushButton>
         <TooltipId>EqualizerRack_effect_button_parameter</TooltipId>
         <Size>15f,15f</Size>
-        <ObjectName>CircleButton</ObjectName>
+        <ObjectName>CircleButton_<Variable name="group"/>_<Variable name="parameter"/></ObjectName>
         <NumberStates>2</NumberStates>
         <State>
           <Number>0</Number>
@@ -62,7 +62,9 @@
         <MaximumSize>40,41</MaximumSize>
         <Layout>vertical</Layout>
         <Children>
+          <!--主推子区域左侧的旋钮-->
           <EffectParameterKnobComposed>
+            <ObjectName>EffectKnobComposed_<Variable name="group"/>_<Variable name="parameter"/></ObjectName>
             <Size>40f,34f</Size>
             <Knob>knob.svg</Knob>
             <BackPath>knob_bg_purple.svg</BackPath>

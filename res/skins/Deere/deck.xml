@@ -51,6 +51,7 @@
         <Layout>vertical</Layout>
         <SizePolicy>min,min</SizePolicy>
         <Children>
+          <!--声道右侧的推子区域-->
           <Template src="skin:deck_tempo_column.xml"/>
         </Children>
       </WidgetGroup>

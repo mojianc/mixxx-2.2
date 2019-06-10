@@ -17,10 +17,11 @@
     <Children>
 
       <!-- Invert the on/off icons so they match the EQ kill switches. -->
+      <!--推子区域左排第四个圆点按钮-->
       <PushButton>
         <TooltipId><Variable name="button_TooltipId"/></TooltipId>
         <Size>15f,15f</Size>
-        <ObjectName>QuickEffectKillButton</ObjectName>
+        <ObjectName>QuickEffectKillButton_<Variable name="group"/>_<Variable name="QuickEffect"/></ObjectName>
         <NumberStates>2</NumberStates>
         <State>
           <Number>0</Number>
@@ -54,7 +55,7 @@
           <BindProperty>visible</BindProperty>
         </Connection>
       </WidgetGroup>
-
+      <!--推子区域左排第四个旋钮-->
       <Template src="skin:knob.xml">
         <SetVariable name="group"><Variable name="QuickEffectUnitGroup"/></SetVariable>
         <SetVariable name="control">super1</SetVariable>
