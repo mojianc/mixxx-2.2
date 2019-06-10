@@ -9,6 +9,7 @@
     <Layout>vertical</Layout>
     <SizePolicy>me,me</SizePolicy>
     <Children>
+      <!-- Õû¸ö×ó²àÉùµÀ -->
       <Template src="skin:deck.xml">
         <SetVariable name="i">1</SetVariable>
         <!-- Traditional Blue -->
