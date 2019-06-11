@@ -33,7 +33,7 @@ call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" %VCV
 rem /MP Use all CPU cores.
 rem /FS force synchronous PDB writes (prevents PDB corruption with /MP)
 rem /EHsc Do not handle SEH in try / except blocks.
-set CL=/MP /FS /EHsc /Od
+set CL=/MP /FS /EHsc
 
 set MYSCONS=G:\mixxx\buildserver-2.2.x-windows\bin
 set PATH=%BIN_DIR%;%PATH%

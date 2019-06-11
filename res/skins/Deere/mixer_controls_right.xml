@@ -19,10 +19,13 @@
           <WidgetGroup>
             <Layout>horizontal</Layout>
             <Children>
+              <!--右侧推子上面的旋钮-->
               <Template src="skin:mixer_column_gain_levels.xml"/>
+              <!--右侧推子+上侧开关-->
               <Template src="skin:mixer_column_volume.xml"/>
             </Children>
           </WidgetGroup>
+          <!--右侧圆点按钮+旋钮-->
           <Template src="skin:mixer_column_eq_right.xml"/>
         </Children>
         <Connection>

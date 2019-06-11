@@ -65,10 +65,18 @@ public:
     ~VideoWidget();
     void addToPlaylist(const QStringList& fileNames);
     void setShow(bool isShow);
+    void playNext();
+public slots:
+    void timeupdate();
+    void loadVideoList();
 private:
-    QMediaPlayer *player;
-    QVideoWidget *videoWidget;
-    QMediaPlaylist *Playlist;
+    QTimer *m_timer;
+    bool m_inMove;
+
+    QMediaPlayer *m_player;
+    QVideoWidget *m_videoWidget;
+    QMediaPlaylist *m_Playlist;
+    QStringList m_videoList;
 };
 
 // This Class is the base class for Mixxx. It sets up the main

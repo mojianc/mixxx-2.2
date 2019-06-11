@@ -205,7 +205,8 @@ MixxxMainWindow::MixxxMainWindow(QApplication* pApp, const CmdlineArgs& args)
 
     QWidget *widget = new QWidget(this);
     m_videoWidget = new VideoWidget(this);
-    m_videoWidget->setFixedSize(500, 200);
+    m_videoWidget->setFixedSize(1600, 500);
+    m_pSkinLoader->setVideoWidget(m_videoWidget);
 
     QVBoxLayout *boxlayout = new QVBoxLayout(this);
     boxlayout->addWidget(m_pWidgetParent);
@@ -1544,22 +1545,24 @@ void MixxxMainWindow::launchProgress(int progress) {
 
 VideoWidget::VideoWidget(QWidget *parent)
     : QWidget(parent)
+    , m_inMove(false)
 {
-    player = new QMediaPlayer;
+    m_player = new QMediaPlayer;
 
-    Playlist = new QMediaPlaylist();
-    player->setPlaylist(Playlist);
+    m_Playlist = new QMediaPlaylist();
+    m_player->setPlaylist(m_Playlist);
 
-    videoWidget = new QVideoWidget(this);
-    player->setVideoOutput(videoWidget);
-
+    m_videoWidget = new QVideoWidget(this);
+    m_player->setVideoOutput(m_videoWidget);
 
     //垂直布局：视频播放器、进度条、控制按钮布局
     QBoxLayout *mainLayout = new QVBoxLayout;
-    mainLayout->addWidget(videoWidget);
+    mainLayout->addWidget(m_videoWidget);
     //设置布局
     this->setLayout(mainLayout);
 
+    loadVideoList();
+    addToPlaylist(m_videoList);
 }
 
 VideoWidget::~VideoWidget()
@@ -1574,13 +1577,13 @@ void VideoWidget::addToPlaylist(const QStringList& fileNames)
         if (fileInfo.exists()) {
             QUrl url = QUrl::fromLocalFile(fileInfo.absoluteFilePath());
             if (fileInfo.suffix().toLower() == QLatin1String("m3u")) {
-                Playlist->load(url);
+                m_Playlist->load(url);
             } else
-                Playlist->addMedia(url);
+                m_Playlist->addMedia(url);
         } else {
             QUrl url(argument);
             if (url.isValid()) {
-                Playlist->addMedia(url);
+                m_Playlist->addMedia(url);
             }
         }
     }
@@ -1591,14 +1594,46 @@ void VideoWidget::setShow(bool isShow)
     if(isShow)
     {
         show();
-        QStringList lis;
-        lis.append("G:\\Mixxx\\mixxx-2.2\\win64_build\\01.mp4");
-        addToPlaylist(lis);
-        player->play();
+        m_player->play();
     }
     else
     {
         hide();
-        player->stop();
+        m_player->stop();
+    }
+}
+
+void VideoWidget::playNext()
+{
+    m_timer->stop();
+    m_timer->start(100);
+    if(!m_inMove)
+    {
+        int index = m_Playlist->currentIndex();
+        m_Playlist->setCurrentIndex(index + 1);
+        m_player->play();
+        m_inMove =true;
+    }
+}
+
+void VideoWidget::timeupdate()
+{
+    m_inMove = false;
+}
+
+void VideoWidget::loadVideoList()
+{
+    //解析歌曲列表
+    m_videoList.clear();
+    QString exePath = QCoreApplication::applicationDirPath();
+    QSettings *iniSetting = new QSettings(exePath + "/video/videoList.ini", QSettings::IniFormat);
+    QStringList groups = iniSetting->childGroups();
+    for (int i=0; i<groups.size(); ++i)
+    {
+        QString strGroup = groups.at(i);
+        iniSetting->beginGroup(strGroup);
+        QString path = iniSetting->value("path").toString();
+        m_videoList.append(exePath + "/video/" + path);
+        iniSetting->endGroup();
     }
 }

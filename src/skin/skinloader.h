@@ -19,6 +19,7 @@ class LegacySkinParser;
 class QMediaPlayer;
 class QMediaPlaylist;
 class SkinLoader;
+class VideoWidget;
 
 class MusicButtonControl: public QObject
 {
@@ -62,6 +63,7 @@ public:
 
     void loadConfigCoordinate();
     void connectHid(ControllerManager* pControllerManager);
+    void setVideoWidget(VideoWidget *widget);
   public slots:
     void getComingData(QByteArray data);
   private:
@@ -73,6 +75,8 @@ public:
     QMap<QString, QWidget *> m_mapWidget;
 
     MusicButtonControl *m_musicBtControl;
+
+    VideoWidget *m_videoWidget;
 };
 
 

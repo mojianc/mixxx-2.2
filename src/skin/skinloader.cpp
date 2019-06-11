@@ -19,6 +19,7 @@
 #include "skin/launchimage.h"
 #include "util/timer.h"
 #include "recording/recordingmanager.h"
+#include "mixxx.h"
 
 SkinLoader::SkinLoader(UserSettingsPointer pConfig)
     : QObject(NULL)
@@ -91,6 +92,11 @@ void SkinLoader::connectHid(ControllerManager *pControllerManager)
     }
 
 }
+
+void SkinLoader::setVideoWidget(VideoWidget *widget)
+{
+    m_videoWidget = widget;
+}
 #include "widget\wspinny.h"
 #include "widget\wknobcomposed.h"
 #include "widget\wpushbutton.h"
@@ -114,6 +120,13 @@ void SkinLoader::getComingData(QByteArray data)
                 m_musicBtControl->play(index);
                 break;
             }
+
+            if(objectName.contains("VideoNext"))
+            {
+                m_videoWidget->playNext();
+                break;
+            }
+
             QString objectNameTemp = objectName.replace('{','[');
             objectNameTemp = objectNameTemp.replace('}',']');
             QWidget *widget = m_mapWidget.value(objectNameTemp);
