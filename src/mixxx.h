@@ -106,6 +106,7 @@ class MixxxMainWindow : public QMainWindow {
   public slots:
     void rebootMixxxView();
     void controlVideo(bool isShow);
+    void playNext();
     void slotFileLoadSongPlayer(int deck);
     // toggle keyboard on-off
     void slotOptionsKeyboard(bool toggle);

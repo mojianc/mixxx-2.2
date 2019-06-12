@@ -78,8 +78,8 @@ int main(int argc, char * argv[]) {
     // organization name blank.
     //QCoreApplication::setOrganizationName("Mixxx");
 
-    QCoreApplication::setApplicationName(Version::applicationName());
-    QCoreApplication::setApplicationVersion(Version::version());
+    QCoreApplication::setApplicationName("Drop DJ");
+    QCoreApplication::setApplicationVersion("1.1.0");
 
     // Construct a list of strings based on the command line arguments
     CmdlineArgs& args = CmdlineArgs::Instance();

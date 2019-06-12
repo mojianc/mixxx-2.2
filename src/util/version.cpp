@@ -37,12 +37,12 @@
 
 // static
 QString Version::version() {
-    return MIXXX_VERSION;
+    return QString("1.1.0");
 }
 
 // static
 QString Version::applicationName() {
-    return "Mixxx";
+    return "Drop DJ";
 }
 
 // static

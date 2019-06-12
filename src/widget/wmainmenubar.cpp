@@ -268,6 +268,11 @@ void WMainMenuBar::initialize() {
     pViewMenu->addAction(pVideoControl);
     connect(pVideoControl, SIGNAL(triggered(bool)), this, SIGNAL(videoControl(bool)));
 
+    QAction *pVideoPlayNext = new QAction("playNext", this);
+    pVideoPlayNext->setCheckable(true);
+    pViewMenu->addAction(pVideoPlayNext);
+    connect(pVideoPlayNext, SIGNAL(triggered()), this, SIGNAL(playNext()));
+
     pViewMenu->addSeparator();
 
 

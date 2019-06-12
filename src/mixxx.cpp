@@ -1029,6 +1029,7 @@ void MixxxMainWindow::createMenuBar() {
 void MixxxMainWindow::connectMenuBar() {
     ScopedTimer t("MixxxMainWindow::connectMenuBar");
     connect(m_pMenuBar, SIGNAL(videoControl(bool)), this, SLOT(controlVideo(bool)));
+    connect(m_pMenuBar, SIGNAL(playNext()), this, SLOT(playNext()));
     connect(this, SIGNAL(newSkinLoaded()),
             m_pMenuBar, SLOT(onNewSkinLoaded()));
 
@@ -1356,6 +1357,11 @@ void MixxxMainWindow::controlVideo(bool isShow)
     m_videoWidget->setShow(isShow);
 }
 
+void MixxxMainWindow::playNext()
+{
+    m_videoWidget->playNext();
+}
+
 bool MixxxMainWindow::eventFilter(QObject* obj, QEvent* event) {
     if (event->type() == QEvent::ToolTip) {
         // return true for no tool tips
@@ -1560,7 +1566,8 @@ VideoWidget::VideoWidget(QWidget *parent)
     mainLayout->addWidget(m_videoWidget);
     //ÉèÖÃ²¼¾Ö
     this->setLayout(mainLayout);
-
+	m_timer = new QTimer(this);
+	connect(m_timer, SIGNAL(timeout()), this, SLOT(timeupdate()));
     loadVideoList();
     addToPlaylist(m_videoList);
 }
