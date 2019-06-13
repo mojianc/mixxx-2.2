@@ -138,6 +138,7 @@ void WKnobComposed::getComingData(QByteArray data, QRect rect)
     int PointX = ratioX * m_size.width();
     int Pointy = ratioy * m_size.height();
 
+    qDebug() << this->metaObject()->className() << "rect:"<<rect<<":x"<<x<<",ratioX:"<<ratioX<<",PointX:"<<PointX;
     m_timer->stop();
     m_timer->start(1000);
     if(!m_inMove)
@@ -152,15 +153,28 @@ void WKnobComposed::getComingData(QByteArray data, QRect rect)
     m_lastPoint = QPointF(PointX, Pointy);
 }
 
+void WKnobComposed::timeupdate()
+{
+    qDebug()<<this->metaObject()->className()<<":WKnobComposed::timeupdate() ";
+    m_timer->stop();
+    m_inMove = false;
+
+    QMouseEvent event(QEvent::MouseButtonRelease, m_lastPoint, Qt::LeftButton, Qt::LeftButton, Qt::NoModifier);
+    QApplication::sendEvent(this, &event);
+}
+
 void WKnobComposed::mouseMoveEvent(QMouseEvent* e) {
+    qDebug() << this->metaObject()->className() << e->type()<<":"<<e->pos().x()<<","<<e->pos().y();
     m_handler.mouseMoveEvent(this, e);
 }
 
 void WKnobComposed::mousePressEvent(QMouseEvent* e) {
+    qDebug() << this->metaObject()->className() << e->type()<<":"<<e->pos().x()<<","<<e->pos().y();
     m_handler.mousePressEvent(this, e);
 }
 
 void WKnobComposed::mouseReleaseEvent(QMouseEvent* e) {
+    qDebug() << this->metaObject()->className() << e->type()<<":"<<e->pos().x()<<","<<e->pos().y();
     m_handler.mouseReleaseEvent(this, e);
 }
 
@@ -168,12 +182,6 @@ void WKnobComposed::wheelEvent(QWheelEvent* e) {
     m_handler.wheelEvent(this, e);
 }
 
-void WKnobComposed::timeupdate()
-{
-	m_inMove = false;
-	QMouseEvent event(QEvent::MouseButtonRelease, m_lastPoint, Qt::LeftButton, Qt::LeftButton, Qt::NoModifier);
-	QApplication::sendEvent(this, &event);
-}
 void WKnobComposed::inputActivity() {
 #ifdef __APPLE__
     m_renderTimer.activity();

@@ -342,17 +342,19 @@ void SerialPort::OpenSerial(QString portName)
     //设置串口名
     serial->setPortName(portName);
     //打开串口
-    serial->open(QIODevice::ReadWrite);
-    //设置波特率
-    serial->setBaudRate(QSerialPort::Baud115200);//设置波特率为115200
-    //设置数据位数
-    serial->setDataBits(QSerialPort::Data8);//设置数据位8
-    //设置校验位
-    serial->setParity(QSerialPort::NoParity);
-    //设置停止位
-    serial->setStopBits(QSerialPort::OneStop);//停止位设置为1
-    //设置流控制
-    serial->setFlowControl(QSerialPort::NoFlowControl);//设置为无流控制
+    if(serial->open(QIODevice::ReadWrite))
+    {
+        //设置波特率
+        serial->setBaudRate(QSerialPort::Baud115200);//设置波特率为115200
+        //设置数据位数
+        serial->setDataBits(QSerialPort::Data8);//设置数据位8
+        //设置校验位
+        serial->setParity(QSerialPort::NoParity); //无校验
+        //设置停止位
+        serial->setStopBits(QSerialPort::OneStop);//停止位设置为1
+        //设置流控制
+        serial->setFlowControl(QSerialPort::NoFlowControl);//设置为无流控制
+    }
 }
 
 void SerialPort::SendData(QByteArray array)
