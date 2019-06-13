@@ -240,6 +240,7 @@ class Qt(Dependence):
             'QtMultimediaWidgets',
             'QtNetwork',
             'QtOpenGL',
+            'QtSerialPort',
             'QtScript',
             'QtScriptTools',
             'QtSql',

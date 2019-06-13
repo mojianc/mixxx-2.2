@@ -208,9 +208,16 @@ MixxxMainWindow::MixxxMainWindow(QApplication* pApp, const CmdlineArgs& args)
     m_videoWidget->setFixedSize(1600, 500);
     m_pSkinLoader->setVideoWidget(m_videoWidget);
 
+    m_serialPortWidget = new SerialPortWidget;
+    m_serialPortWidget->setSerialPort(m_pSkinLoader->getSerialPort());
+    m_serialPortWidget->setFixedSize(100, 500);
+
     QVBoxLayout *boxlayout = new QVBoxLayout(this);
     boxlayout->addWidget(m_pWidgetParent);
-    boxlayout->addWidget(m_videoWidget);
+    QHBoxLayout *hlayout = new QHBoxLayout(this);
+    hlayout->addWidget(m_videoWidget);
+    hlayout->addWidget(m_serialPortWidget);
+    boxlayout->addLayout(hlayout);
     widget->setLayout(boxlayout);
     setCentralWidget(widget);
     m_videoWidget->show();
@@ -1030,6 +1037,7 @@ void MixxxMainWindow::connectMenuBar() {
     ScopedTimer t("MixxxMainWindow::connectMenuBar");
     connect(m_pMenuBar, SIGNAL(videoControl(bool)), this, SLOT(controlVideo(bool)));
     connect(m_pMenuBar, SIGNAL(playNext()), this, SLOT(playNext()));
+    connect(m_pMenuBar, SIGNAL(PortConnect()), this, SLOT(PortConnect()));
     connect(this, SIGNAL(newSkinLoaded()),
             m_pMenuBar, SLOT(onNewSkinLoaded()));
 
@@ -1362,6 +1370,11 @@ void MixxxMainWindow::playNext()
     m_videoWidget->playNext();
 }
 
+void MixxxMainWindow::PortConnect()
+{
+    m_serialPortWidget->setHidden(!m_serialPortWidget->isHidden());
+}
+
 bool MixxxMainWindow::eventFilter(QObject* obj, QEvent* event) {
     if (event->type() == QEvent::ToolTip) {
         // return true for no tool tips
@@ -1644,3 +1657,29 @@ void VideoWidget::loadVideoList()
         iniSetting->endGroup();
     }
 }
+
+#include <QPushButton>
+#include <QComboBox>
+SerialPortWidget::SerialPortWidget(QWidget *parent)
+{
+    m_box = new QComboBox(this);
+    m_pb = new QPushButton("connectPort",this);
+    QVBoxLayout *layout = new QVBoxLayout(this);
+    layout->addWidget(m_box);
+    layout->addWidget(m_pb);
+}
+
+void SerialPortWidget::setSerialPort(SerialPort *port)
+{
+    m_serialPort = port;
+    QStringList list = m_serialPort->portList();
+    m_box->addItems(list);
+
+    connect(m_pb, SIGNAL(pressed()), this, SLOT(connectPort()));
+}
+
+void SerialPortWidget::connectPort()
+{
+    m_serialPort->OpenSerial(m_box->currentText());
+}
+

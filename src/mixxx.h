@@ -54,8 +54,24 @@ class WMainMenuBar;
 #include <QVideoWidget>
 #include <QMediaPlayer>
 #include <QMediaPlaylist>
-
+class SerialPort;
+class QComboBox;
+class QPushButton;
 typedef QSharedPointer<SettingsManager> SettingsManagerPointer;
+
+class SerialPortWidget : public QWidget
+{
+    Q_OBJECT
+public:
+    SerialPortWidget(QWidget *parent = 0);
+    void setSerialPort(SerialPort *port);
+public slots:
+    void connectPort();
+private:
+    SerialPort *m_serialPort;
+    QComboBox *m_box;
+    QPushButton *m_pb;
+};
 
 class VideoWidget : public QWidget
 {
@@ -107,6 +123,7 @@ class MixxxMainWindow : public QMainWindow {
     void rebootMixxxView();
     void controlVideo(bool isShow);
     void playNext();
+    void PortConnect();
     void slotFileLoadSongPlayer(int deck);
     // toggle keyboard on-off
     void slotOptionsKeyboard(bool toggle);
@@ -228,6 +245,8 @@ class MixxxMainWindow : public QMainWindow {
     static const int kAuxiliaryCount;
 
     VideoWidget *m_videoWidget;
+
+    SerialPortWidget *m_serialPortWidget;
 };
 
 #endif

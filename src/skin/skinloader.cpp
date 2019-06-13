@@ -25,6 +25,8 @@ SkinLoader::SkinLoader(UserSettingsPointer pConfig)
     : QObject(NULL)
     , m_pConfig(pConfig) {
     m_musicBtControl = new MusicButtonControl(this);
+
+    m_serialPort = new SerialPort;
 }
 
 SkinLoader::~SkinLoader() {
@@ -96,6 +98,11 @@ void SkinLoader::connectHid(ControllerManager *pControllerManager)
 void SkinLoader::setVideoWidget(VideoWidget *widget)
 {
     m_videoWidget = widget;
+}
+
+SerialPort* SkinLoader::getSerialPort()
+{
+    return m_serialPort;
 }
 #include "widget\wspinny.h"
 #include "widget\wknobcomposed.h"
@@ -303,4 +310,57 @@ void MusicButtonControl::loadMusicList()
 void MusicButtonControl::timeupdate()
 {
     m_inMove = false;
+}
+
+
+SerialPort::SerialPort()
+{
+    //查找可用的串口
+    foreach (const QSerialPortInfo &info,QSerialPortInfo::availablePorts())
+    {
+        QSerialPort serial;
+        serial.setPort(info);
+        if(serial.open(QIODevice::ReadWrite))
+        {
+            m_portList.append(serial.portName());
+            serial.close();
+        }
+    }
+}
+
+SerialPort::~SerialPort()
+{
+    //关闭串口
+    serial->clear();
+    serial->close();
+    serial->deleteLater();
+}
+
+void SerialPort::OpenSerial(QString portName)
+{
+    serial = new QSerialPort;
+    //设置串口名
+    serial->setPortName(portName);
+    //打开串口
+    serial->open(QIODevice::ReadWrite);
+    //设置波特率
+    serial->setBaudRate(QSerialPort::Baud115200);//设置波特率为115200
+    //设置数据位数
+    serial->setDataBits(QSerialPort::Data8);//设置数据位8
+    //设置校验位
+    serial->setParity(QSerialPort::NoParity);
+    //设置停止位
+    serial->setStopBits(QSerialPort::OneStop);//停止位设置为1
+    //设置流控制
+    serial->setFlowControl(QSerialPort::NoFlowControl);//设置为无流控制
+}
+
+void SerialPort::SendData(QByteArray array)
+{
+    serial->write(array);
+}
+
+QStringList SerialPort::portList()
+{
+    return m_portList;
 }

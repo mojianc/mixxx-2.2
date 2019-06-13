@@ -273,6 +273,11 @@ void WMainMenuBar::initialize() {
     pViewMenu->addAction(pVideoPlayNext);
     connect(pVideoPlayNext, SIGNAL(triggered()), this, SIGNAL(playNext()));
 
+    QAction *pSerialPort = new QAction("PortConnect", this);
+    pSerialPort->setCheckable(true);
+    pViewMenu->addAction(pSerialPort);
+    connect(pSerialPort, SIGNAL(triggered()), this, SIGNAL(PortConnect()));
+
     pViewMenu->addSeparator();
 
 

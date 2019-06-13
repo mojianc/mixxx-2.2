@@ -889,6 +889,7 @@ def enable_modules(self, modules, debug=False, crosscompiling=False, staticdeps=
         'QtOpenGL',
         'QtPrintSupport',
         'QtDeclarative',
+        'QtSerialPort',
         'QtScript',
         'QtScriptTools',
         'QtSvg',

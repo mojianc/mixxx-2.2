@@ -4,6 +4,8 @@
 #include <QWidget>
 #include <QList>
 #include <QDir>
+#include <QtSerialPort/QSerialPort>
+#include <QtSerialPort/QSerialPortInfo>
 
 #include "preferences/usersettings.h"
 #include "widget\wbasewidget.h"
@@ -20,6 +22,22 @@ class QMediaPlayer;
 class QMediaPlaylist;
 class SkinLoader;
 class VideoWidget;
+
+class SerialPort : public QObject
+{
+    Q_OBJECT
+public:
+    explicit SerialPort();
+    ~SerialPort();
+    QStringList portList();
+public slots:
+    void OpenSerial(QString portName);
+    void SendData(QByteArray array);
+
+private:
+    QSerialPort *serial;
+    QStringList m_portList;
+};
 
 class MusicButtonControl: public QObject
 {
@@ -64,6 +82,7 @@ public:
     void loadConfigCoordinate();
     void connectHid(ControllerManager* pControllerManager);
     void setVideoWidget(VideoWidget *widget);
+    SerialPort *getSerialPort();
   public slots:
     void getComingData(QByteArray data);
   private:
@@ -77,6 +96,8 @@ public:
     MusicButtonControl *m_musicBtControl;
 
     VideoWidget *m_videoWidget;
+
+    SerialPort *m_serialPort;
 };
 
 
