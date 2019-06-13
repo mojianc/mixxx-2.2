@@ -28,6 +28,7 @@ Variables:
             <Layout>horizontal</Layout>
             <SizePolicy>min,min</SizePolicy>
             <Children>
+              <!--三个 开关 + 旋钮 + 下拉-->
               <Template src="skin:effect_single_no_parameters.xml">
                 <SetVariable name="Effect">1</SetVariable>
               </Template>

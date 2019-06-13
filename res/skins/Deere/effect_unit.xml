@@ -80,6 +80,7 @@
         <Layout>vertical</Layout>
         <SizePolicy>me,min</SizePolicy>
         <Children>
+          <!--开关 + 旋钮 + 下拉框-->
           <Template src="skin:effect_unit_no_parameters.xml"/>
           <WidgetGroup>
             <ObjectName>EffectUnitFiller</ObjectName>
