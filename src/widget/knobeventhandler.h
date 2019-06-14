@@ -22,7 +22,7 @@ class KnobEventHandler {
     }
 
     double valueFromMouseEvent(T* pWidget, QMouseEvent* e) {
-        QPoint cur(e->globalPos());
+        QPoint cur(e->pos());
         QPoint diff(cur - m_startPos);
         double dist = sqrt(static_cast<double>(diff.x() * diff.x() + diff.y() * diff.y()));
         bool y_dominant = abs(diff.y()) > abs(diff.x());
@@ -60,7 +60,7 @@ class KnobEventHandler {
                 break;
             case Qt::LeftButton:
             case Qt::MidButton:
-                m_startPos = e->globalPos();
+                m_startPos = e->pos();
                 // Somehow using Qt::BlankCursor does not work on Windows
                 // https://mixxx.org/forums/viewtopic.php?p=40298#p40298
 //                QApplication::setOverrideCursor(m_blankCursor);
