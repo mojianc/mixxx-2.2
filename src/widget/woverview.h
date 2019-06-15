@@ -44,7 +44,7 @@ class WOverview : public WWidget {
     void showVideo(bool isShow);
   signals:
     void trackDropped(QString filename, QString group);
-    void videoChange(bool isShow);
+    void serialportChange(int control);
 
   protected:
     void mouseMoveEvent(QMouseEvent *e) override;
@@ -135,7 +135,7 @@ class WOverview : public WWidget {
     bool m_trackLoaded;
     double m_scaleFactor;
 
-    QMap<QString, double> m_musicMap;
+    QMap<int, int> m_musicMap;
     bool m_videoPlay;
 };
 

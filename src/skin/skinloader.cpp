@@ -58,7 +58,7 @@ void SkinLoader::loadConfigCoordinate()
 
     m_mapRects.clear();
     QString skinPath = getConfiguredSkinPath();
-    QSettings *iniSetting = new QSettings(skinPath + "/coordinate.ini", QSettings::IniFormat);
+    QSettings *iniSetting = new QSettings(skinPath + "/video/coordinate.ini", QSettings::IniFormat);
     QStringList groups = iniSetting->childGroups();
     for (int i=0; i<groups.size(); ++i)
     {
@@ -119,6 +119,7 @@ void SkinLoader::getComingData(QByteArray data)
         QRect rct = iter.value();
         if(rct.contains(x, y))
         {
+            m_serialPort->sendData(5);
             QString objectName = iter.key();
             if(objectName.contains("MusicCube"))
             {
@@ -354,10 +355,16 @@ void SerialPort::OpenSerial(QString portName)
         serial->setStopBits(QSerialPort::OneStop);//停止位设置为1
         //设置流控制
         serial->setFlowControl(QSerialPort::NoFlowControl);//设置为无流控制
+
+        QMessageBox::about(NULL, "warning", QStringLiteral("连接串口成功"));
+    }
+    else
+    {
+        QMessageBox::about(NULL, "warning", QStringLiteral("连接串口成功"));
     }
 }
 
-void SerialPort::SendData(QByteArray array)
+void SerialPort::sendData(QByteArray array)
 {
     serial->write(array);
 }
@@ -365,4 +372,46 @@ void SerialPort::SendData(QByteArray array)
 QStringList SerialPort::portList()
 {
     return m_portList;
+}
+
+void SerialPort::sendData(int type)
+{
+    QByteArray array;
+    array[0] = 0xff;
+    switch (type) {
+    case 0:
+    {
+        array[1] = 0x00;
+        break;
+    }
+    case 1:
+    {
+        array[1] = 0x01;
+        break;
+    }
+    case 2:
+    {
+        array[1] = 0x02;
+        break;
+    }
+    case 3:
+    {
+        array[1] = 0x03;
+        break;
+    }
+    case 4:
+    {
+        array[1] = 0x04;
+        break;
+    }
+    case 5:
+    {
+        array[1] = 0x05;
+        break;
+    }
+    default:
+        break;
+    }
+
+    sendData(array);
 }

@@ -148,8 +148,9 @@ void WOverview::loadMusicConfig()
     {
         QString strGroup = groups.at(i);
         iniSetting->beginGroup(strGroup);
-        double startPoint = iniSetting->value("startpoint").toDouble();
-        m_musicMap.insert(strGroup, startPoint);
+        int nPoint = iniSetting->value("point").toInt();
+        int nContrl = iniSetting->value("contrl").toInt();
+        m_musicMap.insert(nPoint, nContrl);
         iniSetting->endGroup();
     }
 }
@@ -168,12 +169,12 @@ void WOverview::onConnectedControlChanged(double dParameter, double dValue) {
             update();
             if(m_pCurrentTrack.get() == NULL)
                 return;
-            QString musicName = m_pCurrentTrack.get()->getFileName();
-            double startPoint = m_musicMap.value(musicName, 10);
-            if(startPoint <= dParameter && !m_videoPlay)
+//            QString musicName = m_pCurrentTrack.get()->getFileName();
+            int mixxxPoint = int(dParameter * 100);
+            int nContrl = m_musicMap.value(mixxxPoint, 0);
+            if(nContrl > 0)
             {
-                m_videoPlay = true;
-                emit videoChange(true);
+                emit serialportChange(nContrl);
             }
         }
     }
@@ -263,7 +264,6 @@ void WOverview::slotLoadingTrack(TrackPointer pNewTrack, TrackPointer pOldTrack)
         m_pWaveform.clear();
     }
     update();
-    emit videoChange(false);
 }
 
 void WOverview::showVideo(bool isShow)

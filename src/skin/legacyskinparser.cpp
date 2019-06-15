@@ -969,7 +969,7 @@ QWidget* LegacySkinParser::parseOverview(const QDomElement& node) {
         overviewWidget->loadMusicConfig();
         MixxxMainWindow *mainWindow = dynamic_cast<MixxxMainWindow *>(m_mixxxMianWindow);
         if(mainWindow)
-            connect(overviewWidget, SIGNAL(videoChange(bool)), mainWindow, SLOT(controlVideo(bool)));
+            connect(overviewWidget, SIGNAL(serialportChange(int)), mainWindow, SLOT(serialportControl(int)));
     }
     return overviewWidget;
 }

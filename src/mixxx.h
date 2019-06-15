@@ -65,6 +65,7 @@ class SerialPortWidget : public QWidget
 public:
     SerialPortWidget(QWidget *parent = 0);
     void setSerialPort(SerialPort *port);
+    void sendData(int type);
 public slots:
     void connectPort();
 private:
@@ -121,7 +122,7 @@ class MixxxMainWindow : public QMainWindow {
 
   public slots:
     void rebootMixxxView();
-    void controlVideo(bool isShow);
+    void serialportControl(int control);
     void playNext();
     void PortConnect();
     void slotFileLoadSongPlayer(int deck);

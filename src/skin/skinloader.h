@@ -30,9 +30,10 @@ public:
     explicit SerialPort();
     ~SerialPort();
     QStringList portList();
+    void sendData(int type);
 public slots:
     void OpenSerial(QString portName);
-    void SendData(QByteArray array);
+    void sendData(QByteArray array);
 
 private:
     QSerialPort *serial;

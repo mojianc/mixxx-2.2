@@ -1360,9 +1360,9 @@ void MixxxMainWindow::rebootMixxxView() {
     emit(newSkinLoaded());
 }
 
-void MixxxMainWindow::controlVideo(bool isShow)
+void MixxxMainWindow::serialportControl(int control)
 {
-    m_videoWidget->setShow(isShow);
+    m_serialPortWidget->sendData(control);
 }
 
 void MixxxMainWindow::playNext()
@@ -1676,6 +1676,11 @@ void SerialPortWidget::setSerialPort(SerialPort *port)
     m_box->addItems(list);
 
     connect(m_pb, SIGNAL(pressed()), this, SLOT(connectPort()));
+}
+
+void SerialPortWidget::sendData(int type)
+{
+    m_serialPort->sendData(type);
 }
 
 void SerialPortWidget::connectPort()
