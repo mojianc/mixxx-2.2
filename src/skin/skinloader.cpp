@@ -88,8 +88,8 @@ void SkinLoader::connectHid(ControllerManager *pControllerManager)
             if(!controller->isOpen())
             {
                 controller->open();
-                connect(controller, SIGNAL(incomingData(QByteArray)), this, SLOT(getComingData(QByteArray)), Qt::UniqueConnection);
             }
+            connect(controller, SIGNAL(incomingData(QByteArray)), this, SLOT(getComingData(QByteArray)), Qt::UniqueConnection);
         }
     }
 
@@ -119,7 +119,8 @@ void SkinLoader::getComingData(QByteArray data)
         QRect rct = iter.value();
         if(rct.contains(x, y))
         {
-            m_serialPort->sendData(5);
+            if(m_serialPort->isOpen())
+                m_serialPort->sendData(5);
             QString objectName = iter.key();
             if(objectName.contains("MusicCube"))
             {
@@ -414,4 +415,9 @@ void SerialPort::sendData(int type)
     }
 
     sendData(array);
+}
+
+bool SerialPort::isOpen()
+{
+    return serial->isOpen();
 }

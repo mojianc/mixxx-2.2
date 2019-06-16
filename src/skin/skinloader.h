@@ -31,6 +31,7 @@ public:
     ~SerialPort();
     QStringList portList();
     void sendData(int type);
+    bool isOpen();
 public slots:
     void OpenSerial(QString portName);
     void sendData(QByteArray array);
