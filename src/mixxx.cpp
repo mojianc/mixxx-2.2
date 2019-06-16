@@ -1643,7 +1643,7 @@ void VideoWidget::timeupdate()
 
 void VideoWidget::loadVideoList()
 {
-    //解析歌曲列表
+    //解析视频列表
     m_videoList.clear();
     QString exePath = QCoreApplication::applicationDirPath();
     QSettings *iniSetting = new QSettings(exePath + "/video/videoList.ini", QSettings::IniFormat);

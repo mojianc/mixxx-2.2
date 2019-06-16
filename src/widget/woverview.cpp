@@ -170,6 +170,16 @@ void WOverview::onConnectedControlChanged(double dParameter, double dValue) {
             if(m_pCurrentTrack.get() == NULL)
                 return;
 //            QString musicName = m_pCurrentTrack.get()->getFileName();
+
+            //记录声音的音轨值
+            QFile  myfile("musicResult.txt");//创建一个输出文件的文档
+            if (myfile.open(QFile::WriteOnly|QFile::Append))//注意WriteOnly是往文本中写入的时候用，ReadOnly是在读文本中内容的时候用，Truncate表示将原来文件中的内容清空
+            {
+                QTextStream out(&myfile);
+                out<<"m_iPos:"<<m_iPos<<"   dParameter:"<<dParameter<<endl;
+            }
+            myfile.close();
+
             int mixxxPoint = int(dParameter * 100);
             int nContrl = m_musicMap.value(mixxxPoint, 0);
             if(nContrl > 0)
@@ -461,108 +471,108 @@ void WOverview::paintEvent(QPaintEvent * /*unused*/) {
             }
 
             // Draw markers (Cue & hotcues)
-            QPen shadowPen(QBrush(m_qColorBackground), 2.5 * m_scaleFactor);
+//            QPen shadowPen(QBrush(m_qColorBackground), 2.5 * m_scaleFactor);
 
-            QFont markerFont = painter.font();
-            markerFont.setPixelSize(10 * m_scaleFactor);
+//            QFont markerFont = painter.font();
+//            markerFont.setPixelSize(10 * m_scaleFactor);
 
-            QFont shadowFont = painter.font();
-            shadowFont.setWeight(99);
-            shadowFont.setPixelSize(10 * m_scaleFactor);
+//            QFont shadowFont = painter.font();
+//            shadowFont.setWeight(99);
+//            shadowFont.setPixelSize(10 * m_scaleFactor);
 
-            painter.setOpacity(0.9);
+//            painter.setOpacity(0.9);
 
-            for (const auto& currentMark: m_marks) {
-                const WaveformMarkProperties& markProperties = currentMark->getProperties();
-                if (currentMark->isValid() && currentMark->getSamplePosition() >= 0.0) {
-                    //const float markPosition = 1.0 +
-                    //        (currentMark.m_pointControl->get() / (float)m_trackSamplesControl->get()) * (float)(width()-2);
-                    const float markPosition = offset + currentMark->getSamplePosition() * gain;
+//            for (const auto& currentMark: m_marks) {
+//                const WaveformMarkProperties& markProperties = currentMark->getProperties();
+//                if (currentMark->isValid() && currentMark->getSamplePosition() >= 0.0) {
+//                    //const float markPosition = 1.0 +
+//                    //        (currentMark.m_pointControl->get() / (float)m_trackSamplesControl->get()) * (float)(width()-2);
+//                    const float markPosition = offset + currentMark->getSamplePosition() * gain;
 
-                    QLineF line;
-                    if (m_orientation == Qt::Horizontal) {
-                        line.setLine(markPosition, 0.0, markPosition, static_cast<float>(height()));
-                    } else {
-                        line.setLine(0.0, markPosition, static_cast<float>(width()), markPosition);
-                    }
-                    painter.setPen(shadowPen);
-                    painter.drawLine(line);
+//                    QLineF line;
+//                    if (m_orientation == Qt::Horizontal) {
+//                        line.setLine(markPosition, 0.0, markPosition, static_cast<float>(height()));
+//                    } else {
+//                        line.setLine(0.0, markPosition, static_cast<float>(width()), markPosition);
+//                    }
+//                    painter.setPen(shadowPen);
+//                    painter.drawLine(line);
 
-                    painter.setPen(markProperties.m_color);
-                    painter.drawLine(line);
+//                    painter.setPen(markProperties.m_color);
+//                    painter.drawLine(line);
 
-                    if (!markProperties.m_text.isEmpty()) {
-                        Qt::Alignment halign = markProperties.m_align & Qt::AlignHorizontal_Mask;
-                        Qt::Alignment valign = markProperties.m_align & Qt::AlignVertical_Mask;
-                        QFontMetricsF metric(markerFont);
-                        QRectF textRect = metric.tightBoundingRect(markProperties.m_text);
-                        QPointF textPoint;
-                        if (m_orientation == Qt::Horizontal) {
-                            if (halign == Qt::AlignLeft) {
-                                textPoint.setX(markPosition - textRect.width());
-                            } else if (halign == Qt::AlignHCenter) {
-                                textPoint.setX(markPosition - textRect.width() / 2);
-                            } else {  // AlignRight
-                                textPoint.setX(markPosition + 0.5f);
-                            }
+//                    if (!markProperties.m_text.isEmpty()) {
+//                        Qt::Alignment halign = markProperties.m_align & Qt::AlignHorizontal_Mask;
+//                        Qt::Alignment valign = markProperties.m_align & Qt::AlignVertical_Mask;
+//                        QFontMetricsF metric(markerFont);
+//                        QRectF textRect = metric.tightBoundingRect(markProperties.m_text);
+//                        QPointF textPoint;
+//                        if (m_orientation == Qt::Horizontal) {
+//                            if (halign == Qt::AlignLeft) {
+//                                textPoint.setX(markPosition - textRect.width());
+//                            } else if (halign == Qt::AlignHCenter) {
+//                                textPoint.setX(markPosition - textRect.width() / 2);
+//                            } else {  // AlignRight
+//                                textPoint.setX(markPosition + 0.5f);
+//                            }
 
-                            if (valign == Qt::AlignTop) {
-                                textPoint.setY(textRect.height() + 0.5f);
-                            } else if (valign == Qt::AlignVCenter) {
-                                textPoint.setY((textRect.height() + height()) / 2);
-                            } else {  // AlignBottom
-                                textPoint.setY(float(height()) - 0.5f);
-                            }
-                        } else {  // Vertical
-                            if (halign == Qt::AlignLeft) {
-                                textPoint.setX(1.0f);
-                            } else if (halign == Qt::AlignHCenter) {
-                                textPoint.setX((width() - textRect.width()) / 2);
-                            } else {  // AlignRight
-                                textPoint.setX(width() - textRect.width());
-                            }
+//                            if (valign == Qt::AlignTop) {
+//                                textPoint.setY(textRect.height() + 0.5f);
+//                            } else if (valign == Qt::AlignVCenter) {
+//                                textPoint.setY((textRect.height() + height()) / 2);
+//                            } else {  // AlignBottom
+//                                textPoint.setY(float(height()) - 0.5f);
+//                            }
+//                        } else {  // Vertical
+//                            if (halign == Qt::AlignLeft) {
+//                                textPoint.setX(1.0f);
+//                            } else if (halign == Qt::AlignHCenter) {
+//                                textPoint.setX((width() - textRect.width()) / 2);
+//                            } else {  // AlignRight
+//                                textPoint.setX(width() - textRect.width());
+//                            }
 
-                            if (valign == Qt::AlignTop) {
-                                textPoint.setY(markPosition - 1.0f);
-                            } else if (valign == Qt::AlignVCenter) {
-                                textPoint.setY(markPosition + textRect.height() / 2);
-                            } else {  // AlignBottom
-                                textPoint.setY(markPosition + metric.ascent());
-                            }
-                        }
+//                            if (valign == Qt::AlignTop) {
+//                                textPoint.setY(markPosition - 1.0f);
+//                            } else if (valign == Qt::AlignVCenter) {
+//                                textPoint.setY(markPosition + textRect.height() / 2);
+//                            } else {  // AlignBottom
+//                                textPoint.setY(markPosition + metric.ascent());
+//                            }
+//                        }
 
-                        painter.setPen(shadowPen);
-                        painter.setFont(shadowFont);
-                        painter.drawText(textPoint, markProperties.m_text);
+//                        painter.setPen(shadowPen);
+//                        painter.setFont(shadowFont);
+//                        painter.drawText(textPoint, markProperties.m_text);
 
-                        painter.setPen(markProperties.m_textColor);
-                        painter.setFont(markerFont);
-                        painter.drawText(textPoint, markProperties.m_text);
-                    }
-                }
-            }
+//                        painter.setPen(markProperties.m_textColor);
+//                        painter.setFont(markerFont);
+//                        painter.drawText(textPoint, markProperties.m_text);
+//                    }
+//                }
+//            }
 
-            if (m_orientation == Qt::Vertical) {
-                painter.setTransform(QTransform(0, 1, 1, 0, 0, 0));
-            }
+//            if (m_orientation == Qt::Vertical) {
+//                painter.setTransform(QTransform(0, 1, 1, 0, 0, 0));
+//            }
 
-            // draw current position
-            painter.setPen(QPen(QBrush(m_qColorBackground), 1 * m_scaleFactor));
-            painter.setOpacity(0.5);
-            painter.drawLine(m_iPos + 1, 0, m_iPos + 1, breadth());
-            painter.drawLine(m_iPos - 1, 0, m_iPos - 1, breadth());
+//            // draw current position
+//            painter.setPen(QPen(QBrush(m_qColorBackground), 1 * m_scaleFactor));
+//            painter.setOpacity(0.5);
+//            painter.drawLine(m_iPos + 1, 0, m_iPos + 1, breadth());
+//            painter.drawLine(m_iPos - 1, 0, m_iPos - 1, breadth());
 
-            painter.setPen(QPen(m_signalColors.getPlayPosColor(), 1 * m_scaleFactor));
-            painter.setOpacity(1.0);
-            painter.drawLine(m_iPos, 0, m_iPos, breadth());
+//            painter.setPen(QPen(m_signalColors.getPlayPosColor(), 1 * m_scaleFactor));
+//            painter.setOpacity(1.0);
+//            painter.drawLine(m_iPos, 0, m_iPos, breadth());
 
-            painter.drawLine(m_iPos - 2, 0, m_iPos, 2);
-            painter.drawLine(m_iPos, 2, m_iPos + 2, 0);
-            painter.drawLine(m_iPos - 2, 0, m_iPos + 2, 0);
+//            painter.drawLine(m_iPos - 2, 0, m_iPos, 2);
+//            painter.drawLine(m_iPos, 2, m_iPos + 2, 0);
+//            painter.drawLine(m_iPos - 2, 0, m_iPos + 2, 0);
 
-            painter.drawLine(m_iPos - 2, breadth() - 1, m_iPos, breadth() - 3);
-            painter.drawLine(m_iPos, breadth() - 3, m_iPos + 2, breadth() - 1);
-            painter.drawLine(m_iPos - 2, breadth() - 1, m_iPos + 2, breadth() - 1);
+//            painter.drawLine(m_iPos - 2, breadth() - 1, m_iPos, breadth() - 3);
+//            painter.drawLine(m_iPos, breadth() - 3, m_iPos + 2, breadth() - 1);
+//            painter.drawLine(m_iPos - 2, breadth() - 1, m_iPos + 2, breadth() - 1);
         }
     }
     painter.end();

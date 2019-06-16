@@ -58,7 +58,7 @@ void SkinLoader::loadConfigCoordinate()
 
     m_mapRects.clear();
     QString skinPath = getConfiguredSkinPath();
-    QSettings *iniSetting = new QSettings(skinPath + "/video/coordinate.ini", QSettings::IniFormat);
+    QSettings *iniSetting = new QSettings(skinPath + "/coordinate.ini", QSettings::IniFormat);
     QStringList groups = iniSetting->childGroups();
     for (int i=0; i<groups.size(); ++i)
     {
@@ -272,11 +272,8 @@ MusicButtonControl::MusicButtonControl(SkinLoader *skinLoder)
 
     m_playlist->setPlaybackMode(QMediaPlaylist::CurrentItemOnce);//设置播放模式(顺序播放，单曲循环，随机播放等)
 
-//    m_playlist->addMedia(QUrl::fromLocalFile("E:/CloudMusic/迷途.mp3"));//添加歌曲，这里添加的是歌曲的路径
-
-//    m_playlist->addMedia(QUrl::fromLocalFile("E:/CloudMusic/9er_tan.mp3"));//添加歌曲，这里添加的是歌曲的路径
-
     loadMusicList();
+
     m_player->setPlaylist(m_playlist);  //设置播放列表
 }
 
@@ -303,7 +300,7 @@ void MusicButtonControl::loadMusicList()
         QString strGroup = groups.at(i);
         iniSetting->beginGroup(strGroup);
         QString path = iniSetting->value("path").toString();
-        m_playlist->addMedia(QUrl::fromLocalFile(path));
+        m_playlist->addMedia(QUrl::fromLocalFile(skinPath + "/music/" + path));
         iniSetting->endGroup();
     }
 }
