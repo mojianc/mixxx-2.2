@@ -71,9 +71,16 @@ void SkinLoader::loadConfigCoordinate()
         int y2 =  iniSetting->value("y2").toInt();
         rect.setTopLeft(QPoint(x1, y1));
         rect.setBottomRight(QPoint(x2, y2));
-
-        m_mapRects.insert(strGroup, rect);
         iniSetting->endGroup();
+
+        if(strGroup == "KnobComposed_scale")
+        {
+            m_knobScale = rect;
+        }
+        else
+        {
+            m_mapRects.insert(strGroup, rect);
+        }
     }
 }
 
@@ -83,7 +90,7 @@ void SkinLoader::connectHid(ControllerManager *pControllerManager)
     for(int i = 0; i < contrllerList.count(); i++)
     {
         Controller *controller = contrllerList.at(i);
-        if(controller->getControllerId() == (0x2575 + 0x0001))
+        if(controller->getControllerId() == (0x222A + 0x0001))
         {
             if(!controller->isOpen())
             {
@@ -119,8 +126,8 @@ void SkinLoader::getComingData(QByteArray data)
         QRect rct = iter.value();
         if(rct.contains(x, y))
         {
-            if(m_serialPort->isOpen())
-                m_serialPort->sendData(5);
+//            if(m_serialPort->isOpen())
+//                m_serialPort->sendData(5);
             QString objectName = iter.key();
             if(objectName.contains("MusicCube"))
             {
@@ -136,6 +143,12 @@ void SkinLoader::getComingData(QByteArray data)
                 break;
             }
 
+            if(objectName.contains("VideoStop"))
+            {
+                m_videoWidget->stop();
+                break;
+            }
+
             QString objectNameTemp = objectName.replace('{','[');
             objectNameTemp = objectNameTemp.replace('}',']');
             QWidget *widget = m_mapWidget.value(objectNameTemp);
@@ -145,7 +158,7 @@ void SkinLoader::getComingData(QByteArray data)
             }
             else if(WKnobComposed *knobCompose = dynamic_cast<WKnobComposed *>(widget))
             {
-                knobCompose->getComingData(data, rct);
+                knobCompose->getComingData(data, m_knobScale);
             }
             else if(WPushButton *pushbutton = dynamic_cast<WPushButton *>(widget))
             {
@@ -314,6 +327,7 @@ void MusicButtonControl::timeupdate()
 
 SerialPort::SerialPort()
 {
+    serial = NULL;
     //查找可用的串口
     foreach (const QSerialPortInfo &info,QSerialPortInfo::availablePorts())
     {
@@ -416,5 +430,7 @@ void SerialPort::sendData(int type)
 
 bool SerialPort::isOpen()
 {
-    return serial->isOpen();
+    if(serial && serial->isOpen())
+        return true;
+    return false;
 }

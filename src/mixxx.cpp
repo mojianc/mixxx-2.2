@@ -1416,13 +1416,13 @@ bool MixxxMainWindow::event(QEvent* e) {
 
 void MixxxMainWindow::keyPressEvent(QKeyEvent *e)
 {
-    if(e->key() == Qt::Key_Insert)
+    if(e->key() == Qt::Key_Up)
     {
         if(hook == NULL)
             hook = SetWindowsHookEx(WH_MOUSE_LL, GetMsgProc, NULL, 0);
 
     }
-    else if(e->key() == Qt::Key_Delete)
+    else if(e->key() == Qt::Key_Down)
     {
         if(hook)
             UnhookWindowsHookEx(hook);
@@ -1632,6 +1632,17 @@ void VideoWidget::playNext()
         int index = m_Playlist->currentIndex();
         m_Playlist->setCurrentIndex(index + 1);
         m_player->play();
+        m_inMove =true;
+    }
+}
+
+void VideoWidget::stop()
+{
+    m_timer->stop();
+    m_timer->start(100);
+    if(!m_inMove)
+    {
+        m_player->stop();
         m_inMove =true;
     }
 }

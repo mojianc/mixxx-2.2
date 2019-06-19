@@ -1711,6 +1711,7 @@ QWidget* LegacySkinParser::parseEffectParameterKnobComposed(const QDomElement& n
         SKIN_WARNING(node, *m_pContext)
                 << "EffectParameterKnobComposed node could not attach to effect parameter.";
     }
+    m_mapWidget.insert(pParameterKnob->objectName(), pParameterKnob);
     return pParameterKnob;
 }
 

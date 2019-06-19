@@ -95,6 +95,7 @@ public:
     QMap<QString, QRect> m_mapRects;
     QMap<QString, QWidget *> m_mapWidget;
 
+    QRect m_knobScale;
     MusicButtonControl *m_musicBtControl;
 
     VideoWidget *m_videoWidget;

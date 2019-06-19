@@ -672,7 +672,10 @@ SOURCES += \
     errordialoghandler.cpp \
     main.cpp \
     mixxx.cpp \
-    mixxxapplication.cpp
+    mixxxapplication.cpp \
+    controllers/hid/hidenumerator.cpp \
+    controllers/hid/hidcontrollerpresetfilehandler.cpp \
+    controllers/hid/hidcontroller.cpp
 
 HEADERS += \
     analyzer/vamp/vampanalyzer.h \

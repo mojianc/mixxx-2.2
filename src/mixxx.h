@@ -83,6 +83,7 @@ public:
     void addToPlaylist(const QStringList& fileNames);
     void setShow(bool isShow);
     void playNext();
+    void stop();
 public slots:
     void timeupdate();
     void loadVideoList();
