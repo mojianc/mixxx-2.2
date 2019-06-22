@@ -1691,6 +1691,8 @@ void SerialPortWidget::setSerialPort(SerialPort *port)
 
 void SerialPortWidget::sendData(int type)
 {
+    if(!m_serialPort->isOpen())
+        return;
     m_serialPort->sendData(type);
 }
 
