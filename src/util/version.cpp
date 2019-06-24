@@ -54,7 +54,7 @@ QString Version::applicationTitle() {
 #elif defined(IA64)
     QString base("Mixxx " MIXXX_VERSION " Itanium");
 #else
-    QString base("Mixxx " MIXXX_VERSION);
+    QString base("Drop DJ" MIXXX_VERSION);
 #endif
 
 #ifdef MIXXX_BUILD_NUMBER_IN_TITLE_BAR
