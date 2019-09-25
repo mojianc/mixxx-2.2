@@ -205,12 +205,12 @@ MixxxMainWindow::MixxxMainWindow(QApplication* pApp, const CmdlineArgs& args)
 
     QWidget *widget = new QWidget(this);
     m_videoWidget = new VideoWidget(this);
-    m_videoWidget->setFixedSize(1600, 500);
+    m_videoWidget->setFixedSize(1600, 300);
     m_pSkinLoader->setVideoWidget(m_videoWidget);
 
     m_serialPortWidget = new SerialPortWidget;
     m_serialPortWidget->setSerialPort(m_pSkinLoader->getSerialPort());
-    m_serialPortWidget->setFixedSize(100, 500);
+    m_serialPortWidget->setFixedSize(100, 300);
 
     QVBoxLayout *boxlayout = new QVBoxLayout(this);
     boxlayout->addWidget(m_pWidgetParent);

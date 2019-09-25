@@ -137,6 +137,7 @@ class WOverview : public WWidget {
 
     QMap<int, int> m_musicMap;
     bool m_videoPlay;
+    int m_musicRate;
 };
 
 #endif

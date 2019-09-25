@@ -60,6 +60,7 @@ WOverview::WOverview(const char *pGroup, UserSettingsPointer pConfig, QWidget* p
     m_playControl = new ControlProxy(m_group, "play", this);
     setAcceptDrops(true);
     m_videoPlay = false;
+    m_musicRate = 0;
 }
 
 void WOverview::setup(const QDomNode& node, const SkinContext& context) {
@@ -144,19 +145,31 @@ void WOverview::loadMusicConfig()
     m_musicMap.clear();
     QSettings *iniSetting = new QSettings(QCoreApplication::applicationDirPath() + "/video/musicConfig.ini", QSettings::IniFormat);
     QStringList groups = iniSetting->childGroups();
-    if(groups.count() == 0)
+    int nCount = groups.count();
+    if(nCount == 0)
         return;
-    QString strGroup = groups.at(0);
-    iniSetting->beginGroup(strGroup);
-    int count = iniSetting->allKeys().count();
-    for (int i = 0; i < count - 1; ++i)
+    for(int i = 0; i < nCount; i++)
     {
-        int nContrl = iniSetting->value(QString::number(i)).toInt();
-        m_musicMap.insert(i, nContrl);
-    }
-    iniSetting->endGroup();
-}
+        QString strGroup = groups.at(i);
+        iniSetting->beginGroup(strGroup);
+        if(strGroup.compare("music") == 0)
+        {
+            int count = iniSetting->allKeys().count();
+            for (int i = 0; i < count - 1; ++i)
+            {
+                int nContrl = iniSetting->value(QString::number(i)).toInt();
+                m_musicMap.insert(i, nContrl);
+            }
+        }
+        else if(strGroup.compare("musicRate") == 0)
+        {
+            m_musicRate = iniSetting->value("rate").toInt();
+        }
 
+        iniSetting->endGroup();
+    }
+}
+#include <QTime>
 void WOverview::onConnectedControlChanged(double dParameter, double dValue) {
     Q_UNUSED(dValue);
     if (!m_bDrag) {
@@ -184,9 +197,19 @@ void WOverview::onConnectedControlChanged(double dParameter, double dValue) {
 
             int mixxxPoint = int(dParameter * 100);
             int nContrl = m_musicMap.value(mixxxPoint, 0);
+//            QTime time;
+//            time= QTime::currentTime();
+//            qsrand(time.msec()+time.second()*1000);
+
             if(nContrl > 0)
             {
-                emit serialportChange(nContrl);
+                for(int i = 0; i < m_musicRate; i++)
+                {
+//                    int n = qrand() % nContrl;    //产生nContrl以内的随机数
+                    emit serialportChange(nContrl - 2);
+                    emit serialportChange(nContrl - 1);
+                    emit serialportChange(nContrl);
+                }
             }
         }
     }
