@@ -1,0 +1,1291 @@
+#-------------------------------------------------
+#
+# Project created by QtCreator 2019-05-18T21:16:59
+#
+#-------------------------------------------------
+INCLUDEPATH += G:\mixxx\buildserver-2.2.x-windows\include \
+               G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtWidgets \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\ActiveQt \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\ActiveQt\5.11.1\ActiveQt \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtGui\5.11.1\QtGui\qpa \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtPrintSupport\5.11.1\QtPrintSupport\qpa \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtAccessibilitySupport  \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtAccessibilitySupport\5.11.1\QtAccessibilitySupport  \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtANGLE  \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtCharts  \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtCharts\5.11.1\QtCharts                                        \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtConcurrent                                                    \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtCore                                                          \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtCore\5.11.1\QtCore                                            \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtDataVisualization                                             \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtDataVisualization\5.11.1\QtDataVisualization                  \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtDesigner                                                      \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtDesigner\5.11.1\QtDesigner                                    \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtDesignerComponents                                            \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtDesignerComponents\5.11.1\QtDesignerComponents                \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtDeviceDiscoverySupport                                        \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtDeviceDiscoverySupport\5.11.1\QtDeviceDiscoverySupport        \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtEdidSupport                                                   \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtEdidSupport\5.11.1\QtEdidSupport                              \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtEglSupport                                                    \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtEglSupport\5.11.1\QtEglSupport                                \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtEventDispatcherSupport                                        \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtEventDispatcherSupport\5.11.1\QtEventDispatcherSupport        \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtFbSupport                                                     \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtFbSupport\5.11.1\QtFbSupport                                  \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtFontDatabaseSupport                                           \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtFontDatabaseSupport\5.11.1\QtFontDatabaseSupport              \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtGui                                                           \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtGui\5.11.1\QtGui                                              \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtHelp                                                          \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtHelp\5.11.1\QtHelp                                            \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtNetwork                                                       \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtNetwork\5.11.1\QtNetwork                                      \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtNetworkAuth                                                   \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtNetworkAuth\5.11.1\QtNetworkAuth                              \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtOpenGL                                                        \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtOpenGL\5.11.1\QtOpenGL                                        \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtOpenGLExtensions                                              \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtPacketProtocol                                                \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtPacketProtocol\5.11.1\QtPacketProtocol                        \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtPlatformCompositorSupport                                     \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtPlatformCompositorSupport\5.11.1\QtPlatformCompositorSupport  \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtPlatformHeaders                                               \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtPrintSupport                                                  \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtPrintSupport\5.11.1\QtPrintSupport                            \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtQml                                                           \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtQml\5.11.1\QtQml                                              \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtQmlDebug                                                      \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtQmlDebug\5.11.1\QtQmlDebug                                    \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtQuick                                                         \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtQuick\5.11.1\QtQuick                                          \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtQuickControls2                                                \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtQuickControls2\5.11.1\QtQuickControls2                        \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtQuickParticles                                                \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtQuickParticles\5.11.1\QtQuickParticles                        \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtQuickTemplates2                                               \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtQuickTemplates2\5.11.1\QtQuickTemplates2                      \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtQuickTest                                                     \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtQuickTest\5.11.1\QtQuickTest                                  \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtQuickWidgets                                                  \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtQuickWidgets\5.11.1\QtQuickWidgets                            \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtRemoteObjects                                                 \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtRemoteObjects\5.11.1\QtRemoteObjects                          \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtRepParser                                                     \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtScript                                                        \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtScript\5.11.1\QtScript                                        \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtScriptTools                                                   \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtScriptTools\5.11.1\QtScriptTools                              \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtSql                                                           \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtSql\5.11.1\QtSql                                              \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtSvg                                                           \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtSvg\5.11.1\QtSvg                                              \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtTest                                                          \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtTest\5.11.1\QtTest                                            \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtThemeSupport                                                  \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtThemeSupport\5.11.1\QtThemeSupport                            \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtUiPlugin                                                      \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtUiTools                                                       \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtUiTools\5.11.1\QtUiTools                                      \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtWebChannel                                                    \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtWebChannel\5.11.1\QtWebChannel                                \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtWebSockets                                                    \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtWebSockets\5.11.1\QtWebSockets                                \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtWidgets                                                       \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtWidgets\5.11.1\QtWidgets                                      \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtWindowsUIAutomationSupport                                    \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtWindowsUIAutomationSupport\5.11.1\QtWindowsUIAutomationSupport \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtWinExtras                                                     \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtWinExtras\5.11.1\QtWinExtras                                  \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtXml                                                           \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtXml\5.11.1\QtXml                                              \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtXmlPatterns                                                   \
+G:\mixxx\buildserver-2.2.x-windows\Qt-5.11.1\include\QtXmlPatterns\5.11.1\QtXmlPatterns \
+G:\mixxx\mixxx-2.2_\win64_build  \
+G:\mixxx\buildserver-2.2.x-windows\build\QT5\qtscript\examples\script\customclass \
+G:\mixxx\mixxx-2.2\lib\portaudio \
+G:\mixxx\mixxx-2.2\lib\fidlib \
+G:\mixxx\mixxx-2.2\lib\gmock-1.7.0\gtest\include \
+G:\mixxx\mixxx-2.2\lib\reverb \
+G:\mixxx\mixxx-2.2\lib\libebur128\ebur128 \
+G:\mixxx\mixxx-2.2\lib\replaygain \
+G:\mixxx\mixxx-2.2\lib\apple \
+G:\mixxx\mixxx-2.2\lib\benchmark\include \
+G:\mixxx\mixxx-2.2\lib\benchmark\include\benchmark \
+G:\mixxx\mixxx-2.2\lib\hidapi-0.8.0-rc1\hidapi \
+G:\mixxx\mixxx-2.2\lib\soundtouch-2.0.0
+
+LIBS += -lG:\mixxx\buildserver-2.2.x-windows\lib\chromaprint_p.lib \
+        -lG:\mixxx\buildserver-2.2.x-windows\lib\g72x.lib \
+        -lG:\mixxx\buildserver-2.2.x-windows\lib\libeay32.lib \
+        -lG:\mixxx\buildserver-2.2.x-windows\lib\libfftw-3.3.lib \
+        -lG:\mixxx\buildserver-2.2.x-windows\lib\libfftwf-3.3.lib \
+        -lG:\mixxx\buildserver-2.2.x-windows\lib\libFLAC.lib \
+        -lG:\mixxx\buildserver-2.2.x-windows\lib\libHSS1394.lib \
+        -lG:\mixxx\buildserver-2.2.x-windows\lib\libid3tag.lib \
+        -lG:\mixxx\buildserver-2.2.x-windows\lib\libmad.lib \
+        -lG:\mixxx\buildserver-2.2.x-windows\lib\libmp3lame-static.lib \
+        -lG:\mixxx\buildserver-2.2.x-windows\lib\libogg.lib \
+        -lG:\mixxx\buildserver-2.2.x-windows\lib\libprotobuf-lite.lib \
+        -lG:\mixxx\buildserver-2.2.x-windows\lib\libshout.lib \
+        -lG:\mixxx\buildserver-2.2.x-windows\lib\libsndfile.lib \
+        -lG:\mixxx\buildserver-2.2.x-windows\lib\libvorbis.lib \
+        -lG:\mixxx\buildserver-2.2.x-windows\lib\libvorbisfile.lib \
+        -lG:\mixxx\buildserver-2.2.x-windows\lib\opus.lib \
+        -lG:\mixxx\buildserver-2.2.x-windows\lib\opusfile.lib \
+        -lG:\mixxx\buildserver-2.2.x-windows\lib\portaudio.lib \
+        -lG:\mixxx\buildserver-2.2.x-windows\lib\portmidi.lib \
+        -lG:\mixxx\buildserver-2.2.x-windows\lib\porttime.lib \
+        -lG:\mixxx\buildserver-2.2.x-windows\lib\pthread.lib \
+        -lG:\mixxx\buildserver-2.2.x-windows\lib\qt5keychain.lib \
+        -lG:\mixxx\buildserver-2.2.x-windows\lib\rubberband.lib \
+        -lG:\mixxx\buildserver-2.2.x-windows\lib\sqlite3.lib \
+        -lG:\mixxx\buildserver-2.2.x-windows\lib\ssleay32.lib \
+        -lG:\mixxx\buildserver-2.2.x-windows\lib\tag.lib \
+        -lG:\mixxx\buildserver-2.2.x-windows\lib\tag_c.lib \
+        -lG:\mixxx\buildserver-2.2.x-windows\lib\zdll.lib \
+        -lG:\mixxx\buildserver-2.2.x-windows\lib\zlibwapi.lib
+TARGET = MixxxCustom
+TEMPLATE = app
+
+# The following define makes your compiler emit warnings if you use
+# any feature of Qt which has been marked as deprecated (the exact warnings
+# depend on your compiler). Please consult the documentation of the
+# deprecated API in order to know how to port your code away from it.
+DEFINES += QT_DEPRECATED_WARNINGS
+
+# You can also make your code fail to compile if you use deprecated APIs.
+# In order to do so, uncomment the following line.
+# You can also select to disable deprecated APIs only up to a certain version of Qt.
+#DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
+
+CONFIG += c++11
+
+SOURCES += \
+        main.cpp \
+        control/control.cpp \
+        control/controlaudiotaperpot.cpp \
+        control/controlbehavior.cpp \
+        control/controleffectknob.cpp \
+        control/controlindicator.cpp \
+        control/controllinpotmeter.cpp \
+        control/controllogpotmeter.cpp \
+        control/controlmodel.cpp \
+        control/controlobject.cpp \
+        control/controlobjectscript.cpp \
+        control/controlpotmeter.cpp \
+        control/controlproxy.cpp \
+        control/controlpushbutton.cpp \
+        control/controlttrotary.cpp \
+        control/controlencoder.cpp \
+        controllers/dlgcontrollerlearning.cpp \
+        controllers/dlgprefcontroller.cpp \
+        controllers/dlgprefcontrollers.cpp \
+        dialog/dlgabout.cpp \
+        dialog/dlgdevelopertools.cpp \
+        preferences/configobject.cpp \
+        preferences/dialog/dlgprefautodj.cpp \
+        preferences/dialog/dlgprefdeck.cpp \
+        preferences/dialog/dlgprefcrossfader.cpp \
+        preferences/dialog/dlgprefeffects.cpp \
+        preferences/dialog/dlgprefeq.cpp \
+        preferences/dialog/dlgpreferences.cpp \
+        preferences/dialog/dlgprefinterface.cpp \
+        preferences/dialog/dlgpreflibrary.cpp \
+        preferences/dialog/dlgprefnovinyl.cpp \
+        preferences/dialog/dlgprefrecord.cpp \
+        preferences/dialog/dlgprefreplaygain.cpp \
+        preferences/dialog/dlgprefsound.cpp \
+        preferences/dialog/dlgprefsounditem.cpp \
+        preferences/dialog/dlgprefwaveform.cpp \
+        preferences/settingsmanager.cpp \
+        preferences/replaygainsettings.cpp \
+        preferences/broadcastsettings.cpp \
+        preferences/broadcastsettings_legacy.cpp \
+        preferences/broadcastsettingsmodel.cpp \
+        preferences/effectsettingsmodel.cpp \
+        preferences/broadcastprofile.cpp \
+        preferences/upgrade.cpp \
+        preferences/dlgpreferencepage.cpp \
+        effects/effectmanifest.cpp \
+        effects/effectmanifestparameter.cpp \
+        effects/effectchain.cpp \
+        effects/effect.cpp \
+        effects/effectparameter.cpp \
+        effects/effectrack.cpp \
+        effects/effectchainslot.cpp \
+        effects/effectslot.cpp \
+        effects/effectparameterslotbase.cpp \
+        effects/effectparameterslot.cpp \
+        effects/effectbuttonparameterslot.cpp \
+        effects/effectsmanager.cpp \
+        effects/effectchainmanager.cpp \
+        effects/effectsbackend.cpp \
+        effects/builtin/builtinbackend.cpp \
+        effects/builtin/bitcrushereffect.cpp \
+        effects/builtin/balanceeffect.cpp \
+        effects/builtin/linkwitzriley8eqeffect.cpp \
+        effects/builtin/bessel4lvmixeqeffect.cpp \
+        effects/builtin/bessel8lvmixeqeffect.cpp \
+        effects/builtin/threebandbiquadeqeffect.cpp \
+        effects/builtin/biquadfullkilleqeffect.cpp \
+        effects/builtin/loudnesscontoureffect.cpp \
+        effects/builtin/graphiceqeffect.cpp \
+        effects/builtin/parametriceqeffect.cpp \
+        effects/builtin/flangereffect.cpp \
+        effects/builtin/filtereffect.cpp \
+        effects/builtin/moogladder4filtereffect.cpp \
+        effects/builtin/reverbeffect.cpp \
+        effects/builtin/echoeffect.cpp \
+        effects/builtin/autopaneffect.cpp \
+        effects/builtin/phasereffect.cpp \
+        effects/builtin/metronomeeffect.cpp \
+        effects/builtin/tremoloeffect.cpp \
+        engine/effects/engineeffectsmanager.cpp \
+        engine/effects/engineeffectrack.cpp \
+        engine/effects/engineeffectchain.cpp \
+        engine/effects/engineeffect.cpp \
+        engine/sync/basesyncablelistener.cpp \
+        engine/sync/enginesync.cpp \
+        engine/sync/synccontrol.cpp \
+        engine/sync/internalclock.cpp \
+        engine/engineworker.cpp \
+        engine/engineworkerscheduler.cpp \
+        engine/enginebuffer.cpp \
+        engine/enginebufferscale.cpp \
+        engine/enginebufferscalelinear.cpp \
+        engine/enginefilterbiquad1.cpp \
+        engine/enginefiltermoogladder4.cpp \
+        engine/enginefilterbessel4.cpp \
+        engine/enginefilterbessel8.cpp \
+        engine/enginefilterbutterworth4.cpp \
+        engine/enginefilterbutterworth8.cpp \
+        engine/enginefilterlinkwitzriley2.cpp \
+        engine/enginefilterlinkwitzriley4.cpp \
+        engine/enginefilterlinkwitzriley8.cpp \
+        engine/enginefilter.cpp \
+        engine/engineobject.cpp \
+        engine/enginepregain.cpp \
+        engine/enginechannel.cpp \
+        engine/enginemaster.cpp \
+        engine/enginedelay.cpp \
+        engine/enginevumeter.cpp \
+        engine/enginesidechaincompressor.cpp \
+        engine/sidechain/enginesidechain.cpp \
+        engine/sidechain/networkoutputstreamworker.cpp \
+        engine/sidechain/networkinputstreamworker.cpp \
+        engine/enginexfader.cpp \
+        engine/enginemicrophone.cpp \
+        engine/enginedeck.cpp \
+        engine/engineaux.cpp \
+        engine/channelmixer_autogen.cpp \
+        engine/enginecontrol.cpp \
+        engine/ratecontrol.cpp \
+        engine/positionscratchcontroller.cpp \
+        engine/loopingcontrol.cpp \
+        engine/bpmcontrol.cpp \
+        engine/keycontrol.cpp \
+        engine/cuecontrol.cpp \
+        engine/quantizecontrol.cpp \
+        engine/clockcontrol.cpp \
+        engine/readaheadmanager.cpp \
+        engine/enginetalkoverducking.cpp \
+        engine/cachingreader.cpp \
+        engine/cachingreaderchunk.cpp \
+        engine/cachingreaderworker.cpp \
+        analyzer/analyzerqueue.cpp \
+        analyzer/analyzerwaveform.cpp \
+        analyzer/analyzergain.cpp \
+        analyzer/analyzerebur128.cpp \
+        controllers/controller.cpp \
+        controllers/controllerdebug.cpp \
+        controllers/controllerengine.cpp \
+        controllers/controllerenumerator.cpp \
+        controllers/controllerlearningeventfilter.cpp \
+        controllers/controllermanager.cpp \
+        controllers/controllerpresetfilehandler.cpp \
+        controllers/controllerpresetinfo.cpp \
+        controllers/controllerpresetinfoenumerator.cpp \
+        controllers/controlpickermenu.cpp \
+        controllers/controllermappingtablemodel.cpp \
+        controllers/controllerinputmappingtablemodel.cpp \
+        controllers/controlleroutputmappingtablemodel.cpp \
+        controllers/delegates/controldelegate.cpp \
+        controllers/delegates/midichanneldelegate.cpp \
+        controllers/delegates/midiopcodedelegate.cpp \
+        controllers/delegates/midibytedelegate.cpp \
+        controllers/delegates/midioptionsdelegate.cpp \
+        controllers/learningutils.cpp \
+        controllers/midi/midimessage.cpp \
+        controllers/midi/midiutils.cpp \
+        controllers/midi/midicontroller.cpp \
+        controllers/midi/midicontrollerpresetfilehandler.cpp \
+        controllers/midi/midienumerator.cpp \
+        controllers/midi/midioutputhandler.cpp \
+        controllers/softtakeover.cpp \
+        controllers/keyboard/keyboardeventfilter.cpp \
+        main.cpp \
+        mixxx.cpp \
+        mixxxapplication.cpp \
+        errordialoghandler.cpp \
+        sources/audiosource.cpp \
+        sources/audiosourcestereoproxy.cpp \
+        sources/metadatasourcetaglib.cpp \
+        sources/soundsource.cpp \
+        sources/soundsourceplugin.cpp \
+        sources/soundsourcepluginlibrary.cpp \
+        sources/soundsourceproviderregistry.cpp \
+        sources/soundsourceproxy.cpp \
+        widget/controlwidgetconnection.cpp \
+        widget/wbasewidget.cpp \
+        widget/wwidget.cpp \
+        widget/wwidgetgroup.cpp \
+        widget/wwidgetstack.cpp \
+        widget/wsizeawarestack.cpp \
+        widget/wlabel.cpp \
+        widget/wtracktext.cpp \
+        widget/wnumber.cpp \
+        widget/wbeatspinbox.cpp \
+        widget/wnumberdb.cpp \
+        widget/wnumberpos.cpp \
+        widget/wnumberrate.cpp \
+        widget/wknob.cpp \
+        widget/wknobcomposed.cpp \
+        widget/wdisplay.cpp \
+        widget/wvumeter.cpp \
+        widget/wpushbutton.cpp \
+        widget/weffectpushbutton.cpp \
+        widget/wslidercomposed.cpp \
+        widget/wstatuslight.cpp \
+        widget/woverview.cpp \
+        widget/woverviewlmh.cpp \
+        widget/woverviewhsv.cpp \
+        widget/woverviewrgb.cpp \
+        widget/wspinny.cpp \
+        widget/wskincolor.cpp \
+        widget/wsearchlineedit.cpp \
+        widget/wpixmapstore.cpp \
+        widget/paintable.cpp \
+        widget/wimagestore.cpp \
+        widget/hexspinbox.cpp \
+        widget/wtrackproperty.cpp \
+        widget/wstarrating.cpp \
+        widget/weffectchain.cpp \
+        widget/weffect.cpp \
+        widget/weffectselector.cpp \
+        widget/weffectparameter.cpp \
+        widget/weffectparameterknob.cpp \
+        widget/weffectparameterknobcomposed.cpp \
+        widget/weffectbuttonparameter.cpp \
+        widget/weffectparameterbase.cpp \
+        widget/wtime.cpp \
+        widget/wrecordingduration.cpp \
+        widget/wkey.cpp \
+        widget/wbattery.cpp \
+        widget/wcombobox.cpp \
+        widget/wsplitter.cpp \
+        widget/wcoverart.cpp \
+        widget/wcoverartlabel.cpp \
+        widget/wcoverartmenu.cpp \
+        widget/wsingletoncontainer.cpp \
+        widget/wmainmenubar.cpp \
+        musicbrainz/network.cpp \
+        musicbrainz/tagfetcher.cpp \
+        musicbrainz/gzip.cpp \
+        musicbrainz/crc.c \
+        musicbrainz/acoustidclient.cpp \
+        musicbrainz/chromaprinter.cpp \
+        musicbrainz/musicbrainzclient.cpp \
+        widget/wtracktableview.cpp \
+        widget/wtracktableviewheader.cpp \
+        widget/wlibrarysidebar.cpp \
+        widget/wlibrary.cpp \
+        widget/wlibrarytableview.cpp \
+        widget/wanalysislibrarytableview.cpp \
+        widget/wlibrarytextbrowser.cpp \
+        database/mixxxdb.cpp \
+        database/schemamanager.cpp \
+        library/trackcollection.cpp \
+        library/basesqltablemodel.cpp \
+        library/basetrackcache.cpp \
+        library/columncache.cpp \
+        library/librarytablemodel.cpp \
+        library/searchquery.cpp \
+        library/searchqueryparser.cpp \
+        library/analysislibrarytablemodel.cpp \
+        library/missingtablemodel.cpp \
+        library/hiddentablemodel.cpp \
+        library/proxytrackmodel.cpp \
+        library/coverart.cpp \
+        library/coverartcache.cpp \
+        library/coverartutils.cpp \
+        library/crate/cratestorage.cpp \
+        library/crate/cratefeature.cpp \
+        library/crate/cratefeaturehelper.cpp \
+        library/crate/cratetablemodel.cpp \
+        library/playlisttablemodel.cpp \
+        library/libraryfeature.cpp \
+        library/analysisfeature.cpp \
+        library/autodj/autodjfeature.cpp \
+        library/autodj/autodjprocessor.cpp \
+        library/dao/directorydao.cpp \
+        library/mixxxlibraryfeature.cpp \
+        library/baseplaylistfeature.cpp \
+        library/playlistfeature.cpp \
+        library/setlogfeature.cpp \
+        library/autodj/dlgautodj.cpp \
+        library/dlganalysis.cpp \
+        library/dlgcoverartfullsize.cpp \
+        library/dlghidden.cpp \
+        library/dlgmissing.cpp \
+        library/dlgtagfetcher.cpp \
+        library/dlgtrackinfo.cpp \
+        library/dlgtrackmetadataexport.cpp \
+        library/browse/browsetablemodel.cpp \
+        library/browse/browsethread.cpp \
+        library/browse/browsefeature.cpp \
+        library/browse/foldertreemodel.cpp \
+        library/export/trackexportdlg.cpp \
+        library/export/trackexportwizard.cpp \
+        library/export/trackexportworker.cpp \
+        library/recording/recordingfeature.cpp \
+        library/recording/dlgrecording.cpp \
+        recording/recordingmanager.cpp \
+        engine/sidechain/enginerecord.cpp \
+        library/baseexternallibraryfeature.cpp \
+        library/baseexternaltrackmodel.cpp \
+        library/baseexternalplaylistmodel.cpp \
+        library/rhythmbox/rhythmboxfeature.cpp \
+        library/banshee/bansheefeature.cpp \
+        library/banshee/bansheeplaylistmodel.cpp \
+        library/banshee/bansheedbconnection.cpp \
+        library/itunes/itunesfeature.cpp \
+        library/traktor/traktorfeature.cpp \
+        library/sidebarmodel.cpp \
+        library/library.cpp \
+        library/scanner/libraryscanner.cpp \
+        library/scanner/libraryscannerdlg.cpp \
+        library/scanner/scannertask.cpp \
+        library/scanner/importfilestask.cpp \
+        library/scanner/recursivescandirectorytask.cpp \
+        library/dao/cuedao.cpp \
+        library/dao/cue.cpp \
+        library/dao/trackdao.cpp \
+        library/dao/playlistdao.cpp \
+        library/dao/libraryhashdao.cpp \
+        library/dao/settingsdao.cpp \
+        library/dao/analysisdao.cpp \
+        library/dao/autodjcratesdao.cpp \
+        library/librarycontrol.cpp \
+        library/songdownloader.cpp \
+        library/starrating.cpp \
+        library/stardelegate.cpp \
+        library/stareditor.cpp \
+        library/bpmdelegate.cpp \
+        library/previewbuttondelegate.cpp \
+        library/coverartdelegate.cpp \
+        library/tableitemdelegate.cpp \
+        library/treeitemmodel.cpp \
+        library/treeitem.cpp \
+        library/parser.cpp \
+        library/parserpls.cpp \
+        library/parserm3u.cpp \
+        library/parsercsv.cpp \
+        widget/wwaveformviewer.cpp \
+        waveform/sharedglcontext.cpp \
+        waveform/waveform.cpp \
+        waveform/waveformfactory.cpp \
+        waveform/waveformwidgetfactory.cpp \
+        waveform/vsyncthread.cpp \
+        waveform/guitick.cpp \
+        waveform/visualplayposition.cpp \
+        waveform/renderers/waveformwidgetrenderer.cpp \
+        waveform/renderers/waveformrendererabstract.cpp \
+        waveform/renderers/waveformrenderbackground.cpp \
+        waveform/renderers/waveformrendermark.cpp \
+        waveform/renderers/waveformrendermarkrange.cpp \
+        waveform/renderers/waveformrenderbeat.cpp \
+        waveform/renderers/waveformrendererendoftrack.cpp \
+        waveform/renderers/waveformrendererpreroll.cpp \
+        waveform/renderers/waveformrendererfilteredsignal.cpp \
+        waveform/renderers/waveformrendererhsv.cpp \
+        waveform/renderers/waveformrendererrgb.cpp \
+        waveform/renderers/qtwaveformrendererfilteredsignal.cpp \
+        waveform/renderers/qtwaveformrenderersimplesignal.cpp \
+        waveform/renderers/waveformsignalcolors.cpp \
+        waveform/renderers/waveformrenderersignalbase.cpp \
+        waveform/renderers/waveformmark.cpp \
+        waveform/renderers/waveformmarkproperties.cpp \
+        waveform/renderers/waveformmarkset.cpp \
+        waveform/renderers/waveformmarkrange.cpp \
+        waveform/renderers/glwaveformrenderersimplesignal.cpp \
+        waveform/renderers/glwaveformrendererrgb.cpp \
+        waveform/renderers/glwaveformrendererfilteredsignal.cpp \
+        waveform/renderers/glslwaveformrenderersignal.cpp \
+        waveform/renderers/glvsynctestrenderer.cpp \
+        waveform/widgets/waveformwidgetabstract.cpp \
+        waveform/widgets/emptywaveformwidget.cpp \
+        waveform/widgets/softwarewaveformwidget.cpp \
+        waveform/widgets/hsvwaveformwidget.cpp \
+        waveform/widgets/rgbwaveformwidget.cpp \
+        waveform/widgets/qtwaveformwidget.cpp \
+        waveform/widgets/qtsimplewaveformwidget.cpp \
+        waveform/widgets/glwaveformwidget.cpp \
+        waveform/widgets/glsimplewaveformwidget.cpp \
+        waveform/widgets/glvsynctestwidget.cpp \
+        waveform/widgets/glslwaveformwidget.cpp \
+        waveform/widgets/glrgbwaveformwidget.cpp \
+        skin/imginvert.cpp \
+        skin/imgloader.cpp \
+        skin/imgcolor.cpp \
+        skin/skinloader.cpp \
+        skin/legacyskinparser.cpp \
+        skin/colorschemeparser.cpp \
+        skin/tooltips.cpp \
+        skin/skincontext.cpp \
+        skin/svgparser.cpp \
+        skin/pixmapsource.cpp \
+        skin/launchimage.cpp \
+        track/beatfactory.cpp \
+        track/beatgrid.cpp \
+        track/beatmap.cpp \
+        track/beatutils.cpp \
+        track/beats.cpp \
+        track/bpm.cpp \
+        track/keyfactory.cpp \
+        track/keys.cpp \
+        track/keyutils.cpp \
+        track/playcounter.cpp \
+        track/replaygain.cpp \
+        track/track.cpp \
+        track/globaltrackcache.cpp \
+        track/trackmetadata.cpp \
+        track/trackmetadatataglib.cpp \
+        track/tracknumbers.cpp \
+        track/albuminfo.cpp \
+        track/trackinfo.cpp \
+        track/trackrecord.cpp \
+        track/trackref.cpp \
+        mixer/auxiliary.cpp \
+        mixer/baseplayer.cpp \
+        mixer/basetrackplayer.cpp \
+        mixer/deck.cpp \
+        mixer/microphone.cpp \
+        mixer/playerinfo.cpp \
+        mixer/playermanager.cpp \
+        mixer/previewdeck.cpp \
+        mixer/sampler.cpp \
+        mixer/samplerbank.cpp \
+        soundio/sounddevice.cpp \
+        soundio/sounddevicenetwork.cpp \
+        engine/sidechain/enginenetworkstream.cpp \
+        soundio/soundmanager.cpp \
+        soundio/soundmanagerconfig.cpp \
+        soundio/soundmanagerutil.cpp \
+        encoder/encoder.cpp \
+        encoder/encodermp3.cpp \
+        encoder/encodervorbis.cpp \
+        encoder/encoderwave.cpp \
+        encoder/encodersndfileflac.cpp \
+        encoder/encodermp3settings.cpp \
+        encoder/encodervorbissettings.cpp \
+        encoder/encoderwavesettings.cpp \
+        encoder/encoderflacsettings.cpp \
+        encoder/encoderbroadcastsettings.cpp \
+        util/sleepableqthread.cpp \
+        util/statsmanager.cpp \
+        util/stat.cpp \
+        util/statmodel.cpp \
+        util/duration.cpp \
+        util/time.cpp \
+        util/timer.cpp \
+        util/performancetimer.cpp \
+        util/threadcputimer.cpp \
+        util/version.cpp \
+        util/rlimit.cpp \
+        util/battery/battery.cpp \
+        util/valuetransformer.cpp \
+        util/sandbox.cpp \
+        util/file.cpp \
+        util/mac.cpp \
+        util/task.cpp \
+        util/experiment.cpp \
+        util/xml.cpp \
+        util/tapfilter.cpp \
+        util/movinginterquartilemean.cpp \
+        util/console.cpp \
+        util/db/dbconnection.cpp \
+        util/db/dbconnectionpool.cpp \
+        util/db/dbconnectionpooler.cpp \
+        util/db/dbconnectionpooled.cpp \
+        util/db/dbid.cpp \
+        util/db/fwdsqlquery.cpp \
+        util/db/fwdsqlqueryselectresult.cpp \
+        util/db/sqllikewildcardescaper.cpp \
+        util/db/sqlqueryfinisher.cpp \
+        util/db/sqlstringformatter.cpp \
+        util/db/sqltransaction.cpp \
+        util/sample.cpp \
+        util/samplebuffer.cpp \
+        util/readaheadsamplebuffer.cpp \
+        util/rotary.cpp \
+        util/logger.cpp \
+        util/logging.cpp \
+        util/cmdlineargs.cpp \
+        util/audiosignal.cpp \
+        util/widgethider.cpp \
+        util/autohidpi.cpp \
+        util/screensaver.cpp \
+        util/indexrange.cpp \
+        util/widgetrendertimer.cpp \
+    waveform/renderers/glslwaveformrenderersignal.cpp \
+    waveform/renderers/glvsynctestrenderer.cpp \
+    waveform/renderers/glwaveformrendererfilteredsignal.cpp \
+    waveform/renderers/glwaveformrendererrgb.cpp \
+    waveform/renderers/glwaveformrenderersimplesignal.cpp \
+    waveform/renderers/qtwaveformrendererfilteredsignal.cpp \
+    waveform/renderers/qtwaveformrenderersimplesignal.cpp \
+    waveform/renderers/waveformmark.cpp \
+    waveform/renderers/waveformmarkproperties.cpp \
+    waveform/renderers/waveformmarkrange.cpp \
+    waveform/renderers/waveformmarkset.cpp \
+    waveform/renderers/waveformrenderbackground.cpp \
+    waveform/renderers/waveformrenderbeat.cpp \
+    waveform/renderers/waveformrendererabstract.cpp \
+    waveform/renderers/waveformrendererendoftrack.cpp \
+    waveform/renderers/waveformrendererfilteredsignal.cpp \
+    waveform/renderers/waveformrendererhsv.cpp \
+    waveform/renderers/waveformrendererpreroll.cpp \
+    waveform/renderers/waveformrendererrgb.cpp \
+    waveform/renderers/waveformrenderersignalbase.cpp \
+    waveform/renderers/waveformrendermark.cpp \
+    waveform/renderers/waveformrendermarkrange.cpp \
+    waveform/renderers/waveformsignalcolors.cpp \
+    waveform/renderers/waveformwidgetrenderer.cpp \
+    waveform/guitick.cpp \
+    waveform/sharedglcontext.cpp \
+    waveform/visualplayposition.cpp \
+    waveform/vsyncthread.cpp \
+    waveform/waveform.cpp \
+    waveform/waveformfactory.cpp \
+    waveform/waveformwidgetfactory.cpp \
+    errordialoghandler.cpp \
+    main.cpp \
+    mixxx.cpp \
+    mixxxapplication.cpp \
+    controllers/hid/hidenumerator.cpp \
+    controllers/hid/hidcontrollerpresetfilehandler.cpp \
+    controllers/hid/hidcontroller.cpp
+
+HEADERS += \
+    analyzer/vamp/vampanalyzer.h \
+    analyzer/vamp/vamppluginadapter.h \
+    analyzer/analyzer.h \
+    analyzer/analyzerbeats.h \
+    analyzer/analyzerebur128.h \
+    analyzer/analyzergain.h \
+    analyzer/analyzerkey.h \
+    analyzer/analyzerqueue.h \
+    analyzer/analyzerwaveform.h \
+    broadcast/broadcastmanager.h \
+    broadcast/defs_broadcast.h \
+    control/control.h \
+    control/controlaudiotaperpot.h \
+    control/controlbehavior.h \
+    control/controleffectknob.h \
+    control/controlencoder.h \
+    control/controlindicator.h \
+    control/controllinpotmeter.h \
+    control/controllogpotmeter.h \
+    control/controlmodel.h \
+    control/controlobject.h \
+    control/controlobjectscript.h \
+    control/controlpotmeter.h \
+    control/controlproxy.h \
+    control/controlpushbutton.h \
+    control/controlttrotary.h \
+    control/controlvalue.h \
+    controllers/controller.h \
+    controllers/controllerdebug.h \
+    controllers/controllerengine.h \
+    controllers/controllerenumerator.h \
+    controllers/controllerinputmappingtablemodel.h \
+    controllers/controllerlearningeventfilter.h \
+    controllers/controllermanager.h \
+    controllers/controllermappingtablemodel.h \
+    controllers/controlleroutputmappingtablemodel.h \
+    controllers/controllerpreset.h \
+    controllers/controllerpresetfilehandler.h \
+    controllers/controllerpresetinfo.h \
+    controllers/controllerpresetinfoenumerator.h \
+    controllers/controllerpresetvisitor.h \
+    controllers/controllervisitor.h \
+    controllers/controlpickermenu.h \
+    controllers/defs_controllers.h \
+    controllers/dlgcontrollerlearning.h \
+    controllers/dlgprefcontroller.h \
+    controllers/dlgprefcontrollers.h \
+    controllers/learningutils.h \
+    controllers/softtakeover.h \
+    controllers/bulk/bulkcontroller.h \
+    controllers/bulk/bulkenumerator.h \
+    controllers/bulk/bulksupported.h \
+    controllers/delegates/controldelegate.h \
+    controllers/delegates/midibytedelegate.h \
+    controllers/delegates/midichanneldelegate.h \
+    controllers/delegates/midiopcodedelegate.h \
+    controllers/delegates/midioptionsdelegate.h \
+    controllers/hid/hidblacklist.h \
+    controllers/hid/hidcontroller.h \
+    controllers/hid/hidcontrollerpreset.h \
+    controllers/hid/hidcontrollerpresetfilehandler.h \
+    controllers/hid/hidenumerator.h \
+    controllers/keyboard/keyboardeventfilter.h \
+    controllers/midi/hss1394controller.h \
+    controllers/midi/hss1394enumerator.h \
+    controllers/midi/midicontroller.h \
+    controllers/midi/midicontrollerpreset.h \
+    controllers/midi/midicontrollerpresetfilehandler.h \
+    controllers/midi/midienumerator.h \
+    controllers/midi/midimessage.h \
+    controllers/midi/midioutputhandler.h \
+    controllers/midi/midiutils.h \
+    controllers/midi/portmidicontroller.h \
+    controllers/midi/portmididevice.h \
+    controllers/midi/portmidienumerator.h \
+    database/mixxxdb.h \
+    database/schemamanager.h \
+    dialog/dlgabout.h \
+    dialog/dlgdevelopertools.h \
+    effects/builtin/autopaneffect.h \
+    effects/builtin/balanceeffect.h \
+    effects/builtin/bessel4lvmixeqeffect.h \
+    effects/builtin/bessel8lvmixeqeffect.h \
+    effects/builtin/biquadfullkilleqeffect.h \
+    effects/builtin/bitcrushereffect.h \
+    effects/builtin/builtinbackend.h \
+    effects/builtin/echoeffect.h \
+    effects/builtin/equalizer_util.h \
+    effects/builtin/filtereffect.h \
+    effects/builtin/flangereffect.h \
+    effects/builtin/graphiceqeffect.h \
+    effects/builtin/linkwitzriley8eqeffect.h \
+    effects/builtin/loudnesscontoureffect.h \
+    effects/builtin/lvmixeqbase.h \
+    effects/builtin/metronomeclick.h \
+    effects/builtin/metronomeeffect.h \
+    effects/builtin/moogladder4filtereffect.h \
+    effects/builtin/parametriceqeffect.h \
+    effects/builtin/phasereffect.h \
+    effects/builtin/reverbeffect.h \
+    effects/builtin/threebandbiquadeqeffect.h \
+    effects/builtin/tremoloeffect.h \
+    effects/lv2/lv2backend.h \
+    effects/lv2/lv2effectprocessor.h \
+    effects/lv2/lv2manifest.h \
+    effects/defs.h \
+    effects/effect.h \
+    effects/effectbuttonparameterslot.h \
+    effects/effectchain.h \
+    effects/effectchainmanager.h \
+    effects/effectchainslot.h \
+    effects/effectinstantiator.h \
+    effects/effectmanifest.h \
+    effects/effectmanifestparameter.h \
+    effects/effectparameter.h \
+    effects/effectparameterslot.h \
+    effects/effectparameterslotbase.h \
+    effects/effectprocessor.h \
+    effects/effectrack.h \
+    effects/effectsbackend.h \
+    effects/effectslot.h \
+    effects/effectsmanager.h \
+    effects/effectxmlelements.h \
+    encoder/encoder.h \
+    encoder/encoderbroadcastsettings.h \
+    encoder/encodercallback.h \
+    encoder/encoderffmpegcore.h \
+    encoder/encoderffmpegmp3.h \
+    encoder/encoderffmpegresample.h \
+    encoder/encoderffmpegvorbis.h \
+    encoder/encoderflacsettings.h \
+    encoder/encodermp3.h \
+    encoder/encodermp3settings.h \
+    encoder/encodersettings.h \
+    encoder/encodersndfileflac.h \
+    encoder/encodervorbis.h \
+    encoder/encodervorbissettings.h \
+    encoder/encoderwave.h \
+    encoder/encoderwavesettings.h \
+    engine/bpmcontrol.h \
+    engine/cachingreader.h \
+    engine/cachingreaderchunk.h \
+    engine/cachingreaderworker.h \
+    engine/channelhandle.h \
+    engine/channelmixer.h \
+    engine/clockcontrol.h \
+    engine/cuecontrol.h \
+    engine/engine.h \
+    engine/engineaux.h \
+    engine/enginebuffer.h \
+    engine/enginebufferscale.h \
+    engine/enginebufferscalelinear.h \
+    engine/enginebufferscalerubberband.h \
+    engine/enginebufferscalest.h \
+    engine/enginechannel.h \
+    engine/enginecontrol.h \
+    engine/enginedeck.h \
+    engine/enginedelay.h \
+    engine/enginefilter.h \
+    engine/enginefilterbessel4.h \
+    engine/enginefilterbessel8.h \
+    engine/enginefilterbiquad1.h \
+    engine/enginefilterbutterworth4.h \
+    engine/enginefilterbutterworth8.h \
+    engine/enginefilterdelay.h \
+    engine/enginefilteriir.h \
+    engine/enginefilterlinkwitzriley2.h \
+    engine/enginefilterlinkwitzriley4.h \
+    engine/enginefilterlinkwitzriley8.h \
+    engine/enginefiltermoogladder4.h \
+    engine/enginefilterpan.h \
+    engine/enginefilterpansingle.h \
+    engine/enginemaster.h \
+    engine/enginemicrophone.h \
+    engine/engineobject.h \
+    engine/enginepregain.h \
+    engine/enginesidechaincompressor.h \
+    engine/enginetalkoverducking.h \
+    engine/enginevumeter.h \
+    engine/engineworker.h \
+    engine/engineworkerscheduler.h \
+    engine/enginexfader.h \
+    engine/keycontrol.h \
+    engine/loopingcontrol.h \
+    engine/positionscratchcontroller.h \
+    engine/quantizecontrol.h \
+    engine/ratecontrol.h \
+    engine/readaheadmanager.h \
+    engine/vinylcontrolcontrol.h \
+    engine/effects/engineeffect.h \
+    engine/effects/engineeffectchain.h \
+    engine/effects/engineeffectparameter.h \
+    engine/effects/engineeffectrack.h \
+    engine/effects/engineeffectsmanager.h \
+    engine/effects/groupfeaturestate.h \
+    engine/effects/message.h \
+    engine/sidechain/enginenetworkstream.h \
+    engine/sidechain/enginerecord.h \
+    engine/sidechain/enginesidechain.h \
+    engine/sidechain/networkinputstreamworker.h \
+    engine/sidechain/networkoutputstreamworker.h \
+    engine/sidechain/shoutconnection.h \
+    engine/sidechain/sidechainworker.h \
+    engine/sync/basesyncablelistener.h \
+    engine/sync/clock.h \
+    engine/sync/enginesync.h \
+    engine/sync/internalclock.h \
+    engine/sync/syncable.h \
+    engine/sync/synccontrol.h \
+    library/analysisfeature.h \
+    library/analysislibrarytablemodel.h \
+    library/baseexternallibraryfeature.h \
+    library/baseexternalplaylistmodel.h \
+    library/baseexternaltrackmodel.h \
+    library/baseplaylistfeature.h \
+    library/basesqltablemodel.h \
+    library/basetrackcache.h \
+    library/bpmdelegate.h \
+    library/columncache.h \
+    library/coverart.h \
+    library/coverartcache.h \
+    library/coverartdelegate.h \
+    library/coverartutils.h \
+    library/dlganalysis.h \
+    library/dlgcoverartfullsize.h \
+    library/dlghidden.h \
+    library/dlgmissing.h \
+    library/dlgtagfetcher.h \
+    library/dlgtrackinfo.h \
+    library/dlgtrackmetadataexport.h \
+    library/hiddentablemodel.h \
+    library/library.h \
+    library/library_preferences.h \
+    library/librarycontrol.h \
+    library/libraryfeature.h \
+    library/librarytablemodel.h \
+    library/libraryview.h \
+    library/missingtablemodel.h \
+    library/mixxxlibraryfeature.h \
+    library/parser.h \
+    library/parsercsv.h \
+    library/parserm3u.h \
+    library/parserpls.h \
+    library/playlistfeature.h \
+    library/playlisttablemodel.h \
+    library/previewbuttondelegate.h \
+    library/proxytrackmodel.h \
+    library/queryutil.h \
+    library/searchquery.h \
+    library/searchqueryparser.h \
+    library/setlogfeature.h \
+    library/sidebarmodel.h \
+    library/songdownloader.h \
+    library/stardelegate.h \
+    library/stareditor.h \
+    library/starrating.h \
+    library/tableitemdelegate.h \
+    library/trackcollection.h \
+    library/trackmodel.h \
+    library/treeitem.h \
+    library/treeitemmodel.h \
+    library/autodj/autodjfeature.h \
+    library/autodj/autodjprocessor.h \
+    library/autodj/dlgautodj.h \
+    library/banshee/bansheedbconnection.h \
+    library/banshee/bansheefeature.h \
+    library/banshee/bansheeplaylistmodel.h \
+    library/browse/browsefeature.h \
+    library/browse/browsetablemodel.h \
+    library/browse/browsethread.h \
+    library/browse/foldertreemodel.h \
+    library/crate/crate.h \
+    library/crate/cratefeature.h \
+    library/crate/cratefeaturehelper.h \
+    library/crate/crateid.h \
+    library/crate/crateschema.h \
+    library/crate/cratestorage.h \
+    library/crate/cratesummary.h \
+    library/crate/cratetablemodel.h \
+    library/dao/analysisdao.h \
+    library/dao/autodjcratesdao.h \
+    library/dao/cue.h \
+    library/dao/cuedao.h \
+    library/dao/dao.h \
+    library/dao/directorydao.h \
+    library/dao/libraryhashdao.h \
+    library/dao/playlistdao.h \
+    library/dao/settingsdao.h \
+    library/dao/trackdao.h \
+    library/dao/trackschema.h \
+    library/export/trackexportdlg.h \
+    library/export/trackexportwizard.h \
+    library/export/trackexportworker.h \
+    library/itunes/itunesfeature.h \
+    library/recording/dlgrecording.h \
+    library/recording/recordingfeature.h \
+    library/rhythmbox/rhythmboxfeature.h \
+    library/rhythmbox/rhythmboxfeature.h \
+    library/scanner/importfilestask.h \
+    library/scanner/libraryscanner.h \
+    library/scanner/libraryscannerdlg.h \
+    library/scanner/recursivescandirectorytask.h \
+    library/scanner/scannerglobal.h \
+    library/scanner/scannertask.h \
+    library/scanner/scannerutil.h \
+    library/traktor/traktorfeature.h \
+    mixer/auxiliary.h \
+    mixer/baseplayer.h \
+    mixer/basetrackplayer.h \
+    mixer/deck.h \
+    mixer/microphone.h \
+    mixer/playerinfo.h \
+    mixer/playermanager.h \
+    mixer/previewdeck.h \
+    mixer/sampler.h \
+    mixer/samplerbank.h \
+    musicbrainz/acoustidclient.h \
+    musicbrainz/chromaprinter.h \
+    musicbrainz/crc.h \
+    musicbrainz/gzip.h \
+    musicbrainz/musicbrainzclient.h \
+    musicbrainz/network.h \
+    musicbrainz/tagfetcher.h \
+    preferences/broadcastprofile.h \
+    preferences/broadcastsettings.h \
+    preferences/broadcastsettingsmodel.h \
+    preferences/configobject.h \
+    preferences/constants.h \
+    preferences/dlgpreferencepage.h \
+    preferences/effectsettingsmodel.h \
+    preferences/replaygainsettings.h \
+    preferences/settingsmanager.h \
+    preferences/upgrade.h \
+    preferences/usersettings.h \
+    preferences/waveformsettings.h \
+    preferences/dialog/dlgprefautodj.h \
+    preferences/dialog/dlgprefbeats.h \
+    preferences/dialog/dlgprefbroadcast.h \
+    preferences/dialog/dlgprefcrossfader.h \
+    preferences/dialog/dlgprefdeck.h \
+    preferences/dialog/dlgprefeffects.h \
+    preferences/dialog/dlgprefeq.h \
+    preferences/dialog/dlgpreferences.h \
+    preferences/dialog/dlgprefinterface.h \
+    preferences/dialog/dlgprefkey.h \
+    preferences/dialog/dlgpreflibrary.h \
+    preferences/dialog/dlgpreflv2.h \
+    preferences/dialog/dlgprefmodplug.h \
+    preferences/dialog/dlgprefnovinyl.h \
+    preferences/dialog/dlgprefrecord.h \
+    preferences/dialog/dlgprefreplaygain.h \
+    preferences/dialog/dlgprefsound.h \
+    preferences/dialog/dlgprefsounditem.h \
+    preferences/dialog/dlgprefvinyl.h \
+    preferences/dialog/dlgprefwaveform.h \
+    recording/defs_recording.h \
+    recording/recordingmanager.h \
+    skin/colorschemeparser.h \
+    skin/imgcolor.h \
+    skin/imginvert.h \
+    skin/imgloader.h \
+    skin/imgsource.h \
+    skin/launchimage.h \
+    skin/legacyskinparser.h \
+    skin/pixmapsource.h \
+    skin/skincontext.h \
+    skin/skinloader.h \
+    skin/skinparser.h \
+    skin/svgparser.h \
+    skin/tooltips.h \
+    soundio/sounddevice.h \
+    soundio/sounddeviceerror.h \
+    soundio/sounddevicenetwork.h \
+    soundio/sounddevicenotfound.h \
+    soundio/sounddeviceportaudio.h \
+    soundio/soundmanager.h \
+    soundio/soundmanagerconfig.h \
+    soundio/soundmanagerutil.h \
+    sources/audiosource.h \
+    sources/audiosourcestereoproxy.h \
+    sources/audiosourcetrackproxy.h \
+    sources/metadatasource.h \
+    sources/metadatasourcetaglib.h \
+    sources/mp3decoding.h \
+    sources/soundsource.h \
+    sources/soundsourcecoreaudio.h \
+    sources/soundsourceffmpeg.h \
+    sources/soundsourceflac.h \
+    sources/soundsourcemodplug.h \
+    sources/soundsourcemp3.h \
+    sources/soundsourceoggvorbis.h \
+    sources/soundsourceopus.h \
+    sources/soundsourceplugin.h \
+    sources/soundsourcepluginapi.h \
+    sources/soundsourcepluginlibrary.h \
+    sources/soundsourceprovider.h \
+    sources/soundsourceproviderregistry.h \
+    sources/soundsourceproxy.h \
+    sources/soundsourcesndfile.h \
+    sources/urlresource.h \
+    sources/v1/legacyaudiosource.h \
+    sources/v1/legacyaudiosourceadapter.h \
+    track/albuminfo.h \
+    track/beat_preferences.h \
+    track/beatfactory.h \
+    track/beatgrid.h \
+    track/beatmap.h \
+    track/beats.h \
+    track/beatutils.h \
+    track/bpm.h \
+    track/globaltrackcache.h \
+    track/key_preferences.h \
+    track/keyfactory.h \
+    track/keys.h \
+    track/keyutils.h \
+    track/playcounter.h \
+    track/replaygain.h \
+    track/track.h \
+    track/trackid.h \
+    track/trackinfo.h \
+    track/trackmetadata.h \
+    track/trackmetadatataglib.h \
+    track/tracknumbers.h \
+    track/trackrecord.h \
+    track/trackref.h \
+    util/alphabetafilter.h \
+    util/assert.h \
+    util/audiosignal.h \
+    util/autohidpi.h \
+    util/circularbuffer.h \
+    util/class.h \
+    util/cmdlineargs.h \
+    util/compatibility.h \
+    util/console.h \
+    util/counter.h \
+    util/debug.h \
+    util/defs.h \
+    util/denormalsarezero.h \
+    util/dnd.h \
+    util/duration.h \
+    util/event.h \
+    util/experiment.h \
+    util/fifo.h \
+    util/file.h \
+    util/filepathurl.h \
+    util/font.h \
+    util/fpclassify.h \
+    util/indexrange.h \
+    util/lcs.h \
+    util/logger.h \
+    util/logging.h \
+    util/mac.h \
+    util/math.h \
+    util/memory.h \
+    util/movinginterquartilemean.h \
+    util/mutex.h \
+    util/parented_ptr.h \
+    util/path.h \
+    util/performancetimer.h \
+    util/platform.h \
+    util/rampingvalue.h \
+    util/readaheadsamplebuffer.h \
+    util/reference.h \
+    util/regex.h \
+    util/rescaler.h \
+    util/rlimit.h \
+    util/rotary.h \
+    util/sample.h \
+    util/sample_autogen.h \
+    util/samplebuffer.h \
+    util/sandbox.h \
+    util/scopedoverridecursor.h \
+    util/screensaver.h \
+    util/singleton.h \
+    util/sleep.h \
+    util/sleepableqthread.h \
+    util/stat.h \
+    util/statmodel.h \
+    util/statsmanager.h \
+    util/string.h \
+    util/synthesizedmouseevents.h \
+    util/tapfilter.h \
+    util/task.h \
+    util/thread_annotations.h \
+    util/threadcputimer.h \
+    util/time.h \
+    util/timer.h \
+    util/trace.h \
+    util/translations.h \
+    util/types.h \
+    util/valuetransformer.h \
+    util/version.h \
+    util/widgethider.h \
+    util/widgetrendertimer.h \
+    util/xml.h \
+    util/battery/battery.h \
+    util/battery/batterylinux.h \
+    util/battery/batterymac.h \
+    util/battery/batterywindows.h \
+    util/db/dbconnection.h \
+    util/db/dbconnectionpool.h \
+    util/db/dbconnectionpooled.h \
+    util/db/dbconnectionpooler.h \
+    util/db/dbentity.h \
+    util/db/dbfieldindex.h \
+    util/db/dbid.h \
+    util/db/dbnamedentity.h \
+    util/db/fwdsqlquery.h \
+    util/db/fwdsqlqueryselectresult.h \
+    util/db/sqllikewildcardescaper.h \
+    util/db/sqllikewildcards.h \
+    util/db/sqlqueryfinisher.h \
+    util/db/sqlstorage.h \
+    util/db/sqlstringformatter.h \
+    util/db/sqlsubselectmode.h \
+    util/db/sqltransaction.h \
+    waveform/guitick.h \
+    waveform/sharedglcontext.h \
+    waveform/visualplayposition.h \
+    waveform/vsyncthread.h \
+    waveform/waveform.h \
+    waveform/waveformfactory.h \
+    waveform/waveformwidgetfactory.h \
+    waveform/renderers/glslwaveformrenderersignal.h \
+    waveform/renderers/glvsynctestrenderer.h \
+    waveform/renderers/glwaveformrendererfilteredsignal.h \
+    waveform/renderers/glwaveformrendererrgb.h \
+    waveform/renderers/glwaveformrenderersimplesignal.h \
+    waveform/renderers/qtwaveformrendererfilteredsignal.h \
+    waveform/renderers/qtwaveformrenderersimplesignal.h \
+    waveform/renderers/waveformmark.h \
+    waveform/renderers/waveformmarkproperties.h \
+    waveform/renderers/waveformmarkrange.h \
+    waveform/renderers/waveformmarkset.h \
+    waveform/renderers/waveformrenderbackground.h \
+    waveform/renderers/waveformrenderbeat.h \
+    waveform/renderers/waveformrendererabstract.h \
+    waveform/renderers/waveformrendererendoftrack.h \
+    waveform/renderers/waveformrendererfilteredsignal.h \
+    waveform/renderers/waveformrendererhsv.h \
+    waveform/renderers/waveformrendererpreroll.h \
+    waveform/renderers/waveformrendererrgb.h \
+    waveform/renderers/waveformrenderersignalbase.h \
+    waveform/renderers/waveformrendermark.h \
+    waveform/renderers/waveformrendermarkrange.h \
+    waveform/renderers/waveformsignalcolors.h \
+    waveform/renderers/waveformwidgetrenderer.h \
+    waveform/guitick.h \
+    waveform/sharedglcontext.h \
+    waveform/visualplayposition.h \
+    waveform/vsyncthread.h \
+    waveform/waveform.h \
+    waveform/waveformfactory.h \
+    waveform/waveformwidgetfactory.h \
+    defs_urls.h \
+    defs_version.h \
+    errordialoghandler.h \
+    mixxx.h \
+    mixxx.rc \
+    mixxxapplication.h
+
+
+FORMS += \   
+        dialog\dlgaboutdlg.ui \
+        library\dlganalysis.ui \
+        library\autodj\dlgautodj.ui \
+        controllers\dlgcontrollerlearning.ui \
+        library\dlgcoverartfullsize.ui \
+        dialog\dlgdevelopertoolsdlg.ui \
+        library\dlghidden.ui \
+        library\dlgmissing.ui \
+        preferences\dialog\dlgprefautodjdlg.ui \
+        preferences\dialog\dlgprefbeatsdlg.ui \
+        preferences\dialog\dlgprefbroadcastdlg.ui \
+        controllers\dlgprefcontrollerdlg.ui \
+        controllers\dlgprefcontrollersdlg.ui \
+        preferences\dialog\dlgprefcrossfaderdlg.ui \
+        preferences\dialog\dlgprefdeckdlg.ui \
+        preferences\dialog\dlgprefeffectsdlg.ui \
+        preferences\dialog\dlgprefeqdlg.ui \
+        preferences\dialog\dlgpreferencesdlg.ui \
+        preferences\dialog\dlgprefinterfacedlg.ui \
+        preferences\dialog\dlgprefkeydlg.ui \
+        preferences\dialog\dlgpreflibrarydlg.ui \
+        preferences\dialog\dlgpreflv2dlg.ui \
+        preferences\dialog\dlgprefmodplugdlg.ui \
+        preferences\dialog\dlgprefnovinyldlg.ui \
+        preferences\dialog\dlgprefrecorddlg.ui \
+        preferences\dialog\dlgprefreplaygaindlg.ui \
+        preferences\dialog\dlgprefsounddlg.ui \
+        preferences\dialog\dlgprefsounditem.ui \
+        preferences\dialog\dlgprefvinyldlg.ui \
+        preferences\dialog\dlgprefwaveformdlg.ui \
+        library\recording\dlgrecording.ui \
+        library\dlgtagfetcher.ui \
+        library\export\dlgtrackexport.ui \
+        library\dlgtrackinfo.ui
+# Default rules for deployment.
+qnx: target.path = /tmp/$${TARGET}/bin
+
+!isEmpty(target.path): INSTALLS += target
+
+DISTFILES += \
+    mixxx.res \
+    MixxxCustom.pro.user \
+    mixxx.rc.include \
+    SConscript \
+    SConscript.env
+
+SUBDIRS += \
+    MixxxCustom.pro

@@ -111,10 +111,10 @@ SerialPort* SkinLoader::getSerialPort()
 {
     return m_serialPort;
 }
-#include "widget\wspinny.h"
-#include "widget\wknobcomposed.h"
-#include "widget\wpushbutton.h"
-#include "widget\wslidercomposed.h"
+#include "widget/wspinny.h"
+#include "widget/wknobcomposed.h"
+#include "widget/wpushbutton.h"
+#include "widget/wslidercomposed.h"
 void SkinLoader::getComingData(QByteArray data)
 {
     int  x = (data[3] << 8) + data[2];
@@ -368,11 +368,11 @@ void SerialPort::OpenSerial(QString portName)
         //设置流控制
         serial->setFlowControl(QSerialPort::NoFlowControl);//设置为无流控制
 
-        QMessageBox::about(NULL, "warning", QStringLiteral("连接串口成功"));
+        //QMessageBox::about(NULL, "warning", QStringLiteral("连接串口成功"));
     }
     else
     {
-        QMessageBox::about(NULL, "warning", QStringLiteral("连接串口成功"));
+        //QMessageBox::about(NULL, "warning", QStringLiteral("连接串口成功"));
     }
 }
 

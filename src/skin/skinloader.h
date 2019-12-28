@@ -8,7 +8,7 @@
 #include <QtSerialPort/QSerialPortInfo>
 
 #include "preferences/usersettings.h"
-#include "widget\wbasewidget.h"
+#include "widget/wbasewidget.h"
 class KeyboardEventFilter;
 class PlayerManager;
 class ControllerManager;

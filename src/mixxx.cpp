@@ -91,7 +91,7 @@
 #undef max
 #undef min
 #endif
-
+/*
 #include <windows.h>
 
 HHOOK hook = NULL;
@@ -109,6 +109,7 @@ LRESULT CALLBACK GetMsgProc(
 
     return CallNextHookEx(hook, nCode, wParam, lParam);
 }
+*/
 namespace {
 
 const mixxx::Logger kLogger("MixxxMainWindow");
@@ -1416,18 +1417,18 @@ bool MixxxMainWindow::event(QEvent* e) {
 
 void MixxxMainWindow::keyPressEvent(QKeyEvent *e)
 {
-    if(e->key() == Qt::Key_Up)
-    {
-        if(hook == NULL)
-            hook = SetWindowsHookEx(WH_MOUSE_LL, GetMsgProc, NULL, 0);
+//    if(e->key() == Qt::Key_Up)
+//    {
+//        if(hook == NULL)
+//            hook = SetWindowsHookEx(WH_MOUSE_LL, GetMsgProc, NULL, 0);
 
-    }
-    else if(e->key() == Qt::Key_Down)
-    {
-        if(hook)
-            UnhookWindowsHookEx(hook);
-        hook = NULL;
-    }
+//    }
+//    else if(e->key() == Qt::Key_Down)
+//    {
+//        if(hook)
+//            UnhookWindowsHookEx(hook);
+//        hook = NULL;
+//    }
     QMainWindow::keyPressEvent(e);
 }
 
