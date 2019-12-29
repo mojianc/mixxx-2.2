@@ -83,7 +83,7 @@ public:
 
     void loadConfigCoordinate();
     void connectHid(ControllerManager* pControllerManager);
-    void setVideoWidget(VideoWidget *widget);
+    //void setVideoWidget(VideoWidget *widget);
     SerialPort *getSerialPort();
   public slots:
     void getComingData(QByteArray data);
@@ -98,7 +98,7 @@ public:
     QRect m_knobScale;
     MusicButtonControl *m_musicBtControl;
 
-    VideoWidget *m_videoWidget;
+    //VideoWidget *m_videoWidget;
 
     SerialPort *m_serialPort;
 };

@@ -51,7 +51,7 @@ class WMainMenuBar : public QMenuBar {
 
   signals:
     bool videoControl(bool);
-    void playNext();
+//    void playNext();
     void PortConnect();
     void createCrate();
     void createPlaylist();

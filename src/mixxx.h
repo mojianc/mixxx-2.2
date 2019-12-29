@@ -74,28 +74,28 @@ private:
     QPushButton *m_pb;
 };
 
-class VideoWidget : public QWidget
-{
-    Q_OBJECT
-public:
-    VideoWidget(QWidget *parent = 0);
-    ~VideoWidget();
-    void addToPlaylist(const QStringList& fileNames);
-    void setShow(bool isShow);
-    void playNext();
-    void stop();
-public slots:
-    void timeupdate();
-    void loadVideoList();
-private:
-    QTimer *m_timer;
-    bool m_inMove;
+//class VideoWidget : public QWidget
+//{
+//    Q_OBJECT
+//public:
+//    VideoWidget(QWidget *parent = 0);
+//    ~VideoWidget();
+//    void addToPlaylist(const QStringList& fileNames);
+//    void setShow(bool isShow);
+//    void playNext();
+//    void stop();
+//public slots:
+//    void timeupdate();
+//    void loadVideoList();
+//private:
+//    QTimer *m_timer;
+//    bool m_inMove;
 
-    QMediaPlayer *m_player;
-    QVideoWidget *m_videoWidget;
-    QMediaPlaylist *m_Playlist;
-    QStringList m_videoList;
-};
+//    QMediaPlayer *m_player;
+//    QVideoWidget *m_videoWidget;
+//    QMediaPlaylist *m_Playlist;
+//    QStringList m_videoList;
+//};
 
 // This Class is the base class for Mixxx. It sets up the main
 // window and providing a menubar.
@@ -124,7 +124,7 @@ class MixxxMainWindow : public QMainWindow {
   public slots:
     void rebootMixxxView();
     void serialportControl(int control);
-    void playNext();
+//    void playNext();
     void PortConnect();
     void slotFileLoadSongPlayer(int deck);
     // toggle keyboard on-off
@@ -246,7 +246,7 @@ class MixxxMainWindow : public QMainWindow {
     static const int kMicrophoneCount;
     static const int kAuxiliaryCount;
 
-    VideoWidget *m_videoWidget;
+//    VideoWidget *m_videoWidget;
 
     SerialPortWidget *m_serialPortWidget;
 };

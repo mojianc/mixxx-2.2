@@ -263,15 +263,15 @@ void WMainMenuBar::initialize() {
     createVisibilityControl(pViewMaximizeLibrary, ConfigKey("[Master]", "maximize_library"));
     pViewMenu->addAction(pViewMaximizeLibrary);
 
-    QAction *pVideoControl = new QAction("showVideo", this);
-    pVideoControl->setCheckable(true);
-    pViewMenu->addAction(pVideoControl);
-    connect(pVideoControl, SIGNAL(triggered(bool)), this, SIGNAL(videoControl(bool)));
+//    QAction *pVideoControl = new QAction("showVideo", this);
+//    pVideoControl->setCheckable(true);
+//    pViewMenu->addAction(pVideoControl);
+//    connect(pVideoControl, SIGNAL(triggered(bool)), this, SIGNAL(videoControl(bool)));
 
-    QAction *pVideoPlayNext = new QAction("playNext", this);
-    pVideoPlayNext->setCheckable(true);
-    pViewMenu->addAction(pVideoPlayNext);
-    connect(pVideoPlayNext, SIGNAL(triggered()), this, SIGNAL(playNext()));
+//    QAction *pVideoPlayNext = new QAction("playNext", this);
+//    pVideoPlayNext->setCheckable(true);
+//    pViewMenu->addAction(pVideoPlayNext);
+//    connect(pVideoPlayNext, SIGNAL(triggered()), this, SIGNAL(playNext()));
 
     QAction *pSerialPort = new QAction("PortConnect", this);
     pSerialPort->setCheckable(true);

@@ -102,10 +102,10 @@ void SkinLoader::connectHid(ControllerManager *pControllerManager)
 
 }
 
-void SkinLoader::setVideoWidget(VideoWidget *widget)
-{
-    m_videoWidget = widget;
-}
+//void SkinLoader::setVideoWidget(VideoWidget *widget)
+//{
+//    m_videoWidget = widget;
+//}
 
 SerialPort* SkinLoader::getSerialPort()
 {
@@ -137,17 +137,17 @@ void SkinLoader::getComingData(QByteArray data)
                 break;
             }
 
-            if(objectName.contains("VideoNext"))
-            {
-                m_videoWidget->playNext();
-                break;
-            }
+//            if(objectName.contains("VideoNext"))
+//            {
+//                m_videoWidget->playNext();
+//                break;
+//            }
 
-            if(objectName.contains("VideoStop"))
-            {
-                m_videoWidget->stop();
-                break;
-            }
+//            if(objectName.contains("VideoStop"))
+//            {
+//                m_videoWidget->stop();
+//                break;
+//            }
 
             QString objectNameTemp = objectName.replace('{','[');
             objectNameTemp = objectNameTemp.replace('}',']');

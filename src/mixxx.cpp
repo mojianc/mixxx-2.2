@@ -204,24 +204,24 @@ MixxxMainWindow::MixxxMainWindow(QApplication* pApp, const CmdlineArgs& args)
 
     initialize(pApp, args);
 
-    QWidget *widget = new QWidget(this);
-    m_videoWidget = new VideoWidget(this);
-    m_videoWidget->setFixedSize(1600, 300);
-    m_pSkinLoader->setVideoWidget(m_videoWidget);
+    //QWidget *widget = new QWidget(this);
+    //m_videoWidget = new VideoWidget(this);
+    //m_videoWidget->setFixedSize(1600, 300);
+    //m_pSkinLoader->setVideoWidget(m_videoWidget);
 
     m_serialPortWidget = new SerialPortWidget;
     m_serialPortWidget->setSerialPort(m_pSkinLoader->getSerialPort());
     m_serialPortWidget->setFixedSize(100, 300);
 
-    QVBoxLayout *boxlayout = new QVBoxLayout(this);
-    boxlayout->addWidget(m_pWidgetParent);
-    QHBoxLayout *hlayout = new QHBoxLayout(this);
-    hlayout->addWidget(m_videoWidget);
-    hlayout->addWidget(m_serialPortWidget);
-    boxlayout->addLayout(hlayout);
-    widget->setLayout(boxlayout);
-    setCentralWidget(widget);
-    m_videoWidget->show();
+    //QVBoxLayout *boxlayout = new QVBoxLayout(this);
+    //boxlayout->addWidget(m_pWidgetParent);
+    //QHBoxLayout *hlayout = new QHBoxLayout(this);
+    //hlayout->addWidget(m_videoWidget);
+    //hlayout->addWidget(m_serialPortWidget);
+    //boxlayout->addLayout(hlayout);
+    //widget->setLayout(boxlayout);
+    setCentralWidget(m_pWidgetParent);
+    //m_videoWidget->show();
 }
 
 MixxxMainWindow::~MixxxMainWindow() {
@@ -1037,7 +1037,7 @@ void MixxxMainWindow::createMenuBar() {
 void MixxxMainWindow::connectMenuBar() {
     ScopedTimer t("MixxxMainWindow::connectMenuBar");
     connect(m_pMenuBar, SIGNAL(videoControl(bool)), this, SLOT(controlVideo(bool)));
-    connect(m_pMenuBar, SIGNAL(playNext()), this, SLOT(playNext()));
+//    connect(m_pMenuBar, SIGNAL(playNext()), this, SLOT(playNext()));
     connect(m_pMenuBar, SIGNAL(PortConnect()), this, SLOT(PortConnect()));
     connect(this, SIGNAL(newSkinLoaded()),
             m_pMenuBar, SLOT(onNewSkinLoaded()));
@@ -1366,10 +1366,10 @@ void MixxxMainWindow::serialportControl(int control)
     m_serialPortWidget->sendData(control);
 }
 
-void MixxxMainWindow::playNext()
-{
-    m_videoWidget->playNext();
-}
+//void MixxxMainWindow::playNext()
+//{
+//    m_videoWidget->playNext();
+//}
 
 void MixxxMainWindow::PortConnect()
 {
@@ -1563,112 +1563,112 @@ void MixxxMainWindow::launchProgress(int progress) {
 }
 
 
-VideoWidget::VideoWidget(QWidget *parent)
-    : QWidget(parent)
-    , m_inMove(false)
-{
-    m_player = new QMediaPlayer;
+//VideoWidget::VideoWidget(QWidget *parent)
+//    : QWidget(parent)
+//    , m_inMove(false)
+//{
+//    m_player = new QMediaPlayer;
 
-    m_Playlist = new QMediaPlaylist();
-    m_player->setPlaylist(m_Playlist);
+//    m_Playlist = new QMediaPlaylist();
+//    m_player->setPlaylist(m_Playlist);
 
-    m_videoWidget = new QVideoWidget(this);
-    m_player->setVideoOutput(m_videoWidget);
+//    m_videoWidget = new QVideoWidget(this);
+//    m_player->setVideoOutput(m_videoWidget);
 
-    //垂直布局：视频播放器、进度条、控制按钮布局
-    QBoxLayout *mainLayout = new QVBoxLayout;
-    mainLayout->addWidget(m_videoWidget);
-    //设置布局
-    this->setLayout(mainLayout);
-	m_timer = new QTimer(this);
-	connect(m_timer, SIGNAL(timeout()), this, SLOT(timeupdate()));
-    loadVideoList();
-    addToPlaylist(m_videoList);
-}
+//    //垂直布局：视频播放器、进度条、控制按钮布局
+//    QBoxLayout *mainLayout = new QVBoxLayout;
+//    mainLayout->addWidget(m_videoWidget);
+//    //设置布局
+//    this->setLayout(mainLayout);
+//	m_timer = new QTimer(this);
+//	connect(m_timer, SIGNAL(timeout()), this, SLOT(timeupdate()));
+//    loadVideoList();
+//    addToPlaylist(m_videoList);
+//}
 
-VideoWidget::~VideoWidget()
-{
+//VideoWidget::~VideoWidget()
+//{
 
-}
+//}
 
-void VideoWidget::addToPlaylist(const QStringList& fileNames)
-{
-    foreach (QString const &argument, fileNames) {
-        QFileInfo fileInfo(argument);
-        if (fileInfo.exists()) {
-            QUrl url = QUrl::fromLocalFile(fileInfo.absoluteFilePath());
-            if (fileInfo.suffix().toLower() == QLatin1String("m3u")) {
-                m_Playlist->load(url);
-            } else
-                m_Playlist->addMedia(url);
-        } else {
-            QUrl url(argument);
-            if (url.isValid()) {
-                m_Playlist->addMedia(url);
-            }
-        }
-    }
-}
+//void VideoWidget::addToPlaylist(const QStringList& fileNames)
+//{
+//    foreach (QString const &argument, fileNames) {
+//        QFileInfo fileInfo(argument);
+//        if (fileInfo.exists()) {
+//            QUrl url = QUrl::fromLocalFile(fileInfo.absoluteFilePath());
+//            if (fileInfo.suffix().toLower() == QLatin1String("m3u")) {
+//                m_Playlist->load(url);
+//            } else
+//                m_Playlist->addMedia(url);
+//        } else {
+//            QUrl url(argument);
+//            if (url.isValid()) {
+//                m_Playlist->addMedia(url);
+//            }
+//        }
+//    }
+//}
 
-void VideoWidget::setShow(bool isShow)
-{
-    if(isShow)
-    {
-        show();
-        m_player->play();
-    }
-    else
-    {
-        hide();
-        m_player->stop();
-    }
-}
+//void VideoWidget::setShow(bool isShow)
+//{
+//    if(isShow)
+//    {
+//        show();
+//        m_player->play();
+//    }
+//    else
+//    {
+//        hide();
+//        m_player->stop();
+//    }
+//}
 
-void VideoWidget::playNext()
-{
-    m_timer->stop();
-    m_timer->start(100);
-    if(!m_inMove)
-    {
-        int index = m_Playlist->currentIndex();
-        m_Playlist->setCurrentIndex(index + 1);
-        m_player->play();
-        m_inMove =true;
-    }
-}
+//void VideoWidget::playNext()
+//{
+//    m_timer->stop();
+//    m_timer->start(100);
+//    if(!m_inMove)
+//    {
+//        int index = m_Playlist->currentIndex();
+//        m_Playlist->setCurrentIndex(index + 1);
+//        m_player->play();
+//        m_inMove =true;
+//    }
+//}
 
-void VideoWidget::stop()
-{
-    m_timer->stop();
-    m_timer->start(100);
-    if(!m_inMove)
-    {
-        m_player->stop();
-        m_inMove =true;
-    }
-}
+//void VideoWidget::stop()
+//{
+//    m_timer->stop();
+//    m_timer->start(100);
+//    if(!m_inMove)
+//    {
+//        m_player->stop();
+//        m_inMove =true;
+//    }
+//}
 
-void VideoWidget::timeupdate()
-{
-    m_inMove = false;
-}
+//void VideoWidget::timeupdate()
+//{
+//    m_inMove = false;
+//}
 
-void VideoWidget::loadVideoList()
-{
-    //解析视频列表
-    m_videoList.clear();
-    QString exePath = QCoreApplication::applicationDirPath();
-    QSettings *iniSetting = new QSettings(exePath + "/video/videoList.ini", QSettings::IniFormat);
-    QStringList groups = iniSetting->childGroups();
-    for (int i=0; i<groups.size(); ++i)
-    {
-        QString strGroup = groups.at(i);
-        iniSetting->beginGroup(strGroup);
-        QString path = iniSetting->value("path").toString();
-        m_videoList.append(exePath + "/video/" + path);
-        iniSetting->endGroup();
-    }
-}
+//void VideoWidget::loadVideoList()
+//{
+//    //解析视频列表
+//    m_videoList.clear();
+//    QString exePath = QCoreApplication::applicationDirPath();
+//    QSettings *iniSetting = new QSettings(exePath + "/video/videoList.ini", QSettings::IniFormat);
+//    QStringList groups = iniSetting->childGroups();
+//    for (int i=0; i<groups.size(); ++i)
+//    {
+//        QString strGroup = groups.at(i);
+//        iniSetting->beginGroup(strGroup);
+//        QString path = iniSetting->value("path").toString();
+//        m_videoList.append(exePath + "/video/" + path);
+//        iniSetting->endGroup();
+//    }
+//}
 
 #include <QPushButton>
 #include <QComboBox>

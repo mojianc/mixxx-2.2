@@ -37,7 +37,7 @@ class MixxxBuild(object):
                 toolchain = 'gnu'
 
         if build is None:
-            build = 'debug'
+            build = 'release'
 
         if not build in ['debug', 'release']:
             raise Exception("invalid build type")
