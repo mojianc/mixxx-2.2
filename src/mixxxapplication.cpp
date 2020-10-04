@@ -10,7 +10,7 @@
 // When linking Qt statically on Windows we have to Q_IMPORT_PLUGIN all the
 // plugins we link in build/depends.py.
 #include <QtPlugin>
-Q_IMPORT_PLUGIN(DSServicePlugin)
+//Q_IMPORT_PLUGIN(DSServicePlugin)
 
 #ifdef QT_NODLL
 #include <QtPlugin>

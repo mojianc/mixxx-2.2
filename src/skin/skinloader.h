@@ -22,6 +22,7 @@ class QMediaPlayer;
 class QMediaPlaylist;
 class SkinLoader;
 class VideoWidget;
+class FtTask;
 
 class SerialPort : public QObject
 {
@@ -57,10 +58,18 @@ private:
     QMediaPlaylist *m_playlist;
     SkinLoader *m_skinLoader;
 };
-
+#include <QTimer>
 class SkinLoader : public QObject{
     Q_OBJECT
 public:
+    enum WidgetType{
+        type_None,
+        type_WSpinny,
+        type_WKnobComposed,
+        type_WPushButton,
+        type_WSliderComposed
+    };
+
     SkinLoader(UserSettingsPointer pConfig);
     virtual ~SkinLoader();
 
@@ -85,8 +94,25 @@ public:
     void connectHid(ControllerManager* pControllerManager);
     void setVideoWidget(VideoWidget *widget);
     SerialPort *getSerialPort();
+    void dealWithLED(WidgetType type, QString objName, int x, int y, QRect rct);
   public slots:
     void getComingData(QByteArray data);
+    void handleTimeoutB3();  //超时处理函数
+    void handleTimeoutB4();
+    void handleTimeoutB5();
+    void handleTimeoutB9();
+    void handleTimeoutB10();
+    void handleTimeoutB11();
+
+    void handleTimeoutB17();
+    void handleTimeoutB19();
+    void handleTimeoutB21();
+    void handleTimeoutB23();
+
+    void handleTimeoutB18();
+    void handleTimeoutB20();
+    void handleTimeoutB22();
+    void handleTimeoutB24();
   private:
     QString pickResizableSkin(QString oldSkin) const;
 
@@ -101,6 +127,43 @@ public:
     VideoWidget *m_videoWidget;
 
     SerialPort *m_serialPort;
+    FtTask *m_ftTask;
+    WidgetType m_widgetType;
+    //B3,B4,B5旋钮的定时器
+    QTimer *m_timeB3;
+    int m_timeOutB3;
+    QTimer *m_timeB4;
+    int m_timeOutB4;
+    QTimer *m_timeB5;
+    int m_timeOutB5;
+
+    //B9,B10,B11旋钮的定时器
+    QTimer *m_timeB9;
+    int m_timeOutB9;
+    QTimer *m_timeB10;
+    int m_timeOutB10;
+    QTimer *m_timeB11;
+    int m_timeOutB11;
+
+    //B17,B19,B21,B23旋钮的定时器
+    QTimer *m_timeB17;
+    int m_timeOutB17;
+    QTimer *m_timeB19;
+    int m_timeOutB19;
+    QTimer *m_timeB21;
+    int m_timeOutB21;
+    QTimer *m_timeB23;
+    int m_timeOutB23;
+
+    //B18,B20,B22,B24旋钮的定时器
+    QTimer *m_timeB18;
+    int m_timeOutB18;
+    QTimer *m_timeB20;
+    int m_timeOutB20;
+    QTimer *m_timeB22;
+    int m_timeOutB22;
+    QTimer *m_timeB24;
+    int m_timeOutB24;
 };
 
 
