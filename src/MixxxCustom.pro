@@ -675,7 +675,9 @@ SOURCES += \
     mixxxapplication.cpp \
     controllers/hid/hidenumerator.cpp \
     controllers/hid/hidcontrollerpresetfilehandler.cpp \
-    controllers/hid/hidcontroller.cpp
+    controllers/hid/hidcontroller.cpp \
+    FtTask.cpp \
+    FtUnitl.cpp
 
 HEADERS += \
     analyzer/vamp/vampanalyzer.h \
@@ -1237,7 +1239,10 @@ HEADERS += \
     errordialoghandler.h \
     mixxx.h \
     mixxx.rc \
-    mixxxapplication.h
+    mixxxapplication.h \
+    ftd2xx.h \
+    FtTask.h \
+    FtUnitl.h
 
 
 FORMS += \   

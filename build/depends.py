@@ -665,6 +665,16 @@ class ProtoBuf(Dependence):
         if not conf.CheckLib(libs):
             raise Exception(
                 "Could not find libprotobuf or its development headers.")
+                
+class Ftd2xx(Dependence):
+    def configure(self, build, conf):
+        libs = ['ftd2xx']
+        if build.platform_is_windows:
+            if not build.static_dependencies:
+                build.env.Append(CPPDEFINES='FTD2XX_USE_DLLS')
+        if not conf.CheckLib(libs):
+            raise Exception(
+                "Could not find ftd2xx.")
 
 class FpClassify(Dependence):
 
@@ -896,6 +906,8 @@ class MixxxCore(Feature):
                    "mixxx.cpp",
                    "mixxxapplication.cpp",
                    "errordialoghandler.cpp",
+                   "FtTask.cpp",
+                   "FtUnitl.cpp",
 
                    "sources/audiosource.cpp",
                    "sources/audiosourcestereoproxy.cpp",
@@ -1257,7 +1269,7 @@ class MixxxCore(Feature):
                          for proto_source in proto_sources]
         sources.extend(proto_objects)
 
-        build.env.Append(LIBPATH='C:/Program Files (x86)/Microsoft SDKs/Windows/v7.0A/Lib/x64')
+        build.env.Append(LIBPATH='C:/Program Files (x86)/Windows Kits/10/Lib/10.0.18362.0/um/x64')
         build.env.Append(LIBS = 'dxva2')
         build.env.Append(LIBS = 'mf')
         build.env.Append(LIBS = 'D3d9')
@@ -1541,7 +1553,7 @@ class MixxxCore(Feature):
         return [SoundTouch, ReplayGain, Ebur128Mit, PortAudio, PortMIDI, Qt, TestHeaders,
                 FidLib, SndFile, FLAC, OggVorbis, OpenGL, TagLib, ProtoBuf,
                 Chromaprint, RubberBand, SecurityFramework, CoreServices, IOKit,
-                QtScriptByteArray, Reverb, FpClassify, PortAudioRingBuffer]
+                QtScriptByteArray, Reverb, FpClassify, PortAudioRingBuffer,Ftd2xx]
 
     def post_dependency_check_configure(self, build, conf):
         """Sets up additional things in the Environment that must happen
