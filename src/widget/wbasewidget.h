@@ -10,6 +10,12 @@ class ControlParameterWidgetConnection;
 
 class WBaseWidget {
   public:
+    enum OperateType{
+        M_None,
+        M_leftPress,
+        M_rightPress,
+        M_midPress
+    };
     explicit WBaseWidget(QWidget* pWidget);
     virtual ~WBaseWidget();
 

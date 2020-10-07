@@ -94,7 +94,7 @@ public:
     void connectHid(ControllerManager* pControllerManager);
     void setVideoWidget(VideoWidget *widget);
     SerialPort *getSerialPort();
-    void dealWithLED(WidgetType type, QString objName, int x, int y, QRect rct);
+    void dealWithLED(WidgetType type, QString objName, int x, int y, QRect rct, QWidget *widget = NULL);
   public slots:
     void getComingData(QByteArray data);
     void handleTimeoutB3();  //超时处理函数
@@ -113,6 +113,7 @@ public:
     void handleTimeoutB20();
     void handleTimeoutB22();
     void handleTimeoutB24();
+    void handleTimeoutB25();
   private:
     QString pickResizableSkin(QString oldSkin) const;
 
@@ -164,6 +165,10 @@ public:
     int m_timeOutB22;
     QTimer *m_timeB24;
     int m_timeOutB24;
+
+    //判断B25 shift键是否被按下
+    QTimer *m_timeB25;
+    bool m_timeOutB25;
 };
 
 

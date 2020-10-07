@@ -63,6 +63,7 @@ SkinLoader::SkinLoader(UserSettingsPointer pConfig)
     ,m_timeOutB20(1000)
     ,m_timeOutB22(1000)
     ,m_timeOutB24(1000)
+    ,m_timeOutB25(true)
     , m_pConfig(pConfig) {
     m_musicBtControl = new MusicButtonControl(this);
 
@@ -126,6 +127,10 @@ SkinLoader::SkinLoader(UserSettingsPointer pConfig)
     m_timeB24 = new QTimer(this);
     connect(m_timeB24, SIGNAL(timeout()), this, SLOT(handleTimeoutB24()));
     m_timeB24->start(m_timeOutB24);
+
+    m_timeB25 = new QTimer(this);
+    connect(m_timeB25, SIGNAL(timeout()), this, SLOT(handleTimeoutB25()));
+    m_timeB25->start(m_timeOutB25);
 
 }
 
@@ -219,7 +224,7 @@ SerialPort* SkinLoader::getSerialPort()
 #include "widget\wslidercomposed.h"
 #include <QPoint>
 #include <QObject>
-void SkinLoader::dealWithLED(WidgetType type, QString objName, int x, int y, QRect rct)
+void SkinLoader::dealWithLED(WidgetType type, QString objName, int x, int y, QRect rct, QWidget *widget)
 {
 
     QPoint centerPoint = rct.center();
@@ -614,7 +619,34 @@ void SkinLoader::dealWithLED(WidgetType type, QString objName, int x, int y, QRe
     }
 
     case type_WPushButton:
+    {
+        if(WPushButton *pushbutton = dynamic_cast<WPushButton *>(widget))
+        {
+            //这里亮灯的状态需要根据pushbutton的点击状态来决定
+            //B36
+            if(objName == "DeckCue_Deck1_hotcue")
+            {
+                //亮D50,D51
+
+            }
+            //B50
+            else if(objName == "DeckCue_Deck2_hotcue")
+            {
+                //亮D85，D86
+            }
+            //B37
+            else if(objName == "PlayToggle_Deck1_hotcue")
+            {
+                //亮D52，D53
+            }
+            //B51
+            else if(objName == "PlayToggle_Deck1_hotcue")
+            {
+                //亮D187，D188
+            }
+        }
         break;
+    }
     case type_WSliderComposed:
         //A6区,主推子,led从中间向两边扩展
         if(objName == "MainSliderComposed")
@@ -797,6 +829,16 @@ void SkinLoader::getComingData(QByteArray data)
                 break;
             }
 
+            if(objectName.contains("shift"))
+            {
+                if(m_timeB25->isActive())
+                {
+                    m_timeB25->stop();
+                }
+                m_timeB25->start(10);
+                m_timeOutB25 = false;
+            }
+
             QString objectNameTemp = objectName.replace('{','[');
             objectNameTemp = objectNameTemp.replace('}',']');
             //根据objectName获取具体对应的控件
@@ -815,7 +857,18 @@ void SkinLoader::getComingData(QByteArray data)
             else if(WPushButton *pushbutton = dynamic_cast<WPushButton *>(widget))
             {
                 m_widgetType = type_WPushButton;
-                pushbutton->getComingData(data, rct);
+                //B25定时器超时，说明shift处于非按压状态
+                WBaseWidget::OperateType operateType = WBaseWidget::M_leftPress;
+                if(m_timeOutB25 == true)
+                {
+                    operateType = WBaseWidget::M_leftPress;
+                }
+                else
+                {
+                    operateType = WBaseWidget::M_rightPress;
+                }
+                //operateType来控制按钮是 左键 还是 右键 点击（shift+触控板点击 被认为是右键）
+                pushbutton->getComingData(data, rct, operateType);
             }
             else if(WSliderComposed *sliderComposed = dynamic_cast<WSliderComposed *>(widget))
             {
@@ -823,7 +876,7 @@ void SkinLoader::getComingData(QByteArray data)
                 sliderComposed->getComingData(data, rct);
             }
             //给led灯板发信号
-            dealWithLED(m_widgetType,objectNameTemp, x, y, rct);
+            dealWithLED(m_widgetType,objectNameTemp, x, y, rct,widget);
             break;
         }
         iter++;
@@ -984,6 +1037,15 @@ void SkinLoader::handleTimeoutB24()
     }
     m_timeB24->start(m_timeOutB24);
 
+}
+
+void SkinLoader::handleTimeoutB25()
+{
+    if(m_timeB25->isActive())
+    {
+        m_timeOutB25 = true;
+        m_timeB25->stop();
+    }
 }
 
 QString SkinLoader::getSkinPath(const QString& skinName) const {
