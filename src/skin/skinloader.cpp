@@ -231,6 +231,7 @@ void SkinLoader::dealWithLED(WidgetType type, QString objName, int x, int y, QRe
     QPoint point = QPoint(x - centerPoint.x(), centerPoint.y() - y);
     float  radian = 0;
     switch (type) {
+    //zhuanpan
     case type_WSpinny:
         //Ò»È¦26¸öµÆ£¬Ë³Ê±ÕëÒÀ´ÎÎª£ºD38~D32;D31~D28,D233,D76;D73,D47~D44;D43~D39
         //30¶ÈÇøÓò
@@ -245,144 +246,207 @@ void SkinLoader::dealWithLED(WidgetType type, QString objName, int x, int y, QRe
         //A3Çø
         if(objName == "SpinnySingletonNoCover[Channel1]_handh")
         {
-            //³£ÁÁD25,D26,D27
-            m_ftTask->setBuff(3, 0x01);
+            //³£ÁÁD25,D26,D27,D1,D2,D3,D211,D212,D213,D214,D134,D135,D136
+            m_ftTask->setBuff(3, 0x1c);
+            m_ftTask->setBuff(0, 0x07);
+            m_ftTask->setBuff(13, 0x41);
+            m_ftTask->setBuff(15, 0x40);
+            m_ftTask->setBuff(17, 0x40);
+            m_ftTask->setBuff(19, 0x43);
+            m_ftTask->setBuff(18, 0x80);
+            m_ftTask->setBuff(10, 0x80);
+            m_ftTask->setBuff(11, 0x01);
+            m_ftTask->setBuff(12, 0x40);
+            m_ftTask->setBuff(17, 0x03);
             //ÁÁD32,D33
             if(radian > Radian0 && radian < Radian30)
             {
-                m_ftTask->setBuff(3, 0x01);
-                m_ftTask->update();
-
-                m_ftTask->setBuff(3, 0x00);
+                m_ftTask->setBuff(4, 0x18);
                 m_ftTask->update();
             }
+
             //ÁÁD34,D35
             else if(radian > Radian30 && radian < Radian60)
             {
+                m_ftTask->setBuff(4, 0x00);
+                m_ftTask->setBuff(4, 0xa0);
+                m_ftTask->update();
 
             }
             //ÁÁD36,D37,D38
             else if(radian > Radian60 && radian < Radian90)
             {
-
+                m_ftTask->setBuff(4, 0x00);
+                m_ftTask->setBuff(4, 0x40);
+                m_ftTask->setBuff(5, 0x03);
+                m_ftTask->update();
             }
             //ÁÁD39,D40
             else if(radian > Radian90 && radian < Radian120)
             {
-
+                m_ftTask->setBuff(4, 0x00);
+                m_ftTask->setBuff(5, 0x00);
+                m_ftTask->setBuff(5, 0x0c);
+                m_ftTask->update();
             }
             //ÁÁD41,D42
             else if(radian > Radian120 && radian < Radian150)
             {
-
+                m_ftTask->setBuff(5, 0x00);
+                m_ftTask->setBuff(5, 0x30);
+                m_ftTask->update();
             }
             //ÁÁD43
             else if(radian > Radian150 && radian < Radian180)
             {
-
+                m_ftTask->setBuff(5, 0x00);
+                m_ftTask->setBuff(6, 0x01);
+                m_ftTask->update();
             }
             //ÁÁD44,D45
             else if(radian > Radian181 && radian < Radian210)
             {
-
+               m_ftTask->setBuff(6, 0x00);
+                m_ftTask->setBuff(6, 0x06);
+                m_ftTask->update();
             }
             //ÁÁD46,D47
             else if(radian > Radian210 && radian < Radian240)
             {
-
+                m_ftTask->setBuff(6, 0x00);
+                m_ftTask->setBuff(6, 0x18);
+                m_ftTask->update();
             }
             //ÁÁD73,D76
             else if(radian > Radian240 && radian < Radian270)
             {
-
+                m_ftTask->setBuff(6, 0x00);
+                m_ftTask->setBuff(10, 0x24);
+                m_ftTask->update();
             }
             //ÁÁD223,D28
             else if(radian > Radian270 && radian < Radian300)
             {
-
+                m_ftTask->setBuff(10, 0x00);
+                m_ftTask->setBuff(29, 0x08);
+                m_ftTask->setBuff(3, 0x20);
+                m_ftTask->update();
             }
             //ÁÁD29,D30
             else if(radian > Radian300 && radian < Radian330)
             {
-
+                m_ftTask->setBuff(29, 0x00);
+                m_ftTask->setBuff(3, 0x00);
+                m_ftTask->setBuff(4, 0x03);
+                m_ftTask->update();
             }
             //ÁÁD31,D32
             else if(radian > Radian330 && radian < Radian360)
             {
-
+                 m_ftTask->setBuff(4, 0x00);
+                m_ftTask->setBuff(4, 0x0c);
+                m_ftTask->update();
             }
         }
         //A9Çø
         else if(objName == "SpinnySingletonNoCover[Channel2]_handh")
         {
             //³£ÁÁD178,D179,D180
-            m_ftTask->setBuff(3, 0x01);
+            m_ftTask->setBuff(25, 0x0e);
             //ÁÁD166,D167
             if(radian > Radian0 && radian < Radian30)
             {
-                m_ftTask->setBuff(3, 0x01);
-                m_ftTask->update();
-
-                m_ftTask->setBuff(3, 0x00);
+                m_ftTask->setBuff(23, 0x0c);
                 m_ftTask->update();
             }
             //ÁÁD168,D169
             else if(radian > Radian30 && radian < Radian60)
             {
-
+                 m_ftTask->setBuff(23, 0x00);
+                m_ftTask->setBuff(23, 0x20);
+                m_ftTask->setBuff(24, 0x01);
+                m_ftTask->update();
             }
             //ÁÁD170,D171,D172
             else if(radian > Radian60 && radian < Radian90)
             {
-
+                  m_ftTask->setBuff(23, 0x00);
+                    m_ftTask->setBuff(24, 0x00);
+                m_ftTask->setBuff(24, 0x0e);
+                m_ftTask->update();
             }
             //ÁÁD173,D174
             else if(radian > Radian90 && radian < Radian120)
             {
-
+                  m_ftTask->setBuff(23, 0x00);
+                m_ftTask->setBuff(24, 0x30);
+                m_ftTask->update();
             }
             //ÁÁD175,D176
             else if(radian > Radian120 && radian < Radian150)
             {
-
+                 m_ftTask->setBuff(24, 0x00);
+                m_ftTask->setBuff(24, 0xc0);
+                m_ftTask->update();
             }
             //ÁÁD177
             else if(radian > Radian150 && radian < Radian180)
             {
-
+                 m_ftTask->setBuff(24, 0x00);
+                m_ftTask->setBuff(25, 0x01);
+                m_ftTask->update();
             }
             //ÁÁD225,D92
             else if(radian > Radian181 && radian < Radian210)
             {
-
+                  m_ftTask->setBuff(25, 0x00);
+                m_ftTask->setBuff(29, 0x20);
+                m_ftTask->setBuff(12, 0x80);
+                m_ftTask->update();
             }
             //ÁÁD224,D158
             else if(radian > Radian210 && radian < Radian240)
             {
-
+                m_ftTask->setBuff(29, 0x00);
+                m_ftTask->setBuff(12, 0x00);
+                m_ftTask->setBuff(29, 0x10);
+                m_ftTask->setBuff(22, 0x08);
+                m_ftTask->update();
             }
             //ÁÁD159
             else if(radian > Radian240 && radian < Radian270)
             {
-
+                 m_ftTask->setBuff(29, 0x00);
+                   m_ftTask->setBuff(22, 0x00);
+                m_ftTask->setBuff(22, 0x10);
+                m_ftTask->update();
             }
             //ÁÁD160,D161
             else if(radian > Radian270 && radian < Radian300)
             {
-
+                 m_ftTask->setBuff(22, 0x00);
+                m_ftTask->setBuff(22, 0x60);
+                m_ftTask->update();
             }
             //ÁÁD162,D163
             else if(radian > Radian300 && radian < Radian330)
             {
-
+                 m_ftTask->setBuff(22, 0x00);
+                m_ftTask->setBuff(22, 0x80);
+                m_ftTask->setBuff(23, 0x01);
+                m_ftTask->update();
             }
-            //ÁÁD164,D165,D166
+            //ÁÁD164,D165
             else if(radian > Radian330 && radian < Radian360)
             {
-
+                m_ftTask->setBuff(22, 0x00);
+                 m_ftTask->setBuff(23, 0x00);
+                m_ftTask->setBuff(23, 0x06);
+                m_ftTask->update();
             }
         }
         break;
+     //xuan niu
     case type_WKnobComposed:
     {
         float posW = x - rct.x();
@@ -617,7 +681,7 @@ void SkinLoader::dealWithLED(WidgetType type, QString objName, int x, int y, QRe
         break;
 
     }
-
+    //an niu
     case type_WPushButton:
     {
         if(WPushButton *pushbutton = dynamic_cast<WPushButton *>(widget))
@@ -626,23 +690,52 @@ void SkinLoader::dealWithLED(WidgetType type, QString objName, int x, int y, QRe
             //B36
             if(objName == "DeckCue_Deck1_hotcue")
             {
-                //ÁÁD50,D51
+                if(pushbutton->isPressed())
+                {
+                    //ÁÁD50,D51
+                    m_ftTask->setBuff(6, 0x40);
+                    m_ftTask->setBuff(7, 0x01);
+                    m_ftTask->update();
+                }
+               else
+                {
+                    //mieD50,D51
+                    m_ftTask->setBuff(6, 0x00);
+                   m_ftTask->setBuff(7, 0x00);
+                   m_ftTask->update();
+                }
 
             }
             //B50
             else if(objName == "DeckCue_Deck2_hotcue")
             {
                 //ÁÁD85£¬D86
+                m_ftTask->setBuff(12, 0x03);
+                m_ftTask->update();
             }
             //B37
             else if(objName == "PlayToggle_Deck1_hotcue")
             {
                 //ÁÁD52£¬D53
+                    m_ftTask->setBuff(7, 0x06);
+                    m_ftTask->update();
+
+
+
+
             }
             //B51
             else if(objName == "PlayToggle_Deck1_hotcue")
             {
                 //ÁÁD187£¬D188
+                        m_ftTask->setBuff(26, 0x30);
+                        m_ftTask->update();
+            }
+                    else
+            {
+                        //mieD187,D188
+                        m_ftTask->setBuff(26, 0x00);
+                        m_ftTask->update();
             }
         }
         break;
@@ -652,7 +745,7 @@ void SkinLoader::dealWithLED(WidgetType type, QString objName, int x, int y, QRe
         if(objName == "MainSliderComposed")
         {
             //ÁÁD128£¬D129
-            m_ftTask->setBuff(4, 0x01);
+            m_ftTask->setBuff(18, 0x06);
             //¸ù¾Ý´¥¿ØµãÔÚÍÆ×ÓÖÐµÄÎ»ÖÃÈ·¶¨ÁÁµÆ
             float halfW = (rct.width() / 2);
             float poswidth = 0;
@@ -704,88 +797,90 @@ void SkinLoader::dealWithLED(WidgetType type, QString objName, int x, int y, QRe
         else if(objName == "ChannelVolume_[Channel1]")
         {
             //ÁÁD24
-            m_ftTask->setBuff(5, 0x10);
+            m_ftTask->setBuff(3, 0x02);
             float posH = (y - rct.bottom())/ rct.height();
             if(posH < 0.3)
             {
                 //ÁÁD22,D23
-                m_ftTask->setBuff(5, 0x10);
+                m_ftTask->setBuff(2, 0x40);
+                m_ftTask->setBuff(3, 0x01);
             }
             else if(posH < 0.6)
             {
                 //ÁÁD20,D21
-                m_ftTask->setBuff(5, 0x10);
+                m_ftTask->setBuff(2, 0xa0);
             }
             else
             {
                 //ÁÁD18,D19
-                m_ftTask->setBuff(5, 0x10);
+                m_ftTask->setBuff(2, 0x18);
             }
         }
         //A7Çø
         else if(objName == "ChannelVolume_[Channel2]")
         {
             //ÁÁD150
-            m_ftTask->setBuff(5, 0x10);
+            m_ftTask->setBuff(21, 0x02);
             float posH = (y - rct.bottom())/ rct.height();
             if(posH < 0.3)
             {
                 //ÁÁD148,D149
-                m_ftTask->setBuff(5, 0x10);
+                m_ftTask->setBuff(20, 0x80);
+                m_ftTask->setBuff(21, 0x01);
             }
             else if(posH < 0.6)
             {
                 //ÁÁD146,D147
-                m_ftTask->setBuff(5, 0x10);
+                m_ftTask->setBuff(20, 0x60);
             }
             else
             {
                 //ÁÁD144,D145
-                m_ftTask->setBuff(5, 0x10);
+                m_ftTask->setBuff(20, 0x18);
             }
         }
         //A1Çø
         else if(objName == "RateDisplay1_handh")
         {
             //ÁÁD17
-            m_ftTask->setBuff(5, 0x10);
+            m_ftTask->setBuff(2, 0x04);
             float posH = (y - rct.bottom())/ rct.height();
             if(posH < 0.3)
             {
                 //ÁÁD15,D16
-                m_ftTask->setBuff(5, 0x10);
+                m_ftTask->setBuff(2, 0x03);
             }
             else if(posH < 0.6)
             {
                 //ÁÁD13,D14
-                m_ftTask->setBuff(5, 0x10);
+                m_ftTask->setBuff(1, 0x30);
             }
             else
             {
                 //ÁÁD11,D12
-                m_ftTask->setBuff(5, 0x10);
+                m_ftTask->setBuff(1, 0x0c);
             }
         }
         //A8Çø
         else if(objName == "RateDisplay2_handh")
         {
             //ÁÁD157
-            m_ftTask->setBuff(5, 0x10);
+            m_ftTask->setBuff(22, 0x04);
             float posH = (y - rct.bottom())/ rct.height();
             if(posH < 0.3)
             {
                 //ÁÁD155,D156
-                m_ftTask->setBuff(5, 0x10);
+                m_ftTask->setBuff(22, 0x03);
             }
             else if(posH < 0.6)
             {
                 //ÁÁD153,D154
-                m_ftTask->setBuff(5, 0x10);
+                m_ftTask->setBuff(21, 0x30);
             }
             else
             {
                 //ÁÁD151,D152
-                m_ftTask->setBuff(5, 0x10);
+                m_ftTask->setBuff(21, 0x0c);
             }
         }
         break;
@@ -888,7 +983,9 @@ void SkinLoader::handleTimeoutB3()
     if(m_timeB3->isActive())
     {
         //ÁÁD5,D6,D205
-        //....
+        m_ftTask->setBuff(0, 0x30);
+        m_ftTask->setBuff(1, 0x40);
+        m_ftTask->update();
         m_timeB3->stop();
     }
     m_timeB3->start(m_timeOutB3);
@@ -899,7 +996,9 @@ void SkinLoader::handleTimeoutB4()
     if(m_timeB4->isActive())
     {
         //ÁÁD7,D8,D206
-        //....
+        m_ftTask->setBuff(0, 0xc0);
+        m_ftTask->setBuff(3, 0x40);
+        m_ftTask->update();
         m_timeB4->stop();
     }
     m_timeB4->start(m_timeOutB4);
@@ -910,7 +1009,9 @@ void SkinLoader::handleTimeoutB5()
     if(m_timeB5->isActive())
     {
         //ÁÁD9,D10,D207
-        //....
+        m_ftTask->setBuff(1, 0x03);
+        m_ftTask->setBuff(5, 0x40);
+        m_ftTask->update();
         m_timeB5->stop();
     }
     m_timeB5->start(m_timeOutB5);
@@ -921,7 +1022,9 @@ void SkinLoader::handleTimeoutB9()
     if(m_timeB9->isActive())
     {
         //ÁÁD137,D138,D208
-        //....
+        m_ftTask->setBuff(19, 0x0c);
+        m_ftTask->setBuff(7, 0x40);
+        m_ftTask->update();
         m_timeB9->stop();
     }
     m_timeB9->start(m_timeOutB9);
@@ -932,7 +1035,9 @@ void SkinLoader::handleTimeoutB10()
     if(m_timeB10->isActive())
     {
         //ÁÁD139,D140,D209
-        //....
+        m_ftTask->setBuff(19, 0x30);
+        m_ftTask->setBuff(9, 0x40);
+        m_ftTask->update();
         m_timeB10->stop();
     }
     m_timeB10->start(m_timeOutB10);
@@ -943,7 +1048,9 @@ void SkinLoader::handleTimeoutB11()
     if(m_timeB11->isActive())
     {
         //ÁÁD141,D142,D210
-        //....
+        m_ftTask->setBuff(20, 0x03);
+        m_ftTask->setBuff(11, 0x40);
+        m_ftTask->update();
         m_timeB11->stop();
     }
     m_timeB11->start(m_timeOutB11);
@@ -955,7 +1062,9 @@ void SkinLoader::handleTimeoutB17()
     if(m_timeB17->isActive())
     {
         //ÁÁD105,D106,D215
-        //....
+        m_ftTask->setBuff(14, 0xc0);
+        m_ftTask->setBuff(21, 0x40);
+        m_ftTask->update();
         m_timeB17->stop();
     }
     m_timeB17->start(m_timeOutB17);
@@ -966,7 +1075,9 @@ void SkinLoader::handleTimeoutB19()
     if(m_timeB19->isActive())
     {
         //ÁÁD107,D108,D217
-        //....
+        m_ftTask->setBuff(15, 0x03);
+        m_ftTask->setBuff(25, 0x40);
+        m_ftTask->update();
         m_timeB19->stop();
     }
     m_timeB19->start(m_timeOutB19);
@@ -977,7 +1088,9 @@ void SkinLoader::handleTimeoutB21()
     if(m_timeB21->isActive())
     {
         //ÁÁD109,D110,D219
-        //....
+        m_ftTask->setBuff(15, 0x0c);
+        m_ftTask->setBuff(29, 0x40);
+        m_ftTask->update();
         m_timeB21->stop();
     }
     m_timeB21->start(m_timeOutB21);
@@ -988,7 +1101,9 @@ void SkinLoader::handleTimeoutB23()
     if(m_timeB23->isActive())
     {
         //ÁÁD111,D112,D221
-        //....
+        m_ftTask->setBuff(15, 0x30);
+        m_ftTask->setBuff(29, 0x02);
+        m_ftTask->update();
         m_timeB23->stop();
     }
     m_timeB23->start(m_timeOutB23);
@@ -999,7 +1114,9 @@ void SkinLoader::handleTimeoutB18()
     if(m_timeB18->isActive())
     {
         //ÁÁD113,D114,D216
-        //....
+        m_ftTask->setBuff(16, 0x03);
+        m_ftTask->setBuff(23, 0x40);
+        m_ftTask->update();
         m_timeB18->stop();
     }
     m_timeB18->start(m_timeOutB18);
@@ -1010,7 +1127,9 @@ void SkinLoader::handleTimeoutB20()
     if(m_timeB20->isActive())
     {
         //ÁÁD115,D116,D218
-        //....
+        m_ftTask->setBuff(16, 0x0c);
+        m_ftTask->setBuff(26, 0x40);
+        m_ftTask->update();
         m_timeB20->stop();
     }
     m_timeB20->start(m_timeOutB20);
@@ -1021,7 +1140,9 @@ void SkinLoader::handleTimeoutB22()
     if(m_timeB22->isActive())
     {
         //ÁÁD117,D118,D220
-        //....
+        m_ftTask->setBuff(16, 0x30);
+        m_ftTask->setBuff(29, 0x01);
+        m_ftTask->update();
         m_timeB22->stop();
     }
     m_timeB22->start(m_timeOutB22);
@@ -1032,7 +1153,9 @@ void SkinLoader::handleTimeoutB24()
     if(m_timeB24->isActive())
     {
         //ÁÁD119,D120,D222
-        //....
+        m_ftTask->setBuff(16, 0xc0);
+        m_ftTask->setBuff(29, 0x04);
+        m_ftTask->update();
         m_timeB24->stop();
     }
     m_timeB24->start(m_timeOutB24);
