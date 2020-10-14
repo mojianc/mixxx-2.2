@@ -74,59 +74,59 @@ SkinLoader::SkinLoader(UserSettingsPointer pConfig)
 
     m_timeB3 = new QTimer(this);
     connect(m_timeB3, SIGNAL(timeout()), this, SLOT(handleTimeoutB3()));
-    m_timeB3->start(m_timeOutB3);
+//    m_timeB3->start(m_timeOutB3);
 
     m_timeB4 = new QTimer(this);
     connect(m_timeB4, SIGNAL(timeout()), this, SLOT(handleTimeoutB4()));
-    m_timeB4->start(m_timeOutB4);
+//    m_timeB4->start(m_timeOutB4);
 
     m_timeB5 = new QTimer(this);
     connect(m_timeB5, SIGNAL(timeout()), this, SLOT(handleTimeoutB5()));
-    m_timeB5->start(m_timeOutB5);
+//    m_timeB5->start(m_timeOutB5);
 
     m_timeB9 = new QTimer(this);
     connect(m_timeB9, SIGNAL(timeout()), this, SLOT(handleTimeoutB9()));
-    m_timeB9->start(m_timeOutB9);
+//    m_timeB9->start(m_timeOutB9);
 
     m_timeB10 = new QTimer(this);
     connect(m_timeB10, SIGNAL(timeout()), this, SLOT(handleTimeoutB10()));
-    m_timeB10->start(m_timeOutB10);
+//    m_timeB10->start(m_timeOutB10);
 
     m_timeB11 = new QTimer(this);
     connect(m_timeB11, SIGNAL(timeout()), this, SLOT(handleTimeoutB11()));
-    m_timeB11->start(m_timeOutB11);
+//    m_timeB11->start(m_timeOutB11);
 
     m_timeB17 = new QTimer(this);
     connect(m_timeB17, SIGNAL(timeout()), this, SLOT(handleTimeoutB17()));
-    m_timeB17->start(m_timeOutB17);
+//    m_timeB17->start(m_timeOutB17);
 
     m_timeB19 = new QTimer(this);
     connect(m_timeB19, SIGNAL(timeout()), this, SLOT(handleTimeoutB19()));
-    m_timeB19->start(m_timeOutB19);
+//    m_timeB19->start(m_timeOutB19);
 
     m_timeB21 = new QTimer(this);
     connect(m_timeB21, SIGNAL(timeout()), this, SLOT(handleTimeoutB21()));
-    m_timeB21->start(m_timeOutB21);
+//    m_timeB21->start(m_timeOutB21);
 
     m_timeB23 = new QTimer(this);
     connect(m_timeB23, SIGNAL(timeout()), this, SLOT(handleTimeoutB23()));
-    m_timeB23->start(m_timeOutB23);
+//    m_timeB23->start(m_timeOutB23);
 
     m_timeB18 = new QTimer(this);
     connect(m_timeB18, SIGNAL(timeout()), this, SLOT(handleTimeoutB18()));
-    m_timeB18->start(m_timeOutB18);
+//    m_timeB18->start(m_timeOutB18);
 
     m_timeB20 = new QTimer(this);
     connect(m_timeB20, SIGNAL(timeout()), this, SLOT(handleTimeoutB20()));
-    m_timeB20->start(m_timeOutB20);
+//    m_timeB20->start(m_timeOutB20);
 
     m_timeB22 = new QTimer(this);
     connect(m_timeB22, SIGNAL(timeout()), this, SLOT(handleTimeoutB22()));
-    m_timeB22->start(m_timeOutB22);
+//    m_timeB22->start(m_timeOutB22);
 
     m_timeB24 = new QTimer(this);
     connect(m_timeB24, SIGNAL(timeout()), this, SLOT(handleTimeoutB24()));
-    m_timeB24->start(m_timeOutB24);
+//    m_timeB24->start(m_timeOutB24);
 
     m_timeB25 = new QTimer(this);
     connect(m_timeB25, SIGNAL(timeout()), this, SLOT(handleTimeoutB25()));
@@ -451,232 +451,433 @@ void SkinLoader::dealWithLED(WidgetType type, QString objName, int x, int y, QRe
     {
         float posW = x - rct.x();
         float ratio = posW / rct.width();
-
+        qDebug()<<"rct:"<<rct;
+        qDebug()<<"x:"<<x;
+        qDebug()<<"ratio:"<<ratio;
         //B3区
         if(objName == "KnobComposed_[EffectRack1_EffectUnit1_Effect1]_meta")
         {
-             if(ratio < 0.3)
+             if(ratio < 0.1)
              {
-                 m_timeOutB3 = 1000;
-             }
-             else if(ratio < 0.6)
-             {
-                 m_timeOutB3 = 100;
+                 //灭D5,D6,D205
+				 //...
+                 
+                 if(m_timeB3->isActive())
+                 {
+                     m_timeB3->stop();
+                 }
              }
              else
              {
-                 m_timeOutB3 = 10;
+                 if(ratio < 0.3)
+                 {
+                     m_timeOutB3 = 1000;
+                 }
+                 else if(ratio < 0.6)
+                 {
+                     m_timeOutB3 = 100;
+                 }
+                 else
+                 {
+                     m_timeOutB3 = 10;
+                 }
+                 m_timeB3->start(m_timeOutB3);
              }
         }
         //B4区
         else if(objName == "KnobComposed_[EffectRack1_EffectUnit1_Effect2]_meta")
         {
-             if(ratio < 0.3)
-             {
-                 m_timeOutB4 = 1000;
-             }
-             else if(ratio < 0.6)
-             {
-                 m_timeOutB4 = 100;
-             }
-             else
-             {
-                 m_timeOutB4 = 10;
-             }
+            if(ratio < 0.1)
+            {
+                //灭D7,D8,D206
+                //...
+
+                if(m_timeB4->isActive())
+                {
+                    m_timeB4->stop();
+                }
+            }
+            else
+            {
+                if(ratio < 0.3)
+                {
+                    m_timeOutB4 = 1000;
+                }
+                else if(ratio < 0.6)
+                {
+                    m_timeOutB4 = 100;
+                }
+                else
+                {
+                    m_timeOutB4 = 10;
+                }
+                m_timeB4->start(m_timeOutB4);
+            }
+
         }
         //B5区
         else if(objName == "KnobComposed_[EffectRack1_EffectUnit1_Effect3]_meta")
         {
-             if(ratio < 0.3)
-             {
-                 m_timeOutB5 = 1000;
-             }
-             else if(ratio < 0.6)
-             {
-                 m_timeOutB5 = 100;
-             }
-             else
-             {
-                 m_timeOutB5 = 10;
-             }
+            if(ratio < 0.1)
+            {
+                //灭D9,D10,D207
+                //...
+
+                if(m_timeB5->isActive())
+                {
+                    m_timeB5->stop();
+                }
+            }
+            {
+                if(ratio < 0.3)
+                {
+                    m_timeOutB5 = 1000;
+                }
+                else if(ratio < 0.6)
+                {
+                    m_timeOutB5 = 100;
+                }
+                else
+                {
+                    m_timeOutB5 = 10;
+                }
+                m_timeB5->start(m_timeOutB5);
+            }
+
         }
         //B9区
         else if(objName == "KnobComposed_[EffectRack1_EffectUnit2_Effect1]_meta")
         {
-             if(ratio < 0.3)
-             {
-                 m_timeOutB9 = 1000;
-             }
-             else if(ratio < 0.6)
-             {
-                 m_timeOutB9 = 100;
-             }
-             else
-             {
-                 m_timeOutB9 = 10;
-             }
+            if(ratio < 0.1)
+            {
+                //灭D137,D138,D208
+                //...
+
+                if(m_timeB9->isActive())
+                {
+                    m_timeB9->stop();
+                }
+            }
+            else
+            {
+                if(ratio < 0.3)
+                {
+                    m_timeOutB9 = 1000;
+                }
+                else if(ratio < 0.6)
+                {
+                    m_timeOutB9 = 100;
+                }
+                else
+                {
+                    m_timeOutB9 = 10;
+                }
+                m_timeB9->start(m_timeOutB9);
+            }
+
         }
         //B10区
         else if(objName == "KnobComposed_[EffectRack1_EffectUnit2_Effect2]_meta")
         {
-             if(ratio < 0.3)
-             {
-                 m_timeOutB10 = 1000;
-             }
-             else if(ratio < 0.6)
-             {
-                 m_timeOutB10 = 100;
-             }
-             else
-             {
-                 m_timeOutB10 = 10;
-             }
+            if(ratio < 0.1)
+            {
+                //灭D139,D140,D209
+                //...
+                if(m_timeB10->isActive())
+                {
+                    m_timeB10->stop();
+                }
+            }
+            else
+            {
+                if(ratio < 0.3)
+                {
+                    m_timeOutB10 = 1000;
+                }
+                else if(ratio < 0.6)
+                {
+                    m_timeOutB10 = 100;
+                }
+                else
+                {
+                    m_timeOutB10 = 10;
+                }
+                 m_timeB10->start(m_timeOutB10);
+            }
+
         }
         //B11区
         else if(objName == "KnobComposed_[EffectRack1_EffectUnit2_Effect3]_meta")
         {
-             if(ratio < 0.3)
-             {
-                 m_timeOutB11 = 1000;
-             }
-             else if(ratio < 0.6)
-             {
-                 m_timeOutB11 = 100;
-             }
-             else
-             {
-                 m_timeOutB11 = 10;
-             }
+            if(ratio < 0.1)
+            {
+                //灭D141,D142,D210
+                //...
+                if(m_timeB11->isActive())
+                {
+                    m_timeB11->stop();
+                }
+            }
+            else
+            {
+                if(ratio < 0.3)
+                {
+                    m_timeOutB11 = 1000;
+                }
+                else if(ratio < 0.6)
+                {
+                    m_timeOutB11 = 100;
+                }
+                else
+                {
+                    m_timeOutB11 = 10;
+                }
+                m_timeB11->start(m_timeOutB11);
+            }
+
         }
         //B17区
         else if(objName == "EffectKnobComposed_[Channel1]_3")
         {
-             if(ratio < 0.3)
-             {
-                 m_timeOutB17 = 1000;
-             }
-             else if(ratio < 0.6)
-             {
-                 m_timeOutB17 = 100;
-             }
-             else
-             {
-                 m_timeOutB17 = 10;
-             }
+            if(ratio < 0.1)
+            {
+                //灭D105,D106,D215
+                //...
+                if(m_timeB17->isActive())
+                {
+                    m_timeB17->stop();
+                }
+            }
+            else
+            {
+                if(ratio < 0.3)
+                {
+                    m_timeOutB17 = 1000;
+                }
+                else if(ratio < 0.6)
+                {
+                    m_timeOutB17 = 100;
+                }
+                else
+                {
+                    m_timeOutB17 = 10;
+                }
+                 m_timeB17->start(m_timeOutB17);
+            }
+
         }
         //B19区
         else if(objName == "EffectKnobComposed_[Channel1]_2")
         {
-             if(ratio < 0.3)
-             {
-                 m_timeOutB19 = 1000;
-             }
-             else if(ratio < 0.6)
-             {
-                 m_timeOutB19 = 100;
-             }
-             else
-             {
-                 m_timeOutB19 = 10;
-             }
+            if(ratio < 0.1)
+            {
+                //灭D107,D108,D217
+                //...
+                if(m_timeB19->isActive())
+                {
+                    m_timeB19->stop();
+                }
+            }
+            else
+            {
+                if(ratio < 0.3)
+                {
+                    m_timeOutB19 = 1000;
+                }
+                else if(ratio < 0.6)
+                {
+                    m_timeOutB19 = 100;
+                }
+                else
+                {
+                    m_timeOutB19 = 10;
+                }
+                m_timeB19->start(m_timeOutB19);
+            }
+
         }
         //B21区
         else if(objName == "EffectKnobComposed_[Channel1]_1")
         {
-             if(ratio < 0.3)
-             {
-                 m_timeOutB21 = 1000;
-             }
-             else if(ratio < 0.6)
-             {
-                 m_timeOutB21 = 100;
-             }
-             else
-             {
-                 m_timeOutB21 = 10;
-             }
+            if(ratio < 0.1)
+            {
+                //灭D109,D110,D219
+                //...
+                if(m_timeB21->isActive())
+                {
+                    m_timeB21->stop();
+                }
+            }
+            else
+            {
+                if(ratio < 0.3)
+                {
+                    m_timeOutB21 = 1000;
+                }
+                else if(ratio < 0.6)
+                {
+                    m_timeOutB21 = 100;
+                }
+                else
+                {
+                    m_timeOutB21 = 10;
+                }
+                m_timeB21->start(m_timeOutB21);
+            }
+
         }
 
         //B23区
         else if(objName == "KnobComposed_[QuickEffectRack1_[Channel1]]_super1")
         {
-             if(ratio < 0.3)
-             {
-                 m_timeOutB23 = 1000;
-             }
-             else if(ratio < 0.6)
-             {
-                 m_timeOutB23 = 100;
-             }
-             else
-             {
-                 m_timeOutB23 = 10;
-             }
+            if(ratio < 0.1)
+            {
+                //灭D111,D112,D221
+                //...
+                if(m_timeB23->isActive())
+                {
+                    m_timeB23->stop();
+                }
+            }
+            else
+            {
+                if(ratio < 0.3)
+                {
+                    m_timeOutB23 = 1000;
+                }
+                else if(ratio < 0.6)
+                {
+                    m_timeOutB23 = 100;
+                }
+                else
+                {
+                    m_timeOutB23 = 10;
+                }
+                m_timeB23->start(m_timeOutB23);
+            }
+
         }
         //B18区
         else if(objName == "EffectKnobComposed_[Channel2]_3")
         {
-             if(ratio < 0.3)
-             {
-                 m_timeOutB18 = 1000;
-             }
-             else if(ratio < 0.6)
-             {
-                 m_timeOutB18 = 100;
-             }
-             else
-             {
-                 m_timeOutB18 = 10;
-             }
+            if(ratio < 0.1)
+            {
+                //灭D113,D114,D216
+                //...
+                if(m_timeB18->isActive())
+                {
+                    m_timeB18->stop();
+                }
+            }
+            else
+            {
+                if(ratio < 0.3)
+                {
+                    m_timeOutB18 = 1000;
+                }
+                else if(ratio < 0.6)
+                {
+                    m_timeOutB18 = 100;
+                }
+                else
+                {
+                    m_timeOutB18 = 10;
+                }
+                 m_timeB18->start(m_timeOutB18);
+
+            }
+
         }
         //B20区
         else if(objName == "EffectKnobComposed_[Channel2]_2")
         {
-             if(ratio < 0.3)
-             {
-                 m_timeOutB20 = 1000;
-             }
-             else if(ratio < 0.6)
-             {
-                 m_timeOutB20 = 100;
-             }
-             else
-             {
-                 m_timeOutB20 = 10;
-             }
+            if(ratio < 0.1)
+            {
+                //灭D115,D116,D218
+                //...
+                if(m_timeB20->isActive())
+                {
+                    m_timeB20->stop();
+                }
+            }
+            else
+            {
+                if(ratio < 0.3)
+                {
+                    m_timeOutB20 = 1000;
+                }
+                else if(ratio < 0.6)
+                {
+                    m_timeOutB20 = 100;
+                }
+                else
+                {
+                    m_timeOutB20 = 10;
+                }
+                 m_timeB20->start(m_timeOutB20);
+            }
+
         }
         //B22区
         else if(objName == "EffectKnobComposed_[Channel2]_1")
         {
-             if(ratio < 0.3)
-             {
-                 m_timeOutB22 = 1000;
-             }
-             else if(ratio < 0.6)
-             {
-                 m_timeOutB22 = 100;
-             }
-             else
-             {
-                 m_timeOutB22 = 10;
-             }
+            if(ratio < 0.1)
+            {
+                //灭D117,D118,D220
+                //...
+                if(m_timeB22->isActive())
+                {
+                    m_timeB22->stop();
+                }
+            }
+            else
+            {
+                if(ratio < 0.3)
+                {
+                    m_timeOutB22 = 1000;
+                }
+                else if(ratio < 0.6)
+                {
+                    m_timeOutB22 = 100;
+                }
+                else
+                {
+                    m_timeOutB22 = 10;
+                }
+                 m_timeB22->start(m_timeOutB22);
+            }
+
         }
 
         //B24区
         else if(objName == "KnobComposed_[QuickEffectRack1_[Channel2]]_super1")
         {
-             if(ratio < 0.3)
-             {
-                 m_timeOutB24 = 1000;
-             }
-             else if(ratio < 0.6)
-             {
-                 m_timeOutB24 = 100;
-             }
-             else
-             {
-                 m_timeOutB24 = 10;
-             }
+            if(ratio < 0.1)
+            {
+                //灭D119,D120,D222
+                //...
+                if(m_timeB24->isActive())
+                {
+                    m_timeB24->stop();
+                }
+            }
+            else
+            {
+                if(ratio < 0.3)
+                {
+                    m_timeOutB24 = 1000;
+                }
+                else if(ratio < 0.6)
+                {
+                    m_timeOutB24 = 100;
+                }
+                else
+                {
+                    m_timeOutB24 = 10;
+                }
+                m_timeB24->start(m_timeOutB24);
+            }
+
         }
         break;
 
