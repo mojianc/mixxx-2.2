@@ -1329,7 +1329,7 @@ void SkinLoader::handleTimeoutB20()
     {
         //ÁÁD115,D116,D218
         m_ftTask->setBuff(16, 0x0c);
-        m_ftTask->setBuff(26, 0x40);
+        m_ftTask->setBuff(27, 0x40);
         m_ftTask->update();
         m_timeB20->stop();
     }
