@@ -72,65 +72,128 @@ SkinLoader::SkinLoader(UserSettingsPointer pConfig)
     m_ftTask = new FtTask();
     m_ftTask->start();
 
+    m_lightB3 = false;
     m_timeB3 = new QTimer(this);
     connect(m_timeB3, SIGNAL(timeout()), this, SLOT(handleTimeoutB3()));
-//    m_timeB3->start(m_timeOutB3);
+    m_timeB3->setSingleShot(true);
+    m_timeB3->start(m_timeOutB3);
 
+    m_lightB4 = false;
     m_timeB4 = new QTimer(this);
     connect(m_timeB4, SIGNAL(timeout()), this, SLOT(handleTimeoutB4()));
-//    m_timeB4->start(m_timeOutB4);
+    m_timeB4->setSingleShot(true);
+    m_timeB4->start(m_timeOutB4);
 
+    m_lightB5 = false;
     m_timeB5 = new QTimer(this);
     connect(m_timeB5, SIGNAL(timeout()), this, SLOT(handleTimeoutB5()));
-//    m_timeB5->start(m_timeOutB5);
+    m_timeB5->setSingleShot(true);
+    m_timeB5->start(m_timeOutB5);
 
+    m_lightB9 = false;
     m_timeB9 = new QTimer(this);
     connect(m_timeB9, SIGNAL(timeout()), this, SLOT(handleTimeoutB9()));
-//    m_timeB9->start(m_timeOutB9);
+    m_timeB9->setSingleShot(true);
+    m_timeB9->start(m_timeOutB9);
 
+    m_lightB10 = false;
     m_timeB10 = new QTimer(this);
     connect(m_timeB10, SIGNAL(timeout()), this, SLOT(handleTimeoutB10()));
-//    m_timeB10->start(m_timeOutB10);
+    m_timeB10->setSingleShot(true);
+    m_timeB10->start(m_timeOutB10);
 
+    m_lightB11 = false;
     m_timeB11 = new QTimer(this);
     connect(m_timeB11, SIGNAL(timeout()), this, SLOT(handleTimeoutB11()));
-//    m_timeB11->start(m_timeOutB11);
+    m_timeB11->setSingleShot(true);
+    m_timeB11->start(m_timeOutB11);
 
+    m_lightB17 = false;
     m_timeB17 = new QTimer(this);
     connect(m_timeB17, SIGNAL(timeout()), this, SLOT(handleTimeoutB17()));
-//    m_timeB17->start(m_timeOutB17);
+    m_timeB17->setSingleShot(true);
+    m_timeB17->start(m_timeOutB17);
 
+    m_lightB19 = false;
     m_timeB19 = new QTimer(this);
     connect(m_timeB19, SIGNAL(timeout()), this, SLOT(handleTimeoutB19()));
-//    m_timeB19->start(m_timeOutB19);
+    m_timeB19->setSingleShot(true);
+    m_timeB19->start(m_timeOutB19);
 
+    m_lightB21 = false;
     m_timeB21 = new QTimer(this);
     connect(m_timeB21, SIGNAL(timeout()), this, SLOT(handleTimeoutB21()));
-//    m_timeB21->start(m_timeOutB21);
+    m_timeB21->setSingleShot(true);
+    m_timeB21->start(m_timeOutB21);
 
+    m_lightB23 = false;
     m_timeB23 = new QTimer(this);
     connect(m_timeB23, SIGNAL(timeout()), this, SLOT(handleTimeoutB23()));
-//    m_timeB23->start(m_timeOutB23);
+    m_timeB23->setSingleShot(true);
+    m_timeB23->start(m_timeOutB23);
 
+    m_lightB18 = false;
     m_timeB18 = new QTimer(this);
     connect(m_timeB18, SIGNAL(timeout()), this, SLOT(handleTimeoutB18()));
-//    m_timeB18->start(m_timeOutB18);
+    m_timeB18->setSingleShot(true);
+    m_timeB18->start(m_timeOutB18);
 
+    m_lightB20 = false;
     m_timeB20 = new QTimer(this);
     connect(m_timeB20, SIGNAL(timeout()), this, SLOT(handleTimeoutB20()));
-//    m_timeB20->start(m_timeOutB20);
+    m_timeB20->setSingleShot(true);
+    m_timeB20->start(m_timeOutB20);
 
+    m_lightB22 = false;
     m_timeB22 = new QTimer(this);
     connect(m_timeB22, SIGNAL(timeout()), this, SLOT(handleTimeoutB22()));
-//    m_timeB22->start(m_timeOutB22);
+    m_timeB22->setSingleShot(true);
+    m_timeB22->start(m_timeOutB22);
 
+    m_lightB24 = false;
     m_timeB24 = new QTimer(this);
     connect(m_timeB24, SIGNAL(timeout()), this, SLOT(handleTimeoutB24()));
-//    m_timeB24->start(m_timeOutB24);
+    m_timeB24->setSingleShot(true);
+    m_timeB24->start(m_timeOutB24);
 
+    m_lightB25 = false;
     m_timeB25 = new QTimer(this);
     connect(m_timeB25, SIGNAL(timeout()), this, SLOT(handleTimeoutB25()));
+    m_timeB25->setSingleShot(true);
     m_timeB25->start(m_timeOutB25);
+
+    //³õÊ¼×´Ì¬³£ÁÁ
+    //ÁÁD11 D12
+    unsigned char result = m_ftTask->getBuff(1);
+      result |= (1 << 2);
+      result |= (1 << 3);
+     m_ftTask->setBuff(1, result);
+    //ÁÁD24
+    result = m_ftTask->getBuff(3);
+      result |= (1 << 1);
+     m_ftTask->setBuff(3, result);
+     //ÁÁD17
+     result = m_ftTask->getBuff(2);
+     result |= (1 << 2);
+      m_ftTask->setBuff(2, result);
+    //ÁÁD18,D19 ×óVOLÍÆ×Ó-A2
+    result = m_ftTask->getBuff(2);
+    result |= (1 << 3);
+    result |= (1 << 4);
+    m_ftTask->setBuff(2, result);
+   //ÁÁD25,D26,D27 ×ó×ªÅÌ-A3
+    result = m_ftTask->getBuff(3);
+    result |= (1 << 2);
+    result |= (1 << 3);
+    result |= (1 << 4);
+    m_ftTask->setBuff(3, result);
+    //³£ÁÁD178,D179,D180 ÓÒ×ªÅÌ-A9
+    result = m_ftTask->getBuff(25);
+    result |= (1 << 1);
+    result |= (1 << 2);
+    result |= (1 << 3);
+    m_ftTask->setBuff(25, result);
+    m_ftTask->update();
 
 }
 
@@ -189,6 +252,16 @@ void SkinLoader::loadConfigCoordinate()
             m_mapRects.insert(strGroup, rect);
         }
     }
+    //¶ÁÅäÖÃÎÄ¼þ¿ØÖÆ²Ù×÷ÀàÐÍ
+    QSettings *iniSettingOperType = new QSettings(skinPath + "/operatorType.ini", QSettings::IniFormat);
+    QStringList groupsType = iniSettingOperType->childGroups();
+    for (int i=0; i<groupsType.size(); ++i)
+    {
+        QString strGroup = groupsType.at(i);
+        iniSettingOperType->beginGroup(strGroup);
+        m_operatorType =  iniSettingOperType->value("type").toInt();
+        iniSetting->endGroup();
+    }
 }
 
 void SkinLoader::connectHid(ControllerManager *pControllerManager)
@@ -212,6 +285,42 @@ void SkinLoader::connectHid(ControllerManager *pControllerManager)
 void SkinLoader::setVideoWidget(VideoWidget *widget)
 {
     m_videoWidget = widget;
+}
+
+void SkinLoader::internalDealWithLED(float ratio, QTimer* timer, int* internal, int group1, int byte11, int byte12, int group2, int byte21) {
+    if(ratio < 0.1)
+    {
+        unsigned char result = m_ftTask->getBuff(group1);
+        result &= ~(1 << byte11);
+        result &= ~(1 << byte12);
+        m_ftTask->setBuff(group1, result);
+        result = m_ftTask->getBuff(group2);
+        result &= ~(1 << byte21);
+        m_ftTask->setBuff(group2, result);
+        m_ftTask->update();
+        if(timer->isActive())
+        {
+            timer->stop();
+        }
+    }
+    else
+    {
+        if(ratio < 0.3)
+        {
+            *internal = 1000;
+        }
+        else if(ratio < 0.6)
+        {
+            *internal = 200;
+        }
+        else
+        {
+            *internal = 50;
+        }
+        timer->stop();
+        timer->setInterval(*internal);
+        timer->start(*internal);
+    }
 }
 
 SerialPort* SkinLoader::getSerialPort()
@@ -246,21 +355,10 @@ void SkinLoader::dealWithLED(WidgetType type, QString objName, int x, int y, QRe
         //A3Çø
         if(objName == "SpinnySingletonNoCover[Channel1]_handh")
         {
-            //³£ÁÁD25,D26,D27,D1,D2,D3,D211,D212,D213,D214,D134,D135,D136
-            m_ftTask->setBuff(3, 0x1c);
-            m_ftTask->setBuff(0, 0x07);
-            m_ftTask->setBuff(13, 0x41);
-            m_ftTask->setBuff(15, 0x40);
-            m_ftTask->setBuff(17, 0x40);
-            m_ftTask->setBuff(19, 0x43);
-            m_ftTask->setBuff(18, 0x80);
-            m_ftTask->setBuff(10, 0x80);
-            m_ftTask->setBuff(11, 0x01);
-            m_ftTask->setBuff(12, 0x40);
-            m_ftTask->setBuff(17, 0x03);
+
             //ÁÁD32,D33
             if(radian > Radian0 && radian < Radian30)
-            {
+          {
                 m_ftTask->setBuff(4, 0x18);
                 m_ftTask->update();
             }
@@ -351,8 +449,7 @@ void SkinLoader::dealWithLED(WidgetType type, QString objName, int x, int y, QRe
         //A9Çø
         else if(objName == "SpinnySingletonNoCover[Channel2]_handh")
         {
-            //³£ÁÁD178,D179,D180
-            m_ftTask->setBuff(25, 0x0e);
+
             //ÁÁD166,D167
             if(radian > Radian0 && radian < Radian30)
             {
@@ -457,32 +554,41 @@ void SkinLoader::dealWithLED(WidgetType type, QString objName, int x, int y, QRe
         //B3Çø
         if(objName == "KnobComposed_[EffectRack1_EffectUnit1_Effect1]_meta")
         {
-             if(ratio < 0.1)
-             {
-                 //ÃðD5,D6,D205
-				 //...
-                 
-                 if(m_timeB3->isActive())
-                 {
-                     m_timeB3->stop();
-                 }
-             }
-             else
-             {
-                 if(ratio < 0.3)
-                 {
-                     m_timeOutB3 = 1000;
-                 }
-                 else if(ratio < 0.6)
-                 {
-                     m_timeOutB3 = 100;
-                 }
-                 else
-                 {
-                     m_timeOutB3 = 10;
-                 }
-                 m_timeB3->start(m_timeOutB3);
-             }
+//             if(ratio < 0.1)
+//             {
+//                 //ÃðD5,D6,D205
+//                unsigned char result = m_ftTask->getBuff(0);
+//                  result &= ~(1 << 4);
+//                  result &= ~(1 << 5);
+//                 //m_ftTask->setBuff(0, result);
+//                result = m_ftTask->getBuff(1);
+//                result &= ~(1 << 6);
+//                 //m_ftTask->setBuff(1, result);
+//                 //m_ftTask->update();
+//                 if(m_timeB3->isActive())
+//                 {
+//                     m_timeB3->stop();
+//                 }
+//             }
+//             else
+//             {
+//                 if(ratio < 0.3)
+//                 {
+//                     m_timeOutB3 = 1000;
+//                 }
+//                 else if(ratio < 0.6)
+//                 {
+//                     m_timeOutB3 = 200;
+//                 }
+//                 else
+//                 {
+//                     m_timeOutB3 = 50;
+//                 }
+//                 m_timeB3->stop();
+//                 m_timeB3->setInterval(m_timeOutB3);
+//                 m_timeB3->start(m_timeOutB3);
+//             }
+            internalDealWithLED(ratio, m_timeB3, &m_timeOutB3, 0, 4, 5, 1, 6);
         }
         //B4Çø
         else if(objName == "KnobComposed_[EffectRack1_EffectUnit1_Effect2]_meta")
@@ -511,6 +617,8 @@ void SkinLoader::dealWithLED(WidgetType type, QString objName, int x, int y, QRe
                 {
                     m_timeOutB4 = 10;
                 }
+                m_timeB4->stop();
+                m_timeB4->setInterval(m_timeOutB4);
                 m_timeB4->start(m_timeOutB4);
             }
 
@@ -541,6 +649,8 @@ void SkinLoader::dealWithLED(WidgetType type, QString objName, int x, int y, QRe
                 {
                     m_timeOutB5 = 10;
                 }
+                m_timeB5->stop();
+                m_timeB5->setInterval(m_timeOutB5);
                 m_timeB5->start(m_timeOutB5);
             }
 
@@ -572,6 +682,8 @@ void SkinLoader::dealWithLED(WidgetType type, QString objName, int x, int y, QRe
                 {
                     m_timeOutB9 = 10;
                 }
+                m_timeB9->stop();
+                m_timeB9->setInterval(m_timeOutB9);
                 m_timeB9->start(m_timeOutB9);
             }
 
@@ -602,7 +714,9 @@ void SkinLoader::dealWithLED(WidgetType type, QString objName, int x, int y, QRe
                 {
                     m_timeOutB10 = 10;
                 }
-                 m_timeB10->start(m_timeOutB10);
+                m_timeB10->stop();
+                m_timeB10->setInterval(m_timeOutB10);
+                m_timeB10->start(m_timeOutB10);
             }
 
         }
@@ -632,6 +746,8 @@ void SkinLoader::dealWithLED(WidgetType type, QString objName, int x, int y, QRe
                 {
                     m_timeOutB11 = 10;
                 }
+                m_timeB11->stop();
+                m_timeB11->setInterval(m_timeOutB11);
                 m_timeB11->start(m_timeOutB11);
             }
 
@@ -643,6 +759,14 @@ void SkinLoader::dealWithLED(WidgetType type, QString objName, int x, int y, QRe
             {
                 //ÃðD105,D106,D215
                 //...
+                unsigned char result = m_ftTask->getBuff(14);
+                  result |= (1 << 6);
+                  result |= (1 << 7);
+                 m_ftTask->setBuff(15, result);
+                result = m_ftTask->getBuff(21);
+                result |= (1 << 6);
+                 m_ftTask->setBuff(21, result);
+                   m_ftTask->update();
                 if(m_timeB17->isActive())
                 {
                     m_timeB17->stop();
@@ -662,38 +786,41 @@ void SkinLoader::dealWithLED(WidgetType type, QString objName, int x, int y, QRe
                 {
                     m_timeOutB17 = 10;
                 }
-                 m_timeB17->start(m_timeOutB17);
+                m_timeB17->stop();
+                m_timeB17->setInterval(m_timeOutB17);
+                m_timeB17->start(m_timeOutB17);
             }
 
         }
         //B19Çø
         else if(objName == "EffectKnobComposed_[Channel1]_2")
         {
-            if(ratio < 0.1)
-            {
-                //ÃðD107,D108,D217
-                //...
-                if(m_timeB19->isActive())
-                {
-                    m_timeB19->stop();
-                }
-            }
-            else
-            {
-                if(ratio < 0.3)
-                {
-                    m_timeOutB19 = 1000;
-                }
-                else if(ratio < 0.6)
-                {
-                    m_timeOutB19 = 100;
-                }
-                else
-                {
-                    m_timeOutB19 = 10;
-                }
-                m_timeB19->start(m_timeOutB19);
-            }
+//            if(ratio < 0.1)
+//            {
+//                //ÃðD107,D108,D217
+//                //...
+//                if(m_timeB19->isActive())
+//                {
+//                    m_timeB19->stop();
+//                }
+//            }
+//            else
+//            {
+//                if(ratio < 0.3)
+//                {
+//                    m_timeOutB19 = 1000;
+//                }
+//                else if(ratio < 0.6)
+//                {
+//                    m_timeOutB19 = 100;
+//                }
+//                else
+//                {
+//                    m_timeOutB19 = 10;
+//                }
+//                m_timeB19->start(m_timeOutB19);
+//            }
+            internalDealWithLED(ratio, m_timeB19, &m_timeOutB19, 15, 0, 1, 25, 6);
 
         }
         //B21Çø
@@ -722,6 +849,8 @@ void SkinLoader::dealWithLED(WidgetType type, QString objName, int x, int y, QRe
                 {
                     m_timeOutB21 = 10;
                 }
+                m_timeB21->stop();
+                m_timeB21->setInterval(m_timeOutB21);
                 m_timeB21->start(m_timeOutB21);
             }
 
@@ -753,6 +882,8 @@ void SkinLoader::dealWithLED(WidgetType type, QString objName, int x, int y, QRe
                 {
                     m_timeOutB23 = 10;
                 }
+                m_timeB23->stop();
+                m_timeB23->setInterval(m_timeOutB23);
                 m_timeB23->start(m_timeOutB23);
             }
 
@@ -783,7 +914,9 @@ void SkinLoader::dealWithLED(WidgetType type, QString objName, int x, int y, QRe
                 {
                     m_timeOutB18 = 10;
                 }
-                 m_timeB18->start(m_timeOutB18);
+                m_timeB18->stop();
+                m_timeB18->setInterval(m_timeOutB18);
+                m_timeB18->start(m_timeOutB18);
 
             }
 
@@ -814,7 +947,9 @@ void SkinLoader::dealWithLED(WidgetType type, QString objName, int x, int y, QRe
                 {
                     m_timeOutB20 = 10;
                 }
-                 m_timeB20->start(m_timeOutB20);
+                m_timeB20->stop();
+                m_timeB20->setInterval(m_timeOutB20);
+                m_timeB20->start(m_timeOutB20);
             }
 
         }
@@ -844,7 +979,9 @@ void SkinLoader::dealWithLED(WidgetType type, QString objName, int x, int y, QRe
                 {
                     m_timeOutB22 = 10;
                 }
-                 m_timeB22->start(m_timeOutB22);
+                m_timeB22->stop();
+                m_timeB22->setInterval(m_timeOutB22);
+                m_timeB22->start(m_timeOutB22);
             }
 
         }
@@ -875,6 +1012,8 @@ void SkinLoader::dealWithLED(WidgetType type, QString objName, int x, int y, QRe
                 {
                     m_timeOutB24 = 10;
                 }
+                m_timeB24->stop();
+                m_timeB24->setInterval(m_timeOutB24);
                 m_timeB24->start(m_timeOutB24);
             }
 
@@ -920,10 +1059,6 @@ void SkinLoader::dealWithLED(WidgetType type, QString objName, int x, int y, QRe
                 //ÁÁD52£¬D53
                     m_ftTask->setBuff(7, 0x06);
                     m_ftTask->update();
-
-
-
-
             }
             //B51
             else if(objName == "PlayToggle_Deck1_hotcue")
@@ -956,6 +1091,7 @@ void SkinLoader::dealWithLED(WidgetType type, QString objName, int x, int y, QRe
                  //Ð¡ÓÚ1/4´¦
                  if( (poswidth / halfW) < 0.25 )
                  {
+                     //
                       m_ftTask->setBuff(4, 0x02);
                  }
                  else if((poswidth / halfW) < 0.5)
@@ -998,24 +1134,65 @@ void SkinLoader::dealWithLED(WidgetType type, QString objName, int x, int y, QRe
         else if(objName == "ChannelVolume_[Channel1]")
         {
             //ÁÁD24
-            m_ftTask->setBuff(3, 0x02);
+            unsigned char result;
             float posH = (y - rct.bottom())/ rct.height();
-            if(posH < 0.3)
+            if(posH < 0.1)
+            {
+                //ÃðD22,D23
+                 result = m_ftTask->getBuff(2);
+                 result &= ~(1 << 6);
+                 m_ftTask->setBuff(2, result);
+                 m_ftTask->update();
+                 result = m_ftTask->getBuff(3);
+                 result &= ~(1 << 0);
+                 m_ftTask->setBuff(3, result);
+                 m_ftTask->update();
+                 //ÃðD20,D21
+                 result = m_ftTask->getBuff(2);
+                   result &= ~(1 << 5);
+                   result &= ~(1 << 7);
+                  m_ftTask->setBuff(2, result);
+                  m_ftTask->update();
+            }
+            else if(posH < 0.3)
             {
                 //ÁÁD22,D23
+                 result = m_ftTask->getBuff(2);
+                 result |= (1 << 6);
+                 m_ftTask->setBuff(2, result);
+
                 m_ftTask->setBuff(2, 0x40);
+               result = m_ftTask->getBuff(3);
+                 result |= (1 << 0);
+                 m_ftTask->setBuff(3, result);
                 m_ftTask->setBuff(3, 0x01);
+                 m_ftTask->update();
+                 //ÃðD20,D21
+               result = m_ftTask->getBuff(2);
+                   result &= ~(1 << 5);
+                   result &= ~(1 << 7);
+                  m_ftTask->setBuff(2, result);
+                 m_ftTask->update();
             }
             else if(posH < 0.6)
             {
                 //ÁÁD20,D21
-                m_ftTask->setBuff(2, 0xa0);
+                result = m_ftTask->getBuff(2);
+                result |= (1 << 5);
+                result |= (1 << 7);
+                m_ftTask->setBuff(2, result);
+                m_ftTask->update();
             }
             else
             {
-                //ÁÁD18,D19
-                m_ftTask->setBuff(2, 0x18);
+//                //ÁÁD18,D19
+                result = m_ftTask->getBuff(2);
+                result |= (1 << 3);
+                result |= (1 << 4);
+                m_ftTask->setBuff(2, result);
+                  m_ftTask->update();
             }
+            m_ftTask->update();
         }
         //A7Çø
         else if(objName == "ChannelVolume_[Channel2]")
@@ -1043,24 +1220,43 @@ void SkinLoader::dealWithLED(WidgetType type, QString objName, int x, int y, QRe
         //A1Çø
         else if(objName == "RateDisplay1_handh")
         {
-            //ÁÁD17
-            m_ftTask->setBuff(2, 0x04);
+            unsigned char result;
+
             float posH = (y - rct.bottom())/ rct.height();
-            if(posH < 0.3)
+            if(posH < 0.1)
+            {
+                //ÃðD15,D16
+                 result = m_ftTask->getBuff(2);
+                 result &= ~(1 << 0);
+                 result &= ~(1 << 1);
+                 m_ftTask->setBuff(2, result);
+                 m_ftTask->update();
+                 //ÃðD14,D13
+                 result = m_ftTask->getBuff(1);
+                  result &= ~(1 << 5);
+                  result &= ~(1 << 4);
+                  m_ftTask->setBuff(1, result);
+                  m_ftTask->update();
+            }
+           else if(posH < 0.3)
             {
                 //ÁÁD15,D16
-                m_ftTask->setBuff(2, 0x03);
+                result = m_ftTask->getBuff(2);
+                result |= (1 << 0);
+                result |= (1 << 1);
+                m_ftTask->setBuff(2, result);
+                m_ftTask->update();
             }
             else if(posH < 0.6)
             {
                 //ÁÁD13,D14
-                m_ftTask->setBuff(1, 0x30);
+                result = m_ftTask->getBuff(1);
+                result |= (1 << 4);
+                result |= (1 << 5);
+                m_ftTask->setBuff(1, result);
+                m_ftTask->update();
             }
-            else
-            {
-                //ÁÁD11,D12
-                m_ftTask->setBuff(1, 0x0c);
-            }
+
         }
         //A8Çø
         else if(objName == "RateDisplay2_handh")
@@ -1179,9 +1375,50 @@ void SkinLoader::getComingData(QByteArray data)
     }
 }
 
+void SkinLoader::internalHandleTimeout(QTimer* timer, int interval, int* light,
+                                       int group1, int byte11, int byte12, int group2, int byte21) {
+    if(m_operatorType == 1)
+    {
+        unsigned char result = m_ftTask->getBuff(group1);
+        result |= (1 << byte11);
+        result |= (1 << byte12);
+        m_ftTask->setBuff(group1, result);
+        result = m_ftTask->getBuff(group2);
+        result |= (1 << byte21);
+        m_ftTask->setBuff(group2, result);
+        m_ftTask->update();
+    }
+    else if(m_operatorType == 2)
+    {
+        if (*light) {
+            unsigned char result = m_ftTask->getBuff(group1);
+            result |= (1 << byte11);
+            result |= (1 << byte12);
+            m_ftTask->setBuff(group1, result);
+            result = m_ftTask->getBuff(group2);
+            result |= (1 << byte21);
+            m_ftTask->setBuff(group2, result);
+            m_ftTask->update();
+        } else {
+            unsigned char result = m_ftTask->getBuff(group1);
+            result &= ~(1 << byte11);
+            result &= ~(1 << byte12);
+            m_ftTask->setBuff(group1, result);
+            result = m_ftTask->getBuff(group2);
+            result &= ~(1 << byte21);
+            m_ftTask->setBuff(group2, result);
+            m_ftTask->update();
+        }
+        *light = !(*light);
+    }
+    timer->start(interval);
+}
+
 void SkinLoader::handleTimeoutB3()
 {
-    if(m_timeB3->isActive())
+    internalHandleTimeout(m_timeB3, m_timeOutB3, &m_lightB3, 0, 4, 5, 1, 6);
+#if 0
+    if(m_operatorType == 1)
     {
         //ÁÁD5,D6,D205
         m_ftTask->setBuff(0, 0x30);
@@ -1189,177 +1426,218 @@ void SkinLoader::handleTimeoutB3()
         m_ftTask->update();
         m_timeB3->stop();
     }
+    else if(m_operatorType == 2)
+    {
+        if (m_lightB3) {
+            unsigned char result = m_ftTask->getBuff(0);
+            result |= (1 << 4);
+            result |= (1 << 5);
+            m_ftTask->setBuff(0, result);
+            result = m_ftTask->getBuff(1);
+            result |= (1 << 6);
+            m_ftTask->setBuff(1, result);
+            m_ftTask->update();
+        } else {
+            //ÃðD5,D6,D205
+            unsigned char result = m_ftTask->getBuff(0);
+            result = m_ftTask->getBuff(0);
+            result &= ~(1 << 4);
+            result &= ~(1 << 5);
+            m_ftTask->setBuff(0, result);
+            result = m_ftTask->getBuff(1);
+            result &= ~(1 << 6);
+            m_ftTask->setBuff(1, result);
+            m_ftTask->update();
+            m_timeB3->stop();
+        }
+        m_lightB3 = !m_lightB3;
+    }
     m_timeB3->start(m_timeOutB3);
+ #endif
 }
 
 void SkinLoader::handleTimeoutB4()
 {
-    if(m_timeB4->isActive())
-    {
-        //ÁÁD7,D8,D206
-        m_ftTask->setBuff(0, 0xc0);
-        m_ftTask->setBuff(3, 0x40);
-        m_ftTask->update();
-        m_timeB4->stop();
-    }
-    m_timeB4->start(m_timeOutB4);
+    internalHandleTimeout(m_timeB4, m_timeOutB4, &m_lightB4, 0, 6, 7, 3, 6);
+
+//    if(m_timeB4->isActive())
+//    {
+//        //ÁÁD7,D8,D206
+//        //m_ftTask->setBuff(0, 0xc0);
+//        //m_ftTask->setBuff(3, 0x40);
+//        //m_ftTask->update();
+//        m_timeB4->stop();
+//    }
+//    m_timeB4->start(m_timeOutB4);
 }
 
 void SkinLoader::handleTimeoutB5()
 {
-    if(m_timeB5->isActive())
-    {
-        //ÁÁD9,D10,D207
-        m_ftTask->setBuff(1, 0x03);
-        m_ftTask->setBuff(5, 0x40);
-        m_ftTask->update();
-        m_timeB5->stop();
-    }
-    m_timeB5->start(m_timeOutB5);
+    internalHandleTimeout(m_timeB5, m_timeOutB5, &m_lightB5, 1, 0, 1, 5, 6);
+//    if(m_timeB5->isActive())
+//    {
+//        //ÁÁD9,D10,D207
+//        //m_ftTask->setBuff(1, 0x03);
+//        //m_ftTask->setBuff(5, 0x40);
+//        //m_ftTask->update();
+//        m_timeB5->stop();
+//    }
+//    m_timeB5->start(m_timeOutB5);
 }
 
 void SkinLoader::handleTimeoutB9()
 {
-    if(m_timeB9->isActive())
-    {
-        //ÁÁD137,D138,D208
-        m_ftTask->setBuff(19, 0x0c);
-        m_ftTask->setBuff(7, 0x40);
-        m_ftTask->update();
-        m_timeB9->stop();
-    }
-    m_timeB9->start(m_timeOutB9);
+    internalHandleTimeout(m_timeB9, m_timeOutB9, &m_lightB9, 19, 2, 3, 7, 6);
+//    if(m_timeB9->isActive())
+//    {
+//        //ÁÁD137,D138,D208
+//        //m_ftTask->setBuff(19, 0x0c);
+//        //m_ftTask->setBuff(7, 0x40);
+//        //m_ftTask->update();
+//        m_timeB9->stop();
+//    }
+//    m_timeB9->start(m_timeOutB9);
 }
 
 void SkinLoader::handleTimeoutB10()
 {
-    if(m_timeB10->isActive())
-    {
-        //ÁÁD139,D140,D209
-        m_ftTask->setBuff(19, 0x30);
-        m_ftTask->setBuff(9, 0x40);
-        m_ftTask->update();
-        m_timeB10->stop();
-    }
-    m_timeB10->start(m_timeOutB10);
+    internalHandleTimeout(m_timeB10, m_timeOutB10, &m_lightB10, 19, 4, 5, 9, 6);
+//    if(m_timeB10->isActive())
+//    {
+//        //ÁÁD139,D140,D209
+//        //m_ftTask->setBuff(19, 0x30);
+//        //m_ftTask->setBuff(9, 0x40);
+//        //m_ftTask->update();
+//        m_timeB10->stop();
+//    }
+//    m_timeB10->start(m_timeOutB10);
 }
 
 void SkinLoader::handleTimeoutB11()
 {
-    if(m_timeB11->isActive())
-    {
-        //ÁÁD141,D142,D210
-        m_ftTask->setBuff(20, 0x03);
-        m_ftTask->setBuff(11, 0x40);
-        m_ftTask->update();
-        m_timeB11->stop();
-    }
-    m_timeB11->start(m_timeOutB11);
+    internalHandleTimeout(m_timeB11, m_timeOutB11, &m_lightB11, 20, 0, 1, 11, 6);
+//    if(m_timeB11->isActive())
+//    {
+//        //ÁÁD141,D142,D210
+//        //m_ftTask->setBuff(20, 0x03);
+//        //m_ftTask->setBuff(11, 0x40);
+//        //m_ftTask->update();
+//        m_timeB11->stop();
+//    }
+//    m_timeB11->start(m_timeOutB11);
 
 }
 
 void SkinLoader::handleTimeoutB17()
 {
-    if(m_timeB17->isActive())
-    {
-        //ÁÁD105,D106,D215
-        m_ftTask->setBuff(14, 0xc0);
-        m_ftTask->setBuff(21, 0x40);
-        m_ftTask->update();
-        m_timeB17->stop();
-    }
-    m_timeB17->start(m_timeOutB17);
+    internalHandleTimeout(m_timeB17, m_timeOutB17, &m_lightB17, 14, 6, 7, 21, 6);
+//    if(m_timeB17->isActive())
+//    {
+//        //ÁÁD105,D106,D215
+//         //m_ftTask->setBuff(14, 0xc0);
+//         //m_ftTask->setBuff(21, 0x40);
+//          //m_ftTask->update();
+//        m_timeB17->stop();
+//    }
+//    m_timeB17->start(m_timeOutB17);
 }
 
 void SkinLoader::handleTimeoutB19()
 {
-    if(m_timeB19->isActive())
-    {
-        //ÁÁD107,D108,D217
-        m_ftTask->setBuff(15, 0x03);
-        m_ftTask->setBuff(25, 0x40);
-        m_ftTask->update();
-        m_timeB19->stop();
-    }
-    m_timeB19->start(m_timeOutB19);
+    internalHandleTimeout(m_timeB19, m_timeOutB19, &m_lightB19, 15, 0, 1, 25, 6);
+//    if(m_timeB19->isActive())
+//    {
+//        //ÁÁD107,D108,D217
+//        //m_ftTask->setBuff(15, 0x03);
+//        //m_ftTask->setBuff(25, 0x40);
+//        //m_ftTask->update();
+//        m_timeB19->stop();
+//    }
+//    m_timeB19->start(m_timeOutB19);
 }
 
 void SkinLoader::handleTimeoutB21()
 {
-    if(m_timeB21->isActive())
-    {
-        //ÁÁD109,D110,D219
-        m_ftTask->setBuff(15, 0x0c);
-        m_ftTask->setBuff(29, 0x40);
-        m_ftTask->update();
-        m_timeB21->stop();
-    }
-    m_timeB21->start(m_timeOutB21);
+    internalHandleTimeout(m_timeB21, m_timeOutB21, &m_lightB21, 15, 2, 3, 29, 6);
+//    if(m_timeB21->isActive())
+//    {
+//        //ÁÁD109,D110,D219
+//        //m_ftTask->setBuff(15, 0x0c);
+//        //m_ftTask->setBuff(29, 0x40);
+//        //m_ftTask->update();
+//        m_timeB21->stop();
+//    }
+//    m_timeB21->start(m_timeOutB21);
 }
 
 void SkinLoader::handleTimeoutB23()
 {
-    if(m_timeB23->isActive())
-    {
-        //ÁÁD111,D112,D221
-        m_ftTask->setBuff(15, 0x30);
-        m_ftTask->setBuff(29, 0x02);
-        m_ftTask->update();
-        m_timeB23->stop();
-    }
-    m_timeB23->start(m_timeOutB23);
+    internalHandleTimeout(m_timeB23, m_timeOutB23, &m_lightB23, 15, 4, 5, 29, 1);
+//    if(m_timeB23->isActive())
+//    {
+//        //ÁÁD111,D112,D221
+//        //m_ftTask->setBuff(15, 0x30);
+//        //m_ftTask->setBuff(29, 0x02);
+//        //m_ftTask->update();
+//        m_timeB23->stop();
+//    }
+//    m_timeB23->start(m_timeOutB23);
 }
 
 void SkinLoader::handleTimeoutB18()
 {
-    if(m_timeB18->isActive())
-    {
-        //ÁÁD113,D114,D216
-        m_ftTask->setBuff(16, 0x03);
-        m_ftTask->setBuff(23, 0x40);
-        m_ftTask->update();
-        m_timeB18->stop();
-    }
-    m_timeB18->start(m_timeOutB18);
+    internalHandleTimeout(m_timeB18, m_timeOutB18, &m_lightB18, 16, 0, 1, 23, 6);
+//    if(m_timeB18->isActive())
+//    {
+//        //ÁÁD113,D114,D216
+//        //m_ftTask->setBuff(16, 0x03);
+//        //m_ftTask->setBuff(23, 0x40);
+//        //m_ftTask->update();
+//        m_timeB18->stop();
+//    }
+//    m_timeB18->start(m_timeOutB18);
 }
 
 void SkinLoader::handleTimeoutB20()
 {
-    if(m_timeB20->isActive())
-    {
-        //ÁÁD115,D116,D218
-        m_ftTask->setBuff(16, 0x0c);
-        m_ftTask->setBuff(27, 0x40);
-        m_ftTask->update();
-        m_timeB20->stop();
-    }
-    m_timeB20->start(m_timeOutB20);
+    internalHandleTimeout(m_timeB20, m_timeOutB20, &m_lightB20, 16, 2, 3, 27, 6);
+//    if(m_timeB20->isActive())
+//    {
+//        //ÁÁD115,D116,D218
+//        //m_ftTask->setBuff(16, 0x0c);
+//        //m_ftTask->setBuff(27, 0x40);
+//        //m_ftTask->update();
+//        m_timeB20->stop();
+//    }
+//    m_timeB20->start(m_timeOutB20);
 }
 
 void SkinLoader::handleTimeoutB22()
 {
-    if(m_timeB22->isActive())
-    {
-        //ÁÁD117,D118,D220
-        m_ftTask->setBuff(16, 0x30);
-        m_ftTask->setBuff(29, 0x01);
-        m_ftTask->update();
-        m_timeB22->stop();
-    }
-    m_timeB22->start(m_timeOutB22);
+    internalHandleTimeout(m_timeB22, m_timeOutB22, &m_lightB22, 16, 4, 5, 29, 0);
+//    if(m_timeB22->isActive())
+//    {
+//        //ÁÁD117,D118,D220
+//        //m_ftTask->setBuff(16, 0x30);
+//        //m_ftTask->setBuff(29, 0x01);
+//        //m_ftTask->update();
+//        m_timeB22->stop();
+//    }
+//    m_timeB22->start(m_timeOutB22);
 }
 
 void SkinLoader::handleTimeoutB24()
 {
-    if(m_timeB24->isActive())
-    {
-        //ÁÁD119,D120,D222
-        m_ftTask->setBuff(16, 0xc0);
-        m_ftTask->setBuff(29, 0x04);
-        m_ftTask->update();
-        m_timeB24->stop();
-    }
-    m_timeB24->start(m_timeOutB24);
+    internalHandleTimeout(m_timeB24, m_timeOutB24, &m_lightB24, 16, 6, 7, 29, 2);
+//    if(m_timeB24->isActive())
+//    {
+//        //ÁÁD119,D120,D222
+//        //m_ftTask->setBuff(16, 0xc0);
+//        //m_ftTask->setBuff(29, 0x04);
+//        //m_ftTask->update();
+//        m_timeB24->stop();
+//    }
+//    m_timeB24->start(m_timeOutB24);
 
 }
 
