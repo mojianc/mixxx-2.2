@@ -11,8 +11,14 @@ FtTask::FtTask(QObject *parent)
 	for(int j=0;j<COLUMN_SIZE;j++){
 		for (int i = 0; i < 2; i++) {
 			m_displayBuf[j*2 + i] = 0x00;
-		}
+        }
 	}
+    m_displaySwapBuf = new unsigned char[DISPLAY_BUFF_SIZE];
+    for(int j=0;j<COLUMN_SIZE;j++){
+        for (int i = 0; i < 2; i++) {
+            m_displaySwapBuf[j*2 + i] = 0x00;
+        }
+    }
 }
 
 FtTask::~FtTask()
@@ -21,6 +27,7 @@ FtTask::~FtTask()
 	quit();
 	wait();
 	delete[] m_displayBuf;
+    delete[] m_displaySwapBuf;
 }
 
 void FtTask::stop()
@@ -30,16 +37,21 @@ void FtTask::stop()
 
 void FtTask::setBuff(int index, unsigned char data)
 {
+    m_mutex.lock();
 	if (index < DISPLAY_BUFF_SIZE) {
 		m_displayBuf[index] = data;
 	}
+    m_mutex.unlock();
 }
 
 unsigned char FtTask::getBuff(int index)
 {
+    m_mutex.lock();
 	if (index < DISPLAY_BUFF_SIZE) {
+        m_mutex.unlock();
 		return m_displayBuf[index];
-	}
+    }
+    m_mutex.unlock();
 	return 0;
 }
 
@@ -50,11 +62,13 @@ void FtTask::update()
 
 void FtTask::clearBuff()
 {
+    m_mutex.lock();
 	for (int j = 0; j < COLUMN_SIZE; j++) {
 		for (int i = 0; i < 2; i++) {
 			m_displayBuf[j * 2 + i] = 0x00;
 		}
 	}
+    m_mutex.unlock();
 }
 
 void FtTask::run()
@@ -79,7 +93,7 @@ void FtTask::run()
 				setUpdate(false);
 				updateBuff();				
 			}
-            updateTest();
+            //updateTest();
 //            readMouseSpeed();
 //            readMouseDirect();
 //			flashLed();
@@ -94,7 +108,15 @@ void FtTask::run()
 
 void FtTask::updateBuff()
 {
-	unsigned char *pBuf = m_displayBuf;
+    unsigned char *pBuf = m_displaySwapBuf;
+    m_mutex.lock();
+    for(int j=0;j<COLUMN_SIZE;j++){
+        for (int i = 0; i < 2; i++) {
+            m_displaySwapBuf[j*2 + i] = m_displayBuf[j*2 + i];
+        }
+    }
+    m_mutex.unlock();
+
 	m_ftUnitl.Write_Short_Add(2, 0);
 	for (int j = 0; j < COLUMN_SIZE; j++) {
 		if (j == 0) {
@@ -113,22 +135,28 @@ void FtTask::updateBuff()
 
 void FtTask::updateTest()
 {
-	unsigned char *pBuf = m_displayBuf;
-//	static int j = 0;
-//	static int number = 0;
-//	j++;
-//	j = j % 50;
-//	if (j == 0) {
-//		number+=2;
-//		if (number > 14) {
-//			number = 0;
-//		}
-//		memset(pBuf, 0, 30);
-//		pBuf[number] = 0xff;
-//		pBuf[number + 1] = 0x3f;
-//	}  10000000
-    pBuf[0] = 0x80;
-	update();
+//    while(1)
+//    {
+        //¡¡D5,D6,D205
+       unsigned char result = getBuff(0);
+         result |= (1 << 4);
+         result |= (1 << 5);
+        setBuff(0, result);
+       result = getBuff(1);
+       result |= (1 << 6);
+        setBuff(1, result);
+        update();
+
+        //√D5,D6,D205
+        result = getBuff(0);
+        result &= ~(1 << 4);
+        result &= ~(1 << 5);
+        setBuff(0, result);
+        result = getBuff(1);
+        result &= ~(1 << 6);
+        setBuff(1, result);
+        update();
+//    }
 }
 
 void FtTask::readMouseSpeed()
