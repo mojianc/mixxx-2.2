@@ -114,6 +114,9 @@ public:
     void handleTimeoutB22();
     void handleTimeoutB24();
     void handleTimeoutB25();
+    void internalHandleTimeout(QTimer* timer, int interval, int* light,
+                                           int group1, int byte11, int byte12, int group2, int byte21);
+    void internalDealWithLED(float ratio, QTimer* timer, int* internal, int group1, int byte11, int byte12, int group2, int byte21);
   private:
     QString pickResizableSkin(QString oldSkin) const;
 
@@ -133,42 +136,59 @@ public:
     //B3,B4,B5旋钮的定时器
     QTimer *m_timeB3;
     int m_timeOutB3;
+    int m_lightB3;
     QTimer *m_timeB4;
     int m_timeOutB4;
+    int m_lightB4;
     QTimer *m_timeB5;
     int m_timeOutB5;
+    int m_lightB5;
 
     //B9,B10,B11旋钮的定时器
     QTimer *m_timeB9;
     int m_timeOutB9;
+    int m_lightB9;
     QTimer *m_timeB10;
     int m_timeOutB10;
+    int m_lightB10;
     QTimer *m_timeB11;
     int m_timeOutB11;
+    int m_lightB11;
 
     //B17,B19,B21,B23旋钮的定时器
     QTimer *m_timeB17;
     int m_timeOutB17;
+    int m_lightB17;
     QTimer *m_timeB19;
     int m_timeOutB19;
+    int m_lightB19;
     QTimer *m_timeB21;
     int m_timeOutB21;
+    int m_lightB21;
     QTimer *m_timeB23;
     int m_timeOutB23;
+    int m_lightB23;
 
     //B18,B20,B22,B24旋钮的定时器
     QTimer *m_timeB18;
     int m_timeOutB18;
+    int m_lightB18;
     QTimer *m_timeB20;
     int m_timeOutB20;
+    int m_lightB20;
     QTimer *m_timeB22;
     int m_timeOutB22;
+    int m_lightB22;
     QTimer *m_timeB24;
     int m_timeOutB24;
+    int m_lightB24;
 
     //判断B25 shift键是否被按下
     QTimer *m_timeB25;
     bool m_timeOutB25;
+    int m_lightB25;
+
+    int m_operatorType;
 };
 
 
