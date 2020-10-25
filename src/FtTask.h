@@ -38,6 +38,7 @@ private:
 	FtUnitl         m_ftUnitl;
 	bool            m_connected;
 	unsigned char   *m_displayBuf;
+    unsigned char   *m_displaySwapBuf;
 	bool            m_update;
 	QMutex          m_mutex;
 };
