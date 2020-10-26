@@ -593,164 +593,164 @@ void SkinLoader::dealWithLED(WidgetType type, QString objName, int x, int y, QRe
         //B4Çø
         else if(objName == "KnobComposed_[EffectRack1_EffectUnit1_Effect2]_meta")
         {
-            if(ratio < 0.1)
-            {
-                //ÃðD7,D8,D206
-                //...
+//            if(ratio < 0.1)
+//            {
+//                //ÃðD7,D8,D206
+//                //...
 
-                if(m_timeB4->isActive())
-                {
-                    m_timeB4->stop();
-                }
-            }
-            else
-            {
-                if(ratio < 0.3)
-                {
-                    m_timeOutB4 = 1000;
-                }
-                else if(ratio < 0.6)
-                {
-                    m_timeOutB4 = 100;
-                }
-                else
-                {
-                    m_timeOutB4 = 10;
-                }
-                m_timeB4->stop();
-                m_timeB4->setInterval(m_timeOutB4);
-                m_timeB4->start(m_timeOutB4);
-            }
-
+//                if(m_timeB4->isActive())
+//                {
+//                    m_timeB4->stop();
+//                }
+//            }
+//            else
+//            {
+//                if(ratio < 0.3)
+//                {
+//                    m_timeOutB4 = 1000;
+//                }
+//                else if(ratio < 0.6)
+//                {
+//                    m_timeOutB4 = 100;
+//                }
+//                else
+//                {
+//                    m_timeOutB4 = 10;
+//                }
+//                m_timeB4->stop();
+//                m_timeB4->setInterval(m_timeOutB4);
+//                m_timeB4->start(m_timeOutB4);
+//            }
+            internalDealWithLED(ratio, m_timeB4, &m_timeOutB4, 0, 6, 7, 3, 6);
         }
         //B5Çø
         else if(objName == "KnobComposed_[EffectRack1_EffectUnit1_Effect3]_meta")
         {
-            if(ratio < 0.1)
-            {
-                //ÃðD9,D10,D207
-                //...
+//            if(ratio < 0.1)
+//            {
+//                //ÃðD9,D10,D207
+//                //...
 
-                if(m_timeB5->isActive())
-                {
-                    m_timeB5->stop();
-                }
-            }
-            {
-                if(ratio < 0.3)
-                {
-                    m_timeOutB5 = 1000;
-                }
-                else if(ratio < 0.6)
-                {
-                    m_timeOutB5 = 100;
-                }
-                else
-                {
-                    m_timeOutB5 = 10;
-                }
-                m_timeB5->stop();
-                m_timeB5->setInterval(m_timeOutB5);
-                m_timeB5->start(m_timeOutB5);
-            }
-
+//                if(m_timeB5->isActive())
+//                {
+//                    m_timeB5->stop();
+//                }
+//            }
+//            {
+//                if(ratio < 0.3)
+//                {
+//                    m_timeOutB5 = 1000;
+//                }
+//                else if(ratio < 0.6)
+//                {
+//                    m_timeOutB5 = 100;
+//                }
+//                else
+//                {
+//                    m_timeOutB5 = 10;
+//                }
+//                m_timeB5->stop();
+//                m_timeB5->setInterval(m_timeOutB5);
+//                m_timeB5->start(m_timeOutB5);
+//            }
+           internalDealWithLED(ratio, m_timeB5, &m_timeOutB5, 1, 0, 1, 5, 6);
         }
         //B9Çø
         else if(objName == "KnobComposed_[EffectRack1_EffectUnit2_Effect1]_meta")
         {
-            if(ratio < 0.1)
-            {
-                //ÃðD137,D138,D208
-                //...
+//            if(ratio < 0.1)
+//            {
+//                //ÃðD137,D138,D208
+//                //...
 
-                if(m_timeB9->isActive())
-                {
-                    m_timeB9->stop();
-                }
-            }
-            else
-            {
-                if(ratio < 0.3)
-                {
-                    m_timeOutB9 = 1000;
-                }
-                else if(ratio < 0.6)
-                {
-                    m_timeOutB9 = 100;
-                }
-                else
-                {
-                    m_timeOutB9 = 10;
-                }
-                m_timeB9->stop();
-                m_timeB9->setInterval(m_timeOutB9);
-                m_timeB9->start(m_timeOutB9);
-            }
-
+//                if(m_timeB9->isActive())
+//                {
+//                    m_timeB9->stop();
+//                }
+//            }
+//            else
+//            {
+//                if(ratio < 0.3)
+//                {
+//                    m_timeOutB9 = 1000;
+//                }
+//                else if(ratio < 0.6)
+//                {
+//                    m_timeOutB9 = 100;
+//                }
+//                else
+//                {
+//                    m_timeOutB9 = 10;
+//                }
+//                m_timeB9->stop();
+//                m_timeB9->setInterval(m_timeOutB9);
+//                m_timeB9->start(m_timeOutB9);
+//            }
+             internalDealWithLED(ratio, m_timeB9, &m_timeOutB9, 19, 2, 3, 7, 6);
         }
         //B10Çø
         else if(objName == "KnobComposed_[EffectRack1_EffectUnit2_Effect2]_meta")
         {
-            if(ratio < 0.1)
-            {
-                //ÃðD139,D140,D209
-                //...
-                if(m_timeB10->isActive())
-                {
-                    m_timeB10->stop();
-                }
-            }
-            else
-            {
-                if(ratio < 0.3)
-                {
-                    m_timeOutB10 = 1000;
-                }
-                else if(ratio < 0.6)
-                {
-                    m_timeOutB10 = 100;
-                }
-                else
-                {
-                    m_timeOutB10 = 10;
-                }
-                m_timeB10->stop();
-                m_timeB10->setInterval(m_timeOutB10);
-                m_timeB10->start(m_timeOutB10);
-            }
-
+//            if(ratio < 0.1)
+//            {
+//                //ÃðD139,D140,D209
+//                //...
+//                if(m_timeB10->isActive())
+//                {
+//                    m_timeB10->stop();
+//                }
+//            }
+//            else
+//            {
+//                if(ratio < 0.3)
+//                {
+//                    m_timeOutB10 = 1000;
+//                }
+//                else if(ratio < 0.6)
+//                {
+//                    m_timeOutB10 = 100;
+//                }
+//                else
+//                {
+//                    m_timeOutB10 = 10;
+//                }
+//                m_timeB10->stop();
+//                m_timeB10->setInterval(m_timeOutB10);
+//                m_timeB10->start(m_timeOutB10);
+//            }
+            internalDealWithLED(ratio, m_timeB10, &m_timeOutB10, 19, 4, 5, 9, 6);
         }
         //B11Çø
         else if(objName == "KnobComposed_[EffectRack1_EffectUnit2_Effect3]_meta")
         {
-            if(ratio < 0.1)
-            {
-                //ÃðD141,D142,D210
-                //...
-                if(m_timeB11->isActive())
-                {
-                    m_timeB11->stop();
-                }
-            }
-            else
-            {
-                if(ratio < 0.3)
-                {
-                    m_timeOutB11 = 1000;
-                }
-                else if(ratio < 0.6)
-                {
-                    m_timeOutB11 = 100;
-                }
-                else
-                {
-                    m_timeOutB11 = 10;
-                }
-                m_timeB11->stop();
-                m_timeB11->setInterval(m_timeOutB11);
-                m_timeB11->start(m_timeOutB11);
-            }
-
+//            if(ratio < 0.1)
+//            {
+//                //ÃðD141,D142,D210
+//                //...
+//                if(m_timeB11->isActive())
+//                {
+//                    m_timeB11->stop();
+//                }
+//            }
+//            else
+//            {
+//                if(ratio < 0.3)
+//                {
+//                    m_timeOutB11 = 1000;
+//                }
+//                else if(ratio < 0.6)
+//                {
+//                    m_timeOutB11 = 100;
+//                }
+//                else
+//                {
+//                    m_timeOutB11 = 10;
+//                }
+//                m_timeB11->stop();
+//                m_timeB11->setInterval(m_timeOutB11);
+//                m_timeB11->start(m_timeOutB11);
+//            }
+            internalDealWithLED(ratio, m_timeB11, &m_timeOutB11, 20, 0, 1, 11, 6);
         }
         //B17Çø
         else if(objName == "EffectKnobComposed_[Channel1]_3")
