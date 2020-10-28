@@ -187,8 +187,6 @@ public:
     QTimer *m_timeB25;
     bool m_timeOutB25;
     int m_lightB25;
-
-    int m_operatorType;
 };
 
 
