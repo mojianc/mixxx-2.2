@@ -358,92 +358,293 @@ void SkinLoader::dealWithLED(WidgetType type, QString objName, int x, int y, QRe
 
             //ÁÁD32,D33
             if(radian > Radian0 && radian < Radian30)
-          {
-                m_ftTask->setBuff(4, 0x18);
-                m_ftTask->update();
+            {
+
+                unsigned char result = m_ftTask->getBuff(4);
+                result |= (1 << 3);
+                result |= (1 << 4);
+                m_ftTask->setBuff(4, result);
+                //ÃðD34,D35
+                 result = m_ftTask->getBuff(4);
+                 result &= ~(1 << 5);
+                 result &= ~(1 << 7);
+                 m_ftTask->setBuff(4, result);
+                 m_ftTask->update();
+//                m_ftTask->setBuff(4, 0x18);
+//                m_ftTask->update();
             }
 
             //ÁÁD34,D35
             else if(radian > Radian30 && radian < Radian60)
             {
-                m_ftTask->setBuff(4, 0x00);
-                m_ftTask->setBuff(4, 0xa0);
+                //ÃðD32,D33
+                unsigned char result = m_ftTask->getBuff(4);
+                result &= ~(1 << 3);
+                result &= ~(1 << 4);
+                m_ftTask->setBuff(4, result);
+
+                //ÁÁD34,D35
+                result = m_ftTask->getBuff(4);
+                result |= (1 << 5);
+                result |= (1 << 7);
+                m_ftTask->setBuff(4, result);
+                //ÃðD36,D37,D38
+                result = m_ftTask->getBuff(4);
+                result &= ~(1 << 6);
+                m_ftTask->setBuff(4, result);
+                result = m_ftTask->getBuff(5);
+                result &= ~(1 << 0);
+                result &= ~(1 << 1);
+                 m_ftTask->setBuff(5, result);
                 m_ftTask->update();
+
+//                m_ftTask->setBuff(4, 0x00);
+//                m_ftTask->setBuff(4, 0xa0);
+//                m_ftTask->update();
 
             }
             //ÁÁD36,D37,D38
             else if(radian > Radian60 && radian < Radian90)
             {
-                m_ftTask->setBuff(4, 0x00);
-                m_ftTask->setBuff(4, 0x40);
-                m_ftTask->setBuff(5, 0x03);
-                m_ftTask->update();
+               //ÃðD34,D35
+                unsigned char result = m_ftTask->getBuff(4);
+                result &= ~(1 << 5);
+                result &= ~(1 << 7);
+                m_ftTask->setBuff(4, result);
+                //ÁÁD36,D37,D38
+                result = m_ftTask->getBuff(4);
+                result |= (1 << 6);
+                m_ftTask->setBuff(4, result);
+                result = m_ftTask->getBuff(5);
+                result |= (1 << 0);
+                result |= (1 << 1);
+                m_ftTask->setBuff(5, result);
+                //ÃðD39,D40
+                 result = m_ftTask->getBuff(5);
+                 result &= ~(1 << 2);
+                 result &= ~(1 << 3);
+                 m_ftTask->setBuff(5, result);
+                 m_ftTask->update();
+//                m_ftTask->setBuff(4, 0x00);
+//                m_ftTask->setBuff(4, 0x40);
+//                m_ftTask->setBuff(5, 0x03);
+//                m_ftTask->update();
             }
             //ÁÁD39,D40
             else if(radian > Radian90 && radian < Radian120)
             {
-                m_ftTask->setBuff(4, 0x00);
-                m_ftTask->setBuff(5, 0x00);
-                m_ftTask->setBuff(5, 0x0c);
-                m_ftTask->update();
+                //ÃðD36,D37,D38
+                 unsigned char result = m_ftTask->getBuff(4);
+                 result &= ~(1 << 6);
+                 m_ftTask->setBuff(4, result);
+                 result = m_ftTask->getBuff(5);
+                 result &= ~(1 << 0);
+                 result &= ~(1 << 1);
+                 m_ftTask->setBuff(5, result);
+                 //ÁÁD39,D40
+                 result = m_ftTask->getBuff(5);
+                 result |= (1 << 2);
+                 result |= (1 << 3);
+                 m_ftTask->setBuff(5, result);
+                 //ÃðD41,D42
+                  result = m_ftTask->getBuff(5);
+                  result &= ~(1 << 4);
+                  result &= ~(1 << 5);
+                  m_ftTask->setBuff(5, result);
+                  m_ftTask->update();
+
+//                m_ftTask->setBuff(4, 0x00);
+//                m_ftTask->setBuff(5, 0x00);
+//                m_ftTask->setBuff(5, 0x0c);
+//                m_ftTask->update();
             }
             //ÁÁD41,D42
             else if(radian > Radian120 && radian < Radian150)
             {
-                m_ftTask->setBuff(5, 0x00);
-                m_ftTask->setBuff(5, 0x30);
-                m_ftTask->update();
+                //ÃðD39,D40
+                 unsigned char result = m_ftTask->getBuff(5);
+                 result &= ~(1 << 2);
+                 result &= ~(1 << 3);
+                 m_ftTask->setBuff(5, result);
+                 //ÁÁD41,D42
+                 result = m_ftTask->getBuff(5);
+                 result |= (1 << 4);
+                 result |= (1 << 5);
+                 m_ftTask->setBuff(5, result);
+                 //ÃðD43
+                 result = m_ftTask->getBuff(6);
+                 result &= ~(1 << 0);
+                 m_ftTask->setBuff(6, result);
+                 m_ftTask->update();
+//                m_ftTask->setBuff(5, 0x00);
+//                m_ftTask->setBuff(5, 0x30);
+//                m_ftTask->update();
             }
             //ÁÁD43
             else if(radian > Radian150 && radian < Radian180)
             {
-                m_ftTask->setBuff(5, 0x00);
-                m_ftTask->setBuff(6, 0x01);
-                m_ftTask->update();
+                //ÃðD41,D42
+                 unsigned char result = m_ftTask->getBuff(5);
+                 result &= ~(1 << 4);
+                 result &= ~(1 << 5);
+                 m_ftTask->setBuff(5, result);
+                 //ÁÁD43
+                 result = m_ftTask->getBuff(6);
+                 result |= (1 << 0);
+                 m_ftTask->setBuff(6, result);
+                 //ÃðD44,D45
+                  result = m_ftTask->getBuff(6);
+                  result &= ~(1 << 1);
+                  result &= ~(1 << 1);
+                  m_ftTask->setBuff(6, result);
+                  m_ftTask->update();
+//                m_ftTask->setBuff(5, 0x00);
+//                m_ftTask->setBuff(6, 0x01);
+//                m_ftTask->update();
             }
             //ÁÁD44,D45
             else if(radian > Radian181 && radian < Radian210)
             {
-               m_ftTask->setBuff(6, 0x00);
-                m_ftTask->setBuff(6, 0x06);
-                m_ftTask->update();
+                //ÃðD43
+                 unsigned char result = m_ftTask->getBuff(6);
+                 result &= ~(1 << 0);
+                 m_ftTask->setBuff(6, result);
+                 //ÁÁD44,D45
+                 result = m_ftTask->getBuff(6);
+                 result |= (1 << 1);
+                 result |= (1 << 2);
+                 m_ftTask->setBuff(6, result);
+                 //ÃðD46,D47
+                  result = m_ftTask->getBuff(6);
+                  result &= ~(1 << 3);
+                  result &= ~(1 << 4);
+                  m_ftTask->setBuff(6, result);
+                  m_ftTask->update();
+//                m_ftTask->setBuff(6, 0x00);
+//                m_ftTask->setBuff(6, 0x06);
+//                m_ftTask->update();
             }
             //ÁÁD46,D47
             else if(radian > Radian210 && radian < Radian240)
             {
-                m_ftTask->setBuff(6, 0x00);
-                m_ftTask->setBuff(6, 0x18);
-                m_ftTask->update();
+                //ÃðD44,D45
+                 unsigned char result = m_ftTask->getBuff(6);
+                 result &= ~(1 << 1);
+                 result &= ~(1 << 1);
+                 m_ftTask->setBuff(6, result);
+                 //ÁÁD46,D47
+                 result = m_ftTask->getBuff(6);
+                 result |= (1 << 3);
+                 result |= (1 << 4);
+                 m_ftTask->setBuff(6, result);
+                 //ÃðD73,D76
+                 result = m_ftTask->getBuff(10);
+                 result &= ~(1 << 2);
+                 result &= ~(1 << 5);
+                 m_ftTask->setBuff(10, result);
+                 m_ftTask->update();
+//                m_ftTask->setBuff(6, 0x00);
+//                m_ftTask->setBuff(6, 0x18);
+//                m_ftTask->update();
             }
             //ÁÁD73,D76
             else if(radian > Radian240 && radian < Radian270)
             {
-                m_ftTask->setBuff(6, 0x00);
-                m_ftTask->setBuff(10, 0x24);
-                m_ftTask->update();
+                //ÃðD46,D47
+                 unsigned char result = m_ftTask->getBuff(6);
+                 result &= ~(1 << 3);
+                 result &= ~(1 << 4);
+                 m_ftTask->setBuff(6, result);
+                 //ÁÁD73,D76
+                 result = m_ftTask->getBuff(10);
+                 result |= (1 << 2);
+                 result |= (1 << 5);
+                 m_ftTask->setBuff(10, result);
+                 //ÃðD223,D28
+                 result = m_ftTask->getBuff(3);
+                 result &= ~(1 << 5);
+                 m_ftTask->setBuff(3, result);
+                 result = m_ftTask->getBuff(29);
+                 result &= ~(1 << 3);
+                 m_ftTask->setBuff(29, result);
+                 m_ftTask->update();
+//                m_ftTask->setBuff(6, 0x00);
+//                m_ftTask->setBuff(10, 0x24);
+//                m_ftTask->update();
             }
             //ÁÁD223,D28
             else if(radian > Radian270 && radian < Radian300)
             {
-                m_ftTask->setBuff(10, 0x00);
-                m_ftTask->setBuff(29, 0x08);
-                m_ftTask->setBuff(3, 0x20);
-                m_ftTask->update();
+                //ÃðD73,D76
+                 unsigned char result = m_ftTask->getBuff(10);
+                 result &= ~(1 << 2);
+                 result &= ~(1 << 5);
+                 m_ftTask->setBuff(10, result);
+                 //ÁÁD223,D28
+                 result = m_ftTask->getBuff(3);
+                 result |= (1 << 5);
+                 m_ftTask->setBuff(3, result);
+                 result = m_ftTask->getBuff(29);
+                 result |= (1 << 3);
+                 m_ftTask->setBuff(29, result);
+                 //ÃðD29,D30
+                  result = m_ftTask->getBuff(4);
+                  result &= ~(1 << 0);
+                  result &= ~(1 << 1);
+                  m_ftTask->setBuff(4, result);
+                  m_ftTask->update();
+//                m_ftTask->setBuff(10, 0x00);
+//                m_ftTask->setBuff(29, 0x08);
+//                m_ftTask->setBuff(3, 0x20);
+//                m_ftTask->update();
             }
             //ÁÁD29,D30
             else if(radian > Radian300 && radian < Radian330)
             {
-                m_ftTask->setBuff(29, 0x00);
-                m_ftTask->setBuff(3, 0x00);
-                m_ftTask->setBuff(4, 0x03);
-                m_ftTask->update();
+                //ÃðD223,D28
+                unsigned char result = m_ftTask->getBuff(3);
+                result &= ~(1 << 5);
+                m_ftTask->setBuff(3, result);
+                result = m_ftTask->getBuff(29);
+                result &= ~(1 << 3);
+                m_ftTask->setBuff(29, result);
+                //ÁÁD29,D30
+                result = m_ftTask->getBuff(4);
+                result |= (1 << 0);
+                result |= (1 << 1);
+                m_ftTask->setBuff(4, result);
+                //ÃðD31,D32
+                 result = m_ftTask->getBuff(4);
+                 result &= ~(1 << 2);
+                 result &= ~(1 << 3);
+                 m_ftTask->setBuff(4, result);
+                 m_ftTask->update();
+//                m_ftTask->setBuff(29, 0x00);
+//                m_ftTask->setBuff(3, 0x00);
+//                m_ftTask->setBuff(4, 0x03);
+//                m_ftTask->update();
             }
             //ÁÁD31,D32
             else if(radian > Radian330 && radian < Radian360)
             {
-                 m_ftTask->setBuff(4, 0x00);
-                m_ftTask->setBuff(4, 0x0c);
-                m_ftTask->update();
+                //ÃðD29,D30
+                 unsigned char result = m_ftTask->getBuff(4);
+                 result &= ~(1 << 0);
+                 result &= ~(1 << 1);
+                 m_ftTask->setBuff(4, result);
+                 //ÁÁD31,D32
+                 result = m_ftTask->getBuff(4);
+                 result |= (1 << 2);
+                 result |= (1 << 3);
+                 m_ftTask->setBuff(4, result);
+                 //ÃðD33
+                 result = m_ftTask->getBuff(4);
+                 result &= ~(1 << 4);
+                 m_ftTask->setBuff(4, result);
+                 m_ftTask->update();
+//                m_ftTask->setBuff(4, 0x00);
+//                m_ftTask->setBuff(4, 0x0c);
+//                m_ftTask->update();
             }
         }
         //A9Çø
@@ -453,8 +654,17 @@ void SkinLoader::dealWithLED(WidgetType type, QString objName, int x, int y, QRe
             //ÁÁD166,D167
             if(radian > Radian0 && radian < Radian30)
             {
-                m_ftTask->setBuff(23, 0x0c);
+                unsigned char result = m_ftTask->getBuff(23);
+                result |= (1 << 3);
+                result |= (1 << 4);
+                m_ftTask->setBuff(23, result);
                 m_ftTask->update();
+//               //ÃðD34,D35
+//                 result = m_ftTask->getBuff(4);
+//                 result &= ~(1 << 5);
+//                 result &= ~(1 << 7);
+//                 m_ftTask->setBuff(4, result);
+//                 m_ftTask->update();
             }
             //ÁÁD168,D169
             else if(radian > Radian30 && radian < Radian60)
@@ -1221,8 +1431,10 @@ void SkinLoader::dealWithLED(WidgetType type, QString objName, int x, int y, QRe
         else if(objName == "RateDisplay1_handh")
         {
             unsigned char result;
-
+            qDebug()<<"rct:"<<rct;
+            qDebug()<<"y:"<<y;
             float posH = (y - rct.bottom())/ rct.height();
+            qDebug()<<"posH:"<<posH;
             if(posH < 0.1)
             {
                 //ÃðD15,D16
@@ -1230,24 +1442,30 @@ void SkinLoader::dealWithLED(WidgetType type, QString objName, int x, int y, QRe
                  result &= ~(1 << 0);
                  result &= ~(1 << 1);
                  m_ftTask->setBuff(2, result);
-                 m_ftTask->update();
+
                  //ÃðD14,D13
                  result = m_ftTask->getBuff(1);
-                  result &= ~(1 << 5);
-                  result &= ~(1 << 4);
-                  m_ftTask->setBuff(1, result);
-                  m_ftTask->update();
+                 result &= ~(1 << 5);
+                 result &= ~(1 << 4);
+                 m_ftTask->setBuff(1, result);
+                 m_ftTask->update();
             }
-           else if(posH < 0.3)
+           else if(posH < 0.5)
             {
                 //ÁÁD15,D16
                 result = m_ftTask->getBuff(2);
                 result |= (1 << 0);
                 result |= (1 << 1);
                 m_ftTask->setBuff(2, result);
+
+                //ÃðD14,D13
+                result = m_ftTask->getBuff(1);
+                result &= ~(1 << 5);
+                result &= ~(1 << 4);
+                m_ftTask->setBuff(1, result);
                 m_ftTask->update();
             }
-            else if(posH < 0.6)
+            else
             {
                 //ÁÁD13,D14
                 result = m_ftTask->getBuff(1);
