@@ -95,6 +95,9 @@ public:
     void setVideoWidget(VideoWidget *widget);
     SerialPort *getSerialPort();
     void dealWithLED(WidgetType type, QString objName, int x, int y, QRect rct, QWidget *widget = NULL);
+    void setLED_ON(int byte, int bit);
+    void setLED_OFF(int byte, int bit);
+    void led_update();
   public slots:
     void getComingData(QByteArray data);
     void handleTimeoutB3();  //超时处理函数

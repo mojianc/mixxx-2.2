@@ -197,7 +197,17 @@ SkinLoader::SkinLoader(UserSettingsPointer pConfig)
     result |= (1 << 2);
     result |= (1 << 3);
     m_ftTask->setBuff(25, result);
-    m_ftTask->update();
+    //常亮D80，D81 master推子
+    setLED_ON(11,1);
+    setLED_ON(11,2);
+    //常亮D94，D95 headphone推子
+    setLED_ON(13,1);
+    setLED_ON(13,2);
+    //常亮D128,D121，D122 水平主推子及L,R字母标标识
+    setLED_ON(18,1);
+    setLED_ON(17,0);
+    setLED_ON(17,1);
+    led_update();
 
 }
 
@@ -599,10 +609,11 @@ void SkinLoader::dealWithLED(WidgetType type, QString objName, int x, int y, QRe
         else if(objName == "SpinnySingletonNoCover[Channel2]_handh")
         {
 
+            unsigned char result;
             //亮D166,D167
             if(radian > Radian0 && radian < Radian30)
             {
-                unsigned char result = m_ftTask->getBuff(23);
+                result = m_ftTask->getBuff(23);
                 result |= (1 << 3);
                 result |= (1 << 4);
                 m_ftTask->setBuff(23, result);
@@ -903,52 +914,91 @@ void SkinLoader::dealWithLED(WidgetType type, QString objName, int x, int y, QRe
         //A6区,主推子,led从中间向两边扩展
         if(objName == "MainSliderComposed")
         {
-            //亮D128，D129
-            m_ftTask->setBuff(18, 0x06);
             //根据触控点在推子中的位置确定亮灯
             float halfW = (rct.width() / 2);
-            float poswidth = 0;
-            if(point.x() < 0)
+            float pos = 0;
+            if( x < rct.center().x())
             {
-                 poswidth = -point.x();
-                 //小于1/4处
-                 if( (poswidth / halfW) < 0.25 )
+                 pos =  abs(rct.center().x() -x) / halfW;
+                 if( (pos) < 0.01 )
                  {
-                     //
-                      m_ftTask->setBuff(4, 0x02);
+                     //灭127
+                     setLED_OFF(18,0);
+                     led_update();
                  }
-                 else if((poswidth / halfW) < 0.5)
+                 else if(pos < 0.25)
                  {
-                     m_ftTask->setBuff(4, 0x04);
+                     //亮127
+                     setLED_ON(18,0);
+                     //灭126
+                     setLED_OFF(17,5);
+                     led_update();
                  }
-                 else if((poswidth / halfW) < 0.75)
+                 else if(pos < 0.5)
                  {
-                     m_ftTask->setBuff(4, 0x08);
+                     //亮126
+                     setLED_ON(17,5);
+                     //灭125
+                     setLED_OFF(17,4);
+                     led_update();
+                 }
+                 else if(pos < 0.75)
+                 {
+                     //亮125
+                     setLED_ON(17,4);
+                     //灭123,D124
+                     setLED_OFF(17,3);
+                     setLED_OFF(17,2);
+                     led_update();
                  }
                  else
                  {
-                     m_ftTask->setBuff(4, 0x10);
+                     //亮123,D124
+                     setLED_ON(17,3);
+                     setLED_ON(17,2);
+                     led_update();
                  }
             }
-            if(point.x() > 0)
+            if(x > rct.center().x())
             {
-                 poswidth = point.x();
-                 //小于1/4处
-                 if( (poswidth / halfW) < 0.25 )
+                 pos =  abs(x - rct.center().x()) / halfW;
+                 if( (pos) < 0.01 )
                  {
-                      m_ftTask->setBuff(4, 0x02);
+                     //灭129
+                     setLED_OFF(18,2);
+                     led_update();
                  }
-                 else if((poswidth / halfW) < 0.5)
+                 else if(pos < 0.25)
                  {
-                     m_ftTask->setBuff(4, 0x04);
+                     //亮129
+                     setLED_ON(18,2);
+                     //灭130
+                     setLED_OFF(18,3);
+                     led_update();
                  }
-                 else if((poswidth / halfW) < 0.75)
+                 else if(pos < 0.5)
                  {
-                     m_ftTask->setBuff(4, 0x08);
+                     //亮130
+                     setLED_ON(18,3);
+                     //灭131
+                     setLED_OFF(18,4);
+                     led_update();
+                 }
+                 else if(pos < 0.75)
+                 {
+                     //亮131
+                     setLED_ON(18,4);
+                     //灭132，D133
+                     setLED_OFF(18,5);
+                     setLED_OFF(18,6);
+                     led_update();
                  }
                  else
                  {
-                     m_ftTask->setBuff(4, 0x10);
+                     //亮132，D133
+                     setLED_ON(18,5);
+                     setLED_ON(18,6);
+                     led_update();
                  }
             }
 
@@ -956,81 +1006,56 @@ void SkinLoader::dealWithLED(WidgetType type, QString objName, int x, int y, QRe
         //A1区
         else if(objName == "RateDisplay1_handh")
         {
-            unsigned char result;
-            std::cout<<"rct:x1,y1,x2,y2"<<rct.left()<<" "<<rct.top()<<" "<<rct.right()<<" "<<rct.bottom()<<" "<<std::endl;
-            std::cout<<"y:"<<y<<std::endl;
             float posH = fabs(y - rct.bottom())/ rct.height();
-            std::cout<<"posH:"<<posH<<std::endl;
             if(posH < 0.01)
             {
                 //灭D14,D13,D11
-                result = m_ftTask->getBuff(1);
-                result &= ~(1 << 5);
-                result &= ~(1 << 4);
-                result &= ~(1 << 2);
-                m_ftTask->setBuff(1, result);
+                setLED_OFF(1, 5);
+                setLED_OFF(1, 4);
+                setLED_OFF(1, 2);
+
                 //灭D15,D16
-                 result = m_ftTask->getBuff(2);
-                 result &= ~(1 << 0);
-                 result &= ~(1 << 1);
-                 m_ftTask->setBuff(2, result);
-                 m_ftTask->update();
+                setLED_OFF(2, 0);
+                setLED_OFF(2, 1);
+                led_update();
             }
             else if(posH < 0.2)
             {
                 //灭D15
-                result = m_ftTask->getBuff(2);
-                result &= ~(1 << 0);
-                m_ftTask->setBuff(2, result);
+                setLED_OFF(2, 0);
                 //亮D16
-                result = m_ftTask->getBuff(2);
-                result |= (1 << 1);
-                m_ftTask->setBuff(2, result);
-                m_ftTask->update();
+                setLED_ON(2, 1);
+                led_update();
             }
            else if(posH < 0.4)
             {
                 //灭D14
-                result = m_ftTask->getBuff(1);
-                result &= ~(1 << 5);
-                m_ftTask->setBuff(1, result);
+                setLED_OFF(1, 5);
                 //亮D15
-                result = m_ftTask->getBuff(2);
-                result |= (1 << 0);
-                m_ftTask->setBuff(2, result);
-                m_ftTask->update();
+                setLED_ON(2, 0);
+                led_update();
             }
             else if(posH < 0.6)
             {
                 //灭D13
-                result = m_ftTask->getBuff(1);
-                result &= ~(1 << 4);
-                m_ftTask->setBuff(1, result);
+                setLED_OFF(1, 4);
                 //亮D14
-                result = m_ftTask->getBuff(1);
-                result |= (1 << 5);
-                m_ftTask->setBuff(1, result);
-                m_ftTask->update();
+                setLED_ON(1, 5);
+                led_update();
             }
             else if(posH < 0.8)
             {
                 //灭D11
-                result = m_ftTask->getBuff(1);
-                result &= ~(1 << 2);
-                m_ftTask->setBuff(1, result);
+                setLED_OFF(1, 2);
                 //亮D13
-                result = m_ftTask->getBuff(1);
-                result |= (1 << 4);
-                m_ftTask->setBuff(1, result);
-                m_ftTask->update();
+                setLED_ON(1, 4);
+                led_update();
             }
             else
             {
                 //亮D11
-                result = m_ftTask->getBuff(1);
-                result |= (1 << 2);
-                m_ftTask->setBuff(1, result);
-                m_ftTask->update();
+                setLED_ON(1, 2);
+                led_update();
             }
 
         }
@@ -1203,90 +1228,104 @@ void SkinLoader::dealWithLED(WidgetType type, QString objName, int x, int y, QRe
             }
         }
         //A4区...
-//        else if(objName == "RateDisplay1_handh")
-//        {
-//            unsigned char result;
-//            std::cout<<"rct:x1,y1,x2,y2"<<rct.left()<<" "<<rct.top()<<" "<<rct.right()<<" "<<rct.bottom()<<" "<<std::endl;
-//            std::cout<<"y:"<<y<<std::endl;
-//            float posH = fabs(y - rct.bottom())/ rct.height();
-//            std::cout<<"posH:"<<posH<<std::endl;
-//            if(posH < 0.01)
-//            {
-//                //灭D14,D13,D11
-//                result = m_ftTask->getBuff(1);
-//                result &= ~(1 << 5);
-//                result &= ~(1 << 4);
-//                result &= ~(1 << 2);
-//                m_ftTask->setBuff(1, result);
-//                //灭D15,D16
-//                 result = m_ftTask->getBuff(2);
-//                 result &= ~(1 << 0);
-//                 result &= ~(1 << 1);
-//                 m_ftTask->setBuff(2, result);
-//                 m_ftTask->update();
-//            }
-//            else if(posH < 0.2)
-//            {
-//                //灭D15
-//                result = m_ftTask->getBuff(2);
-//                result &= ~(1 << 0);
-//                m_ftTask->setBuff(2, result);
-//                //亮D16
-//                result = m_ftTask->getBuff(2);
-//                result |= (1 << 1);
-//                m_ftTask->setBuff(2, result);
-//                m_ftTask->update();
-//            }
-//           else if(posH < 0.4)
-//            {
-//                //灭D14
-//                result = m_ftTask->getBuff(1);
-//                result &= ~(1 << 5);
-//                m_ftTask->setBuff(1, result);
-//                //亮D15
-//                result = m_ftTask->getBuff(2);
-//                result |= (1 << 0);
-//                m_ftTask->setBuff(2, result);
-//                m_ftTask->update();
-//            }
-//            else if(posH < 0.6)
-//            {
-//                //灭D13
-//                result = m_ftTask->getBuff(1);
-//                result &= ~(1 << 4);
-//                m_ftTask->setBuff(1, result);
-//                //亮D14
-//                result = m_ftTask->getBuff(1);
-//                result |= (1 << 5);
-//                m_ftTask->setBuff(1, result);
-//                m_ftTask->update();
-//            }
-//            else if(posH < 0.8)
-//            {
-//                //灭D11
-//                result = m_ftTask->getBuff(1);
-//                result &= ~(1 << 2);
-//                m_ftTask->setBuff(1, result);
-//                //亮D13
-//                result = m_ftTask->getBuff(1);
-//                result |= (1 << 4);
-//                m_ftTask->setBuff(1, result);
-//                m_ftTask->update();
-//            }
-//            else
-//            {
-//                //亮D11
-//                result = m_ftTask->getBuff(1);
-//                result |= (1 << 2);
-//                m_ftTask->setBuff(1, result);
-//                m_ftTask->update();
-//            }
+        else if(objName == "RateDisplay1_handh")
+        {
+            float posH = fabs(x - rct.left())/ rct.width();
+            if(posH < 0.01)
+            {
+                //灭D82
+                setLED_OFF(11,3);
+                led_update();
+            }
+            else if(posH < 0.125)
+            {
+                //亮D82
+                setLED_ON(11,3);
+                //灭D83
+                setLED_OFF(11,4);
+                led_update();
+            }
+            else if(posH < 0.25)
+            {
+                //亮D83
+                setLED_ON(11,4);
+                //灭D84
+                setLED_OFF(11,5);
+                led_update();
+            }
+            else if(posH < 0.375)
+            {
+                //亮D84
+                setLED_ON(11,6);
+                //灭D85
+                setLED_OFF(12,0);
+                led_update();
+            }
+            else if(posH < 0.5)
+            {
+                //亮D85
+                setLED_ON(12,0);
+                //灭D86
+                setLED_OFF(12,1);
+                led_update();
+            }
+            else if(posH < 0.625)
+            {
+                //亮D86
+                setLED_ON(12,1);
+                //灭D87
+                setLED_OFF(12,2);
+                led_update();
+            }
+            else if(posH < 0.75)
+            {
+                //亮D87
+                setLED_ON(12,2);
+                //灭D88
+                setLED_OFF(12,3);
+                led_update();
+            }
+            else if(posH < 0.875)
+            {
+                //亮D88
+                setLED_ON(12,3);
+                //灭D89,D90
+                setLED_OFF(12,4);
+                setLED_OFF(12,5);
+                led_update();
+            }
+            else
+            {
+                //亮D89,D90
+                setLED_ON(12,4);
+                setLED_ON(12,5);
+                led_update();
+            }
 
-//        }
+        }
         break;
     default:
         break;
     }
+}
+
+void SkinLoader::setLED_ON(int byte, int bit)
+{
+    unsigned char result = m_ftTask->getBuff(byte);
+    result |= (1 << bit);
+    m_ftTask->setBuff(byte, result);
+}
+
+void SkinLoader::setLED_OFF(int byte, int bit)
+{
+    unsigned char result = m_ftTask->getBuff(byte);
+    result &= ~(1 << bit);
+    m_ftTask->setBuff(byte, result);
+}
+
+void SkinLoader::led_update()
+{
+    m_ftTask->update();
 }
 
 void SkinLoader::getComingData(QByteArray data)
