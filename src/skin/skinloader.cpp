@@ -163,19 +163,23 @@ SkinLoader::SkinLoader(UserSettingsPointer pConfig)
     m_timeB25->start(m_timeOutB25);
 
     //³õÊ¼×´Ì¬³£ÁÁ
-    //ÁÁD11 D12
+    //ÁÁD12,D17,D151,D157
     unsigned char result = m_ftTask->getBuff(1);
-      result |= (1 << 2);
-      result |= (1 << 3);
-     m_ftTask->setBuff(1, result);
+    result |= (1 << 3);
+    m_ftTask->setBuff(1, result);
+    result = m_ftTask->getBuff(2);
+    result |= (1 << 2);
+    m_ftTask->setBuff(2, result);
+    result = m_ftTask->getBuff(21);
+    result |= (1 << 2);
+    m_ftTask->setBuff(21, result);
+    result = m_ftTask->getBuff(22);
+    result |= (1 << 2);
+    m_ftTask->setBuff(22, result);
     //ÁÁD24
     result = m_ftTask->getBuff(3);
-      result |= (1 << 1);
+    result |= (1 << 1);
      m_ftTask->setBuff(3, result);
-     //ÁÁD17
-     result = m_ftTask->getBuff(2);
-     result |= (1 << 2);
-      m_ftTask->setBuff(2, result);
     //ÁÁD18,D19 ×óVOLÍÆ×Ó-A2
     result = m_ftTask->getBuff(2);
     result |= (1 << 3);
@@ -323,6 +327,9 @@ SerialPort* SkinLoader::getSerialPort()
 #include "widget\wslidercomposed.h"
 #include <QPoint>
 #include <QObject>
+#include <iostream>
+#include <math.h>
+#include<windows.h>>
 void SkinLoader::dealWithLED(WidgetType type, QString objName, int x, int y, QRect rct, QWidget *widget)
 {
 
@@ -330,18 +337,12 @@ void SkinLoader::dealWithLED(WidgetType type, QString objName, int x, int y, QRe
     QPoint point = QPoint(x - centerPoint.x(), centerPoint.y() - y);
     float  radian = 0;
     switch (type) {
-    //zhuanpan
+    //×ªÅÌ
     case type_WSpinny:
         //Ò»È¦26¸öµÆ£¬Ë³Ê±ÕëÒÀ´ÎÎª£ºD38~D32;D31~D28,D233,D76;D73,D47~D44;D43~D39
         //30¶ÈÇøÓò
         //¼ÆËã·´ÕýÇÐÖµ
         radian = qAtan2(point.y(), point.x() );
-        qDebug()<<"x:"<<x;
-        qDebug()<<"y:"<<y;
-        qDebug()<<"rct:"<<rct;
-        qDebug()<<"centerPoint:"<<centerPoint;
-        qDebug()<<"point:"<<point;
-        qDebug()<<"radian:"<<radian;
         //A3Çø
         if(objName == "SpinnySingletonNoCover[Channel1]_handh")
         {
@@ -349,7 +350,6 @@ void SkinLoader::dealWithLED(WidgetType type, QString objName, int x, int y, QRe
             //ÁÁD32,D33
             if(radian > Radian0 && radian < Radian30)
             {
-
                 unsigned char result = m_ftTask->getBuff(4);
                 result |= (1 << 3);
                 result |= (1 << 4);
@@ -595,7 +595,7 @@ void SkinLoader::dealWithLED(WidgetType type, QString objName, int x, int y, QRe
                  m_ftTask->update();
             }
         }
-        //A9Çø
+        //A9Çø ÓÒ×ªÅÌ
         else if(objName == "SpinnySingletonNoCover[Channel2]_handh")
         {
 
@@ -606,67 +606,115 @@ void SkinLoader::dealWithLED(WidgetType type, QString objName, int x, int y, QRe
                 result |= (1 << 3);
                 result |= (1 << 4);
                 m_ftTask->setBuff(23, result);
-                m_ftTask->update();
-//               //ÃðD34,D35
-//                 result = m_ftTask->getBuff(4);
-//                 result &= ~(1 << 5);
-//                 result &= ~(1 << 7);
-//                 m_ftTask->setBuff(4, result);
-//                 m_ftTask->update();
+                //ÃðD168,D169
+                 result = m_ftTask->getBuff(23);
+                 result &= ~(1 << 5);
+                 m_ftTask->setBuff(23, result);
+                 result = m_ftTask->getBuff(24);
+                 result &= ~(1 << 0);
+                 m_ftTask->setBuff(24, result);
+                 m_ftTask->update();
             }
             //ÁÁD168,D169
             else if(radian > Radian30 && radian < Radian60)
             {
-                 m_ftTask->setBuff(23, 0x00);
-                m_ftTask->setBuff(23, 0x20);
-                m_ftTask->setBuff(24, 0x01);
-                m_ftTask->update();
+                result = m_ftTask->getBuff(23);
+                result |= (1 << 5);
+                m_ftTask->setBuff(23, result);
+                result = m_ftTask->getBuff(24);
+                result |= (1 << 0);
+                m_ftTask->setBuff(24, result);
+                //ÃðD170,D171,D172
+                 result = m_ftTask->getBuff(24);
+                 result &= ~(1 << 1);
+                 result &= ~(1 << 2);
+                 result &= ~(1 << 3);
+                 m_ftTask->setBuff(24, result);
+                 m_ftTask->update();
             }
             //ÁÁD170,D171,D172
             else if(radian > Radian60 && radian < Radian90)
             {
-                  m_ftTask->setBuff(23, 0x00);
-                    m_ftTask->setBuff(24, 0x00);
-                m_ftTask->setBuff(24, 0x0e);
-                m_ftTask->update();
+                result = m_ftTask->getBuff(24);
+                result |= (1 << 1);
+                result |= (1 << 2);
+                result |= (1 << 3);
+                m_ftTask->setBuff(24, result);
+                //ÃðD173,D174
+                 result = m_ftTask->getBuff(24);
+                 result &= ~(1 << 4);
+                 result &= ~(1 << 5);
+                 m_ftTask->setBuff(24, result);
+                 m_ftTask->update();
             }
             //ÁÁD173,D174
             else if(radian > Radian90 && radian < Radian120)
             {
-                  m_ftTask->setBuff(23, 0x00);
-                m_ftTask->setBuff(24, 0x30);
-                m_ftTask->update();
+                result = m_ftTask->getBuff(24);
+                result |= (1 << 4);
+                result |= (1 << 5);
+                m_ftTask->setBuff(24, result);
+                //ÃðD175,D176
+                 result = m_ftTask->getBuff(24);
+                 result &= ~(1 << 6);
+                 result &= ~(1 << 7);
+                 m_ftTask->setBuff(24, result);
+                 m_ftTask->update();
             }
             //ÁÁD175,D176
             else if(radian > Radian120 && radian < Radian150)
-            {
-                 m_ftTask->setBuff(24, 0x00);
-                m_ftTask->setBuff(24, 0xc0);
-                m_ftTask->update();
+            {    
+                result = m_ftTask->getBuff(24);
+                result |= (1 << 6);
+                result |= (1 << 7);
+                m_ftTask->setBuff(24, result);
+                //ÃðD177
+                 result = m_ftTask->getBuff(25);
+                 result &= ~(1 << 0);
+                 m_ftTask->setBuff(25, result);
+                 m_ftTask->update();
             }
             //ÁÁD177
             else if(radian > Radian150 && radian < Radian180)
             {
-                 m_ftTask->setBuff(24, 0x00);
-                m_ftTask->setBuff(25, 0x01);
-                m_ftTask->update();
+                result = m_ftTask->getBuff(25);
+                result |= (1 << 0);
+                m_ftTask->setBuff(25, result);
+                //ÃðD225,D92
+                 result = m_ftTask->getBuff(29);
+                 result &= ~(1 << 5);
+                 m_ftTask->setBuff(29, result);
+                 result = m_ftTask->getBuff(12);
+                 result &= ~(1 << 7);
+                 m_ftTask->setBuff(12, result);
+                 m_ftTask->update();
             }
             //ÁÁD225,D92
             else if(radian > Radian181 && radian < Radian210)
             {
-                  m_ftTask->setBuff(25, 0x00);
-                m_ftTask->setBuff(29, 0x20);
-                m_ftTask->setBuff(12, 0x80);
-                m_ftTask->update();
+                result = m_ftTask->getBuff(29);
+                result |= (1 << 5);
+                m_ftTask->setBuff(29, result);
+                result = m_ftTask->getBuff(12);
+                result |= (1 << 7);
+                m_ftTask->setBuff(12, result);
+                //ÃðD224,D158
+                 result = m_ftTask->getBuff(29);
+                 result &= ~(1 << 4);
+                 m_ftTask->setBuff(29, result);
+                 result = m_ftTask->getBuff(22);
+                 result &= ~(1 << 3);
+                 m_ftTask->setBuff(22, result);
+                 m_ftTask->update();
             }
             //ÁÁD224,D158
             else if(radian > Radian210 && radian < Radian240)
             {
-                m_ftTask->setBuff(29, 0x00);
-                m_ftTask->setBuff(12, 0x00);
-                m_ftTask->setBuff(29, 0x10);
-                m_ftTask->setBuff(22, 0x08);
-                m_ftTask->update();
+//                m_ftTask->setBuff(29, 0x00);
+//                m_ftTask->setBuff(12, 0x00);
+//                m_ftTask->setBuff(29, 0x10);
+//                m_ftTask->setBuff(22, 0x08);
+//                m_ftTask->update();
             }
             //ÁÁD159
             else if(radian > Radian240 && radian < Radian270)
@@ -701,7 +749,7 @@ void SkinLoader::dealWithLED(WidgetType type, QString objName, int x, int y, QRe
             }
         }
         break;
-     //xuan niu
+     //ÐýÅ¥
     case type_WKnobComposed:
     {
         float posW = x - rct.x();
@@ -712,106 +760,20 @@ void SkinLoader::dealWithLED(WidgetType type, QString objName, int x, int y, QRe
         //B3Çø
         if(objName == "KnobComposed_[EffectRack1_EffectUnit1_Effect1]_meta")
         {
-//             if(ratio < 0.1)
-//             {
-//                 //ÃðD5,D6,D205
-//                unsigned char result = m_ftTask->getBuff(0);
-//                  result &= ~(1 << 4);
-//                  result &= ~(1 << 5);
-//                 //m_ftTask->setBuff(0, result);
-//                result = m_ftTask->getBuff(1);
-//                result &= ~(1 << 6);
-//                 //m_ftTask->setBuff(1, result);
-//                 //m_ftTask->update();
-//                 if(m_timeB3->isActive())
-//                 {
-//                     m_timeB3->stop();
-//                 }
-//             }
-//             else
-//             {
-//                 if(ratio < 0.3)
-//                 {
-//                     m_timeOutB3 = 1000;
-//                 }
-//                 else if(ratio < 0.6)
-//                 {
-//                     m_timeOutB3 = 200;
-//                 }
-//                 else
-//                 {
-//                     m_timeOutB3 = 50;
-//                 }
-//                 m_timeB3->stop();
-//                 m_timeB3->setInterval(m_timeOutB3);
-//                 m_timeB3->start(m_timeOutB3);
-//             }
+            //D5,D6,D205
             internalDealWithLED(ratio, m_timeB3, &m_timeOutB3, 0, 4, 5, 1, 6);
         }
         //B4Çø
         else if(objName == "KnobComposed_[EffectRack1_EffectUnit1_Effect2]_meta")
         {
-//            if(ratio < 0.1)
-//            {
-//                //ÃðD7,D8,D206
-//                //...
-
-//                if(m_timeB4->isActive())
-//                {
-//                    m_timeB4->stop();
-//                }
-//            }
-//            else
-//            {
-//                if(ratio < 0.3)
-//                {
-//                    m_timeOutB4 = 1000;
-//                }
-//                else if(ratio < 0.6)
-//                {
-//                    m_timeOutB4 = 100;
-//                }
-//                else
-//                {
-//                    m_timeOutB4 = 10;
-//                }
-//                m_timeB4->stop();
-//                m_timeB4->setInterval(m_timeOutB4);
-//                m_timeB4->start(m_timeOutB4);
-//            }
+            //D7,D8,D206
             internalDealWithLED(ratio, m_timeB4, &m_timeOutB4, 0, 6, 7, 3, 6);
         }
         //B5Çø
         else if(objName == "KnobComposed_[EffectRack1_EffectUnit1_Effect3]_meta")
         {
-//            if(ratio < 0.1)
-//            {
-//                //ÃðD9,D10,D207
-//                //...
-
-//                if(m_timeB5->isActive())
-//                {
-//                    m_timeB5->stop();
-//                }
-//            }
-//            {
-//                if(ratio < 0.3)
-//                {
-//                    m_timeOutB5 = 1000;
-//                }
-//                else if(ratio < 0.6)
-//                {
-//                    m_timeOutB5 = 100;
-//                }
-//                else
-//                {
-//                    m_timeOutB5 = 10;
-//                }
-//                m_timeB5->stop();
-//                m_timeB5->setInterval(m_timeOutB5);
-//                m_timeB5->start(m_timeOutB5);
-//            }
-           internalDealWithLED(ratio, m_timeB5, &m_timeOutB5, 1, 0, 1, 5, 6);
+             //D9,D10,D207
+            internalDealWithLED(ratio, m_timeB5, &m_timeOutB5, 1, 0, 1, 5, 6);
         }
         //B9Çø
         else if(objName == "KnobComposed_[EffectRack1_EffectUnit2_Effect1]_meta")
@@ -834,249 +796,55 @@ void SkinLoader::dealWithLED(WidgetType type, QString objName, int x, int y, QRe
         //B17Çø
         else if(objName == "EffectKnobComposed_[Channel1]_3")
         {
-            if(ratio < 0.1)
-            {
-                //ÃðD105,D106,D215
-                //...
-                unsigned char result = m_ftTask->getBuff(14);
-                  result |= (1 << 6);
-                  result |= (1 << 7);
-                 m_ftTask->setBuff(15, result);
-                result = m_ftTask->getBuff(21);
-                result |= (1 << 6);
-                 m_ftTask->setBuff(21, result);
-                   m_ftTask->update();
-                if(m_timeB17->isActive())
-                {
-                    m_timeB17->stop();
-                }
-            }
-            else
-            {
-                if(ratio < 0.3)
-                {
-                    m_timeOutB17 = 1000;
-                }
-                else if(ratio < 0.6)
-                {
-                    m_timeOutB17 = 100;
-                }
-                else
-                {
-                    m_timeOutB17 = 10;
-                }
-                m_timeB17->stop();
-                m_timeB17->setInterval(m_timeOutB17);
-                m_timeB17->start(m_timeOutB17);
-            }
-
+            //D105,D106,D215
+            internalDealWithLED(ratio, m_timeB17, &m_timeOutB17, 14, 6, 7, 21, 6);
         }
         //B19Çø
         else if(objName == "EffectKnobComposed_[Channel1]_2")
         {
             //D107,D108,D217
             internalDealWithLED(ratio, m_timeB19, &m_timeOutB19, 15, 0, 1, 25, 6);
-
         }
         //B21Çø
         else if(objName == "EffectKnobComposed_[Channel1]_1")
         {
-            if(ratio < 0.1)
-            {
-                //ÃðD109,D110,D219
-                //...
-                if(m_timeB21->isActive())
-                {
-                    m_timeB21->stop();
-                }
-            }
-            else
-            {
-                if(ratio < 0.3)
-                {
-                    m_timeOutB21 = 1000;
-                }
-                else if(ratio < 0.6)
-                {
-                    m_timeOutB21 = 100;
-                }
-                else
-                {
-                    m_timeOutB21 = 10;
-                }
-                m_timeB21->stop();
-                m_timeB21->setInterval(m_timeOutB21);
-                m_timeB21->start(m_timeOutB21);
-            }
-
+            //D109,D110,D219
+            internalDealWithLED(ratio, m_timeB21, &m_timeOutB21, 15, 2, 3, 29, 6);
         }
-
         //B23Çø
         else if(objName == "KnobComposed_[QuickEffectRack1_[Channel1]]_super1")
         {
-            if(ratio < 0.1)
-            {
-                //ÃðD111,D112,D221
-                //...
-                if(m_timeB23->isActive())
-                {
-                    m_timeB23->stop();
-                }
-            }
-            else
-            {
-                if(ratio < 0.3)
-                {
-                    m_timeOutB23 = 1000;
-                }
-                else if(ratio < 0.6)
-                {
-                    m_timeOutB23 = 100;
-                }
-                else
-                {
-                    m_timeOutB23 = 10;
-                }
-                m_timeB23->stop();
-                m_timeB23->setInterval(m_timeOutB23);
-                m_timeB23->start(m_timeOutB23);
-            }
-
+            //D111,D112,D221
+            internalDealWithLED(ratio, m_timeB23, &m_timeOutB23, 15, 4, 5, 29, 1);
         }
         //B18Çø
         else if(objName == "EffectKnobComposed_[Channel2]_3")
         {
-            if(ratio < 0.1)
-            {
-                //ÃðD113,D114,D216
-                //...
-                if(m_timeB18->isActive())
-                {
-                    m_timeB18->stop();
-                }
-            }
-            else
-            {
-                if(ratio < 0.3)
-                {
-                    m_timeOutB18 = 1000;
-                }
-                else if(ratio < 0.6)
-                {
-                    m_timeOutB18 = 100;
-                }
-                else
-                {
-                    m_timeOutB18 = 10;
-                }
-                m_timeB18->stop();
-                m_timeB18->setInterval(m_timeOutB18);
-                m_timeB18->start(m_timeOutB18);
-
-            }
-
+            //D113,D114,D216
+            internalDealWithLED(ratio, m_timeB18, &m_timeOutB18, 16, 0, 1, 23, 6);
         }
         //B20Çø
         else if(objName == "EffectKnobComposed_[Channel2]_2")
         {
-            if(ratio < 0.1)
-            {
-                //ÃðD115,D116,D218
-                //...
-                if(m_timeB20->isActive())
-                {
-                    m_timeB20->stop();
-                }
-            }
-            else
-            {
-                if(ratio < 0.3)
-                {
-                    m_timeOutB20 = 1000;
-                }
-                else if(ratio < 0.6)
-                {
-                    m_timeOutB20 = 100;
-                }
-                else
-                {
-                    m_timeOutB20 = 10;
-                }
-                m_timeB20->stop();
-                m_timeB20->setInterval(m_timeOutB20);
-                m_timeB20->start(m_timeOutB20);
-            }
-
+            //D115,D116,D218
+            internalDealWithLED(ratio, m_timeB20, &m_timeOutB20, 16, 2, 3, 27, 6);
         }
         //B22Çø
         else if(objName == "EffectKnobComposed_[Channel2]_1")
         {
-            if(ratio < 0.1)
-            {
-                //ÃðD117,D118,D220
-                //...
-                if(m_timeB22->isActive())
-                {
-                    m_timeB22->stop();
-                }
-            }
-            else
-            {
-                if(ratio < 0.3)
-                {
-                    m_timeOutB22 = 1000;
-                }
-                else if(ratio < 0.6)
-                {
-                    m_timeOutB22 = 100;
-                }
-                else
-                {
-                    m_timeOutB22 = 10;
-                }
-                m_timeB22->stop();
-                m_timeB22->setInterval(m_timeOutB22);
-                m_timeB22->start(m_timeOutB22);
-            }
-
+            //D117,D118,D220
+            internalDealWithLED(ratio, m_timeB22, &m_timeOutB22, 16, 4, 5, 29, 0);
         }
-
         //B24Çø
         else if(objName == "KnobComposed_[QuickEffectRack1_[Channel2]]_super1")
         {
-            if(ratio < 0.1)
-            {
-                //ÃðD119,D120,D222
-                //...
-                if(m_timeB24->isActive())
-                {
-                    m_timeB24->stop();
-                }
-            }
-            else
-            {
-                if(ratio < 0.3)
-                {
-                    m_timeOutB24 = 1000;
-                }
-                else if(ratio < 0.6)
-                {
-                    m_timeOutB24 = 100;
-                }
-                else
-                {
-                    m_timeOutB24 = 10;
-                }
-                m_timeB24->stop();
-                m_timeB24->setInterval(m_timeOutB24);
-                m_timeB24->start(m_timeOutB24);
-            }
-
+            //D119,D120,D222
+            internalDealWithLED(ratio, m_timeB24, &m_timeOutB24, 16, 6, 7, 29, 2);
         }
         break;
 
     }
-    //an niu
+    //°´Å¥
     case type_WPushButton:
     {
         if(WPushButton *pushbutton = dynamic_cast<WPushButton *>(widget))
@@ -1185,6 +953,87 @@ void SkinLoader::dealWithLED(WidgetType type, QString objName, int x, int y, QRe
             }
 
         }
+        //A1Çø
+        else if(objName == "RateDisplay1_handh")
+        {
+            unsigned char result;
+            std::cout<<"rct:x1,y1,x2,y2"<<rct.left()<<" "<<rct.top()<<" "<<rct.right()<<" "<<rct.bottom()<<" "<<std::endl;
+            std::cout<<"y:"<<y<<std::endl;
+            float posH = fabs(y - rct.bottom())/ rct.height();
+            std::cout<<"posH:"<<posH<<std::endl;
+            if(posH < 0.01)
+            {
+                //ÃðD14,D13,D11
+                result = m_ftTask->getBuff(1);
+                result &= ~(1 << 5);
+                result &= ~(1 << 4);
+                result &= ~(1 << 2);
+                m_ftTask->setBuff(1, result);
+                //ÃðD15,D16
+                 result = m_ftTask->getBuff(2);
+                 result &= ~(1 << 0);
+                 result &= ~(1 << 1);
+                 m_ftTask->setBuff(2, result);
+                 m_ftTask->update();
+            }
+            else if(posH < 0.2)
+            {
+                //ÃðD15
+                result = m_ftTask->getBuff(2);
+                result &= ~(1 << 0);
+                m_ftTask->setBuff(2, result);
+                //ÁÁD16
+                result = m_ftTask->getBuff(2);
+                result |= (1 << 1);
+                m_ftTask->setBuff(2, result);
+                m_ftTask->update();
+            }
+           else if(posH < 0.4)
+            {
+                //ÃðD14
+                result = m_ftTask->getBuff(1);
+                result &= ~(1 << 5);
+                m_ftTask->setBuff(1, result);
+                //ÁÁD15
+                result = m_ftTask->getBuff(2);
+                result |= (1 << 0);
+                m_ftTask->setBuff(2, result);
+                m_ftTask->update();
+            }
+            else if(posH < 0.6)
+            {
+                //ÃðD13
+                result = m_ftTask->getBuff(1);
+                result &= ~(1 << 4);
+                m_ftTask->setBuff(1, result);
+                //ÁÁD14
+                result = m_ftTask->getBuff(1);
+                result |= (1 << 5);
+                m_ftTask->setBuff(1, result);
+                m_ftTask->update();
+            }
+            else if(posH < 0.8)
+            {
+                //ÃðD11
+                result = m_ftTask->getBuff(1);
+                result &= ~(1 << 2);
+                m_ftTask->setBuff(1, result);
+                //ÁÁD13
+                result = m_ftTask->getBuff(1);
+                result |= (1 << 4);
+                m_ftTask->setBuff(1, result);
+                m_ftTask->update();
+            }
+            else
+            {
+                //ÁÁD11
+                result = m_ftTask->getBuff(1);
+                result |= (1 << 2);
+                m_ftTask->setBuff(1, result);
+                m_ftTask->update();
+            }
+
+        }
         //A2Çø
         else if(objName == "ChannelVolume_[Channel1]")
         {
@@ -1240,7 +1089,7 @@ void SkinLoader::dealWithLED(WidgetType type, QString objName, int x, int y, QRe
             }
             else
             {
-//                //ÁÁD18,D19
+                //ÁÁD18,D19
                 result = m_ftTask->getBuff(2);
                 result |= (1 << 3);
                 result |= (1 << 4);
@@ -1272,82 +1121,172 @@ void SkinLoader::dealWithLED(WidgetType type, QString objName, int x, int y, QRe
                 m_ftTask->setBuff(20, 0x18);
             }
         }
-        //A1Çø
-        else if(objName == "RateDisplay1_handh")
-        {
-            unsigned char result;
-            qDebug()<<"rct:"<<rct;
-            qDebug()<<"y:"<<y;
-            float posH = (y - rct.bottom())/ rct.height();
-            qDebug()<<"posH:"<<posH;
-            if(posH < 0.1)
-            {
-                //ÃðD15,D16
-                 result = m_ftTask->getBuff(2);
-                 result &= ~(1 << 0);
-                 result &= ~(1 << 1);
-                 m_ftTask->setBuff(2, result);
 
-                 //ÃðD14,D13
-                 result = m_ftTask->getBuff(1);
-                 result &= ~(1 << 5);
-                 result &= ~(1 << 4);
-                 m_ftTask->setBuff(1, result);
-                 m_ftTask->update();
-            }
-           else if(posH < 0.5)
-            {
-                //ÁÁD15,D16
-                result = m_ftTask->getBuff(2);
-                result |= (1 << 0);
-                result |= (1 << 1);
-                m_ftTask->setBuff(2, result);
-
-                //ÃðD14,D13
-                result = m_ftTask->getBuff(1);
-                result &= ~(1 << 5);
-                result &= ~(1 << 4);
-                m_ftTask->setBuff(1, result);
-                m_ftTask->update();
-            }
-            else
-            {
-                //ÁÁD13,D14
-                result = m_ftTask->getBuff(1);
-                result |= (1 << 4);
-                result |= (1 << 5);
-                m_ftTask->setBuff(1, result);
-                m_ftTask->update();
-            }
-
-        }
         //A8Çø
         else if(objName == "RateDisplay2_handh")
         {
-            //ÁÁD157
-            m_ftTask->setBuff(22, 0x04);
-            float posH = (y - rct.bottom())/ rct.height();
-            if(posH < 0.3)
+            unsigned char result;
+            std::cout<<"rct:x1,y1,x2,y2"<<rct.left()<<" "<<rct.top()<<" "<<rct.right()<<" "<<rct.bottom()<<" "<<std::endl;
+            std::cout<<"y:"<<y<<std::endl;
+            float posH = fabs(y - rct.bottom())/ rct.height();
+            std::cout<<"posH:"<<posH<<std::endl;
+            if(posH < 0.01)
             {
-                //ÁÁD155,D156
-                m_ftTask->setBuff(22, 0x03);
+                //ÃðD152,D153,D154
+                result = m_ftTask->getBuff(21);
+                result &= ~(1 << 5);
+                result &= ~(1 << 4);
+                result &= ~(1 << 3);
+                m_ftTask->setBuff(21, result);
+                //ÃðD155,D156
+                 result = m_ftTask->getBuff(22);
+                 result &= ~(1 << 0);
+                 result &= ~(1 << 1);
+                 m_ftTask->setBuff(2, result);
+                 m_ftTask->update();
+            }
+            else if(posH < 0.2)
+            {
+                //ÃðD155
+                result = m_ftTask->getBuff(22);
+                result &= ~(1 << 0);
+                m_ftTask->setBuff(22, result);
+                //ÁÁD156
+                result = m_ftTask->getBuff(22);
+                result |= (1 << 1);
+                m_ftTask->setBuff(22, result);
+                m_ftTask->update();
+            }
+           else if(posH < 0.4)
+            {
+                //ÃðD154
+                result = m_ftTask->getBuff(21);
+                result &= ~(1 << 5);
+                m_ftTask->setBuff(21, result);
+                //ÁÁD155
+                result = m_ftTask->getBuff(22);
+                result |= (1 << 0);
+                m_ftTask->setBuff(22, result);
+                m_ftTask->update();
             }
             else if(posH < 0.6)
             {
-                //ÁÁD153,D154
-                m_ftTask->setBuff(21, 0x30);
+                //ÃðD153
+                result = m_ftTask->getBuff(21);
+                result &= ~(1 << 4);
+                m_ftTask->setBuff(21, result);
+                //ÁÁD154
+                result = m_ftTask->getBuff(21);
+                result |= (1 << 5);
+                m_ftTask->setBuff(21, result);
+                m_ftTask->update();
+            }
+            else if(posH < 0.8)
+            {
+                //ÃðD152
+                result = m_ftTask->getBuff(21);
+                result &= ~(1 << 3);
+                m_ftTask->setBuff(21, result);
+                //ÁÁD153
+                result = m_ftTask->getBuff(21);
+                result |= (1 << 4);
+                m_ftTask->setBuff(21, result);
+                m_ftTask->update();
             }
             else
             {
-                //ÁÁD151,D152
-                m_ftTask->setBuff(21, 0x0c);
+                //ÁÁD152
+                result = m_ftTask->getBuff(21);
+                result |= (1 << 3);
+                m_ftTask->setBuff(21, result);
+                m_ftTask->update();
             }
         }
+        //A4Çø...
+//        else if(objName == "RateDisplay1_handh")
+//        {
+//            unsigned char result;
+//            std::cout<<"rct:x1,y1,x2,y2"<<rct.left()<<" "<<rct.top()<<" "<<rct.right()<<" "<<rct.bottom()<<" "<<std::endl;
+//            std::cout<<"y:"<<y<<std::endl;
+//            float posH = fabs(y - rct.bottom())/ rct.height();
+//            std::cout<<"posH:"<<posH<<std::endl;
+//            if(posH < 0.01)
+//            {
+//                //ÃðD14,D13,D11
+//                result = m_ftTask->getBuff(1);
+//                result &= ~(1 << 5);
+//                result &= ~(1 << 4);
+//                result &= ~(1 << 2);
+//                m_ftTask->setBuff(1, result);
+//                //ÃðD15,D16
+//                 result = m_ftTask->getBuff(2);
+//                 result &= ~(1 << 0);
+//                 result &= ~(1 << 1);
+//                 m_ftTask->setBuff(2, result);
+//                 m_ftTask->update();
+//            }
+//            else if(posH < 0.2)
+//            {
+//                //ÃðD15
+//                result = m_ftTask->getBuff(2);
+//                result &= ~(1 << 0);
+//                m_ftTask->setBuff(2, result);
+//                //ÁÁD16
+//                result = m_ftTask->getBuff(2);
+//                result |= (1 << 1);
+//                m_ftTask->setBuff(2, result);
+//                m_ftTask->update();
+//            }
+//           else if(posH < 0.4)
+//            {
+//                //ÃðD14
+//                result = m_ftTask->getBuff(1);
+//                result &= ~(1 << 5);
+//                m_ftTask->setBuff(1, result);
+//                //ÁÁD15
+//                result = m_ftTask->getBuff(2);
+//                result |= (1 << 0);
+//                m_ftTask->setBuff(2, result);
+//                m_ftTask->update();
+//            }
+//            else if(posH < 0.6)
+//            {
+//                //ÃðD13
+//                result = m_ftTask->getBuff(1);
+//                result &= ~(1 << 4);
+//                m_ftTask->setBuff(1, result);
+//                //ÁÁD14
+//                result = m_ftTask->getBuff(1);
+//                result |= (1 << 5);
+//                m_ftTask->setBuff(1, result);
+//                m_ftTask->update();
+//            }
+//            else if(posH < 0.8)
+//            {
+//                //ÃðD11
+//                result = m_ftTask->getBuff(1);
+//                result &= ~(1 << 2);
+//                m_ftTask->setBuff(1, result);
+//                //ÁÁD13
+//                result = m_ftTask->getBuff(1);
+//                result |= (1 << 4);
+//                m_ftTask->setBuff(1, result);
+//                m_ftTask->update();
+//            }
+//            else
+//            {
+//                //ÁÁD11
+//                result = m_ftTask->getBuff(1);
+//                result |= (1 << 2);
+//                m_ftTask->setBuff(1, result);
+//                m_ftTask->update();
+//            }
+
+//        }
         break;
     default:
         break;
     }
-
 }
 
 void SkinLoader::getComingData(QByteArray data)
