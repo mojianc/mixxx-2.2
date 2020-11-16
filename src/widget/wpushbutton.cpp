@@ -61,7 +61,7 @@ void WPushButton::getComingData(QByteArray data, QRect rect, OperateType type)
     unsigned short  y = (data[5] << 8) + data[4];
     
     m_timer->stop();
-    m_timer->start(100);
+    m_timer->start(3000);
     if(!m_inMove)
     {
         m_inMove =true;
