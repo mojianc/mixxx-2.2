@@ -69,9 +69,6 @@ SkinLoader::SkinLoader(UserSettingsPointer pConfig)
 
     m_serialPort = new SerialPort;
 
-    m_ftTask = new FtTask();
-    m_ftTask->start();
-
     m_lightB3 = false;
     m_timeB3 = new QTimer(this);
     connect(m_timeB3, SIGNAL(timeout()), this, SLOT(handleTimeoutB3()));
@@ -164,57 +161,70 @@ SkinLoader::SkinLoader(UserSettingsPointer pConfig)
 
     //³õÊ¼×´Ì¬³£ÁÁ
     //ÁÁD12,D17,D151,D157
-    unsigned char result = m_ftTask->getBuff(1);
+    unsigned char result = FtTask::getInstance()->getBuff(1);
     result |= (1 << 3);
-    m_ftTask->setBuff(1, result);
-    result = m_ftTask->getBuff(2);
+    FtTask::getInstance()->setBuff(1, result);
+    result = FtTask::getInstance()->getBuff(2);
     result |= (1 << 2);
-    m_ftTask->setBuff(2, result);
-    result = m_ftTask->getBuff(21);
+    FtTask::getInstance()->setBuff(2, result);
+    result = FtTask::getInstance()->getBuff(21);
     result |= (1 << 2);
-    m_ftTask->setBuff(21, result);
-    result = m_ftTask->getBuff(22);
+    FtTask::getInstance()->setBuff(21, result);
+    result = FtTask::getInstance()->getBuff(22);
     result |= (1 << 2);
-    m_ftTask->setBuff(22, result);
+    FtTask::getInstance()->setBuff(22, result);
     //ÁÁD24
-    result = m_ftTask->getBuff(3);
+    result = FtTask::getInstance()->getBuff(3);
     result |= (1 << 1);
-     m_ftTask->setBuff(3, result);
+     FtTask::getInstance()->setBuff(3, result);
     //ÁÁD18,D19 ×óVOLÍÆ×Ó-A2
-    result = m_ftTask->getBuff(2);
+    result = FtTask::getInstance()->getBuff(2);
     result |= (1 << 3);
     result |= (1 << 4);
-    m_ftTask->setBuff(2, result);
+    FtTask::getInstance()->setBuff(2, result);
    //ÁÁD25,D26,D27 ×ó×ªÅÌ-A3
-    result = m_ftTask->getBuff(3);
+    result = FtTask::getInstance()->getBuff(3);
     result |= (1 << 2);
     result |= (1 << 3);
     result |= (1 << 4);
-    m_ftTask->setBuff(3, result);
+    FtTask::getInstance()->setBuff(3, result);
     //³£ÁÁD178,D179,D180 ÓÒ×ªÅÌ-A9
-    result = m_ftTask->getBuff(25);
+    result = FtTask::getInstance()->getBuff(25);
     result |= (1 << 1);
     result |= (1 << 2);
     result |= (1 << 3);
-    m_ftTask->setBuff(25, result);
-    //³£ÁÁD80£¬D81 masterÍÆ×Ó
+    FtTask::getInstance()->setBuff(25, result);
+    //³£ÁÁD78,D79,D80£¬D81 masterÍÆ×Ó
+    setLED_ON(10,7);
+    setLED_ON(11,0);
     setLED_ON(11,1);
     setLED_ON(11,2);
-    //³£ÁÁD94£¬D95 headphoneÍÆ×Ó
+    //³£ÁÁD91,D93,D94£¬D95 headphoneÍÆ×Ó
+    setLED_ON(12,6);
+    setLED_ON(13,0);
     setLED_ON(13,1);
     setLED_ON(13,2);
     //³£ÁÁD128,D121£¬D122 Ë®Æ½Ö÷ÍÆ×Ó¼°L,R×ÖÄ¸±ê±êÊ¶
     setLED_ON(18,1);
     setLED_ON(17,0);
     setLED_ON(17,1);
+    //³£ÁÁD1,D2£¬D3,D211,D212,D213,D214,D134,D135,D136, Ö¸Ê¾µÆ
+    setLED_ON(0,0);
+    setLED_ON(0,1);
+    setLED_ON(0,2);
+    setLED_ON(13,6);
+    setLED_ON(15,6);
+    setLED_ON(17,6);
+    setLED_ON(19,6);
+    setLED_ON(18,7);
+    setLED_ON(19,0);
+    setLED_ON(19,1);
     led_update();
 
 }
 
 SkinLoader::~SkinLoader() {
     LegacySkinParser::freeChannelStrings();
-    delete m_ftTask;
-    m_ftTask = NULL;
 }
 
 QList<QDir> SkinLoader::getSkinSearchPaths() const {
@@ -294,14 +304,14 @@ void SkinLoader::setVideoWidget(VideoWidget *widget)
 void SkinLoader::internalDealWithLED(float ratio, QTimer* timer, int* internal, int group1, int byte11, int byte12, int group2, int byte21) {
     if(ratio < 0.1)
     {
-        unsigned char result = m_ftTask->getBuff(group1);
+        unsigned char result = FtTask::getInstance()->getBuff(group1);
         result &= ~(1 << byte11);
         result &= ~(1 << byte12);
-        m_ftTask->setBuff(group1, result);
-        result = m_ftTask->getBuff(group2);
+        FtTask::getInstance()->setBuff(group1, result);
+        result = FtTask::getInstance()->getBuff(group2);
         result &= ~(1 << byte21);
-        m_ftTask->setBuff(group2, result);
-        m_ftTask->update();
+        FtTask::getInstance()->setBuff(group2, result);
+        FtTask::getInstance()->update();
         if(timer->isActive())
         {
             timer->stop();
@@ -360,249 +370,249 @@ void SkinLoader::dealWithLED(WidgetType type, QString objName, int x, int y, QRe
             //ÁÁD32,D33
             if(radian > Radian0 && radian < Radian30)
             {
-                unsigned char result = m_ftTask->getBuff(4);
+                unsigned char result = FtTask::getInstance()->getBuff(4);
                 result |= (1 << 3);
                 result |= (1 << 4);
-                m_ftTask->setBuff(4, result);
+                FtTask::getInstance()->setBuff(4, result);
                 //ÃðD34,D35
-                 result = m_ftTask->getBuff(4);
+                 result = FtTask::getInstance()->getBuff(4);
                  result &= ~(1 << 5);
                  result &= ~(1 << 7);
-                 m_ftTask->setBuff(4, result);
-                 m_ftTask->update();
+                 FtTask::getInstance()->setBuff(4, result);
+                 FtTask::getInstance()->update();
             }
 
             //ÁÁD34,D35
             else if(radian > Radian30 && radian < Radian60)
             {
                 //ÃðD32,D33
-                unsigned char result = m_ftTask->getBuff(4);
+                unsigned char result = FtTask::getInstance()->getBuff(4);
                 result &= ~(1 << 3);
                 result &= ~(1 << 4);
-                m_ftTask->setBuff(4, result);
+                FtTask::getInstance()->setBuff(4, result);
 
                 //ÁÁD34,D35
-                result = m_ftTask->getBuff(4);
+                result = FtTask::getInstance()->getBuff(4);
                 result |= (1 << 5);
                 result |= (1 << 7);
-                m_ftTask->setBuff(4, result);
+                FtTask::getInstance()->setBuff(4, result);
                 //ÃðD36,D37,D38
-                result = m_ftTask->getBuff(4);
+                result = FtTask::getInstance()->getBuff(4);
                 result &= ~(1 << 6);
-                m_ftTask->setBuff(4, result);
-                result = m_ftTask->getBuff(5);
+                FtTask::getInstance()->setBuff(4, result);
+                result = FtTask::getInstance()->getBuff(5);
                 result &= ~(1 << 0);
                 result &= ~(1 << 1);
-                 m_ftTask->setBuff(5, result);
-                m_ftTask->update();
+                 FtTask::getInstance()->setBuff(5, result);
+                FtTask::getInstance()->update();
             }
             //ÁÁD36,D37,D38
             else if(radian > Radian60 && radian < Radian90)
             {
                //ÃðD34,D35
-                unsigned char result = m_ftTask->getBuff(4);
+                unsigned char result = FtTask::getInstance()->getBuff(4);
                 result &= ~(1 << 5);
                 result &= ~(1 << 7);
-                m_ftTask->setBuff(4, result);
+                FtTask::getInstance()->setBuff(4, result);
                 //ÁÁD36,D37,D38
-                result = m_ftTask->getBuff(4);
+                result = FtTask::getInstance()->getBuff(4);
                 result |= (1 << 6);
-                m_ftTask->setBuff(4, result);
-                result = m_ftTask->getBuff(5);
+                FtTask::getInstance()->setBuff(4, result);
+                result = FtTask::getInstance()->getBuff(5);
                 result |= (1 << 0);
                 result |= (1 << 1);
-                m_ftTask->setBuff(5, result);
+                FtTask::getInstance()->setBuff(5, result);
                 //ÃðD39,D40
-                 result = m_ftTask->getBuff(5);
+                 result = FtTask::getInstance()->getBuff(5);
                  result &= ~(1 << 2);
                  result &= ~(1 << 3);
-                 m_ftTask->setBuff(5, result);
-                 m_ftTask->update();
+                 FtTask::getInstance()->setBuff(5, result);
+                 FtTask::getInstance()->update();
             }
             //ÁÁD39,D40
             else if(radian > Radian90 && radian < Radian120)
             {
                 //ÃðD36,D37,D38
-                 unsigned char result = m_ftTask->getBuff(4);
+                 unsigned char result = FtTask::getInstance()->getBuff(4);
                  result &= ~(1 << 6);
-                 m_ftTask->setBuff(4, result);
-                 result = m_ftTask->getBuff(5);
+                 FtTask::getInstance()->setBuff(4, result);
+                 result = FtTask::getInstance()->getBuff(5);
                  result &= ~(1 << 0);
                  result &= ~(1 << 1);
-                 m_ftTask->setBuff(5, result);
+                 FtTask::getInstance()->setBuff(5, result);
                  //ÁÁD39,D40
-                 result = m_ftTask->getBuff(5);
+                 result = FtTask::getInstance()->getBuff(5);
                  result |= (1 << 2);
                  result |= (1 << 3);
-                 m_ftTask->setBuff(5, result);
+                 FtTask::getInstance()->setBuff(5, result);
                  //ÃðD41,D42
-                  result = m_ftTask->getBuff(5);
+                  result = FtTask::getInstance()->getBuff(5);
                   result &= ~(1 << 4);
                   result &= ~(1 << 5);
-                  m_ftTask->setBuff(5, result);
-                  m_ftTask->update();
+                  FtTask::getInstance()->setBuff(5, result);
+                  FtTask::getInstance()->update();
              }
             //ÁÁD41,D42
             else if(radian > Radian120 && radian < Radian150)
             {
                 //ÃðD39,D40
-                 unsigned char result = m_ftTask->getBuff(5);
+                 unsigned char result = FtTask::getInstance()->getBuff(5);
                  result &= ~(1 << 2);
                  result &= ~(1 << 3);
-                 m_ftTask->setBuff(5, result);
+                 FtTask::getInstance()->setBuff(5, result);
                  //ÁÁD41,D42
-                 result = m_ftTask->getBuff(5);
+                 result = FtTask::getInstance()->getBuff(5);
                  result |= (1 << 4);
                  result |= (1 << 5);
-                 m_ftTask->setBuff(5, result);
+                 FtTask::getInstance()->setBuff(5, result);
                  //ÃðD43
-                 result = m_ftTask->getBuff(6);
+                 result = FtTask::getInstance()->getBuff(6);
                  result &= ~(1 << 0);
-                 m_ftTask->setBuff(6, result);
-                 m_ftTask->update();
+                 FtTask::getInstance()->setBuff(6, result);
+                 FtTask::getInstance()->update();
             }
             //ÁÁD43
             else if(radian > Radian150 && radian < Radian180)
             {
                 //ÃðD41,D42
-                 unsigned char result = m_ftTask->getBuff(5);
+                 unsigned char result = FtTask::getInstance()->getBuff(5);
                  result &= ~(1 << 4);
                  result &= ~(1 << 5);
-                 m_ftTask->setBuff(5, result);
+                 FtTask::getInstance()->setBuff(5, result);
                  //ÁÁD43
-                 result = m_ftTask->getBuff(6);
+                 result = FtTask::getInstance()->getBuff(6);
                  result |= (1 << 0);
-                 m_ftTask->setBuff(6, result);
+                 FtTask::getInstance()->setBuff(6, result);
                  //ÃðD44,D45
-                  result = m_ftTask->getBuff(6);
+                  result = FtTask::getInstance()->getBuff(6);
                   result &= ~(1 << 1);
                   result &= ~(1 << 1);
-                  m_ftTask->setBuff(6, result);
-                  m_ftTask->update();
+                  FtTask::getInstance()->setBuff(6, result);
+                  FtTask::getInstance()->update();
             }
             //ÁÁD44,D45
             else if(radian > Radian181 && radian < Radian210)
             {
                 //ÃðD43
-                 unsigned char result = m_ftTask->getBuff(6);
+                 unsigned char result = FtTask::getInstance()->getBuff(6);
                  result &= ~(1 << 0);
-                 m_ftTask->setBuff(6, result);
+                 FtTask::getInstance()->setBuff(6, result);
                  //ÁÁD44,D45
-                 result = m_ftTask->getBuff(6);
+                 result = FtTask::getInstance()->getBuff(6);
                  result |= (1 << 1);
                  result |= (1 << 2);
-                 m_ftTask->setBuff(6, result);
+                 FtTask::getInstance()->setBuff(6, result);
                  //ÃðD46,D47
-                  result = m_ftTask->getBuff(6);
+                  result = FtTask::getInstance()->getBuff(6);
                   result &= ~(1 << 3);
                   result &= ~(1 << 4);
-                  m_ftTask->setBuff(6, result);
-                  m_ftTask->update();
+                  FtTask::getInstance()->setBuff(6, result);
+                  FtTask::getInstance()->update();
             }
             //ÁÁD46,D47
             else if(radian > Radian210 && radian < Radian240)
             {
                 //ÃðD44,D45
-                 unsigned char result = m_ftTask->getBuff(6);
+                 unsigned char result = FtTask::getInstance()->getBuff(6);
                  result &= ~(1 << 1);
                  result &= ~(1 << 1);
-                 m_ftTask->setBuff(6, result);
+                 FtTask::getInstance()->setBuff(6, result);
                  //ÁÁD46,D47
-                 result = m_ftTask->getBuff(6);
+                 result = FtTask::getInstance()->getBuff(6);
                  result |= (1 << 3);
                  result |= (1 << 4);
-                 m_ftTask->setBuff(6, result);
+                 FtTask::getInstance()->setBuff(6, result);
                  //ÃðD73,D76
-                 result = m_ftTask->getBuff(10);
+                 result = FtTask::getInstance()->getBuff(10);
                  result &= ~(1 << 2);
                  result &= ~(1 << 5);
-                 m_ftTask->setBuff(10, result);
-                 m_ftTask->update();
+                 FtTask::getInstance()->setBuff(10, result);
+                 FtTask::getInstance()->update();
             }
             //ÁÁD73,D76
             else if(radian > Radian240 && radian < Radian270)
             {
                 //ÃðD46,D47
-                 unsigned char result = m_ftTask->getBuff(6);
+                 unsigned char result = FtTask::getInstance()->getBuff(6);
                  result &= ~(1 << 3);
                  result &= ~(1 << 4);
-                 m_ftTask->setBuff(6, result);
+                 FtTask::getInstance()->setBuff(6, result);
                  //ÁÁD73,D76
-                 result = m_ftTask->getBuff(10);
+                 result = FtTask::getInstance()->getBuff(10);
                  result |= (1 << 2);
                  result |= (1 << 5);
-                 m_ftTask->setBuff(10, result);
+                 FtTask::getInstance()->setBuff(10, result);
                  //ÃðD223,D28
-                 result = m_ftTask->getBuff(3);
+                 result = FtTask::getInstance()->getBuff(3);
                  result &= ~(1 << 5);
-                 m_ftTask->setBuff(3, result);
-                 result = m_ftTask->getBuff(29);
+                 FtTask::getInstance()->setBuff(3, result);
+                 result = FtTask::getInstance()->getBuff(29);
                  result &= ~(1 << 3);
-                 m_ftTask->setBuff(29, result);
-                 m_ftTask->update();
+                 FtTask::getInstance()->setBuff(29, result);
+                 FtTask::getInstance()->update();
             }
             //ÁÁD223,D28
             else if(radian > Radian270 && radian < Radian300)
             {
                 //ÃðD73,D76
-                 unsigned char result = m_ftTask->getBuff(10);
+                 unsigned char result = FtTask::getInstance()->getBuff(10);
                  result &= ~(1 << 2);
                  result &= ~(1 << 5);
-                 m_ftTask->setBuff(10, result);
+                 FtTask::getInstance()->setBuff(10, result);
                  //ÁÁD223,D28
-                 result = m_ftTask->getBuff(3);
+                 result = FtTask::getInstance()->getBuff(3);
                  result |= (1 << 5);
-                 m_ftTask->setBuff(3, result);
-                 result = m_ftTask->getBuff(29);
+                 FtTask::getInstance()->setBuff(3, result);
+                 result = FtTask::getInstance()->getBuff(29);
                  result |= (1 << 3);
-                 m_ftTask->setBuff(29, result);
+                 FtTask::getInstance()->setBuff(29, result);
                  //ÃðD29,D30
-                  result = m_ftTask->getBuff(4);
+                  result = FtTask::getInstance()->getBuff(4);
                   result &= ~(1 << 0);
                   result &= ~(1 << 1);
-                  m_ftTask->setBuff(4, result);
-                  m_ftTask->update();
+                  FtTask::getInstance()->setBuff(4, result);
+                  FtTask::getInstance()->update();
             }
             //ÁÁD29,D30
             else if(radian > Radian300 && radian < Radian330)
             {
                 //ÃðD223,D28
-                unsigned char result = m_ftTask->getBuff(3);
+                unsigned char result = FtTask::getInstance()->getBuff(3);
                 result &= ~(1 << 5);
-                m_ftTask->setBuff(3, result);
-                result = m_ftTask->getBuff(29);
+                FtTask::getInstance()->setBuff(3, result);
+                result = FtTask::getInstance()->getBuff(29);
                 result &= ~(1 << 3);
-                m_ftTask->setBuff(29, result);
+                FtTask::getInstance()->setBuff(29, result);
                 //ÁÁD29,D30
-                result = m_ftTask->getBuff(4);
+                result = FtTask::getInstance()->getBuff(4);
                 result |= (1 << 0);
                 result |= (1 << 1);
-                m_ftTask->setBuff(4, result);
+                FtTask::getInstance()->setBuff(4, result);
                 //ÃðD31,D32
-                 result = m_ftTask->getBuff(4);
+                 result = FtTask::getInstance()->getBuff(4);
                  result &= ~(1 << 2);
                  result &= ~(1 << 3);
-                 m_ftTask->setBuff(4, result);
-                 m_ftTask->update();
+                 FtTask::getInstance()->setBuff(4, result);
+                 FtTask::getInstance()->update();
             }
             //ÁÁD31,D32
             else if(radian > Radian330 && radian < Radian360)
             {
                 //ÃðD29,D30
-                 unsigned char result = m_ftTask->getBuff(4);
+                 unsigned char result = FtTask::getInstance()->getBuff(4);
                  result &= ~(1 << 0);
                  result &= ~(1 << 1);
-                 m_ftTask->setBuff(4, result);
+                 FtTask::getInstance()->setBuff(4, result);
                  //ÁÁD31,D32
-                 result = m_ftTask->getBuff(4);
+                 result = FtTask::getInstance()->getBuff(4);
                  result |= (1 << 2);
                  result |= (1 << 3);
-                 m_ftTask->setBuff(4, result);
+                 FtTask::getInstance()->setBuff(4, result);
                  //ÃðD33
-                 result = m_ftTask->getBuff(4);
+                 result = FtTask::getInstance()->getBuff(4);
                  result &= ~(1 << 4);
-                 m_ftTask->setBuff(4, result);
-                 m_ftTask->update();
+                 FtTask::getInstance()->setBuff(4, result);
+                 FtTask::getInstance()->update();
             }
         }
         //A9Çø ÓÒ×ªÅÌ
@@ -613,150 +623,150 @@ void SkinLoader::dealWithLED(WidgetType type, QString objName, int x, int y, QRe
             //ÁÁD166,D167
             if(radian > Radian0 && radian < Radian30)
             {
-                result = m_ftTask->getBuff(23);
+                result = FtTask::getInstance()->getBuff(23);
                 result |= (1 << 3);
                 result |= (1 << 4);
-                m_ftTask->setBuff(23, result);
+                FtTask::getInstance()->setBuff(23, result);
                 //ÃðD168,D169
-                 result = m_ftTask->getBuff(23);
+                 result = FtTask::getInstance()->getBuff(23);
                  result &= ~(1 << 5);
-                 m_ftTask->setBuff(23, result);
-                 result = m_ftTask->getBuff(24);
+                 FtTask::getInstance()->setBuff(23, result);
+                 result = FtTask::getInstance()->getBuff(24);
                  result &= ~(1 << 0);
-                 m_ftTask->setBuff(24, result);
-                 m_ftTask->update();
+                 FtTask::getInstance()->setBuff(24, result);
+                 FtTask::getInstance()->update();
             }
             //ÁÁD168,D169
             else if(radian > Radian30 && radian < Radian60)
             {
-                result = m_ftTask->getBuff(23);
+                result = FtTask::getInstance()->getBuff(23);
                 result |= (1 << 5);
-                m_ftTask->setBuff(23, result);
-                result = m_ftTask->getBuff(24);
+                FtTask::getInstance()->setBuff(23, result);
+                result = FtTask::getInstance()->getBuff(24);
                 result |= (1 << 0);
-                m_ftTask->setBuff(24, result);
+                FtTask::getInstance()->setBuff(24, result);
                 //ÃðD170,D171,D172
-                 result = m_ftTask->getBuff(24);
+                 result = FtTask::getInstance()->getBuff(24);
                  result &= ~(1 << 1);
                  result &= ~(1 << 2);
                  result &= ~(1 << 3);
-                 m_ftTask->setBuff(24, result);
-                 m_ftTask->update();
+                 FtTask::getInstance()->setBuff(24, result);
+                 FtTask::getInstance()->update();
             }
             //ÁÁD170,D171,D172
             else if(radian > Radian60 && radian < Radian90)
             {
-                result = m_ftTask->getBuff(24);
+                result = FtTask::getInstance()->getBuff(24);
                 result |= (1 << 1);
                 result |= (1 << 2);
                 result |= (1 << 3);
-                m_ftTask->setBuff(24, result);
+                FtTask::getInstance()->setBuff(24, result);
                 //ÃðD173,D174
-                 result = m_ftTask->getBuff(24);
+                 result = FtTask::getInstance()->getBuff(24);
                  result &= ~(1 << 4);
                  result &= ~(1 << 5);
-                 m_ftTask->setBuff(24, result);
-                 m_ftTask->update();
+                 FtTask::getInstance()->setBuff(24, result);
+                 FtTask::getInstance()->update();
             }
             //ÁÁD173,D174
             else if(radian > Radian90 && radian < Radian120)
             {
-                result = m_ftTask->getBuff(24);
+                result = FtTask::getInstance()->getBuff(24);
                 result |= (1 << 4);
                 result |= (1 << 5);
-                m_ftTask->setBuff(24, result);
+                FtTask::getInstance()->setBuff(24, result);
                 //ÃðD175,D176
-                 result = m_ftTask->getBuff(24);
+                 result = FtTask::getInstance()->getBuff(24);
                  result &= ~(1 << 6);
                  result &= ~(1 << 7);
-                 m_ftTask->setBuff(24, result);
-                 m_ftTask->update();
+                 FtTask::getInstance()->setBuff(24, result);
+                 FtTask::getInstance()->update();
             }
             //ÁÁD175,D176
             else if(radian > Radian120 && radian < Radian150)
             {    
-                result = m_ftTask->getBuff(24);
+                result = FtTask::getInstance()->getBuff(24);
                 result |= (1 << 6);
                 result |= (1 << 7);
-                m_ftTask->setBuff(24, result);
+                FtTask::getInstance()->setBuff(24, result);
                 //ÃðD177
-                 result = m_ftTask->getBuff(25);
+                 result = FtTask::getInstance()->getBuff(25);
                  result &= ~(1 << 0);
-                 m_ftTask->setBuff(25, result);
-                 m_ftTask->update();
+                 FtTask::getInstance()->setBuff(25, result);
+                 FtTask::getInstance()->update();
             }
             //ÁÁD177
             else if(radian > Radian150 && radian < Radian180)
             {
-                result = m_ftTask->getBuff(25);
+                result = FtTask::getInstance()->getBuff(25);
                 result |= (1 << 0);
-                m_ftTask->setBuff(25, result);
+                FtTask::getInstance()->setBuff(25, result);
                 //ÃðD225,D92
-                 result = m_ftTask->getBuff(29);
+                 result = FtTask::getInstance()->getBuff(29);
                  result &= ~(1 << 5);
-                 m_ftTask->setBuff(29, result);
-                 result = m_ftTask->getBuff(12);
+                 FtTask::getInstance()->setBuff(29, result);
+                 result = FtTask::getInstance()->getBuff(12);
                  result &= ~(1 << 7);
-                 m_ftTask->setBuff(12, result);
-                 m_ftTask->update();
+                 FtTask::getInstance()->setBuff(12, result);
+                 FtTask::getInstance()->update();
             }
             //ÁÁD225,D92
             else if(radian > Radian181 && radian < Radian210)
             {
-                result = m_ftTask->getBuff(29);
+                result = FtTask::getInstance()->getBuff(29);
                 result |= (1 << 5);
-                m_ftTask->setBuff(29, result);
-                result = m_ftTask->getBuff(12);
+                FtTask::getInstance()->setBuff(29, result);
+                result = FtTask::getInstance()->getBuff(12);
                 result |= (1 << 7);
-                m_ftTask->setBuff(12, result);
+                FtTask::getInstance()->setBuff(12, result);
                 //ÃðD224,D158
-                 result = m_ftTask->getBuff(29);
+                 result = FtTask::getInstance()->getBuff(29);
                  result &= ~(1 << 4);
-                 m_ftTask->setBuff(29, result);
-                 result = m_ftTask->getBuff(22);
+                 FtTask::getInstance()->setBuff(29, result);
+                 result = FtTask::getInstance()->getBuff(22);
                  result &= ~(1 << 3);
-                 m_ftTask->setBuff(22, result);
-                 m_ftTask->update();
+                 FtTask::getInstance()->setBuff(22, result);
+                 FtTask::getInstance()->update();
             }
             //ÁÁD224,D158
             else if(radian > Radian210 && radian < Radian240)
             {
-//                m_ftTask->setBuff(29, 0x00);
-//                m_ftTask->setBuff(12, 0x00);
-//                m_ftTask->setBuff(29, 0x10);
-//                m_ftTask->setBuff(22, 0x08);
-//                m_ftTask->update();
+//                FtTask::getInstance()->setBuff(29, 0x00);
+//                FtTask::getInstance()->setBuff(12, 0x00);
+//                FtTask::getInstance()->setBuff(29, 0x10);
+//                FtTask::getInstance()->setBuff(22, 0x08);
+//                FtTask::getInstance()->update();
             }
             //ÁÁD159
             else if(radian > Radian240 && radian < Radian270)
             {
-                 m_ftTask->setBuff(29, 0x00);
-                   m_ftTask->setBuff(22, 0x00);
-                m_ftTask->setBuff(22, 0x10);
-                m_ftTask->update();
+                 FtTask::getInstance()->setBuff(29, 0x00);
+                   FtTask::getInstance()->setBuff(22, 0x00);
+                FtTask::getInstance()->setBuff(22, 0x10);
+                FtTask::getInstance()->update();
             }
             //ÁÁD160,D161
             else if(radian > Radian270 && radian < Radian300)
             {
-                 m_ftTask->setBuff(22, 0x00);
-                m_ftTask->setBuff(22, 0x60);
-                m_ftTask->update();
+                 FtTask::getInstance()->setBuff(22, 0x00);
+                FtTask::getInstance()->setBuff(22, 0x60);
+                FtTask::getInstance()->update();
             }
             //ÁÁD162,D163
             else if(radian > Radian300 && radian < Radian330)
             {
-                 m_ftTask->setBuff(22, 0x00);
-                m_ftTask->setBuff(22, 0x80);
-                m_ftTask->setBuff(23, 0x01);
-                m_ftTask->update();
+                 FtTask::getInstance()->setBuff(22, 0x00);
+                FtTask::getInstance()->setBuff(22, 0x80);
+                FtTask::getInstance()->setBuff(23, 0x01);
+                FtTask::getInstance()->update();
             }
             //ÁÁD164,D165
             else if(radian > Radian330 && radian < Radian360)
             {
-                m_ftTask->setBuff(22, 0x00);
-                 m_ftTask->setBuff(23, 0x00);
-                m_ftTask->setBuff(23, 0x06);
-                m_ftTask->update();
+                FtTask::getInstance()->setBuff(22, 0x00);
+                 FtTask::getInstance()->setBuff(23, 0x00);
+                FtTask::getInstance()->setBuff(23, 0x06);
+                FtTask::getInstance()->update();
             }
         }
         break;
@@ -867,16 +877,16 @@ void SkinLoader::dealWithLED(WidgetType type, QString objName, int x, int y, QRe
                 if(pushbutton->isPressed())
                 {
                     //ÁÁD50,D51
-                    m_ftTask->setBuff(6, 0x40);
-                    m_ftTask->setBuff(7, 0x01);
-                    m_ftTask->update();
+                    FtTask::getInstance()->setBuff(6, 0x40);
+                    FtTask::getInstance()->setBuff(7, 0x01);
+                    FtTask::getInstance()->update();
                 }
                else
                 {
                     //mieD50,D51
-                    m_ftTask->setBuff(6, 0x00);
-                   m_ftTask->setBuff(7, 0x00);
-                   m_ftTask->update();
+                    FtTask::getInstance()->setBuff(6, 0x00);
+                   FtTask::getInstance()->setBuff(7, 0x00);
+                   FtTask::getInstance()->update();
                 }
 
             }
@@ -884,28 +894,28 @@ void SkinLoader::dealWithLED(WidgetType type, QString objName, int x, int y, QRe
             else if(objName == "DeckCue_Deck2_hotcue")
             {
                 //ÁÁD85£¬D86
-                m_ftTask->setBuff(12, 0x03);
-                m_ftTask->update();
+                FtTask::getInstance()->setBuff(12, 0x03);
+                FtTask::getInstance()->update();
             }
             //B37
             else if(objName == "PlayToggle_Deck1_hotcue")
             {
                 //ÁÁD52£¬D53
-                    m_ftTask->setBuff(7, 0x06);
-                    m_ftTask->update();
+                    FtTask::getInstance()->setBuff(7, 0x06);
+                    FtTask::getInstance()->update();
             }
             //B51
             else if(objName == "PlayToggle_Deck1_hotcue")
             {
                 //ÁÁD187£¬D188
-                        m_ftTask->setBuff(26, 0x30);
-                        m_ftTask->update();
+                        FtTask::getInstance()->setBuff(26, 0x30);
+                        FtTask::getInstance()->update();
             }
                     else
             {
                         //mieD187,D188
-                        m_ftTask->setBuff(26, 0x00);
-                        m_ftTask->update();
+                        FtTask::getInstance()->setBuff(26, 0x00);
+                        FtTask::getInstance()->update();
             }
         }
         break;
@@ -1057,175 +1067,167 @@ void SkinLoader::dealWithLED(WidgetType type, QString objName, int x, int y, QRe
                 setLED_ON(1, 2);
                 led_update();
             }
-
         }
         //A2Çø
         else if(objName == "ChannelVolume_[Channel1]")
         {
-            //ÁÁD24
-            unsigned char result;
             float posH = (y - rct.bottom())/ rct.height();
-            if(posH < 0.1)
-            {
-                //ÃðD22,D23
-                 result = m_ftTask->getBuff(2);
-                 result &= ~(1 << 6);
-                 m_ftTask->setBuff(2, result);
-                 m_ftTask->update();
-                 result = m_ftTask->getBuff(3);
-                 result &= ~(1 << 0);
-                 m_ftTask->setBuff(3, result);
-                 m_ftTask->update();
-                 //ÃðD20,D21
-                 result = m_ftTask->getBuff(2);
-                   result &= ~(1 << 5);
-                   result &= ~(1 << 7);
-                  m_ftTask->setBuff(2, result);
-                  m_ftTask->update();
-            }
-            else if(posH < 0.3)
-            {
-                //ÁÁD22,D23
-                 result = m_ftTask->getBuff(2);
-                 result |= (1 << 6);
-                 m_ftTask->setBuff(2, result);
-
-                m_ftTask->setBuff(2, 0x40);
-               result = m_ftTask->getBuff(3);
-                 result |= (1 << 0);
-                 m_ftTask->setBuff(3, result);
-                m_ftTask->setBuff(3, 0x01);
-                 m_ftTask->update();
-                 //ÃðD20,D21
-               result = m_ftTask->getBuff(2);
-                   result &= ~(1 << 5);
-                   result &= ~(1 << 7);
-                  m_ftTask->setBuff(2, result);
-                 m_ftTask->update();
-            }
-            else if(posH < 0.6)
-            {
-                //ÁÁD20,D21
-                result = m_ftTask->getBuff(2);
-                result |= (1 << 5);
-                result |= (1 << 7);
-                m_ftTask->setBuff(2, result);
-                m_ftTask->update();
-            }
-            else
-            {
-                //ÁÁD18,D19
-                result = m_ftTask->getBuff(2);
-                result |= (1 << 3);
-                result |= (1 << 4);
-                m_ftTask->setBuff(2, result);
-                  m_ftTask->update();
-            }
-            m_ftTask->update();
+            if(posH < 0.01)
+                {
+                    //ÃðD19,D20,D21,D22
+                    setLED_OFF(2, 4);
+                    setLED_OFF(2, 5);
+                    setLED_OFF(2, 6);
+                    setLED_OFF(2, 7);
+                    //ÃðD23
+                    setLED_OFF(3, 0);
+                    led_update();
+                }
+                else if(posH < 0.2)
+                {
+                    //ÃðD22
+                    setLED_OFF(2, 6);
+                    //ÁÁD23
+                    setLED_ON(3, 0);
+                    led_update();
+                }
+               else if(posH < 0.4)
+                {
+                    //ÃðD21
+                    setLED_OFF(2, 7);
+                    //ÁÁD22
+                    setLED_ON(2, 6);
+                    led_update();
+                }
+                else if(posH < 0.6)
+                {
+                    //ÃðD20
+                    setLED_OFF(2, 5);
+                    //ÁÁD21
+                    setLED_ON(2, 7);
+                    led_update();
+                }
+                else if(posH < 0.8)
+                {
+                    //ÃðD19
+                    setLED_OFF(2, 4);
+                    //ÁÁD20
+                    setLED_ON(2, 5);
+                    led_update();
+                }
+                else
+                {
+                    //ÁÁD19
+                    setLED_ON(2, 4);
+                    led_update();
+                }
         }
         //A7Çø
         else if(objName == "ChannelVolume_[Channel2]")
         {
-            //ÁÁD150
-            m_ftTask->setBuff(21, 0x02);
             float posH = (y - rct.bottom())/ rct.height();
-            if(posH < 0.3)
-            {
-                //ÁÁD148,D149
-                m_ftTask->setBuff(20, 0x80);
-                m_ftTask->setBuff(21, 0x01);
-            }
-            else if(posH < 0.6)
-            {
-                //ÁÁD146,D147
-                m_ftTask->setBuff(20, 0x60);
-            }
-            else
-            {
-                //ÁÁD144,D145
-                m_ftTask->setBuff(20, 0x18);
-            }
+            if(posH < 0.01)
+                {
+                    //ÃðD144,D146,D147,D148£¬D149
+                    setLED_OFF(20, 3);
+                    setLED_OFF(20, 5);
+                    setLED_OFF(20, 6);
+                    setLED_OFF(20, 7);
+                    setLED_OFF(21, 0);
+                    led_update();
+                }
+                else if(posH < 0.2)
+                {
+                    //ÃðD148
+                    setLED_OFF(20, 7);
+                    //ÁÁD149
+                    setLED_ON(21, 0);
+                    led_update();
+                }
+               else if(posH < 0.4)
+                {
+                    //ÃðD147
+                    setLED_OFF(20, 6);
+                    //ÁÁD148
+                    setLED_ON(20, 7);
+                    led_update();
+                }
+                else if(posH < 0.6)
+                {
+                    //ÃðD146
+                    setLED_OFF(20, 5);
+                    //ÁÁD147
+                    setLED_ON(20, 6);
+                    led_update();
+                }
+                else if(posH < 0.8)
+                {
+                    //ÃðD144
+                    setLED_OFF(20, 3);
+                    //ÁÁD146
+                    setLED_ON(20, 5);
+                    led_update();
+                }
+                else
+                {
+                    //ÁÁD144
+                    setLED_ON(20, 3);
+                    led_update();
+                }
         }
 
         //A8Çø
         else if(objName == "RateDisplay2_handh")
         {
-            unsigned char result;
-            std::cout<<"rct:x1,y1,x2,y2"<<rct.left()<<" "<<rct.top()<<" "<<rct.right()<<" "<<rct.bottom()<<" "<<std::endl;
-            std::cout<<"y:"<<y<<std::endl;
-            float posH = fabs(y - rct.bottom())/ rct.height();
-            std::cout<<"posH:"<<posH<<std::endl;
+            float posH = (y - rct.bottom())/ rct.height();
             if(posH < 0.01)
-            {
-                //ÃðD152,D153,D154
-                result = m_ftTask->getBuff(21);
-                result &= ~(1 << 5);
-                result &= ~(1 << 4);
-                result &= ~(1 << 3);
-                m_ftTask->setBuff(21, result);
-                //ÃðD155,D156
-                 result = m_ftTask->getBuff(22);
-                 result &= ~(1 << 0);
-                 result &= ~(1 << 1);
-                 m_ftTask->setBuff(2, result);
-                 m_ftTask->update();
-            }
-            else if(posH < 0.2)
-            {
-                //ÃðD155
-                result = m_ftTask->getBuff(22);
-                result &= ~(1 << 0);
-                m_ftTask->setBuff(22, result);
-                //ÁÁD156
-                result = m_ftTask->getBuff(22);
-                result |= (1 << 1);
-                m_ftTask->setBuff(22, result);
-                m_ftTask->update();
-            }
-           else if(posH < 0.4)
-            {
-                //ÃðD154
-                result = m_ftTask->getBuff(21);
-                result &= ~(1 << 5);
-                m_ftTask->setBuff(21, result);
-                //ÁÁD155
-                result = m_ftTask->getBuff(22);
-                result |= (1 << 0);
-                m_ftTask->setBuff(22, result);
-                m_ftTask->update();
-            }
-            else if(posH < 0.6)
-            {
-                //ÃðD153
-                result = m_ftTask->getBuff(21);
-                result &= ~(1 << 4);
-                m_ftTask->setBuff(21, result);
-                //ÁÁD154
-                result = m_ftTask->getBuff(21);
-                result |= (1 << 5);
-                m_ftTask->setBuff(21, result);
-                m_ftTask->update();
-            }
-            else if(posH < 0.8)
-            {
-                //ÃðD152
-                result = m_ftTask->getBuff(21);
-                result &= ~(1 << 3);
-                m_ftTask->setBuff(21, result);
-                //ÁÁD153
-                result = m_ftTask->getBuff(21);
-                result |= (1 << 4);
-                m_ftTask->setBuff(21, result);
-                m_ftTask->update();
-            }
-            else
-            {
-                //ÁÁD152
-                result = m_ftTask->getBuff(21);
-                result |= (1 << 3);
-                m_ftTask->setBuff(21, result);
-                m_ftTask->update();
-            }
+                {
+                    //ÃðD152,D153,D154,D155£¬D156
+                    setLED_OFF(21, 4);
+                    setLED_OFF(21, 5);
+                    setLED_OFF(21, 3);
+                    setLED_OFF(22, 1);
+                    setLED_OFF(22, 0);
+                    led_update();
+                }
+                else if(posH < 0.2)
+                {
+                    //ÃðD155
+                    setLED_OFF(22, 0);
+                    //ÁÁD156
+                    setLED_ON(22, 1);
+                    led_update();
+                }
+               else if(posH < 0.4)
+                {
+                    //ÃðD155
+                    setLED_OFF(22, 0);
+                    //ÁÁD154
+                    setLED_ON(21, 5);
+                    led_update();
+                }
+                else if(posH < 0.6)
+                {
+                    //ÃðD154
+                    setLED_OFF(21, 5);
+                    //ÁÁD153
+                    setLED_ON(21, 4);
+                    led_update();
+                }
+                else if(posH < 0.8)
+                {
+                    //ÃðD153
+                    setLED_OFF(21, 4);
+                    //ÁÁD152
+                    setLED_ON(21, 3);
+                    led_update();
+                }
+                else
+                {
+                    //ÁÁD152
+                    setLED_ON(21, 3);
+                    led_update();
+                }
         }
         //A4Çø...
         else if(objName == "RateDisplay1_handh")
@@ -1311,21 +1313,21 @@ void SkinLoader::dealWithLED(WidgetType type, QString objName, int x, int y, QRe
 
 void SkinLoader::setLED_ON(int byte, int bit)
 {
-    unsigned char result = m_ftTask->getBuff(byte);
+    unsigned char result = FtTask::getInstance()->getBuff(byte);
     result |= (1 << bit);
-    m_ftTask->setBuff(byte, result);
+    FtTask::getInstance()->setBuff(byte, result);
 }
 
 void SkinLoader::setLED_OFF(int byte, int bit)
 {
-    unsigned char result = m_ftTask->getBuff(byte);
+    unsigned char result = FtTask::getInstance()->getBuff(byte);
     result &= ~(1 << bit);
-    m_ftTask->setBuff(byte, result);
+    FtTask::getInstance()->setBuff(byte, result);
 }
 
 void SkinLoader::led_update()
 {
-    m_ftTask->update();
+    FtTask::getInstance()->update();
 }
 
 void SkinLoader::getComingData(QByteArray data)
@@ -1420,23 +1422,23 @@ void SkinLoader::internalHandleTimeout(QTimer* timer, int interval, int* light,
                                        int group1, int byte11, int byte12, int group2, int byte21) {
 
     if (*light) {
-        unsigned char result = m_ftTask->getBuff(group1);
+        unsigned char result = FtTask::getInstance()->getBuff(group1);
         result |= (1 << byte11);
         result |= (1 << byte12);
-        m_ftTask->setBuff(group1, result);
-        result = m_ftTask->getBuff(group2);
+        FtTask::getInstance()->setBuff(group1, result);
+        result = FtTask::getInstance()->getBuff(group2);
         result |= (1 << byte21);
-        m_ftTask->setBuff(group2, result);
-        m_ftTask->update();
+        FtTask::getInstance()->setBuff(group2, result);
+        FtTask::getInstance()->update();
     } else {
-        unsigned char result = m_ftTask->getBuff(group1);
+        unsigned char result = FtTask::getInstance()->getBuff(group1);
         result &= ~(1 << byte11);
         result &= ~(1 << byte12);
-        m_ftTask->setBuff(group1, result);
-        result = m_ftTask->getBuff(group2);
+        FtTask::getInstance()->setBuff(group1, result);
+        result = FtTask::getInstance()->getBuff(group2);
         result &= ~(1 << byte21);
-        m_ftTask->setBuff(group2, result);
-        m_ftTask->update();
+        FtTask::getInstance()->setBuff(group2, result);
+        FtTask::getInstance()->update();
     }
     *light = !(*light);
 

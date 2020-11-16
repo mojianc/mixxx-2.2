@@ -9,7 +9,14 @@ class FtTask : public QThread
 	Q_OBJECT
 
 public:
-	FtTask(QObject *parent = NULL);
+    static FtTask *getInstance()
+    {
+       if(m_instance == NULL)
+       {
+           m_instance = new FtTask;
+       }
+       return m_instance;
+    }
 	~FtTask();
 
 	void stop();
@@ -20,20 +27,17 @@ public:
 	void update();
 	void clearBuff();
 
-signals:
-	void mouseSpeed(int speed);
-	void mouseDirect(int direct);
+    void setLED_ON(int byte, int bit);
+    void setLED_OFF(int byte, int bit);
+    void led_update();
 
 protected:
 	void run();
 	void updateBuff();
-	void updateTest();
-	void readMouseSpeed();
-	void readMouseDirect();
 	void ftReset();
-	void flashLed();
 	void setUpdate(bool enable);
 private:
+    FtTask(QObject *parent = NULL);
 	bool			m_stopped;
 	FtUnitl         m_ftUnitl;
 	bool            m_connected;
@@ -41,4 +45,5 @@ private:
     unsigned char   *m_displaySwapBuf;
 	bool            m_update;
 	QMutex          m_mutex;
+    static FtTask *m_instance;
 };

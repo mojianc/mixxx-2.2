@@ -33,6 +33,7 @@
 #include "util/debug.h"
 #include "util/math.h"
 #include "widget/wpixmapstore.h"
+#include "FtTask.h"
 
 WPushButton::WPushButton(QWidget* pParent)
         : WWidget(pParent),
@@ -461,6 +462,47 @@ void WPushButton::mouseReleaseEvent(QMouseEvent * e) {
         restyleAndRepaint();
         return;
     }
+
+    QString objectNameStr = objectName();
+    if(leftClick)
+    {
+        if(objectNameStr == "HotcueButton_Deck1_hotcue1")
+        {
+
+        }
+        else if(objectNameStr == "HotcueButton_Deck1_hotcue1")
+        {
+
+        }
+        else if(objectNameStr == "HotcueButton_Deck1_hotcue1")
+        {
+
+        }
+        else if(objectNameStr == "HotcueButton_Deck1_hotcue1")
+        {
+
+        }
+    }
+    else if(rightClick)
+    {
+        if(objectNameStr == "HotcueButton_Deck1_hotcue1")
+        {
+
+        }
+        else if(objectNameStr == "HotcueButton_Deck1_hotcue1")
+        {
+
+        }
+        else if(objectNameStr == "HotcueButton_Deck1_hotcue1")
+        {
+
+        }
+        else if(objectNameStr == "HotcueButton_Deck1_hotcue1")
+        {
+
+        }
+    }
+
 
     if (rightClick) {
         // This is the secondary clickButton function,

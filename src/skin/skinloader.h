@@ -134,7 +134,6 @@ public:
     VideoWidget *m_videoWidget;
 
     SerialPort *m_serialPort;
-    FtTask *m_ftTask;
     WidgetType m_widgetType;
     //B3,B4,B5ÐýÅ¥µÄ¶¨Ê±Æ÷
     QTimer *m_timeB3;

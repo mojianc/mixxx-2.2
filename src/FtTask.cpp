@@ -4,6 +4,8 @@
 #define ROW_SIZE    15
 #define DISPLAY_BUFF_SIZE COLUMN_SIZE*2
 
+FtTask *FtTask::m_instance = NULL;
+
 FtTask::FtTask(QObject *parent)
 	: QThread(parent), m_stopped(true),m_connected(false),m_update(false)
 {
@@ -19,6 +21,8 @@ FtTask::FtTask(QObject *parent)
             m_displaySwapBuf[j*2 + i] = 0x00;
         }
     }
+
+    start();
 }
 
 FtTask::~FtTask()
@@ -71,6 +75,25 @@ void FtTask::clearBuff()
     m_mutex.unlock();
 }
 
+void FtTask::setLED_ON(int byte, int bit)
+{
+    unsigned char result = getBuff(byte);
+    result |= (1 << bit);
+    setBuff(byte, result);
+}
+
+void FtTask::setLED_OFF(int byte, int bit)
+{
+    unsigned char result = getBuff(byte);
+    result &= ~(1 << bit);
+    setBuff(byte, result);
+}
+
+void FtTask::led_update()
+{
+    update();
+}
+
 void FtTask::run()
 {
 	m_stopped = false;
@@ -93,10 +116,6 @@ void FtTask::run()
 				setUpdate(false);
 				updateBuff();				
 			}
-            //updateTest();
-//            readMouseSpeed();
-//            readMouseDirect();
-//			flashLed();
 			QThread::currentThread()->msleep(20);
 		}
 
@@ -133,53 +152,6 @@ void FtTask::updateBuff()
 	m_ftUnitl.Write_Short_Add(3, 0);
 }
 
-void FtTask::updateTest()
-{
-//    while(1)
-//    {
-        //¡¡D5,D6,D205
-       unsigned char result = getBuff(0);
-         result |= (1 << 4);
-         result |= (1 << 5);
-        setBuff(0, result);
-       result = getBuff(1);
-       result |= (1 << 6);
-        setBuff(1, result);
-        update();
-
-        //√D5,D6,D205
-        result = getBuff(0);
-        result &= ~(1 << 4);
-        result &= ~(1 << 5);
-        setBuff(0, result);
-        result = getBuff(1);
-        result &= ~(1 << 6);
-        setBuff(1, result);
-        update();
-//    }
-}
-
-void FtTask::readMouseSpeed()
-{
-	//m_ftUnitl.Read_Short_Add(0);
-	//m_ftUnitl.GetData();
-	//QByteArray datas = m_ftUnitl.readReceivedDatas();
-	//if (datas.length() > 0) {
-	//	emit mouseSpeed(datas.at(0));
-	//}
-	int data = m_ftUnitl.Read_Short_Add_Wait(1);
-	if (data >= 0) {
-		emit mouseSpeed((unsigned char)data);
-	}
-}
-
-void FtTask::readMouseDirect()
-{
-	int data = m_ftUnitl.Read_Short_Add_Wait(0);
-	if (data >= 0) {
-		emit mouseDirect((unsigned char)data);
-	}
-}
 
 void FtTask::ftReset()
 {
@@ -191,25 +163,6 @@ void FtTask::ftReset()
 		m_ftUnitl.Write_Short_Add(1, 0);
 	}
 	update();
-}
-
-void FtTask::flashLed()
-{
-	static unsigned char index = 0;
-	if (index > 7) {
-		index = 0;
-	}
-	m_ftUnitl.Write_Short_Add(0x04, 0x01<<index);
-	index++;
-	//static unsigned char index = 0;
-	//if (index == 0) {
-	//	index = 1;
-	//	m_ftUnitl.Write_Short_Add(0x04, 0x01);
-	//}
-	//else {
-	//	index = 0;
-	//	m_ftUnitl.Write_Short_Add(0x04, 0x00);
-	//}
 }
 
 void FtTask::setUpdate(bool enable)
