@@ -468,7 +468,7 @@ void WPushButton::mouseReleaseEvent(QMouseEvent * e) {
     {
         if(objectNameStr == "HotcueButton_Deck1_hotcue1")
         {
-            FtTask::getInstance()->setLED_ON(0,3);
+            FtTask::getInstance()->setLED_ON(8,5);
             FtTask::getInstance()->led_update();
 
         }
@@ -489,7 +489,7 @@ void WPushButton::mouseReleaseEvent(QMouseEvent * e) {
     {
         if(objectNameStr == "HotcueButton_Deck1_hotcue1")
         {
-            FtTask::getInstance()->setLED_OFF(0,3);
+            FtTask::getInstance()->setLED_OFF(8,5);
             FtTask::getInstance()->led_update();
         }
         else if(objectNameStr == "HotcueButton_Deck1_hotcue1")
