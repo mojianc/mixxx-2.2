@@ -64,7 +64,9 @@ SkinLoader::SkinLoader(UserSettingsPointer pConfig)
     ,m_timeOutB22(1000)
     ,m_timeOutB24(1000)
     ,m_timeOutB25(true)
-    , m_pConfig(pConfig) {
+    ,m_bLongPress(false)
+    ,m_bRightClick(false)
+    ,m_pConfig(pConfig) {
     m_musicBtControl = new MusicButtonControl(this);
 
     m_serialPort = new SerialPort;
@@ -158,6 +160,14 @@ SkinLoader::SkinLoader(UserSettingsPointer pConfig)
     connect(m_timeB25, SIGNAL(timeout()), this, SLOT(handleTimeoutB25()));
     m_timeB25->setSingleShot(true);
     m_timeB25->start(m_timeOutB25);
+
+    m_timeLongPress = new QTimer(this);
+    connect(m_timeLongPress, SIGNAL(timeout()), this, SLOT(handleTimeoutLongPress()));
+    m_timeLongPress->setSingleShot(true);
+
+    m_timeRightClick = new QTimer(this);
+    connect(m_timeRightClick,SIGNAL(timeout()), this, SLOT(handleTimeoutRightClick()));
+    m_timeRightClick->setSingleShot(true);
 
     //初始状态常亮
     //亮D12,D17,D151,D157
@@ -1370,7 +1380,7 @@ void SkinLoader::getComingData(QByteArray data)
                 {
                     m_timeB25->stop();
                 }
-                m_timeB25->start(10);
+                m_timeB25->start(3000);
                 m_timeOutB25 = false;
             }
 
@@ -1393,8 +1403,28 @@ void SkinLoader::getComingData(QByteArray data)
             {
                 m_widgetType = type_WPushButton;
                 //B25定时器超时，说明shift处于非按压状态
+//                WBaseWidget::OperateType operateType = WBaseWidget::M_leftPress;
+//                if(m_timeOutB25 == true)
+//                {
+//                    operateType = WBaseWidget::M_leftPress;
+//                }
+//                else
+//                {
+//                    operateType = WBaseWidget::M_rightPress;
+//                }
+                if(m_bLongPress == false)
+                {
+                     m_timeRightClick->start(3000);
+                }
+
+                if(m_timeLongPress->isActive())
+                {
+                    m_timeLongPress->stop();
+                }
+                m_timeLongPress->start(100);
+                m_bLongPress = true;
                 WBaseWidget::OperateType operateType = WBaseWidget::M_leftPress;
-                if(m_timeOutB25 == true)
+                if(m_bRightClick == false)
                 {
                     operateType = WBaseWidget::M_leftPress;
                 }
@@ -1535,6 +1565,22 @@ void SkinLoader::handleTimeoutB25()
     {
         m_timeOutB25 = true;
         m_timeB25->stop();
+    }
+}
+
+void SkinLoader::handleTimeoutLongPress()
+{
+    if(m_timeLongPress->isActive())
+    {
+        m_bLongPress = false;
+    }
+}
+
+void SkinLoader::handleTimeoutRightClick()
+{
+    if(m_bLongPress == true)
+    {
+        m_bRightClick = true;
     }
 }
 

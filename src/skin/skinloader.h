@@ -117,6 +117,8 @@ public:
     void handleTimeoutB22();
     void handleTimeoutB24();
     void handleTimeoutB25();
+    void handleTimeoutLongPress();
+    void handleTimeoutRightClick();
     void internalHandleTimeout(QTimer* timer, int interval, int* light,
                                            int group1, int byte11, int byte12, int group2, int byte21);
     void internalDealWithLED(float ratio, QTimer* timer, int* internal, int group1, int byte11, int byte12, int group2, int byte21);
@@ -189,6 +191,12 @@ public:
     QTimer *m_timeB25;
     bool m_timeOutB25;
     int m_lightB25;
+    //判断右键按下,逻辑：定时器1，如果处于长按，m_pressed为true，当100ms之内手松开，设置为false
+    //定时器2判断m_pressed，如果是true，那么只启动一次，等到超时时，m_bRightClick设置为true
+    QTimer *m_timeLongPress;
+    QTimer *m_timeRightClick;
+    bool m_bLongPress;
+    bool m_bRightClick;
 };
 
 
