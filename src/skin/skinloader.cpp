@@ -161,6 +161,19 @@ SkinLoader::SkinLoader(UserSettingsPointer pConfig)
     m_timeB25->setSingleShot(true);
     m_timeB25->start(m_timeOutB25);
 
+    m_lightB37 = false;
+    m_timeB37 = new QTimer(this);
+    connect(m_timeB37, SIGNAL(timeout()), this, SLOT(handleTimeoutB37()));
+    m_timeB37->setSingleShot(true);
+    m_timeB37->start(1000);
+
+    m_lightB51 = false;
+    m_timeB51 = new QTimer(this);
+    connect(m_timeB51, SIGNAL(timeout()), this, SLOT(handleTimeoutB51()));
+    m_timeB51->setSingleShot(true);
+    m_timeB51->start(1000);
+
+
     m_timeLongPress = new QTimer(this);
     connect(m_timeLongPress, SIGNAL(timeout()), this, SLOT(handleTimeoutLongPress()));
     m_timeLongPress->setSingleShot(true);
@@ -921,7 +934,7 @@ void SkinLoader::dealWithLED(WidgetType type, QString objName, int x, int y, QRe
                         FtTask::getInstance()->setBuff(26, 0x30);
                         FtTask::getInstance()->update();
             }
-                    else
+            else
             {
                         //mieD187,D188
                         FtTask::getInstance()->setBuff(26, 0x00);
@@ -1402,38 +1415,15 @@ void SkinLoader::getComingData(QByteArray data)
             else if(WPushButton *pushbutton = dynamic_cast<WPushButton *>(widget))
             {
                 m_widgetType = type_WPushButton;
-                //B25定时器超时，说明shift处于非按压状态
-//                WBaseWidget::OperateType operateType = WBaseWidget::M_leftPress;
-//                if(m_timeOutB25 == true)
-//                {
-//                    operateType = WBaseWidget::M_leftPress;
-//                }
-//                else
-//                {
-//                    operateType = WBaseWidget::M_rightPress;
-//                }
-                if(m_bLongPress == false)
+                if(pushbutton->objectName() == "PlayToggle_Deck1_hotcue")
                 {
-                     m_timeRightClick->start(3000);
+                     pushbutton->setTimer(m_timeB37);
                 }
-
-                if(m_timeLongPress->isActive())
+                else if(pushbutton->objectName() == "PlayToggle_Deck2_hotcue")
                 {
-                    m_timeLongPress->stop();
+                    pushbutton->setTimer(m_timeB51);
                 }
-                m_timeLongPress->start(100);
-                m_bLongPress = true;
-                WBaseWidget::OperateType operateType = WBaseWidget::M_leftPress;
-                if(m_bRightClick == false)
-                {
-                    operateType = WBaseWidget::M_leftPress;
-                }
-                else
-                {
-                    operateType = WBaseWidget::M_rightPress;
-                }
-                //operateType来控制按钮是 左键 还是 右键 点击（shift+触控板点击 被认为是右键）
-                pushbutton->getComingData(data, rct, operateType);
+                pushbutton->getComingData(data, rct);
             }
             else if(WSliderComposed *sliderComposed = dynamic_cast<WSliderComposed *>(widget))
             {
@@ -1568,11 +1558,22 @@ void SkinLoader::handleTimeoutB25()
     }
 }
 
+void SkinLoader::handleTimeoutB37()
+{
+    internalHandleTimeout(m_timeB37, 1000, &m_lightB37, 7, 1, 2, 7, 2);
+}
+
+void SkinLoader::handleTimeoutB51()
+{
+    internalHandleTimeout(m_timeB51, 1000, &m_lightB51, 26, 4,5, 26, 4);
+}
+
 void SkinLoader::handleTimeoutLongPress()
 {
     if(m_timeLongPress->isActive())
     {
         m_bLongPress = false;
+        qDebug()<<__FUNCTION__<<"m_bLongPress"<<m_bLongPress;
     }
 }
 
@@ -1581,6 +1582,7 @@ void SkinLoader::handleTimeoutRightClick()
     if(m_bLongPress == true)
     {
         m_bRightClick = true;
+        qDebug()<<__FUNCTION__<<"m_bRightClick"<<m_bRightClick;
     }
 }
 

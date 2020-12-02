@@ -117,6 +117,8 @@ public:
     void handleTimeoutB22();
     void handleTimeoutB24();
     void handleTimeoutB25();
+    void handleTimeoutB37();
+    void handleTimeoutB51();
     void handleTimeoutLongPress();
     void handleTimeoutRightClick();
     void internalHandleTimeout(QTimer* timer, int interval, int* light,
@@ -186,6 +188,12 @@ public:
     QTimer *m_timeB24;
     int m_timeOutB24;
     int m_lightB24;
+
+    //呼吸灯
+    QTimer *m_timeB37;
+    int m_lightB37;
+    QTimer *m_timeB51;
+    int m_lightB51;
 
     //判断B25 shift键是否被按下
     QTimer *m_timeB25;

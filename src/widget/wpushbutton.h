@@ -48,6 +48,7 @@ class WPushButton : public WWidget {
         return m_bPressed;
     }
 
+    void setTimer(QTimer *timer){m_timer = timer;}
     // The displayValue property is used to restyle the pushbutton with CSS.
     // The declaration #MyButton[displayValue="0"] { } will define the style
     // when the widget is in state 0.  This allows for effects like reversing
@@ -68,7 +69,7 @@ class WPushButton : public WWidget {
     // associated pixmaps.
     void setStates(int iStates);
 
-    void getComingData(QByteArray data, QRect rect, OperateType type = M_leftPress);
+    void getComingData(QByteArray data, QRect rect);
   signals:
     void displayValueChanged(int value);
 
@@ -113,6 +114,10 @@ class WPushButton : public WWidget {
     ControlPushButton::ButtonMode m_rightButtonMode;
     QTimer m_clickTimer;
     QVector<int> m_align;
+    int m_ntimeStart;
+    int m_ntime;
+    bool m_exchange;
+    QTimer *m_timer;
 
 };
 

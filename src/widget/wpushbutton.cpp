@@ -26,6 +26,7 @@
 #include <QPaintEvent>
 #include <QApplication>
 #include <QEvent>
+#include <QTime>
 
 #include "control/controlbehavior.h"
 #include "control/controlobject.h"
@@ -42,6 +43,9 @@ WPushButton::WPushButton(QWidget* pParent)
     setStates(0);
     m_timer = new QTimer(this);
     connect(m_timer, SIGNAL(timeout()), this, SLOT(timeupdate()));
+    m_ntime = 0;
+    m_ntimeStart = 0;
+    m_exchange = false;
 }
 
 WPushButton::WPushButton(QWidget* pParent, ControlPushButton::ButtonMode leftButtonMode,
@@ -52,37 +56,53 @@ WPushButton::WPushButton(QWidget* pParent, ControlPushButton::ButtonMode leftBut
     setStates(0);
     m_timer = new QTimer(this);
     connect(m_timer, SIGNAL(timeout()), this, SLOT(timeupdate()));
+    m_ntime = 0;
+    m_ntimeStart = 0;
+    m_exchange = false;
 }
 
 
-void WPushButton::getComingData(QByteArray data, QRect rect, OperateType type)
+void WPushButton::getComingData(QByteArray data, QRect rect)
 {
     unsigned short  x = (data[3] << 8) + data[2];
     unsigned short  y = (data[5] << 8) + data[4];
-    
+
     m_timer->stop();
     m_timer->start(100);
+
     if(!m_inMove)
     {
+//        QDateTime time = QDateTime::currentDateTime();   //获取当前时间
+//        m_ntimeStart = time.toTime_t();   //将当前时间转为时间戳
         m_inMove =true;
-        if(type == M_leftPress)
-        {
-            QMouseEvent event(QEvent::MouseButtonPress, QPointF(m_size.width()/2, m_size.height()/2), Qt::LeftButton, Qt::LeftButton, Qt::NoModifier);
-            QApplication::sendEvent(this, &event);
-        }
-        else if(type == M_rightPress)
-        {
-            QMouseEvent event(QEvent::MouseButtonPress, QPointF(m_size.width()/2, m_size.height()/2), Qt::RightButton, Qt::RightButton, Qt::NoModifier);
-            QApplication::sendEvent(this, &event);
-        }
+
+        QMouseEvent event(QEvent::MouseButtonPress, QPointF(m_size.width()/2, m_size.height()/2), Qt::LeftButton, Qt::LeftButton, Qt::NoModifier);
+        QApplication::sendEvent(this, &event);
+
     }
 }
 
 void WPushButton::timeupdate()
 {
-     m_inMove = false;
-     QMouseEvent event(QEvent::MouseButtonRelease, QPointF(9, 9), Qt::LeftButton, Qt::LeftButton, Qt::NoModifier);
-     QApplication::sendEvent(this, &event);
+       QMouseEvent event(QEvent::MouseButtonRelease, QPointF(m_size.width()/2, m_size.height()/2), Qt::LeftButton, Qt::LeftButton, Qt::NoModifier);
+       QApplication::sendEvent(this, &event);
+
+//    QDateTime time = QDateTime::currentDateTime();   //获取当前时间
+//    m_ntime = time.toTime_t() - m_ntimeStart;   //将当前时间转为时间戳
+
+//     m_inMove = false;
+//     if(m_ntime > 3)
+//     {
+//         QMouseEvent event(QEvent::MouseButtonRelease, QPointF(m_size.width()/2, m_size.height()/2), Qt::RightButton, Qt::RightButton, Qt::NoModifier);
+//         QApplication::sendEvent(this, &event);
+
+//     }
+//     else
+//     {
+//         QMouseEvent event(QEvent::MouseButtonRelease, QPointF(m_size.width()/2, m_size.height()/2), Qt::LeftButton, Qt::LeftButton, Qt::NoModifier);
+//         QApplication::sendEvent(this, &event);
+//     }
+//     m_timer->stop();
 }
 
 void WPushButton::setup(const QDomNode& node, const SkinContext& context) {
@@ -468,20 +488,61 @@ void WPushButton::mouseReleaseEvent(QMouseEvent * e) {
     {
         if(objectNameStr == "HotcueButton_Deck1_hotcue1")
         {
-            FtTask::getInstance()->setLED_ON(8,5);
-            FtTask::getInstance()->led_update();
+            if(!m_exchange)
+            {
+                FtTask::getInstance()->setLED_ON(8,5);
+                FtTask::getInstance()->led_update();
+            }
+            else
+            {
+                FtTask::getInstance()->setLED_OFF(8,5);
+                FtTask::getInstance()->led_update();
+            }
+            m_exchange = !m_exchange;
 
         }
-        else if(objectNameStr == "HotcueButton_Deck1_hotcue1")
+        else if(objectNameStr == "HotcueButton_Deck1_hotcue2")
         {
 
         }
-        else if(objectNameStr == "HotcueButton_Deck1_hotcue1")
+        else if(objectNameStr == "HotcueButton_Deck1_hotcue3")
         {
 
         }
-        else if(objectNameStr == "HotcueButton_Deck1_hotcue1")
+        else if(objectNameStr == "HotcueButton_Deck1_hotcue4")
         {
+
+        }
+        else if(objectNameStr == "PlayToggle_Deck1_hotcue")
+        {
+            if(!m_exchange)
+            {
+                FtTask::getInstance()->setLED_ON(7,1);
+                FtTask::getInstance()->setLED_ON(7,2);
+                FtTask::getInstance()->led_update();
+                m_timer->stop();
+            }
+            else
+            {
+                m_timer->start();
+            }
+            m_exchange = !m_exchange;
+
+        }
+        else if(objectNameStr == "PlayToggle_Deck2_hotcue")
+        {
+            if(!m_exchange)
+            {
+                FtTask::getInstance()->setLED_ON(26,4);
+                FtTask::getInstance()->setLED_ON(26,5);
+                FtTask::getInstance()->led_update();
+                m_timer->stop();
+            }
+            else
+            {
+                m_timer->start();
+            }
+            m_exchange = !m_exchange;
 
         }
     }
