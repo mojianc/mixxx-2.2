@@ -13,7 +13,7 @@ REM 32bit = i386, 64bit = amd64
 set ARCHITECTURE=amd64
 
 REM set this to the folder where you built the dependencies
-set WINLIB_PATH="G:\mixxx\buildserver-2.2.x-windows"
+set WINLIB_PATH="E:\mixxx-2.2-20200817-yuanshi\mixxx-2.2-20200817\buildserver-2.2.x-windows"
 SET BIN_DIR=%WINLIB_PATH%\bin
 REM make sure the Qt version matches the version in WINLIB_PATH.
 set QT_VERSION=5.11.1
@@ -35,7 +35,7 @@ rem /FS force synchronous PDB writes (prevents PDB corruption with /MP)
 rem /EHsc Do not handle SEH in try / except blocks.
 set CL=/MP /FS /EHsc
 
-set MYSCONS=G:\mixxx\buildserver-2.2.x-windows\bin
+set MYSCONS=E:\mixxx-2.2-20200817-yuanshi\mixxx-2.2-20200817\buildserver-2.2.x-windows\bin
 set PATH=%BIN_DIR%;%PATH%
 REM Set the -j value to the number of CPU cores (not HT "virtual" cores but physical cores) you have
 python %MYSCONS%\scons.py -j6 toolchain=msvs winlib=%WINLIB_PATH% build=%BUILD_TYPE% staticlibs=1 staticqt=1 verbose=0 machine=%TARGET_MACHINE% qtdir=%QTDIR% hss1394=1 mediafoundation=1 opus=1 localecompare=1 optimize=portable virtualize=0 test=0 qt_sqlite_plugin=0 build_number_in_title_bar=0 bundle_pdbs=1
