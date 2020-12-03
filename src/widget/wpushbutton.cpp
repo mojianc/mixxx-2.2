@@ -102,7 +102,7 @@ void WPushButton::timeupdate()
 //         QMouseEvent event(QEvent::MouseButtonRelease, QPointF(m_size.width()/2, m_size.height()/2), Qt::LeftButton, Qt::LeftButton, Qt::NoModifier);
 //         QApplication::sendEvent(this, &event);
 //     }
-//     m_timer->stop();
+     m_timer->stop();
 }
 
 void WPushButton::setup(const QDomNode& node, const SkinContext& context) {
@@ -517,14 +517,14 @@ void WPushButton::mouseReleaseEvent(QMouseEvent * e) {
         {
             if(!m_exchange)
             {
+                 m_timerPlay->stop();
                 FtTask::getInstance()->setLED_ON(7,1);
                 FtTask::getInstance()->setLED_ON(7,2);
                 FtTask::getInstance()->led_update();
-                m_timer->stop();
             }
             else
             {
-                m_timer->start();
+                m_timerPlay->start();
             }
             m_exchange = !m_exchange;
 
@@ -533,14 +533,14 @@ void WPushButton::mouseReleaseEvent(QMouseEvent * e) {
         {
             if(!m_exchange)
             {
+                m_timerPlay->stop();
                 FtTask::getInstance()->setLED_ON(26,4);
                 FtTask::getInstance()->setLED_ON(26,5);
                 FtTask::getInstance()->led_update();
-                m_timer->stop();
             }
             else
             {
-                m_timer->start();
+                m_timerPlay->start();
             }
             m_exchange = !m_exchange;
 

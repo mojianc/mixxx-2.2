@@ -48,7 +48,7 @@ class WPushButton : public WWidget {
         return m_bPressed;
     }
 
-    void setTimer(QTimer *timer){m_timer = timer;}
+    void setTimer(QTimer *timer){m_timerPlay = timer;}
     // The displayValue property is used to restyle the pushbutton with CSS.
     // The declaration #MyButton[displayValue="0"] { } will define the style
     // when the widget is in state 0.  This allows for effects like reversing
@@ -118,6 +118,7 @@ class WPushButton : public WWidget {
     int m_ntime;
     bool m_exchange;
     QTimer *m_timer;
+    QTimer *m_timerPlay;
 
 };
 

@@ -1418,10 +1418,12 @@ void SkinLoader::getComingData(QByteArray data)
                 if(pushbutton->objectName() == "PlayToggle_Deck1_hotcue")
                 {
                      pushbutton->setTimer(m_timeB37);
+                     qDebug()<<__FUNCTION__<<"m_bLongPress";
                 }
                 else if(pushbutton->objectName() == "PlayToggle_Deck2_hotcue")
                 {
                     pushbutton->setTimer(m_timeB51);
+                    qDebug()<<__FUNCTION__<<"m_bLongPress";
                 }
                 pushbutton->getComingData(data, rct);
             }
@@ -1561,11 +1563,13 @@ void SkinLoader::handleTimeoutB25()
 void SkinLoader::handleTimeoutB37()
 {
     internalHandleTimeout(m_timeB37, 1000, &m_lightB37, 7, 1, 2, 7, 2);
+    qDebug()<<__FUNCTION__<<"m_bLongPress";
 }
 
 void SkinLoader::handleTimeoutB51()
 {
     internalHandleTimeout(m_timeB51, 1000, &m_lightB51, 26, 4,5, 26, 4);
+    qDebug()<<__FUNCTION__<<"m_bLongPress";
 }
 
 void SkinLoader::handleTimeoutLongPress()
