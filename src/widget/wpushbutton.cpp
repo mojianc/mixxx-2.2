@@ -90,7 +90,7 @@ void WPushButton::timeupdate()
 //    QDateTime time = QDateTime::currentDateTime();   //获取当前时间
 //    m_ntime = time.toTime_t() - m_ntimeStart;   //将当前时间转为时间戳
 
-//     m_inMove = false;
+     m_inMove = false;
 //     if(m_ntime > 3)
 //     {
 //         QMouseEvent event(QEvent::MouseButtonRelease, QPointF(m_size.width()/2, m_size.height()/2), Qt::RightButton, Qt::RightButton, Qt::NoModifier);
@@ -517,14 +517,17 @@ void WPushButton::mouseReleaseEvent(QMouseEvent * e) {
         {
             if(!m_exchange)
             {
-                 m_timerPlay->stop();
+//                 m_timerPlay->stop();
                 FtTask::getInstance()->setLED_ON(7,1);
                 FtTask::getInstance()->setLED_ON(7,2);
                 FtTask::getInstance()->led_update();
             }
             else
             {
-                m_timerPlay->start();
+//                m_timerPlay->start();
+                FtTask::getInstance()->setLED_OFF(7,1);
+                FtTask::getInstance()->setLED_OFF(7,2);
+                FtTask::getInstance()->led_update();
             }
             m_exchange = !m_exchange;
 

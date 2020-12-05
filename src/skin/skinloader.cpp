@@ -163,9 +163,9 @@ SkinLoader::SkinLoader(UserSettingsPointer pConfig)
 
     m_lightB37 = false;
     m_timeB37 = new QTimer(this);
-    connect(m_timeB37, SIGNAL(timeout()), this, SLOT(handleTimeoutB37()));
-    m_timeB37->setSingleShot(true);
-    m_timeB37->start(1000);
+//    connect(m_timeB37, SIGNAL(timeout()), this, SLOT(handleTimeoutB37()));
+//    m_timeB37->setSingleShot(true);
+//    m_timeB37->start(1000);
 
     m_lightB51 = false;
     m_timeB51 = new QTimer(this);
@@ -1562,8 +1562,8 @@ void SkinLoader::handleTimeoutB25()
 
 void SkinLoader::handleTimeoutB37()
 {
-    internalHandleTimeout(m_timeB37, 1000, &m_lightB37, 7, 1, 2, 7, 2);
-    qDebug()<<__FUNCTION__<<"m_bLongPress";
+//    internalHandleTimeout(m_timeB37, 1000, &m_lightB37, 7, 1, 2, 7, 2);
+//    qDebug()<<__FUNCTION__<<"m_bLongPress";
 }
 
 void SkinLoader::handleTimeoutB51()
