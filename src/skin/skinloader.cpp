@@ -163,15 +163,15 @@ SkinLoader::SkinLoader(UserSettingsPointer pConfig)
 
     m_lightB37 = false;
     m_timeB37 = new QTimer(this);
-//    connect(m_timeB37, SIGNAL(timeout()), this, SLOT(handleTimeoutB37()));
-//    m_timeB37->setSingleShot(true);
-//    m_timeB37->start(1000);
+    connect(m_timeB37, SIGNAL(timeout()), this, SLOT(handleTimeoutB37()));
+    m_timeB37->setSingleShot(true);
+    m_timeB37->start(2000);
 
     m_lightB51 = false;
     m_timeB51 = new QTimer(this);
     connect(m_timeB51, SIGNAL(timeout()), this, SLOT(handleTimeoutB51()));
     m_timeB51->setSingleShot(true);
-    m_timeB51->start(1000);
+    m_timeB51->start(2000);
 
 
     m_timeLongPress = new QTimer(this);
@@ -662,6 +662,12 @@ void SkinLoader::dealWithLED(WidgetType type, QString objName, int x, int y, QRe
             //ÁÁD168,D169
             else if(radian > Radian30 && radian < Radian60)
             {
+                //ÃðD166,D167
+                result = FtTask::getInstance()->getBuff(23);
+                result &= ~(1 << 3);
+                result &= ~(1 << 4);
+                FtTask::getInstance()->setBuff(23, result);
+                //ÁÁD168,D169
                 result = FtTask::getInstance()->getBuff(23);
                 result |= (1 << 5);
                 FtTask::getInstance()->setBuff(23, result);
@@ -679,6 +685,13 @@ void SkinLoader::dealWithLED(WidgetType type, QString objName, int x, int y, QRe
             //ÁÁD170,D171,D172
             else if(radian > Radian60 && radian < Radian90)
             {
+                 //ÃðD168,D169
+                result = FtTask::getInstance()->getBuff(23);
+                result &= ~(1 << 5);
+                result = FtTask::getInstance()->getBuff(24);
+                result &= ~(1 << 0);
+                FtTask::getInstance()->setBuff(23, result);
+                //ÁÁD170,D171,D172
                 result = FtTask::getInstance()->getBuff(24);
                 result |= (1 << 1);
                 result |= (1 << 2);
@@ -694,6 +707,13 @@ void SkinLoader::dealWithLED(WidgetType type, QString objName, int x, int y, QRe
             //ÁÁD173,D174
             else if(radian > Radian90 && radian < Radian120)
             {
+                //ÃðD170,D171,D172
+                result = FtTask::getInstance()->getBuff(24);
+                result &= ~(1 << 1);
+                result &= ~(1 << 2);
+                result &= ~(1 << 3);
+                FtTask::getInstance()->setBuff(24, result);
+                //ÁÁD173,D174
                 result = FtTask::getInstance()->getBuff(24);
                 result |= (1 << 4);
                 result |= (1 << 5);
@@ -708,6 +728,12 @@ void SkinLoader::dealWithLED(WidgetType type, QString objName, int x, int y, QRe
             //ÁÁD175,D176
             else if(radian > Radian120 && radian < Radian150)
             {    
+                //ÃðD173,D174
+                result = FtTask::getInstance()->getBuff(24);
+                result &= ~(1 << 4);
+                result &= ~(1 << 5);
+                FtTask::getInstance()->setBuff(24, result);
+                //ÁÁD175,D176
                 result = FtTask::getInstance()->getBuff(24);
                 result |= (1 << 6);
                 result |= (1 << 7);
@@ -721,6 +747,12 @@ void SkinLoader::dealWithLED(WidgetType type, QString objName, int x, int y, QRe
             //ÁÁD177
             else if(radian > Radian150 && radian < Radian180)
             {
+                //ÃðD175,D176
+                result = FtTask::getInstance()->getBuff(24);
+                result &= ~(1 << 6);
+                result &= ~(1 << 7);
+                FtTask::getInstance()->setBuff(24, result);
+                //ÁÁD177
                 result = FtTask::getInstance()->getBuff(25);
                 result |= (1 << 0);
                 FtTask::getInstance()->setBuff(25, result);
@@ -736,6 +768,11 @@ void SkinLoader::dealWithLED(WidgetType type, QString objName, int x, int y, QRe
             //ÁÁD225,D92
             else if(radian > Radian181 && radian < Radian210)
             {
+                //ÃðD177
+                result = FtTask::getInstance()->getBuff(25);
+                result &= ~(1 << 0);
+                FtTask::getInstance()->setBuff(25, result);
+                //ÁÁD225,D92
                 result = FtTask::getInstance()->getBuff(29);
                 result |= (1 << 5);
                 FtTask::getInstance()->setBuff(29, result);
@@ -754,42 +791,107 @@ void SkinLoader::dealWithLED(WidgetType type, QString objName, int x, int y, QRe
             //ÁÁD224,D158
             else if(radian > Radian210 && radian < Radian240)
             {
-//                FtTask::getInstance()->setBuff(29, 0x00);
-//                FtTask::getInstance()->setBuff(12, 0x00);
-//                FtTask::getInstance()->setBuff(29, 0x10);
-//                FtTask::getInstance()->setBuff(22, 0x08);
-//                FtTask::getInstance()->update();
+                //ÃðD225,D92
+                result = FtTask::getInstance()->getBuff(29);
+                result &= ~(1 << 5);
+                FtTask::getInstance()->setBuff(29, result);
+                result = FtTask::getInstance()->getBuff(12);
+                result &= ~(1 << 7);
+                FtTask::getInstance()->setBuff(12, result);
+                //ÁÁD224,D158
+                result = FtTask::getInstance()->getBuff(29);
+                result |= (1 << 4);
+                FtTask::getInstance()->setBuff(29, result);
+                result = FtTask::getInstance()->getBuff(22);
+                result |= (1 << 3);
+                FtTask::getInstance()->setBuff(22, result);
+                //ÃðD159,D160
+                 result = FtTask::getInstance()->getBuff(22);
+                 result &= ~(1 << 4);
+                 result &= ~(1 << 5);
+                 FtTask::getInstance()->setBuff(22, result);
+                 FtTask::getInstance()->update();
             }
-            //ÁÁD159
+            //ÁÁD159,D160
             else if(radian > Radian240 && radian < Radian270)
             {
-                 FtTask::getInstance()->setBuff(29, 0x00);
-                   FtTask::getInstance()->setBuff(22, 0x00);
-                FtTask::getInstance()->setBuff(22, 0x10);
-                FtTask::getInstance()->update();
+                //ÃðD224,D158
+                result = FtTask::getInstance()->getBuff(29);
+                result &= ~(1 << 4);
+                FtTask::getInstance()->setBuff(29, result);
+                result = FtTask::getInstance()->getBuff(22);
+                result &= ~(1 << 3);
+                FtTask::getInstance()->setBuff(22, result);
+                //ÁÁD159,D160
+                result = FtTask::getInstance()->getBuff(22);
+                result |= (1 << 4);
+                result |= (1 << 5);
+                FtTask::getInstance()->setBuff(22, result);
+                //ÃðD161,D162
+                 result = FtTask::getInstance()->getBuff(22);
+                 result &= ~(1 << 6);
+                 result &= ~(1 << 7);
+                 FtTask::getInstance()->setBuff(22, result);
+                 FtTask::getInstance()->update();
             }
-            //ÁÁD160,D161
+            //ÁÁD161,D162
             else if(radian > Radian270 && radian < Radian300)
             {
-                 FtTask::getInstance()->setBuff(22, 0x00);
-                FtTask::getInstance()->setBuff(22, 0x60);
-                FtTask::getInstance()->update();
+                //ÃðD159,D160
+                result = FtTask::getInstance()->getBuff(22);
+                result &= ~(1 << 4);
+                result &= ~(1 << 5);
+                FtTask::getInstance()->setBuff(22, result);
+                //ÁÁD161,D162
+                result = FtTask::getInstance()->getBuff(22);
+                result |= (1 << 6);
+                result |= (1 << 7);
+                FtTask::getInstance()->setBuff(22, result);
+                //ÃðD163,D164
+                 result = FtTask::getInstance()->getBuff(23);
+                 result &= ~(1 << 0);
+                 result &= ~(1 << 1);
+                 FtTask::getInstance()->setBuff(23, result);
+                 FtTask::getInstance()->update();
             }
-            //ÁÁD162,D163
+            //ÁÁD163,D164
             else if(radian > Radian300 && radian < Radian330)
             {
-                 FtTask::getInstance()->setBuff(22, 0x00);
-                FtTask::getInstance()->setBuff(22, 0x80);
-                FtTask::getInstance()->setBuff(23, 0x01);
-                FtTask::getInstance()->update();
+                //ÃðD161,D162
+                result = FtTask::getInstance()->getBuff(22);
+                result &= ~(1 << 6);
+                result &= ~(1 << 7);
+                FtTask::getInstance()->setBuff(22, result);
+                //ÁÁD163,D164
+                result = FtTask::getInstance()->getBuff(23);
+                result |= (1 << 0);
+                result |= (1 << 1);
+                FtTask::getInstance()->setBuff(23, result);
+                //ÃðD165
+                 result = FtTask::getInstance()->getBuff(23);
+                 result &= ~(1 << 2);
+                 FtTask::getInstance()->setBuff(23, result);
+                 FtTask::getInstance()->update();
             }
-            //ÁÁD164,D165
+            //ÁÁD165£¬D166
             else if(radian > Radian330 && radian < Radian360)
             {
-                FtTask::getInstance()->setBuff(22, 0x00);
-                 FtTask::getInstance()->setBuff(23, 0x00);
-                FtTask::getInstance()->setBuff(23, 0x06);
-                FtTask::getInstance()->update();
+
+                //ÃðD163,D164
+                result = FtTask::getInstance()->getBuff(23);
+                result &= ~(1 << 0);
+                result &= ~(1 << 1);
+                FtTask::getInstance()->setBuff(23, result);
+                //ÁÁDD165£¬D166
+                result = FtTask::getInstance()->getBuff(23);
+                result |= (1 << 2);
+                result |= (1 << 3);
+                FtTask::getInstance()->setBuff(23, result);
+                //ÃðD167
+                 result = FtTask::getInstance()->getBuff(23);
+                 result &= ~(1 << 4);
+                 FtTask::getInstance()->setBuff(23, result);
+                 FtTask::getInstance()->update();
             }
         }
         break;
@@ -888,61 +990,61 @@ void SkinLoader::dealWithLED(WidgetType type, QString objName, int x, int y, QRe
         break;
 
     }
-    //°´Å¥
-    case type_WPushButton:
-    {
-        if(WPushButton *pushbutton = dynamic_cast<WPushButton *>(widget))
-        {
-            //ÕâÀïÁÁµÆµÄ×´Ì¬ÐèÒª¸ù¾ÝpushbuttonµÄµã»÷×´Ì¬À´¾ö¶¨
-            //B36
-            if(objName == "DeckCue_Deck1_hotcue")
-            {
-                if(pushbutton->isPressed())
-                {
-                    //ÁÁD50,D51
-                    FtTask::getInstance()->setBuff(6, 0x40);
-                    FtTask::getInstance()->setBuff(7, 0x01);
-                    FtTask::getInstance()->update();
-                }
-               else
-                {
-                    //mieD50,D51
-                    FtTask::getInstance()->setBuff(6, 0x00);
-                   FtTask::getInstance()->setBuff(7, 0x00);
-                   FtTask::getInstance()->update();
-                }
+//    //°´Å¥
+//    case type_WPushButton:
+//    {
+//        if(WPushButton *pushbutton = dynamic_cast<WPushButton *>(widget))
+//        {
+//            //ÕâÀïÁÁµÆµÄ×´Ì¬ÐèÒª¸ù¾ÝpushbuttonµÄµã»÷×´Ì¬À´¾ö¶¨
+//            //B36
+//            if(objName == "DeckCue_Deck1_hotcue")
+//            {
+//                if(pushbutton->isPressed())
+//                {
+//                    //ÁÁD50,D51
+//                    FtTask::getInstance()->setBuff(6, 0x40);
+//                    FtTask::getInstance()->setBuff(7, 0x01);
+//                    FtTask::getInstance()->update();
+//                }
+//               else
+//                {
+//                    //ÃðD50,D51
+//                    FtTask::getInstance()->setBuff(6, 0x00);
+//                   FtTask::getInstance()->setBuff(7, 0x00);
+//                   FtTask::getInstance()->update();
+//                }
 
-            }
-            //B50
-            else if(objName == "DeckCue_Deck2_hotcue")
-            {
-                //ÁÁD85£¬D86
-                FtTask::getInstance()->setBuff(12, 0x03);
-                FtTask::getInstance()->update();
-            }
-            //B37
-            else if(objName == "PlayToggle_Deck1_hotcue")
-            {
-                //ÁÁD52£¬D53
-                    FtTask::getInstance()->setBuff(7, 0x06);
-                    FtTask::getInstance()->update();
-            }
-            //B51
-            else if(objName == "PlayToggle_Deck1_hotcue")
-            {
-                //ÁÁD187£¬D188
-                        FtTask::getInstance()->setBuff(26, 0x30);
-                        FtTask::getInstance()->update();
-            }
-            else
-            {
-                        //mieD187,D188
-                        FtTask::getInstance()->setBuff(26, 0x00);
-                        FtTask::getInstance()->update();
-            }
-        }
-        break;
-    }
+//            }
+//            //B50
+//            else if(objName == "DeckCue_Deck2_hotcue")
+//            {
+//                //ÁÁD185£¬D186
+//                FtTask::getInstance()->setBuff(26, 0x0c);
+//                FtTask::getInstance()->update();
+//            }
+//            //B37
+//            else if(objName == "PlayToggle_Deck1_hotcue")
+//            {
+//                //ÁÁD52£¬D53
+//                    FtTask::getInstance()->setBuff(7, 0x06);
+//                    FtTask::getInstance()->update();
+//            }
+//            //B51
+//            else if(objName == "PlayToggle_Deck1_hotcue")
+//            {
+//                //ÁÁD187£¬D188
+//                        FtTask::getInstance()->setBuff(26, 0x30);
+//                        FtTask::getInstance()->update();
+//            }
+//            else
+//            {
+//                        //mieD187,D188
+//                        FtTask::getInstance()->setBuff(26, 0x00);
+//                        FtTask::getInstance()->update();
+//            }
+//        }
+//        break;
+//    }
     case type_WSliderComposed:
         //A6Çø,Ö÷ÍÆ×Ó,led´ÓÖÐ¼äÏòÁ½±ßÀ©Õ¹
         if(objName == "MainSliderComposed")
@@ -1042,12 +1144,10 @@ void SkinLoader::dealWithLED(WidgetType type, QString objName, int x, int y, QRe
             float posH = fabs(y - rct.bottom())/ rct.height();
             if(posH < 0.01)
             {
-                //ÃðD14,D13,D11
+                //ÃðD14,D13,D11,D15,D16
                 setLED_OFF(1, 5);
                 setLED_OFF(1, 4);
                 setLED_OFF(1, 2);
-
-                //ÃðD15,D16
                 setLED_OFF(2, 0);
                 setLED_OFF(2, 1);
                 led_update();
@@ -1091,18 +1191,70 @@ void SkinLoader::dealWithLED(WidgetType type, QString objName, int x, int y, QRe
                 led_update();
             }
         }
+        //A8Çø
+        else if(objName == "RateDisplay2_handh")
+        {
+            float posH = fabs(y - rct.bottom())/ rct.height();
+            if(posH < 0.01)
+                {
+                    //ÃðD152,D153,D154,D155£¬D156
+                    setLED_OFF(21, 3);
+                    setLED_OFF(21, 4);
+                    setLED_OFF(21, 5);
+                    setLED_OFF(22, 1);
+                    setLED_OFF(22, 0);
+                    led_update();
+                }
+                else if(posH < 0.2)
+                {
+                    //ÃðD155
+                    setLED_OFF(22, 0);
+                    //ÁÁD156
+                    setLED_ON(22, 1);
+                    led_update();
+                }
+               else if(posH < 0.4)
+                {
+                    //ÃðD154
+                    setLED_OFF(21, 5);
+                    //ÁÁD155
+                    setLED_ON(22, 0);
+                    led_update();
+                }
+                else if(posH < 0.6)
+                {
+                    //ÃðD153
+                    setLED_OFF(21, 4);
+                    //ÁÁD154
+                    setLED_ON(21, 5);
+                    led_update();
+                }
+                else if(posH < 0.8)
+                {
+                    //ÃðD152
+                    setLED_OFF(21, 3);
+                    //ÁÁD153
+                    setLED_ON(21, 4);
+                    led_update();
+                }
+                else
+                {
+                    //ÁÁD152
+                    setLED_ON(21, 3);
+                    led_update();
+                }
+        }
         //A2Çø
         else if(objName == "ChannelVolume_[Channel1]")
         {
             float posH = (y - rct.bottom())/ rct.height();
             if(posH < 0.01)
                 {
-                    //ÃðD19,D20,D21,D22
+                    //ÃðD19,D20,D21,D22,D23
                     setLED_OFF(2, 4);
                     setLED_OFF(2, 5);
                     setLED_OFF(2, 6);
                     setLED_OFF(2, 7);
-                    //ÃðD23
                     setLED_OFF(3, 0);
                     led_update();
                 }
@@ -1199,59 +1351,7 @@ void SkinLoader::dealWithLED(WidgetType type, QString objName, int x, int y, QRe
                 }
         }
 
-        //A8Çø
-        else if(objName == "RateDisplay2_handh")
-        {
-            float posH = (y - rct.bottom())/ rct.height();
-            if(posH < 0.01)
-                {
-                    //ÃðD152,D153,D154,D155£¬D156
-                    setLED_OFF(21, 4);
-                    setLED_OFF(21, 5);
-                    setLED_OFF(21, 3);
-                    setLED_OFF(22, 1);
-                    setLED_OFF(22, 0);
-                    led_update();
-                }
-                else if(posH < 0.2)
-                {
-                    //ÃðD155
-                    setLED_OFF(22, 0);
-                    //ÁÁD156
-                    setLED_ON(22, 1);
-                    led_update();
-                }
-               else if(posH < 0.4)
-                {
-                    //ÃðD155
-                    setLED_OFF(22, 0);
-                    //ÁÁD154
-                    setLED_ON(21, 5);
-                    led_update();
-                }
-                else if(posH < 0.6)
-                {
-                    //ÃðD154
-                    setLED_OFF(21, 5);
-                    //ÁÁD153
-                    setLED_ON(21, 4);
-                    led_update();
-                }
-                else if(posH < 0.8)
-                {
-                    //ÃðD153
-                    setLED_OFF(21, 4);
-                    //ÁÁD152
-                    setLED_ON(21, 3);
-                    led_update();
-                }
-                else
-                {
-                    //ÁÁD152
-                    setLED_ON(21, 3);
-                    led_update();
-                }
-        }
+
         //A4Çø...
         else if(objName == "RateDisplay1_handh")
         {
@@ -1562,13 +1662,13 @@ void SkinLoader::handleTimeoutB25()
 
 void SkinLoader::handleTimeoutB37()
 {
-//    internalHandleTimeout(m_timeB37, 1000, &m_lightB37, 7, 1, 2, 7, 2);
-//    qDebug()<<__FUNCTION__<<"m_bLongPress";
+    internalHandleTimeout(m_timeB37, 2000, &m_lightB37, 7, 1, 2, 7, 2);
+    qDebug()<<__FUNCTION__<<"m_bLongPress";
 }
 
 void SkinLoader::handleTimeoutB51()
 {
-    internalHandleTimeout(m_timeB51, 1000, &m_lightB51, 26, 4,5, 26, 4);
+    internalHandleTimeout(m_timeB51, 2000, &m_lightB51, 26, 4,5, 26, 4);
     qDebug()<<__FUNCTION__<<"m_bLongPress";
 }
 

@@ -116,8 +116,22 @@ class WPushButton : public WWidget {
     QVector<int> m_align;
     int m_ntimeStart;
     int m_ntime;
-    bool m_exchange;
-    QTimer *m_timer;
+    bool m_exchange1;
+    bool m_exchange2;
+    bool m_exchange3;
+    bool m_exchange4;
+
+    bool m_exchange5;
+    bool m_exchange6;
+    bool m_exchange7;
+    bool m_exchange8;
+
+    bool m_exchangePlayer1;
+    bool m_exchangePlayer2;
+
+    bool m_exchangeCue1;
+    bool m_exchangeCue2;
+
     QTimer *m_timerPlay;
 
 };
