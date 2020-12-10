@@ -672,6 +672,22 @@ void WPushButton::mouseReleaseEvent(QMouseEvent * e) {
             }
             m_exchangeCue2 = !m_exchangeCue2;
         }
+        else if(objectNameStr == "KeylockButton_[Channel1]")
+        {
+           //×ó²àËø
+        }
+        else if(objectNameStr == "KeylockButton_[Channel2]")
+        {
+           //ÓÒ²àËø
+        }
+        else if(objectNameStr == "DeckSync_[Channel1]")
+        {
+           //×óSYNC
+        }
+        else if(objectNameStr == "DeckSync_[Channel2]")
+        {
+           //ÓÒSYNC
+        }
         else if(objectNameStr == "PlayToggle_Deck1_hotcue")
         {
             if(!m_exchangePlayer1)

@@ -17,7 +17,7 @@
         <Children>
           <Template src="skin:left_right_2state_button.xml">
             <SetVariable name="TooltipId">sync_enabled</SetVariable>
-            <SetVariable name="ObjectName">DeckSync</SetVariable>
+            <SetVariable name="ObjectName">DeckSync_<Variable name="group"/></SetVariable>
             <SetVariable name="MinimumSize">-1,18</SetVariable>
             <SetVariable name="MaximumSize">-1,18</SetVariable>
             <SetVariable name="SizePolicy"><Variable name="HorizontalStretchButtonSizePolicy"/></SetVariable>
