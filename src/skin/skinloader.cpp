@@ -992,61 +992,6 @@ void SkinLoader::dealWithLED(WidgetType type, QString objName, int x, int y, QRe
         break;
 
     }
-//    //按钮
-//    case type_WPushButton:
-//    {
-//        if(WPushButton *pushbutton = dynamic_cast<WPushButton *>(widget))
-//        {
-//            //这里亮灯的状态需要根据pushbutton的点击状态来决定
-//            //B36
-//            if(objName == "DeckCue_Deck1_hotcue")
-//            {
-//                if(pushbutton->isPressed())
-//                {
-//                    //亮D50,D51
-//                    FtTask::getInstance()->setBuff(6, 0x40);
-//                    FtTask::getInstance()->setBuff(7, 0x01);
-//                    FtTask::getInstance()->update();
-//                }
-//               else
-//                {
-//                    //灭D50,D51
-//                    FtTask::getInstance()->setBuff(6, 0x00);
-//                   FtTask::getInstance()->setBuff(7, 0x00);
-//                   FtTask::getInstance()->update();
-//                }
-
-//            }
-//            //B50
-//            else if(objName == "DeckCue_Deck2_hotcue")
-//            {
-//                //亮D185，D186
-//                FtTask::getInstance()->setBuff(26, 0x0c);
-//                FtTask::getInstance()->update();
-//            }
-//            //B37
-//            else if(objName == "PlayToggle_Deck1_hotcue")
-//            {
-//                //亮D52，D53
-//                    FtTask::getInstance()->setBuff(7, 0x06);
-//                    FtTask::getInstance()->update();
-//            }
-//            //B51
-//            else if(objName == "PlayToggle_Deck1_hotcue")
-//            {
-//                //亮D187，D188
-//                        FtTask::getInstance()->setBuff(26, 0x30);
-//                        FtTask::getInstance()->update();
-//            }
-//            else
-//            {
-//                        //mieD187,D188
-//                        FtTask::getInstance()->setBuff(26, 0x00);
-//                        FtTask::getInstance()->update();
-//            }
-//        }
-//        break;
-//    }
     case type_WSliderComposed:
         //A6区,主推子,led从中间向两边扩展
         if(objName == "MainSliderComposed")
@@ -1353,7 +1298,7 @@ void SkinLoader::dealWithLED(WidgetType type, QString objName, int x, int y, QRe
                 }
         }
         //A4区
-        else if(objName == "RateDisplay1_handh")
+        else if(objName == "MASTER_computer")
         {
             float posH = fabs(x - rct.left())/ rct.width();
             if(posH < 0.01)
@@ -1436,6 +1381,90 @@ void SkinLoader::dealWithLED(WidgetType type, QString objName, int x, int y, QRe
                 led_update();
             }
 
+        }
+        //A5区
+        else if(objName == "HEADPHONE_dropdj")
+        {
+            float posH = fabs(x - rct.left())/ rct.width();
+            if(posH < 0.01)
+            {
+                //灭D96~D104
+                setLED_OFF(13, 3);
+                setLED_OFF(13, 4);
+                setLED_OFF(13, 5);
+                setLED_OFF(14, 0);
+                setLED_OFF(14, 1);
+                setLED_OFF(14, 2);
+                setLED_OFF(14, 3);
+                setLED_OFF(14, 4);
+                setLED_OFF(14, 5);
+                led_update();
+            }
+            else if(posH < 0.125)
+            {
+                //灭D97
+                setLED_OFF(13,4);
+                //亮D96
+                setLED_ON(13,3);
+                led_update();
+            }
+            else if(posH < 0.25)
+            {
+                //灭D98
+                setLED_OFF(13,5);
+                //亮D97
+                setLED_ON(13,4);
+                led_update();
+            }
+            else if(posH < 0.375)
+            {
+
+                //灭D99
+                setLED_OFF(14,0);
+                //亮D98
+                setLED_ON(13,5);
+                led_update();
+            }
+            else if(posH < 0.5)
+            {
+                //灭D100
+                setLED_OFF(14,1);
+                //亮D99
+                setLED_ON(14,0);
+                led_update();
+            }
+            else if(posH < 0.625)
+            {
+                //灭D101
+                setLED_OFF(14,2);
+                //亮D100
+                setLED_ON(14,1);
+                led_update();
+            }
+            else if(posH < 0.75)
+            {
+                //灭D102
+                setLED_OFF(14,3);
+                //亮D101
+                setLED_ON(14,2);
+                led_update();
+            }
+            else if(posH < 0.875)
+            {
+                //灭D103,D104
+                setLED_OFF(14,4);
+                setLED_OFF(14,5);
+                //亮D102
+                setLED_ON(14,3);
+                led_update();
+            }
+            else
+            {
+                //亮D103,D104
+                setLED_ON(14,4);
+                setLED_ON(14,5);
+                led_update();
+            }
         }
         break;
     default:
