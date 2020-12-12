@@ -200,10 +200,9 @@ SkinLoader::SkinLoader(UserSettingsPointer pConfig)
     result = FtTask::getInstance()->getBuff(3);
     result |= (1 << 1);
      FtTask::getInstance()->setBuff(3, result);
-    //亮D18,D19 左VOL推子-A2
+    //亮D18 左VOL推子-A2
     result = FtTask::getInstance()->getBuff(2);
     result |= (1 << 3);
-    result |= (1 << 4);
     FtTask::getInstance()->setBuff(2, result);
    //亮D25,D26,D27 左转盘-A3
     result = FtTask::getInstance()->getBuff(3);
@@ -222,16 +221,16 @@ SkinLoader::SkinLoader(UserSettingsPointer pConfig)
     setLED_ON(11,0);
     setLED_ON(11,1);
     setLED_ON(11,2);
-    //常亮D91,D93,D94，D95 headphone推子
+    //常亮D91,D93,D94,D95 headphone推子
     setLED_ON(12,6);
     setLED_ON(13,0);
     setLED_ON(13,1);
     setLED_ON(13,2);
-    //常亮D128,D121，D122 水平主推子及L,R字母标标识
+    //常亮D128,D121,D122 水平主推子及L,R字母标标识
     setLED_ON(18,1);
     setLED_ON(17,0);
     setLED_ON(17,1);
-    //常亮D1,D2，D3,D211,D212,D213,D214,D134,D135,D136, 指示灯
+    //常亮D1,D2,D3,D211,D212,D213,D214,D134,D135,D136, 指示灯
     setLED_ON(0,0);
     setLED_ON(0,1);
     setLED_ON(0,2);
@@ -242,6 +241,9 @@ SkinLoader::SkinLoader(UserSettingsPointer pConfig)
     setLED_ON(18,7);
     setLED_ON(19,0);
     setLED_ON(19,1);
+    //常亮D145,D150 VOL--右
+    setLED_ON(20,4);
+    setLED_ON(21,1);
     led_update();
 
 }
@@ -1247,7 +1249,7 @@ void SkinLoader::dealWithLED(WidgetType type, QString objName, int x, int y, QRe
         //A2区
         else if(objName == "ChannelVolume_[Channel1]")
         {
-            float posH = (y - rct.bottom())/ rct.height();
+            float posH = fabs(y - rct.bottom())/ rct.height();
             if(posH < 0.01)
                 {
                     //灭D19,D20,D21,D22,D23
@@ -1300,7 +1302,7 @@ void SkinLoader::dealWithLED(WidgetType type, QString objName, int x, int y, QRe
         //A7区
         else if(objName == "ChannelVolume_[Channel2]")
         {
-            float posH = (y - rct.bottom())/ rct.height();
+            float posH = fabs(y - rct.bottom())/ rct.height();
             if(posH < 0.01)
                 {
                     //灭D144,D146,D147,D148，D149
@@ -1350,73 +1352,80 @@ void SkinLoader::dealWithLED(WidgetType type, QString objName, int x, int y, QRe
                     led_update();
                 }
         }
-
-
-        //A4区...
+        //A4区
         else if(objName == "RateDisplay1_handh")
         {
             float posH = fabs(x - rct.left())/ rct.width();
             if(posH < 0.01)
             {
-                //灭D82
-                setLED_OFF(11,3);
+                //灭D82~D90
+                setLED_OFF(11, 3);
+                setLED_OFF(11, 4);
+                setLED_OFF(11, 5);
+                setLED_OFF(12, 0);
+                setLED_OFF(12, 1);
+                setLED_OFF(12, 2);
+                setLED_OFF(12, 3);
+                setLED_OFF(12, 4);
+                setLED_OFF(12, 5);
                 led_update();
             }
             else if(posH < 0.125)
             {
-                //亮D82
-                setLED_ON(11,3);
                 //灭D83
                 setLED_OFF(11,4);
+                //亮D82
+                setLED_ON(11,3);
                 led_update();
             }
             else if(posH < 0.25)
             {
-                //亮D83
-                setLED_ON(11,4);
                 //灭D84
                 setLED_OFF(11,5);
+                //亮D83
+                setLED_ON(11,4);
                 led_update();
             }
             else if(posH < 0.375)
             {
-                //亮D84
-                setLED_ON(11,6);
+
                 //灭D85
                 setLED_OFF(12,0);
+                //亮D84
+                setLED_ON(11,5);
                 led_update();
             }
             else if(posH < 0.5)
             {
-                //亮D85
-                setLED_ON(12,0);
                 //灭D86
                 setLED_OFF(12,1);
+                //亮D85
+                setLED_ON(12,0);
                 led_update();
             }
             else if(posH < 0.625)
             {
-                //亮D86
-                setLED_ON(12,1);
                 //灭D87
                 setLED_OFF(12,2);
+                //亮D86
+                setLED_ON(12,1);
                 led_update();
             }
             else if(posH < 0.75)
             {
-                //亮D87
-                setLED_ON(12,2);
                 //灭D88
                 setLED_OFF(12,3);
+                //亮D87
+                setLED_ON(12,2);
                 led_update();
             }
             else if(posH < 0.875)
             {
-                //亮D88
-                setLED_ON(12,3);
                 //灭D89,D90
                 setLED_OFF(12,4);
                 setLED_OFF(12,5);
+                //亮D88
+                setLED_ON(12,3);
                 led_update();
             }
             else

@@ -132,6 +132,12 @@ class WPushButton : public WWidget {
     bool m_exchangeCue1;
     bool m_exchangeCue2;
 
+    bool m_exchangeLock1;
+    bool m_exchangeLock2;
+
+    bool m_exchangeSync1;
+    bool m_exchangeSync2;
+
     QTimer *m_timerPlay;
 
 };

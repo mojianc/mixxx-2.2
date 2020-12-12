@@ -59,6 +59,11 @@ WPushButton::WPushButton(QWidget* pParent)
 
     m_exchangeCue1 = false;
     m_exchangeCue1 = false;
+    m_exchangeLock1 = false;
+    m_exchangeLock2 = false;
+
+    m_exchangeSync1 = false;
+    m_exchangeSync2 = false;
 }
 
 WPushButton::WPushButton(QWidget* pParent, ControlPushButton::ButtonMode leftButtonMode,
@@ -84,6 +89,11 @@ WPushButton::WPushButton(QWidget* pParent, ControlPushButton::ButtonMode leftBut
     m_exchangePlayer2 = false;
     m_exchangeCue1 = false;
     m_exchangeCue1 = false;
+    m_exchangeLock1 = false;
+    m_exchangeLock2 = false;
+
+    m_exchangeSync1 = false;
+    m_exchangeSync2 = false;
 }
 
 
@@ -675,18 +685,66 @@ void WPushButton::mouseReleaseEvent(QMouseEvent * e) {
         else if(objectNameStr == "KeylockButton_[Channel1]")
         {
            //×ó²àËø
+            if(!m_exchangeLock1)
+            {
+                FtTask::getInstance()->setLED_ON(0,3);
+                FtTask::getInstance()->led_update();
+            }
+            else
+            {
+                FtTask::getInstance()->setLED_OFF(0,3);
+                FtTask::getInstance()->led_update();
+            }
+            m_exchangeLock1 = !m_exchangeLock1;
         }
         else if(objectNameStr == "KeylockButton_[Channel2]")
         {
            //ÓÒ²àËø
+            if(!m_exchangeLock1)
+            {
+                FtTask::getInstance()->setLED_ON(20,2);
+                FtTask::getInstance()->led_update();
+            }
+            else
+            {
+                FtTask::getInstance()->setLED_OFF(20,2);
+                FtTask::getInstance()->led_update();
+            }
+            m_exchangeLock1 = !m_exchangeLock1;
         }
         else if(objectNameStr == "DeckSync_[Channel1]")
         {
            //×óSYNC
+            if(!m_exchangeSync1)
+            {
+                FtTask::getInstance()->setLED_ON(9,5);
+                FtTask::getInstance()->setLED_ON(10,0);
+                FtTask::getInstance()->led_update();
+            }
+            else
+            {
+                FtTask::getInstance()->setLED_OFF(9,5);
+                FtTask::getInstance()->setLED_OFF(10,0);
+                FtTask::getInstance()->led_update();
+            }
+            m_exchangeSync1 = !m_exchangeSync1;
         }
         else if(objectNameStr == "DeckSync_[Channel2]")
         {
            //ÓÒSYNC
+            if(!m_exchangeSync2)
+            {
+                FtTask::getInstance()->setLED_ON(25,4);
+                FtTask::getInstance()->setLED_ON(25,5);
+                FtTask::getInstance()->led_update();
+            }
+            else
+            {
+                FtTask::getInstance()->setLED_OFF(25,4);
+                FtTask::getInstance()->setLED_OFF(25,5);
+                FtTask::getInstance()->led_update();
+            }
+            m_exchangeSync2 = !m_exchangeSync2;
         }
         else if(objectNameStr == "PlayToggle_Deck1_hotcue")
         {
