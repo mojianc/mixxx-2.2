@@ -106,7 +106,7 @@
 
               <Template src="skin:left_2state_button.xml">
                 <SetVariable name="TooltipId">keylock</SetVariable>
-                <SetVariable name="ObjectName">KeylockButton</SetVariable>
+                <SetVariable name="ObjectName">KeylockButton_<Variable name="group"/></SetVariable>
                 <SetVariable name="MinimumSize"><Variable name="SquareButtonMinimumSize"/></SetVariable>
                 <SetVariable name="MaximumSize"><Variable name="SquareButtonMaximumSize"/></SetVariable>
                 <SetVariable name="SizePolicy"><Variable name="SquareButtonSizePolicy"/></SetVariable>
