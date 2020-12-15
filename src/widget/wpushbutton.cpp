@@ -108,22 +108,16 @@ void WPushButton::getComingData(QByteArray data, QRect rect)
         m_ntimeStart = time.toTime_t();   //将当前时间转为时间戳
         m_inMove =true;
 
-//        QMouseEvent event(QEvent::MouseButtonPress, QPointF(m_size.width()/2, m_size.height()/2), Qt::LeftButton, Qt::LeftButton, Qt::NoModifier);
-//        QApplication::sendEvent(this, &event);
-
     }
 }
 
 void WPushButton::timeupdate()
 {
-//       QMouseEvent event(QEvent::MouseButtonRelease, QPointF(m_size.width()/2, m_size.height()/2), Qt::LeftButton, Qt::LeftButton, Qt::NoModifier);
-//       QApplication::sendEvent(this, &event);
-
     QDateTime time = QDateTime::currentDateTime();   //获取当前时间
     m_ntime = time.toTime_t() - m_ntimeStart;   //将当前时间转为时间戳
 
      m_inMove = false;
-     if(m_ntime > 3)
+     if(m_ntime > 1)
      {
 
          QMouseEvent pressEvent(QEvent::MouseButtonPress, QPointF(m_size.width()/2, m_size.height()/2), Qt::RightButton, Qt::RightButton, Qt::NoModifier);
@@ -528,132 +522,59 @@ void WPushButton::mouseReleaseEvent(QMouseEvent * e) {
     {
         if(objectNameStr == "HotcueButton_Deck1_hotcue1")
         {
-//            if(!m_exchange1)
-            {
-                FtTask::getInstance()->setLED_ON(8,5);
-                FtTask::getInstance()->setLED_ON(8,6);
-                FtTask::getInstance()->led_update();
-            }
-//            else
-//            {
-//                FtTask::getInstance()->setLED_OFF(8,5);
-//                FtTask::getInstance()->setLED_OFF(8,6);
-//                FtTask::getInstance()->led_update();
-//            }
-//            m_exchange1 = !m_exchange1;
+            FtTask::getInstance()->setLED_ON(8,5);
+            FtTask::getInstance()->setLED_ON(8,6);
+            FtTask::getInstance()->led_update();
 
         }
         else if(objectNameStr == "HotcueButton_Deck1_hotcue2")
         {
-//            if(!m_exchange2)
-            {
-                FtTask::getInstance()->setLED_ON(8,7);
-                FtTask::getInstance()->setLED_ON(9,0);
-                FtTask::getInstance()->led_update();
-            }
-//            else
-//            {
-//                FtTask::getInstance()->setLED_OFF(8,7);
-//                FtTask::getInstance()->setLED_OFF(9,0);
-//                FtTask::getInstance()->led_update();
-//            }
-//            m_exchange2 = !m_exchange2;
+            FtTask::getInstance()->setLED_ON(8,7);
+            FtTask::getInstance()->setLED_ON(9,0);
+            FtTask::getInstance()->led_update();
         }
         else if(objectNameStr == "HotcueButton_Deck1_hotcue3")
         {
-//            if(!m_exchange3)
-            {
-                FtTask::getInstance()->setLED_ON(9,1);
-                FtTask::getInstance()->setLED_ON(9,2);
-                FtTask::getInstance()->led_update();
-            }
-//            else
-//            {
-//                FtTask::getInstance()->setLED_OFF(9,1);
-//                FtTask::getInstance()->setLED_OFF(9,2);
-//                FtTask::getInstance()->led_update();
-//            }
-//            m_exchange3 = !m_exchange3;
+
+            FtTask::getInstance()->setLED_ON(9,1);
+            FtTask::getInstance()->setLED_ON(9,2);
+            FtTask::getInstance()->led_update();
+
         }
         else if(objectNameStr == "HotcueButton_Deck1_hotcue4")
         {
-//            if(!m_exchange4)
-            {
-                FtTask::getInstance()->setLED_ON(9,3);
-                FtTask::getInstance()->setLED_ON(9,4);
-                FtTask::getInstance()->led_update();
-            }
-//            else
-//            {
-//                FtTask::getInstance()->setLED_OFF(9,3);
-//                FtTask::getInstance()->setLED_OFF(9,4);
-//                FtTask::getInstance()->led_update();
-//            }
-//            m_exchange4 = !m_exchange4;
+            FtTask::getInstance()->setLED_ON(9,3);
+            FtTask::getInstance()->setLED_ON(9,4);
+            FtTask::getInstance()->led_update();
+
         }
         else if(objectNameStr == "HotcueButton_Deck2_hotcue1")
         {
-//            if(!m_exchange5)
-            {
-                FtTask::getInstance()->setLED_ON(28,0);
-                FtTask::getInstance()->setLED_ON(28,1);
-                FtTask::getInstance()->led_update();
-            }
-//            else
-//            {
-//                FtTask::getInstance()->setLED_OFF(28,0);
-//                FtTask::getInstance()->setLED_OFF(28,1);
-//                FtTask::getInstance()->led_update();
-//            }
-//            m_exchange5 = !m_exchange5;
+            FtTask::getInstance()->setLED_ON(28,0);
+            FtTask::getInstance()->setLED_ON(28,1);
+            FtTask::getInstance()->led_update();
         }
         else if(objectNameStr == "HotcueButton_Deck2_hotcue2")
         {
-//            if(!m_exchange6)
-            {
-                FtTask::getInstance()->setLED_ON(28,2);
-                FtTask::getInstance()->setLED_ON(28,3);
-                FtTask::getInstance()->led_update();
-            }
-//            else
-//            {
-//                FtTask::getInstance()->setLED_OFF(28,2);
-//                FtTask::getInstance()->setLED_OFF(28,3);
-//                FtTask::getInstance()->led_update();
-//            }
-//            m_exchange6 = !m_exchange6;
+            FtTask::getInstance()->setLED_ON(28,2);
+            FtTask::getInstance()->setLED_ON(28,3);
+            FtTask::getInstance()->led_update();
+
         }
         else if(objectNameStr == "HotcueButton_Deck2_hotcue3")
         {
-//            if(!m_exchange7)
-            {
-                FtTask::getInstance()->setLED_ON(28,4);
-                FtTask::getInstance()->setLED_ON(28,5);
-                FtTask::getInstance()->led_update();
-            }
-//            else
-//            {
-//                FtTask::getInstance()->setLED_OFF(28,4);
-//                FtTask::getInstance()->setLED_OFF(28,5);
-//                FtTask::getInstance()->led_update();
-//            }
-//            m_exchange7 = !m_exchange7;
+            FtTask::getInstance()->setLED_ON(28,4);
+            FtTask::getInstance()->setLED_ON(28,5);
+            FtTask::getInstance()->led_update();
+
         }
         else if(objectNameStr == "HotcueButton_Deck2_hotcue4")
         {
-//            if(!m_exchange8)
-            {
-                FtTask::getInstance()->setLED_ON(28,6);
-                FtTask::getInstance()->setLED_ON(28,7);
-                FtTask::getInstance()->led_update();
-            }
-//            else
-//            {
-//                FtTask::getInstance()->setLED_OFF(28,6);
-//                FtTask::getInstance()->setLED_OFF(28,7);
-//                FtTask::getInstance()->led_update();
-//            }
-//            m_exchange8 = !m_exchange8;
+
+            FtTask::getInstance()->setLED_ON(28,6);
+            FtTask::getInstance()->setLED_ON(28,7);
+            FtTask::getInstance()->led_update();
+
         }
         else if(objectNameStr == "DeckCue_Deck1_hotcue")
         {
@@ -763,9 +684,6 @@ void WPushButton::mouseReleaseEvent(QMouseEvent * e) {
             else
             {
                 m_timerPlay->start();
-//                FtTask::getInstance()->setLED_OFF(7,1);
-//                FtTask::getInstance()->setLED_OFF(7,2);
-//                FtTask::getInstance()->led_update();
             }
             m_exchangePlayer1 = !m_exchangePlayer1;
 
@@ -796,17 +714,47 @@ void WPushButton::mouseReleaseEvent(QMouseEvent * e) {
             FtTask::getInstance()->setLED_OFF(8,6);
             FtTask::getInstance()->led_update();
         }
-        else if(objectNameStr == "HotcueButton_Deck1_hotcue1")
+        else if(objectNameStr == "HotcueButton_Deck1_hotcue2")
         {
-
+            FtTask::getInstance()->setLED_OFF(8,7);
+            FtTask::getInstance()->setLED_OFF(9,0);
+            FtTask::getInstance()->led_update();
         }
-        else if(objectNameStr == "HotcueButton_Deck1_hotcue1")
+        else if(objectNameStr == "HotcueButton_Deck1_hotcue3")
         {
-
+            FtTask::getInstance()->setLED_OFF(9,1);
+            FtTask::getInstance()->setLED_OFF(9,2);
+            FtTask::getInstance()->led_update();
         }
-        else if(objectNameStr == "HotcueButton_Deck1_hotcue1")
+        else if(objectNameStr == "HotcueButton_Deck1_hotcue4")
         {
-
+            FtTask::getInstance()->setLED_OFF(9,3);
+            FtTask::getInstance()->setLED_OFF(9,4);
+            FtTask::getInstance()->led_update();
+        }
+        else if(objectNameStr == "HotcueButton_Deck2_hotcue1")
+        {
+            FtTask::getInstance()->setLED_OFF(28,0);
+            FtTask::getInstance()->setLED_OFF(28,1);
+            FtTask::getInstance()->led_update();
+        }
+        else if(objectNameStr == "HotcueButton_Deck2_hotcue2")
+        {
+            FtTask::getInstance()->setLED_OFF(28,2);
+            FtTask::getInstance()->setLED_OFF(28,3);
+            FtTask::getInstance()->led_update();
+        }
+        else if(objectNameStr == "HotcueButton_Deck2_hotcue3")
+        {
+            FtTask::getInstance()->setLED_OFF(28,4);
+            FtTask::getInstance()->setLED_OFF(28,5);
+            FtTask::getInstance()->led_update();
+        }
+        else if(objectNameStr == "HotcueButton_Deck2_hotcue4")
+        {
+            FtTask::getInstance()->setLED_OFF(28,6);
+            FtTask::getInstance()->setLED_OFF(28,7);
+            FtTask::getInstance()->led_update();
         }
     }
 
