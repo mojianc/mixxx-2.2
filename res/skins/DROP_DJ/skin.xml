@@ -27,6 +27,62 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
         <description>None</description>
         <language>en</language>
         <license>None</license>
+		<attributes>
+		 <attribute config_key="[Master],num_decks">4</attribute>
+      <attribute config_key="[Master],num_samplers">16</attribute>
+      <attribute config_key="[Master],num_preview_decks">1</attribute>
+      <attribute config_key="[Library],show_library">1</attribute>
+
+      <!--Skin settings-->
+      <attribute persist="true" config_key="[Deere],show_parallel_waveforms">1</attribute>
+      <attribute persist="true" config_key="[Microphone],show_microphone">0</attribute>
+      <attribute persist="true" config_key="[PreviewDeck],show_previewdeck">0</attribute>
+      <attribute persist="true" config_key="[Library],show_coverart">1</attribute>
+
+      <attribute persist="true" config_key="[Master],show_4decks">0</attribute>
+      <attribute persist="true" config_key="[Master],show_4effectunits">0</attribute>
+      <attribute persist="true" config_key="[Master],show_coverart">1</attribute>
+      <attribute persist="true" config_key="[Master],show_spinnies">0</attribute>
+      <attribute persist="true" config_key="[Deere],show_starrating">0</attribute>
+      <attribute persist="true" config_key="[Deere],show_track_info">1</attribute>
+      <attribute persist="true" config_key="[Deere],show_bpm_info">1</attribute>
+      <attribute persist="true" config_key="[Deere],show_more_hotcues">0</attribute>
+
+      <attribute persist="true" config_key="[Master],show_mixer">1</attribute>
+      <attribute persist="true" config_key="[Deere],show_crossfader">1</attribute>
+      <attribute persist="true" config_key="[Master],show_eqs">1</attribute>
+      <attribute persist="true" config_key="[Master],show_killswitches">0</attribute>
+      <attribute persist="true" config_key="[Master],show_faders">1</attribute>
+      <attribute persist="true" config_key="[VinylControl],show_vinylcontrol">0</attribute>
+
+      <attribute persist="true" config_key="[Samplers],show_samplers">1</attribute>
+      <attribute persist="true" config_key="[Samplers],show_expanded">0</attribute>
+
+      <attribute persist="true" config_key="[EffectRack1],show">1</attribute>
+      <attribute persist="true" config_key="[Master],show_superknobs">0</attribute>
+
+      <!--Disable hidden effect routing Buttons-->
+      <attribute persist="false" config_key="[EffectRack1_EffectUnit1],group_[MasterOutput]_enable">0</attribute>
+      <attribute persist="false" config_key="[EffectRack1_EffectUnit1],group_[BusLeft]_enable">0</attribute>
+      <attribute persist="false" config_key="[EffectRack1_EffectUnit1],group_[BusCenter]_enable">0</attribute>
+      <attribute persist="false" config_key="[EffectRack1_EffectUnit1],group_[BusRight]_enable">0</attribute>
+      <attribute persist="false" config_key="[EffectRack1_EffectUnit1],group_[BusTalkover]_enable">0</attribute>
+      <attribute persist="false" config_key="[EffectRack1_EffectUnit2],group_[MasterOutput]_enable">0</attribute>
+      <attribute persist="false" config_key="[EffectRack1_EffectUnit2],group_[BusLeft]_enable">0</attribute>
+      <attribute persist="false" config_key="[EffectRack1_EffectUnit2],group_[BusCenter]_enable">0</attribute>
+      <attribute persist="false" config_key="[EffectRack1_EffectUnit2],group_[BusRight]_enable">0</attribute>
+      <attribute persist="false" config_key="[EffectRack1_EffectUnit2],group_[BusTalkover]_enable">0</attribute>
+      <attribute persist="false" config_key="[EffectRack1_EffectUnit3],group_[MasterOutput]_enable">0</attribute>
+      <attribute persist="false" config_key="[EffectRack1_EffectUnit3],group_[BusLeft]_enable">0</attribute>
+      <attribute persist="false" config_key="[EffectRack1_EffectUnit3],group_[BusCenter]_enable">0</attribute>
+      <attribute persist="false" config_key="[EffectRack1_EffectUnit3],group_[BusRight]_enable">0</attribute>
+      <attribute persist="false" config_key="[EffectRack1_EffectUnit3],group_[BusTalkover]_enable">0</attribute>
+      <attribute persist="false" config_key="[EffectRack1_EffectUnit4],group_[MasterOutput]_enable">0</attribute>
+      <attribute persist="false" config_key="[EffectRack1_EffectUnit4],group_[BusLeft]_enable">0</attribute>
+      <attribute persist="false" config_key="[EffectRack1_EffectUnit4],group_[BusCenter]_enable">0</attribute>
+      <attribute persist="false" config_key="[EffectRack1_EffectUnit4],group_[BusRight]_enable">0</attribute>
+      <attribute persist="false" config_key="[EffectRack1_EffectUnit4],group_[BusTalkover]_enable">0</attribute>
+		   </attributes>
     </manifest>
 
     <ObjectName>Mixxx</ObjectName>
@@ -414,6 +470,7 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
                 <Children>
 
                 <PushButton>
+				<ObjectName>KnobComposed_[EffectRack1_EffectUnit1_Effect1]_meta</ObjectName>
                 <Size>20me,40me</Size>
                 <NumberStates>1</NumberStates>
                 <State>
@@ -433,6 +490,7 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
                 </WidgetGroup>
 
                 <PushButton>
+				<ObjectName>KnobComposed_[EffectRack1_EffectUnit1_Effect2]_meta</ObjectName>
                 <Size>20me,40me</Size>
                 <NumberStates>1</NumberStates>
                 <State>
@@ -452,6 +510,7 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
                 </WidgetGroup>
 
                 <PushButton>
+				<ObjectName>KnobComposed_[EffectRack1_EffectUnit1_Effect3]_meta</ObjectName>
                 <Size>20me,40me</Size>
                 <NumberStates>1</NumberStates>
                 <State>
@@ -741,6 +800,7 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
                 <Children>
 
                 <PushButton>
+				<ObjectName>HotcueButton_Deck1_hotcue1</ObjectName>
                 <Size>80me,60me</Size>
                 <TooltipId>repeat</TooltipId>
                 <NumberStates>1</NumberStates>
@@ -771,6 +831,7 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
                 </WidgetGroup>
 
                 <PushButton>
+				<ObjectName>HotcueButton_Deck1_hotcue2</ObjectName>
                 <Size>80me,60me</Size>
                 <TooltipId>repeat</TooltipId>
                 <NumberStates>1</NumberStates>
@@ -801,6 +862,7 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
                 </WidgetGroup>
 
                 <PushButton>
+				<ObjectName>HotcueButton_Deck1_hotcue3</ObjectName>
                 <Size>80me,60me</Size>
                 <TooltipId>repeat</TooltipId>
                 <NumberStates>1</NumberStates>
@@ -831,6 +893,7 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
                 </WidgetGroup>
 
                 <PushButton>
+				<ObjectName>HotcueButton_Deck1_hotcue4</ObjectName>
                 <Size>80me,60me</Size>
                 <TooltipId>repeat</TooltipId>
                 <NumberStates>1</NumberStates>
@@ -883,7 +946,7 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
 <Size>20me,30f</Size>
 </Label>
   		
-				<ObjectName> SpinnySingletonNoCover[Channel1]_handh </ObjectName>
+				<ObjectName>SpinnySingletonNoCover[Channel1]_handh</ObjectName>
                 <Spinny>
                 <Size>230f,230f</Size>
                 <Channel>1</Channel>
@@ -972,6 +1035,7 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
 <label></label>
 
                 <SliderComposed>
+				<ObjectName>RateDisplay1_handh</ObjectName>
                 <Size>40f,160me</Size>
                 <Handle scalemode="STRETCH">音量-滑块-默认.png</Handle>
                 <Slider scalemode="STRETCH">节拍速度-背板.png</Slider>
@@ -1051,6 +1115,7 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
                 </Label>
 
                 <PushButton>
+				<ObjectName>DeckCue_Deck1_hotcue</ObjectName>
                 <TooltipId>cue_default_cue_gotoandstop</TooltipId>
                 <NumberStates>2</NumberStates>
                 <State>
@@ -1124,6 +1189,7 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
                 </WidgetGroup>
 
                 <Knob>
+				<ObjectName>EffectKnobComposed_[Channel1]_3</ObjectName>
                 <NumberStates>25</NumberStates>
                 <Path>F区域\八个旋钮默认状态\HI-中间旋钮-%1.png</Path>
                 <Connection>
@@ -1136,6 +1202,7 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
                 </WidgetGroup>
 
                 <Knob>
+				<ObjectName>EffectKnobComposed_[Channel1]_2</ObjectName>
                 <NumberStates>25</NumberStates>
                 <Path>F区域\八个旋钮默认状态\HI-中间旋钮-%1.png</Path>
                 <Connection>
@@ -1148,6 +1215,7 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
                 </WidgetGroup>
 
                 <Knob>
+				<ObjectName>EffectKnobComposed_[Channel1]_1</ObjectName>
                 <NumberStates>25</NumberStates>
                 <Path>F区域\八个旋钮默认状态\HI-中间旋钮-%1.png</Path>
                 <Connection>
@@ -1160,6 +1228,7 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
                 </WidgetGroup>
 
                 <Knob>
+				<ObjectName>KnobComposed_[QuickEffectRack1_[Channel1]]_super1</ObjectName>
                 <NumberStates>25</NumberStates>
                 <Path>F区域\八个旋钮默认状态\HI-中间旋钮-%1.png</Path>
                 <Connection>
@@ -1226,6 +1295,7 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
                 <Children>
 
                 <SliderComposed>
+				<ObjectName>ChannelVolume_[Channel1]</ObjectName>
                 <Size>me,me</Size>
                 <Handle scalemode="STRETCH">音量-滑块-默认.png</Handle>
                 <Slider scalemode="STRETCH">音量-背景.png</Slider>
@@ -1290,6 +1360,7 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
                 </WidgetGroup>
 
                 <SliderComposed>
+				<ObjectName>ChannelVolume_[Channel2]</ObjectName>
                 <Size>me,me</Size>
                 <Handle scalemode="STRETCH">音量-滑块-默认.png</Handle>
                 <Slider scalemode="STRETCH">音量-背景.png</Slider>
@@ -1321,6 +1392,7 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
                 </WidgetGroup>
 
                 <Knob>
+				<ObjectName>EffectKnobComposed_[Channel2]_3</ObjectName>
                 <NumberStates>25</NumberStates>
                 <Path>F区域\八个旋钮默认状态\HI-中间旋钮-%1.png</Path>
                 <Connection>
@@ -1333,6 +1405,7 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
                 </WidgetGroup>
 
                 <Knob>
+				<ObjectName>EffectKnobComposed_[Channel2]_2</ObjectName>
                 <NumberStates>25</NumberStates>
                 <Path>F区域\八个旋钮默认状态\HI-中间旋钮-%1.png</Path>
                 <Connection>
@@ -1345,6 +1418,7 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
                 </WidgetGroup>
 
                 <Knob>
+				<ObjectName>EffectKnobComposed_[Channel2]_1</ObjectName>
                 <NumberStates>25</NumberStates>
                 <Path>F区域\八个旋钮默认状态\HI-中间旋钮-%1.png</Path>
                 <Connection>
@@ -1357,6 +1431,7 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
                 </WidgetGroup>
 
                 <Knob>
+				<ObjectName>KnobComposed_[QuickEffectRack1_[Channel2]]_super1</ObjectName>
                 <NumberStates>25</NumberStates>
                 <Path>F区域\八个旋钮默认状态\HI-中间旋钮-%1.png</Path>
                 <Connection>
@@ -1391,6 +1466,7 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
             </WidgetGroup>
 			
              <WidgetGroup>
+			 <ObjectName>MainSliderComposed</ObjectName>
              <SizePolicy>me,me</SizePolicy>
              <Layout>horizontal</Layout>
              <Children>			
@@ -1681,6 +1757,7 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
 <Children>
 <label></label>
                 <SliderComposed>
+				<ObjectName>RateDisplay2_handh</ObjectName>
                 <Size>40f,160me</Size>	
                 <Handle scalemode="STRETCH">音量-滑块-默认.png</Handle>
                 <Slider scalemode="STRETCH">节拍速度-背板.png</Slider>
@@ -1702,7 +1779,7 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
                 <Layout>horizontal</Layout>
                 <Children>
 
-                <ObjectName> SpinnySingletonNoCover[Channel2]_handh </ObjectName>
+                <ObjectName>SpinnySingletonNoCover{Channel2}_handh</ObjectName>
 				<Spinny>
                 <Size>230f,230f</Size>
                 <Channel>2</Channel>
@@ -1784,6 +1861,7 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
                 </Label>
 
                 <PushButton>
+				<ObjectName>DeckCue_Deck2_hotcue</ObjectName>
                 <TooltipId>cue_default_cue_gotoandstop</TooltipId>
                 <NumberStates>1</NumberStates>
                 <State>
@@ -1879,6 +1957,7 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
                 <Children>
 
                 <PushButton>
+				<ObjectName>KnobComposed_[EffectRack1_EffectUnit2_Effect1]_meta</ObjectName>
                 <Size>20me,40me</Size>
                 <NumberStates>1</NumberStates>
                 <State>
@@ -1898,6 +1977,7 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
                 </WidgetGroup>
 
                 <PushButton>
+				<ObjectName>KnobComposed_[EffectRack1_EffectUnit2_Effect2]_meta</ObjectName>
                 <Size>20me,40me</Size>
                 <NumberStates>1</NumberStates>
                 <State>
@@ -1917,6 +1997,7 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
                 </WidgetGroup>
 
                 <PushButton>
+				<ObjectName>KnobComposed_[EffectRack1_EffectUnit2_Effect3]_meta</ObjectName>
                 <Size>20me,40me</Size>
                 <NumberStates>1</NumberStates>
                 <State>
@@ -2193,6 +2274,7 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
                 <Children>
 
                 <PushButton>
+				<ObjectName>HotcueButton_Deck2_hotcue1</ObjectName>
                 <Size>80me,60me</Size>
                 <TooltipId>repeat</TooltipId>
                 <NumberStates>1</NumberStates>
@@ -2223,6 +2305,7 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
                 </WidgetGroup>
 
                 <PushButton>
+				<ObjectName>HotcueButton_Deck2_hotcue2</ObjectName>
                 <Size>80me,60me</Size>
                 <TooltipId>repeat</TooltipId>
                 <NumberStates>1</NumberStates>
@@ -2253,6 +2336,7 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
                 </WidgetGroup>
 
                 <PushButton>
+				<ObjectName>HotcueButton_Deck2_hotcue3</ObjectName>
                 <Size>80me,60me</Size>
                 <TooltipId>repeat</TooltipId>
                 <NumberStates>1</NumberStates>
@@ -2283,6 +2367,7 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
                 </WidgetGroup>
 
                 <PushButton>
+				<ObjectName>HotcueButton_Deck2_hotcue4</ObjectName>
                 <Size>80me,60me</Size>
                 <TooltipId>repeat</TooltipId>
                 <NumberStates>1</NumberStates>
@@ -2343,23 +2428,67 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
             <SizePolicy>me,me</SizePolicy>
             <Layout>vertical</Layout>
             <Children>
-            <SearchBox>
-            <BgColor>#242629</BgColor>
-            </SearchBox>
-<!--
-            <LibrarySidebar>
-            <BgColor>#242629</BgColor>
-            <FgColor>#000000</FgColor>
-            <BgColorRowEven>#222222</BgColorRowEven>
-            <BgColorRowUneven>#111111</BgColorRowUneven>
-            </LibrarySidebar>
--->
-            <WidgetGroup>
-            <Size>368me,461me</Size>
-            <SizePolicy>me,me</SizePolicy>
-            <Layout>horizontal</Layout>
-            <BackPath scalemode="STRETCH">search.png</BackPath>
-            </WidgetGroup>
+
+
+
+		<WidgetGroup>
+					<ObjectName>Library</ObjectName>
+					<Size>e,e</Size>
+					<SizePolicy>me,me</SizePolicy>
+					<Layout>horizontal</Layout>
+					<Style>
+					QGroupBox { border: 0px solid #565E6B; margin: 0px 0px 0px 0px;}
+					</Style>
+					<Children>
+						<Splitter>
+							<Size>me,me</Size>
+							<SplitSizes>1,6</SplitSizes>
+							<Collapsible>1,0</Collapsible>
+							<SplitSizesConfigKey>[Shade],splitSizeLibTree</SplitSizesConfigKey>
+							<Children>
+								<WidgetGroup>
+									<Style>QGroupBox {}</Style>
+									<Layout>vertical</Layout>
+									<Children>
+										<WidgetGroup>
+											<Style>
+												QGroupBox {
+													margin: 2px 0px 4px 3px;
+													padding: 0px;
+													background: transparent;
+												}
+											</Style>
+											<Layout>horizontal</Layout>
+											<Children>
+                        <Template src="skin:preview_deck.xml"/>
+											</Children>
+											<Connection>
+												<ConfigKey>[PreviewDeck],show_previewdeck</ConfigKey>
+												<BindProperty>visible</BindProperty>
+											</Connection>
+										</WidgetGroup>
+										<!--Search Input Field-->
+										<SearchBox></SearchBox>
+										<!--Library Tree View-->
+						 				<Splitter>
+											<Size>e,me</Size>
+											<Style></Style>
+											<SplitSizes>1,e</SplitSizes>
+                      <Collapsible>0,0</Collapsible>
+											<Children>
+												<LibrarySidebar></LibrarySidebar>
+										
+										
+											</Children>
+										</Splitter>
+									</Children>
+								</WidgetGroup>
+							
+							</Children>
+						</Splitter>
+					</Children>
+				</WidgetGroup>
+
 
             </Children>
             </WidgetGroup>
@@ -2388,7 +2517,31 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
             <SizePolicy>me,me</SizePolicy>
             <Layout>vertical</Layout>
             <Children>
-<!--
+			
+			<WidgetGroup><!-- Maximized Library -->
+          <Layout>horizontal</Layout>
+          <SizePolicy>me,me</SizePolicy>
+          <Children>
+            <SingletonContainer>
+              <ObjectName>Library</ObjectName>
+            </SingletonContainer>
+          </Children>
+          <Connection>
+            <ConfigKey>[Master],maximize_library</ConfigKey>
+            <BindProperty>visible</BindProperty>
+          </Connection>
+        </WidgetGroup><!-- /Maximized Library -->
+		
+ <WidgetGroup>
+              <Layout>vertical</Layout>
+              <SizePolicy>min,max</SizePolicy>
+              <Children>
+                <SingletonContainer>
+                  <ObjectName>Library</ObjectName>
+                </SingletonContainer>
+              </Children>
+            </WidgetGroup>
+			
             <Library>
             <BgColor>#242629</BgColor>
             <FgColor>#000000</FgColor>
@@ -2397,14 +2550,18 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
             <ConfigKey persist="false">[Library],show_coverart</ConfigKey>
             <BindProperty>invisible</BindProperty>
             </Library>
--->
-            <WidgetGroup>
-            <Size>379me,503me</Size>
-            <SizePolicy>me,me</SizePolicy>
-            <Layout>horizontal</Layout>
-            <BackPath scalemode="STRETCH">library.png</BackPath>
-            </WidgetGroup>
 
+         
+
+ <SingletonDefinition>
+      <ObjectName>Library</ObjectName>
+      <Children>
+        <Template src="skin:library.xml"/>
+      </Children>
+    </SingletonDefinition>
+
+
+	
             </Children>
             </WidgetGroup>
 
