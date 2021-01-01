@@ -677,7 +677,13 @@ SOURCES += \
     controllers/hid/hidcontrollerpresetfilehandler.cpp \
     controllers/hid/hidcontroller.cpp \
     FtTask.cpp \
-    FtUnitl.cpp
+    FtUnitl.cpp \
+    widget/mixxxgame/CusProgress.cpp \
+    widget/mixxxgame/EnglistLabel.cpp \
+    widget/mixxxgame/GameWidget.cpp \
+    widget/mixxxgame/Hairclipper.cpp \
+    widget/mixxxgame/Pixmap.cpp \
+    widget/mixxxgame/TrackPixmaps.cpp
 
 HEADERS += \
     analyzer/vamp/vampanalyzer.h \
@@ -1242,7 +1248,13 @@ HEADERS += \
     mixxxapplication.h \
     ftd2xx.h \
     FtTask.h \
-    FtUnitl.h
+    FtUnitl.h \
+    widget/mixxxgame/CusProgress.h \
+    widget/mixxxgame/EnglistLabel.h \
+    widget/mixxxgame/GameWidget.h \
+    widget/mixxxgame/Hairclipper.h \
+    widget/mixxxgame/Pixmap.h \
+    widget/mixxxgame/TrackPixmaps.h
 
 
 FORMS += \   
