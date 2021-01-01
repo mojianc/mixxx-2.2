@@ -1,0 +1,110 @@
+/*
+  Mixxx skin documentation:
+  http://mixxx.org/wiki/doku.php/creating_skins
+
+  List of controls:
+  http://mixxx.org/wiki/doku.php/mixxxcontrols
+
+  Qt Style Sheets documentation:
+  http://doc.qt.io/qt-4.8/stylesheet-examples.html
+
+*/
+
+WWidgetGroup {
+    background-color: #242629;
+}
+
+WaveformGroup{
+  qproperty-layoutAlignment: 'AlignCenter'
+}
+
+#PitchControl{
+  qproperty-layoutAlignment: 'AlignHCenter'
+}
+
+WTrackTableView{
+    background-color: #00ff00;
+}
+
+WLibraryTableView{
+    color: #000000;
+    background-color: #242629;
+}
+
+WWaveformViewer{
+  color: #111FFF;
+  background-color: #111FFF;
+}
+
+WLabel {
+    color: #FFFFFF;
+}
+
+#EffectUnitsRow {
+  border: 1px solid #222222;
+  border-width: 0px 0px 5px 0px;
+}
+
+#EffectUnitNoParameters {
+  padding-left: 5px;
+}
+
+#EffectUnitEffectsNoParameters {
+  qproperty-layoutSpacing: 28;
+}
+
+#EffectUnitEffects {
+  padding: 2px;
+  qproperty-layoutAlignment: 'AlignLeft | AlignTop';
+  qproperty-layoutSpacing: 2;
+}
+
+#EffectUnitParameters {
+  padding: 0 2px;
+  qproperty-layoutAlignment: 'AlignLeft | AlignTop';
+  qproperty-layoutSpacing: 2;
+}
+
+#EffectUnitControls {
+  padding: 2px;
+  qproperty-layoutAlignment: 'AlignHCenter | AlignTop';
+  qproperty-layoutSpacing: 2;
+}
+
+#EffectUnitGroupControlsLeft,
+#EffectUnitGroupControlsRight,
+#EffectUnitGroupControlsInputs {
+  qproperty-layoutSpacing: 2;
+}
+
+#EffectUnit {
+  font-size: 15px;
+}
+
+#myFont {
+border:0px solid #000000; font:normal 16px/18px 'Bitsumishi'; font-family:'digital'; background-color:transparent; color:#999999;
+qproperty-alignment:'AlignCenter';
+qproperty-wordWrap:false;
+}
+
+#Channel1bpmValue {
+border:0px solid #000000; font:normal 16px/18px 'Bitsumishi'; font-family:'digital'; background-color:transparent; color:#FFAA00;
+qproperty-alignment:'AlignCenter';
+qproperty-wordWrap:false;
+}
+
+#Channel2bpmValue {
+border:0px solid #000000; font:normal 16px/18px 'Bitsumishi'; font-family:'digital'; background-color:transparent; color:#006DE4;
+qproperty-alignment:'AlignCenter';
+qproperty-wordWrap:false;
+}
+
+QWidget { background:#242629; color:#8e8e8e; }
+QTableView::item { background:#000000; color:#8e8e8e; }
+
+/* QTreeView:Customizing left tree items navigation: */
+QTreeView { background:#000000; color:#8e8e8e; }
+QTreeView::item { background:#000000; color:#8e8e8e; }
+QTreeView::item:selected { background:#141414; color:#ffffff; }
+QTreeView::item:selected:active { background:#141414; color:#ffffff; }
+QTreeView::item:hover { background:#141414; color:#ffffff; }

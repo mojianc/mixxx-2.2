@@ -971,6 +971,13 @@ class MixxxCore(Feature):
                    "widget/wcoverartmenu.cpp",
                    "widget/wsingletoncontainer.cpp",
                    "widget/wmainmenubar.cpp",
+                   
+                   "widget/mixxxgame/CusProgress.cpp",
+                   "widget/mixxxgame/EnglistLabel.cpp",
+                   "widget/mixxxgame/GameWidget.cpp",
+                   "widget/mixxxgame/Hairclipper.cpp",
+                   "widget/mixxxgame/Pixmap.cpp",
+                   "widget/mixxxgame/TrackPixmaps.cpp",
 
                    "musicbrainz/network.cpp",
                    "musicbrainz/tagfetcher.cpp",

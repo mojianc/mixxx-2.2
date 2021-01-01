@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="226px" height="40px" viewBox="0 0 226 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61.2 (89653) - https://sketch.com -->
+    <title>mdpi/MASTER-音量进度</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M158,26.5135135 L158,39.7702703 L156,39.7702703 L156,26.5135135 L158,26.5135135 Z M136,26.6756757 L136,39.7702703 L134,39.7702703 L134,26.6756757 L136,26.6756757 Z M180,26.6756757 L180,39.7702703 L178,39.7702703 L178,26.6756757 L180,26.6756757 Z M114,26.8378378 L114,39.7702703 L112,39.7702703 L112,26.8378378 L114,26.8378378 Z M202,26.8378378 L202,39.7702703 L200,39.7702703 L200,26.8378378 L202,26.8378378 Z M92,27 L92,39.7702703 L90,39.7702703 L90,27 L92,27 Z M70,27 L70,39.7702703 L68,39.7702703 L68,27 L70,27 Z M48,27 L48,39.7702703 L46,39.7702703 L46,27 L48,27 Z M26,27 L26,39.7702703 L24,39.7702703 L24,27 L26,27 Z M4,-2.94875235e-13 L4,39.7702703 L0,39.7702703 L0,-2.94875235e-13 L4,-2.94875235e-13 Z M226,-2.94875235e-13 L226,39.7702703 L222,39.7702703 L222,-2.94875235e-13 L226,-2.94875235e-13 Z" id="path-1"></path>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="DROP-DJ" transform="translate(-1167.000000, -398.000000)">
+            <g id="中央控制区" transform="translate(1004.000000, 368.000000)">
+                <g id="MASTER-音量进度" transform="translate(163.000000, 30.000000)">
+                    <g id="Rectangle">
+                        <mask id="mask-2" fill="white">
+                            <use xlink:href="#path-1"></use>
+                        </mask>
+                        <use id="Mask" fill="#FFFFFF" fill-rule="nonzero" opacity="0.248163132" xlink:href="#path-1"></use>
+                        <rect fill="#FD6700" fill-rule="nonzero" mask="url(#mask-2)" x="0" y="0" width="226" height="40"></rect>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

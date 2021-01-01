@@ -29,6 +29,55 @@
         <file>images/mixxx_icon.svg</file> <!-- icon in 'About' dialog -->
         <file>images/mixxx-icon-logo-symbolic.svg</file> <!-- default launch image -->
         <file>images/skin_preview_placeholder.png</file>
+		<file>images/img/bg.png</file>
+        <file>images/img/Btn1-Blue.png</file>
+        <file>images/img/Btn1-Blue-Tip.png</file>
+        <file>images/img/Btn1-Click.png</file>
+        <file>images/img/Btn2-Click.png</file>
+        <file>images/img/Btn2-Yellow.png</file>
+        <file>images/img/Btn2-Yellow-Tip.png</file>
+        <file>images/img/Btn3-Blue.png</file>
+        <file>images/img/Btn3-Blue-Tip.png</file>
+        <file>images/img/Btn3-Click.png</file>
+        <file>images/img/Btn4-Click.png</file>
+        <file>images/img/Btn4-Yellow.png</file>
+        <file>images/img/Btn4-Yellow-Tip.png</file>
+        <file>images/img/Button.png</file>
+        <file>images/img/Clicked.png</file>
+        <file>images/img/dishes.png</file>
+        <file>images/img/Game-BG.png</file>
+        <file>images/img/Line.png</file>
+        <file>images/img/slider/arrows_heng.png</file>
+        <file>images/img/slider/arrows_shu.png</file>
+        <file>images/img/slider/glide.png</file>
+        <file>images/img/slider/original.png</file>
+        <file>images/img/slider/triangle_down.png</file>
+        <file>images/img/slider/triangle_left.png</file>
+        <file>images/img/Track1Btn.png</file>
+        <file>images/img/Track1BtnClick.png</file>
+        <file>images/img/Track1Left.png</file>
+        <file>images/img/Track1Right.png</file>
+        <file>images/img/Track2Btn.png</file>
+        <file>images/img/Track2BtnClick.png</file>
+        <file>images/img/Track2Left.png</file>
+        <file>images/img/Track2Right.png</file>
+        <file>images/img/Track3Btn.png</file>
+        <file>images/img/Track3BtnClick.png</file>
+        <file>images/img/Track3Left.png</file>
+        <file>images/img/Track3Right.png</file>
+        <file>images/img/Track4Btn.png</file>
+        <file>images/img/Track4BtnClick.png</file>
+        <file>images/img/Track4Left.png</file>
+        <file>images/img/Track4Right.png</file>
+        <file>images/img/Track2Up.png</file>
+        <file>images/img/Track2Down.png</file>
+        <file>images/img/Track4Down.png</file>
+        <file>images/img/Track4Up.png</file>
+        <file>images/img/slider/triangle_up.png</file>
+        <file>images/img/slider/triangle_right.png</file>
+        <file>images/img/MiddleBtn.png</file>
+        <file>images/img/MiddleBtnClick.png</file>
+        <file>images/img/MiddleBtnClick1.png</file>
         <file>images/preferences/ic_preferences_autodj.svg</file>
         <file>images/preferences/ic_preferences_bpmdetect.svg</file>
         <file>images/preferences/ic_preferences_broadcast.svg</file>

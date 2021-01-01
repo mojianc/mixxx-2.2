@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="112"
+   height="3"
+   viewBox="0 0 112 3"
+   version="1.1"
+   id="svg34"
+   sodipodi:docname="HLine.svg"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)">
+  <metadata
+     id="metadata38">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1440"
+     inkscape:window-height="837"
+     id="namedview36"
+     showgrid="false"
+     inkscape:zoom="2.6339286"
+     inkscape:cx="34.928814"
+     inkscape:cy="1.7762714"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg34" />
+  <!-- Generator: Sketch 61.2 (89653) - https://sketch.com -->
+  <desc
+     id="desc4">Created with Sketch.</desc>
+  <defs
+     id="defs14">
+    <rect
+       id="path-1"
+       x="0"
+       y="0"
+       width="112"
+       height="40"
+       rx="8" />
+    <filter
+       x="-0.0069999998"
+       y="-0.018999999"
+       width="1.013"
+       height="1.038"
+       filterUnits="objectBoundingBox"
+       id="filter-2">
+      <feOffset
+         dx="0"
+         dy="1.5"
+         in="SourceAlpha"
+         result="shadowOffsetInner1"
+         id="feOffset7" />
+      <feComposite
+         in="shadowOffsetInner1"
+         in2="SourceAlpha"
+         operator="arithmetic"
+         k2="-1"
+         k3="1"
+         result="shadowInnerInner1"
+         id="feComposite9"
+         k1="0"
+         k4="0" />
+      <feColorMatrix
+         values="0 0 0 0 1   0 0 0 0 1   0 0 0 0 1  0 0 0 0.145210598 0"
+         type="matrix"
+         in="shadowInnerInner1"
+         id="feColorMatrix11" />
+    </filter>
+  </defs>
+  <rect
+     style="opacity:1;fill:#000000;fill-opacity:1;stroke:#00ffff;stroke-width:0;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+     id="rect4777"
+     width="117.69492"
+     height="7.5932202"
+     x="-1.5186441"
+     y="-2.3152542" />
+</svg>

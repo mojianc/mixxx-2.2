@@ -1,0 +1,2422 @@
+<!--
+Starting Skin, Clone and edit it to make your own Skin for Mixxx
+www.mixxx.org
+
+You can find a tutorial in this folder : tutorial.md
+
+See changelog.md for the list of changes.
+-->
+
+
+<!--
+
+Discovery of Skining Mixxx.
+Here you will find some Helpful information.
+
+Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
+-->
+
+<!DOCTYPE skin>
+<!-- Skin opening tag -->
+<skin>
+
+    <manifest>
+        <title>Drop_DJ skin</title>
+        <author>DROP</author>
+        <version>0.1</version>
+        <description>None</description>
+        <language>en</language>
+        <license>None</license>
+    </manifest>
+
+    <ObjectName>Mixxx</ObjectName>
+    <Background><BgColor>#242629</BgColor></Background>
+    <Style src="skin:style.qss"/>
+    <MinimumSize>1920,1000</MinimumSize>
+    <SizePolicy>me,me</SizePolicy>
+    <Layout>vertical</Layout>
+    <scalemode>STRETCH_ASPECT</scalemode>
+
+    <Children>
+
+	<Splitter>
+	<Size>1080me,720me</Size>
+	<SplitSizesConfigKey>[$skin_name],$config_key</SplitSizesConfigKey>
+        <SplitSizes>2,3,5</SplitSizes>
+	<Orientation>vertical</Orientation>
+	<Collapsible>0,0,0</Collapsible>
+        <Background><BgColor>#242629</BgColor></Background>
+	<Children>
+
+<!--上-->  
+ <WidgetGroup>
+                <ObjectName>WaveformGroup</ObjectName>
+                <Property>test</Property>
+                <Pos>0,0</Pos>
+                <Size>100me,150f</Size>
+                <SizePolicy>me,me</SizePolicy>
+                <Layout>vertical</Layout>
+                <Children>
+                    <WidgetGroup>
+                        <SizePolicy>me,me</SizePolicy>
+                        <Layout>vertical</Layout>
+                        <Children>
+
+<WidgetGroup>
+<BgColor>#242629</BgColor>
+<ObjectName>Space</ObjectName>
+<Size>100me,10f</Size>
+<label></label>
+</WidgetGroup>
+
+                        <Visual>
+                        <Size>100me,60f</Size>
+                        <BgColor>#000000</BgColor>
+                        <Tooltip>Channel1 waveform</Tooltip>
+                        <Channel>1</Channel>
+
+                        <Mark>
+                        <Control>cue_point</Control>
+                        <Text>CUE</Text>
+                        </Mark>
+                        <MarkRange>
+                        <StartControl>loop_start_position</StartControl>
+                        <EndControl>loop_end_position</EndControl>
+                        <EnabledControl>loop_enabled</EnabledControl>
+                        </MarkRange>
+                        <Mark>
+                        <Control>loop_start_position</Control>
+                        <Text>IN</Text>
+                        </Mark>
+                        <Mark>
+                        <Control>loop_end_position</Control>
+                        <Text>OUT</Text>
+                        </Mark>
+                        <Mark>
+                        <Control>hotcue_1_position</Control>
+						<ObjectName>HotcueButton_Deck1_hotcue1</ObjectName>
+                        <Text>HOTCUE 1</Text>
+                        <Pixmap>标记1-左.png</Pixmap>
+                        <Align>center</Align>
+                        <Color>#FF0000</Color>
+                        <TextColor>#FFFFFF</TextColor>
+                        </Mark>
+                        <Mark>
+                        <Control>hotcue_2_position</Control>
+						<ObjectName>HotcueButton_Deck1_hotcue2</ObjectName>
+                        <Text>HOTCUE 2</Text>
+                        <Pixmap>标记2-左.png</Pixmap>
+                        <Align>center</Align>
+                        <Color>#FF0000</Color>
+                        <TextColor>#FFFFFF</TextColor>
+                        </Mark>
+                        <Mark>
+                        <Control>hotcue_3_position</Control>
+						<ObjectName>HotcueButton_Deck1_hotcue3</ObjectName>
+                        <Text>HOTCUE 3</Text>
+                        <Pixmap>标记3-左.png</Pixmap>
+                        <Align>center</Align>
+                        <Color>#FF00FF</Color>
+                        <TextColor>#FFFFFF</TextColor>
+                        </Mark>
+                        <Mark>
+                        <Control>hotcue_4_position</Control>
+						<ObjectName>HotcueButton_Deck1_hotcue4</ObjectName>
+                        <Text>HOTCUE 4</Text>
+                        <Pixmap>标记4-左.png</Pixmap>
+                        <Align>center</Align>
+                        <Color>#FF00FF</Color>
+                        <TextColor>#FFFFFF</TextColor>
+                        </Mark>
+                        </Visual>
+
+<WidgetGroup>
+<BgColor>#242629</BgColor>
+<ObjectName>Space</ObjectName>
+<Size>100me,20f</Size>
+<label></label>
+</WidgetGroup>
+
+                        <Visual>
+                        <Size>100me,60f</Size>
+                        <BgColor>#000000</BgColor>
+                        <Tooltip>Channel2 waveform</Tooltip>
+                        <Channel>2</Channel>
+
+                        <Mark>
+                        <Control>cue_point</Control>
+                        <Text>CUE</Text>
+                        </Mark>
+                        <MarkRange>
+                        <StartControl>loop_start_position</StartControl>
+                        <EndControl>loop_end_position</EndControl>
+                        <EnabledControl>loop_enabled</EnabledControl>
+                        </MarkRange>
+                        <Mark>
+                        <Control>loop_start_position</Control>
+                        <Text>IN</Text>
+                        </Mark>
+                        <Mark>
+                        <Control>loop_end_position</Control>
+                        <Text>OUT</Text>
+                        </Mark>
+                        <Mark>
+                        <Control>hotcue_1_position</Control>
+						<ObjectName>HotcueButton_Deck2_hotcue1</ObjectName>
+                        <Text>HOTCUE 1</Text>
+                        <Pixmap>标记1-右.png</Pixmap>
+                        <Align>center</Align>
+                        <Color>#0033FF</Color>
+                        <TextColor>#FFFFFF</TextColor>
+                        </Mark>
+                        <Mark>
+                        <Control>hotcue_2_position</Control>
+						<ObjectName>HotcueButton_Deck2_hotcue2</ObjectName>
+                        <Text>HOTCUE 2</Text>
+                        <Pixmap>标记2-右.png</Pixmap>
+                        <Align>center</Align>
+                        <Color>#FF0000</Color>
+                        <TextColor>#FFFFFF</TextColor>
+                        </Mark>
+                        <Mark>
+                        <Control>hotcue_3_position</Control>
+						<ObjectName>HotcueButton_Deck2_hotcue3</ObjectName>
+                        <Text>HOTCUE 3</Text>
+                        <Pixmap>标记3-右.png</Pixmap>
+                        <Align>center</Align>
+                        <Color>#FF00FF</Color>
+                        <TextColor>#FFFFFF</TextColor>
+                        </Mark>
+                        <Mark>
+                        <Control>hotcue_4_position</Control>
+						<ObjectName>HotcueButton_Deck2_hotcue4</ObjectName>
+                        <Text>HOTCUE 4</Text>
+                        <Pixmap>标记4-右.png</Pixmap>
+                        <Align>center</Align>
+                        <Color>#FF00FF</Color>
+                        <TextColor>#FFFFFF</TextColor>
+                        </Mark>
+
+                        </Visual>
+
+                        </Children>
+                    </WidgetGroup>
+
+                    <WidgetGroup>
+                    <ObjectName>Space</ObjectName>
+                    <Size>30me,3f</Size>
+                    <BackPath>HLine.svg</BackPath>
+                    </WidgetGroup>
+
+                </Children>
+            </WidgetGroup>
+
+<!--中-->   <WidgetGroup>
+                <!-- <Pos>0,80</Pos> -->
+                <!-- <Size>1000me,400me</Size> -->
+                <SizePolicy>me,me</SizePolicy>
+                <Layout>horizontal</Layout>
+                <Children>
+
+ <!--中左-->  <WidgetGroup>
+                <ObjectName>Channel1Group</ObjectName>
+                <SizePolicy>me,me</SizePolicy>
+                <Layout>vertical</Layout>
+                <Children>
+                <WidgetGroup>
+                <Size>me,50f</Size>
+                <SizePolicy>me,me</SizePolicy>
+                <Layout>horizontal</Layout>
+                <Children>
+
+                <CoverArt>
+                <Size>50f,50f</Size>
+                <Connection>
+                <ConfigKey persist="true">[Library],show_coverart</ConfigKey>
+                <BindProperty>visible</BindProperty>
+                </Connection>
+                </CoverArt>
+
+                <WidgetGroup>
+                <SizePolicy>me,me</SizePolicy>
+                <Layout>vertical</Layout>
+                <Children>
+
+                <TrackProperty>
+                <Size>me,30f</Size>
+                <BgColor>#242629</BgColor>
+                <Alignment>left</Alignment>
+                <Elide>right</Elide>
+                <Property>title</Property>
+                <Channel>1</Channel>
+                </TrackProperty>
+
+                <Overview>
+                <Tooltip>Channel1 controler</Tooltip>
+                <BgColor>#242629</BgColor>
+                <Channel>1</Channel>
+                <SizePolicy>me,me</SizePolicy>
+                <Connection>
+                <ConfigKey>[Channel1],playposition</ConfigKey>
+                </Connection>
+                </Overview>
+
+                </Children>
+                </WidgetGroup>
+
+                <WidgetGroup>
+                <Size>130f,50f</Size>
+                <SizePolicy>me,me</SizePolicy>
+                <Layout>horizontal</Layout>
+                <Children>
+
+                <WidgetGroup>
+                <SizePolicy>me,me</SizePolicy>
+                <Layout>vertical</Layout>
+                <Children>
+
+                <NumberBpm>
+                <Style>QLabel{ font: bold 20px; background-color: transparent; }</Style>
+                <ObjectName>Channel1bpmValue</ObjectName>
+                <Tooltip>Channel1 bpm</Tooltip>
+                <Channel>1</Channel>
+                <Alignment>left</Alignment>
+                <NumberOfDigits>2</NumberOfDigits>
+                <Connection>
+                <ConfigKey>[Channel1],bpm</ConfigKey>
+                </Connection>
+                </NumberBpm>
+                <NumberPos>
+                <Style>QLabel{ font: bold 18px; background-color: transparent; }</Style>
+                <ObjectName>myFont</ObjectName>
+                <Tooltip>Channel1 emb</Tooltip>
+                <Channel>1</Channel>
+                <Alignment>left</Alignment>
+                <NumberOfDigits>2</NumberOfDigits>
+                <Connection>
+                <ConfigKey>[Channel1],playposition</ConfigKey>
+                </Connection>
+                </NumberPos>
+
+                </Children>
+                </WidgetGroup>
+
+                <WidgetGroup>
+                <SizePolicy>me,me</SizePolicy>
+                <Layout>vertical</Layout>
+                <Children>
+                <WidgetGroup>
+                <ObjectName>Space</ObjectName>
+                <Size>30me,10f</Size>
+                <label></label>
+                </WidgetGroup>
+                <Label>
+                <Style>QLabel{ font: BankGothic Md BT; background-color: transparent; }</Style>
+                <Size>40f,10me</Size>
+                <ObjectName>myFont</ObjectName>
+                <BgColor>#242629</BgColor>
+                <Text>BPM</Text>
+                </Label>
+                <Label>
+                <Style>QLabel{ font: BankGothic Md BT; background-color: transparent; }</Style>
+                <Size>40f,10me</Size>
+                <ObjectName>myFont</ObjectName>
+                <BgColor>#242629</BgColor>
+                <Text>EBM</Text>
+                </Label>
+                </Children>
+                </WidgetGroup>
+
+                </Children>
+                </WidgetGroup>
+                </Children>
+                </WidgetGroup>
+<!-- 小波形下方的空白 -->
+<WidgetGroup>
+<ObjectName>Space</ObjectName>
+<Size>30me,10f</Size>
+<label></label>
+</WidgetGroup>
+
+<WidgetGroup>
+<ObjectName>Space</ObjectName>
+<Size>30me,3f</Size>
+<BackPath>HLine.svg</BackPath>
+</WidgetGroup>
+
+<!-- 下拉菜单上方的空白 -->
+<WidgetGroup>
+<ObjectName>Space</ObjectName>
+<Size>30me,20f</Size>
+<label></label>
+</WidgetGroup>
+
+                <WidgetGroup>
+                <SizePolicy>me,me</SizePolicy>
+                <Layout>horizontal</Layout>
+                <Children>
+
+                <WidgetGroup>
+                <SizePolicy>me,me</SizePolicy>
+                <Layout>vertical</Layout>
+                <Children>
+
+                <WidgetGroup>
+                <SizePolicy>me,me</SizePolicy>
+                <Layout>horizontal</Layout>
+                <Children>
+
+                <EffectSelector>
+                <ObjectName>EffectsSelector</ObjectName>
+                <Size>me,me</Size>
+                <EffectRack>1</EffectRack>
+                <EffectUnit><Variable name="unit"/></EffectUnit>
+                <Effect><Variable name="effect"/></Effect>
+                <Elide>middle</Elide>
+                </EffectSelector>
+
+                <WidgetGroup>
+                <Size>16f,16f</Size>
+                </WidgetGroup>
+
+                <EffectSelector>
+                <ObjectName>EffectsSelector</ObjectName>
+                <Size>me,me</Size>
+                <EffectRack>1</EffectRack>
+                <EffectUnit><Variable name="unit"/></EffectUnit>
+                <Effect><Variable name="effect"/></Effect>
+                <Elide>middle</Elide>
+                </EffectSelector>
+
+                <WidgetGroup>
+                <Size>16f,16f</Size>
+                </WidgetGroup>
+
+                <EffectSelector>
+                <ObjectName>EffectsSelector</ObjectName>
+                <Size>me,me</Size>
+                <EffectRack>1</EffectRack>
+                <EffectUnit><Variable name="unit"/></EffectUnit>
+                <Effect><Variable name="effect"/></Effect>
+                <Elide>middle</Elide>
+                </EffectSelector>
+
+                </Children>
+                </WidgetGroup>
+
+                <WidgetGroup>
+                <Size>16f,16f</Size>
+                </WidgetGroup>
+
+                <WidgetGroup>
+                <SizePolicy>me,me</SizePolicy>
+                <Layout>horizontal</Layout>
+                <Children>
+
+                <PushButton>
+                <Size>20me,40me</Size>
+                <NumberStates>1</NumberStates>
+                <State>
+                <Number>0</Number>
+                <Pressed scalemode="STRETCH">C区域\FX-左-提示.png</Pressed>
+                <Unpressed scalemode="STRETCH">C区域\FX-1.png</Unpressed>
+                </State>
+                <!--
+                <Connection>
+                <ConfigKey>[Channelx],repeat</ConfigKey>
+                </Connection>
+                -->
+                </PushButton>
+
+                <WidgetGroup>
+                <Size>16f,16f</Size>
+                </WidgetGroup>
+
+                <PushButton>
+                <Size>20me,40me</Size>
+                <NumberStates>1</NumberStates>
+                <State>
+                <Number>0</Number>
+                <Pressed scalemode="STRETCH">C区域\FX-左-提示.png</Pressed>
+                <Unpressed scalemode="STRETCH">C区域\FX-1.png</Unpressed>
+                </State>
+                <!--
+                <Connection>
+                <ConfigKey>[Channelx],repeat</ConfigKey>
+                </Connection>
+                -->
+                </PushButton>
+
+                <WidgetGroup>
+                <Size>16f,16f</Size>
+                </WidgetGroup>
+
+                <PushButton>
+                <Size>20me,40me</Size>
+                <NumberStates>1</NumberStates>
+                <State>
+                <Number>0</Number>
+                <Pressed scalemode="STRETCH">C区域\FX-左-提示.png</Pressed>
+                <Unpressed scalemode="STRETCH">C区域\FX-1.png</Unpressed>
+                </State>
+                <!--
+                <Connection>
+                <ConfigKey>[Channelx],repeat</ConfigKey>
+                </Connection>
+                -->
+                </PushButton>
+
+                </Children>
+                </WidgetGroup>
+
+            <WidgetGroup>
+              <ObjectName>Space</ObjectName>
+              <Size>300me,30f</Size>
+              <label></label>
+            </WidgetGroup>
+
+                <WidgetGroup>
+                <SizePolicy>me,me</SizePolicy>
+                <Layout>horizontal</Layout>
+                <Children>
+
+                <WidgetGroup>
+                <SizePolicy>me,me</SizePolicy>
+                <Layout>vertical</Layout>
+                <Children>
+                <WidgetGroup>
+                <SizePolicy>me,me</SizePolicy>
+                <Layout>horizontal</Layout>
+                <Children>
+
+                <PushButton>
+				<Size>51.2f,32f</Size>
+                <TooltipId>repeat</TooltipId>
+                <NumberStates>1</NumberStates>
+                <State>
+                <Number>0</Number>
+                <Pressed scalemode="STRETCH">按钮1-点击.png</Pressed>
+                <Unpressed scalemode="STRETCH">按钮1-默认.png</Unpressed>
+                </State>
+                <!--
+                <Connection>
+                <ConfigKey>[Channelx],repeat</ConfigKey>
+                </Connection>
+                -->
+                </PushButton>
+
+                <WidgetGroup>
+                <Size>16f,16f</Size>
+                </WidgetGroup>
+
+                <PushButton>
+                <TooltipId>repeat</TooltipId>
+                <Size>51.2f,32f</Size>
+                <NumberStates>1</NumberStates>
+                <State>
+                <Number>0</Number>
+                <Pressed scalemode="STRETCH">按钮1-点击.png</Pressed>
+                <Unpressed scalemode="STRETCH">按钮1-默认.png</Unpressed>
+                </State>
+                <!--
+                <Connection>
+                <ConfigKey>[Channelx],repeat</ConfigKey>
+                </Connection>
+                -->
+                </PushButton>
+
+                </Children>
+                </WidgetGroup>
+
+                <WidgetGroup>
+                <Size>1f,24f</Size>
+                </WidgetGroup>
+
+                <WidgetGroup>
+                <SizePolicy>me,me</SizePolicy>
+                <Layout>horizontal</Layout>
+                <Children>
+
+                <PushButton>
+                <TooltipId>repeat</TooltipId>
+				<Size>51.2f,32f</Size>
+                <NumberStates>1</NumberStates>
+                <State>
+                <Number>0</Number>
+                <Pressed scalemode="STRETCH">按钮1-点击.png</Pressed>
+                <Unpressed scalemode="STRETCH">按钮1-默认.png</Unpressed>
+                </State>
+                <!--
+                <Connection>
+                <ConfigKey>[Channelx],repeat</ConfigKey>
+                </Connection>
+                -->
+                </PushButton>
+
+                <WidgetGroup>
+                <Size>16f,16f</Size>
+                </WidgetGroup>
+
+                <PushButton>
+                <TooltipId>repeat</TooltipId>
+                <Size>51.2f,32f</Size>
+                <NumberStates>1</NumberStates>
+                <State>
+                <Number>0</Number>
+                <Pressed scalemode="STRETCH">按钮1-点击.png</Pressed>
+                <Unpressed scalemode="STRETCH">按钮1-默认.png</Unpressed>
+                </State>
+                <!--
+                <Connection>
+                <ConfigKey>[Channelx],repeat</ConfigKey>
+                </Connection>
+                -->
+                </PushButton>
+
+                </Children>
+                </WidgetGroup>
+                </Children>
+                </WidgetGroup>
+
+<!-- <WidgetGroup> -->
+<!-- <SizePolicy>me,me</SizePolicy> -->
+<!-- <Layout>vertical</Layout> -->
+<!-- <Children> -->
+
+<WidgetGroup>
+<ObjectName>Space</ObjectName>
+<Size>40f,me</Size>
+<label></label>
+</WidgetGroup>
+
+<!-- <WidgetGroup> -->
+<!-- <Layout>vertical</Layout> -->
+<!-- <Children> -->
+
+        <SliderComposed>
+        <!-- <SizePolicy>me,me</SizePolicy> -->
+        <Size>200f,70f</Size>
+        <Slider scalemode="STRETCH">滑动-控件-背板.png</Slider>
+		<Handle scalemode="STRETCH">滑动-控件-滑块-点击.png</Handle>
+        <!-- <Slider >滑动-控件-背板.png</Slider> -->
+		<!-- <Handle >滑动-控件-滑块-点击.png</Handle> -->
+        <Horizontal>true</Horizontal>
+         <Connection>
+       <ConfigKey>[Channel11],volume</ConfigKey>
+       <EmitOnDownPress>false</EmitOnDownPress>
+       </Connection>
+       </SliderComposed>
+<!-- </Children>	    -->
+<!-- </WidgetGroup> -->
+
+
+<WidgetGroup>
+<ObjectName>Space</ObjectName>
+<Size>30f,me</Size>
+<label></label>
+</WidgetGroup>
+
+<!-- </Children> -->
+<!-- </WidgetGroup> -->
+                </Children>
+                </WidgetGroup>
+
+<WidgetGroup>
+<ObjectName>Space</ObjectName>
+<Size>30me,20f</Size>
+<label></label>
+</WidgetGroup>
+
+                <WidgetGroup>
+                <SizePolicy>me,me</SizePolicy>
+                <Layout>horizontal</Layout>
+                <Children>
+
+                <PushButton>
+                <Size>60me,30me</Size>
+                <TooltipId>hotcue</TooltipId>
+                <NumberStates>1</NumberStates>
+                <State>
+                <Number>0</Number>
+                <Pressed scalemode="STRETCH">HOT_CUE-左-点击.png</Pressed>
+                <Unpressed scalemode="STRETCH">HOT_CUE-默认.png</Unpressed>
+                </State>
+                <Connection>
+                <ConfigKey>[Channel1],hotcue_Y_activate</ConfigKey>
+                <EmitOnDownPress>true</EmitOnDownPress>
+                <ButtonState>LeftButton</ButtonState>
+                </Connection>
+                <Connection>
+                <ConfigKey>[Channel1],hotcue_Y_activate</ConfigKey>
+                <EmitOnDownPress>false</EmitOnDownPress>
+                <ButtonState>LeftButton</ButtonState>
+                </Connection>
+                <Connection>
+                <ConfigKey>[Channel1],hotcue_Y_clear</ConfigKey>
+                <EmitOnDownPress>true</EmitOnDownPress>
+                <ButtonState>RightButton</ButtonState>
+                </Connection>
+                </PushButton>
+
+                <WidgetGroup>
+                <Size>16f,16f</Size>
+                </WidgetGroup>
+
+                <PushButton>
+                <Size>60me,30me</Size>
+                <TooltipId>repeat</TooltipId>
+                <NumberStates>1</NumberStates>
+                <State>
+                <Number>0</Number>
+                <Pressed scalemode="STRETCH">RUTO_LOOP-左-点击.png</Pressed>
+                <Unpressed scalemode="STRETCH">RUTO_LOOP-左-默认.png</Unpressed>
+                </State>
+                <Connection>
+                <ConfigKey>[Channel1],repeat</ConfigKey>
+                </Connection>
+                </PushButton>
+
+                <WidgetGroup>
+                <Size>16f,16f</Size>
+                </WidgetGroup>
+
+                <PushButton>
+                <Size>60me,30me</Size>
+                <TooltipId>loop_in</TooltipId>
+                <NumberStates>1</NumberStates>
+                <State>
+                <Number>0</Number>
+                <Pressed scalemode="STRETCH">MANURL_LOOP-左-点击.png</Pressed>
+                <Unpressed scalemode="STRETCH">MANURL_LOOP-左-默认.png</Unpressed>
+                </State>
+                <Connection>
+                <ConfigKey>[Channel1],loop_in</ConfigKey>
+                <EmitOnDownPress>true</EmitOnDownPress>
+                <ButtonState>LeftButton</ButtonState>
+                </Connection>
+                <Connection>
+                <ConfigKey>[Channel1],loop_in</ConfigKey>
+                <EmitOnDownPress>false</EmitOnDownPress>
+                <ButtonState>LeftButton</ButtonState>
+                </Connection>
+                <Connection>
+                <ConfigKey>[Channel1],loop_out</ConfigKey>
+                <EmitOnDownPress>true</EmitOnDownPress>
+                <ButtonState>RightButton</ButtonState>
+                </Connection>
+                <Connection>
+                <ConfigKey>[Channel1],loop_out</ConfigKey>
+                <EmitOnDownPress>false</EmitOnDownPress>
+                <ButtonState>RightButton</ButtonState>
+                </Connection>
+                </PushButton>
+
+                <WidgetGroup>
+                <Size>16f,16f</Size>
+                </WidgetGroup>
+
+                <PushButton>
+                <Size>60me,30me</Size>
+                <NumberStates>1</NumberStates>
+                <State>
+                <Number>0</Number>
+                <Pressed scalemode="STRETCH">SAMPLER-左-点击.png</Pressed>
+                <Unpressed scalemode="STRETCH">SAMPLER-默认.png</Unpressed>
+                </State>
+                <Connection>
+                <ConfigKey>[Channel1],show_samplers</ConfigKey>
+                </Connection>
+                </PushButton>
+
+                </Children>
+                </WidgetGroup>
+
+                <WidgetGroup>
+                <Size>16f,16f</Size>
+                </WidgetGroup>
+
+                <WidgetGroup>
+                <SizePolicy>me,me</SizePolicy>
+                <Layout>horizontal</Layout>
+                <Children>
+
+                <PushButton>
+                <Size>80me,60me</Size>
+                <TooltipId>repeat</TooltipId>
+                <NumberStates>1</NumberStates>
+                <State>
+                <Number>0</Number>
+                <Pressed scalemode="STRETCH">1-左-点击.png</Pressed>
+                <Unpressed scalemode="STRETCH">1-默认.png</Unpressed>
+                </State>
+                <Connection>
+                <ConfigKey>[Channel1],hotcue_1_activate</ConfigKey>
+                <EmitOnDownPress>true</EmitOnDownPress>
+                <ButtonState>LeftButton</ButtonState>
+                </Connection>
+                <Connection>
+                <ConfigKey>[Channel1],hotcue_1_activate</ConfigKey>
+                <EmitOnDownPress>false</EmitOnDownPress>
+                <ButtonState>LeftButton</ButtonState>
+                </Connection>
+                <Connection>
+                <ConfigKey>[Channel1],hotcue_1_clear</ConfigKey>
+                <EmitOnDownPress>true</EmitOnDownPress>
+                <ButtonState>RightButton</ButtonState>
+                </Connection>
+                </PushButton>
+
+                <WidgetGroup>
+                <Size>16f,16f</Size>
+                </WidgetGroup>
+
+                <PushButton>
+                <Size>80me,60me</Size>
+                <TooltipId>repeat</TooltipId>
+                <NumberStates>1</NumberStates>
+                <State>
+                <Number>0</Number>
+                <Pressed scalemode="STRETCH">2-左-点击.png</Pressed>
+                <Unpressed scalemode="STRETCH">2-默认.png</Unpressed>
+                </State>
+                <Connection>
+                <ConfigKey>[Channel1],hotcue_2_activate</ConfigKey>
+                <EmitOnDownPress>true</EmitOnDownPress>
+                <ButtonState>LeftButton</ButtonState>
+                </Connection>
+                <Connection>
+                <ConfigKey>[Channel1],hotcue_2_activate</ConfigKey>
+                <EmitOnDownPress>false</EmitOnDownPress>
+                <ButtonState>LeftButton</ButtonState>
+                </Connection>
+                <Connection>
+                <ConfigKey>[Channel1],hotcue_2_clear</ConfigKey>
+                <EmitOnDownPress>true</EmitOnDownPress>
+                <ButtonState>RightButton</ButtonState>
+                </Connection>
+                </PushButton>
+
+                <WidgetGroup>
+                <Size>16f,16f</Size>
+                </WidgetGroup>
+
+                <PushButton>
+                <Size>80me,60me</Size>
+                <TooltipId>repeat</TooltipId>
+                <NumberStates>1</NumberStates>
+                <State>
+                <Number>0</Number>
+                <Pressed scalemode="STRETCH">3-左-点击.png</Pressed>
+                <Unpressed scalemode="STRETCH">3-默认.png</Unpressed>
+                </State>
+                <Connection>
+                <ConfigKey>[Channel1],hotcue_3_activate</ConfigKey>
+                <EmitOnDownPress>true</EmitOnDownPress>
+                <ButtonState>LeftButton</ButtonState>
+                </Connection>
+                <Connection>
+                <ConfigKey>[Channel1],hotcue_3_activate</ConfigKey>
+                <EmitOnDownPress>false</EmitOnDownPress>
+                <ButtonState>LeftButton</ButtonState>
+                </Connection>
+                <Connection>
+                <ConfigKey>[Channel1],hotcue_3_clear</ConfigKey>
+                <EmitOnDownPress>true</EmitOnDownPress>
+                <ButtonState>RightButton</ButtonState>
+                </Connection>
+                </PushButton>
+
+                <WidgetGroup>
+                <Size>16f,16f</Size>
+                </WidgetGroup>
+
+                <PushButton>
+                <Size>80me,60me</Size>
+                <TooltipId>repeat</TooltipId>
+                <NumberStates>1</NumberStates>
+                <State>
+                <Number>0</Number>
+                <Pressed scalemode="STRETCH">4-左-点击.png</Pressed>
+                <Unpressed scalemode="STRETCH">4-默认.png</Unpressed>
+                </State>
+                <Connection>
+                <ConfigKey>[Channel1],hotcue_4_activate</ConfigKey>
+                <EmitOnDownPress>true</EmitOnDownPress>
+                <ButtonState>LeftButton</ButtonState>
+                </Connection>
+                <Connection>
+                <ConfigKey>[Channel1],hotcue_4_activate</ConfigKey>
+                <EmitOnDownPress>false</EmitOnDownPress>
+                <ButtonState>LeftButton</ButtonState>
+                </Connection>
+                <Connection>
+                <ConfigKey>[Channel1],hotcue_4_clear</ConfigKey>
+                <EmitOnDownPress>true</EmitOnDownPress>
+                <ButtonState>RightButton</ButtonState>
+                </Connection>
+                </PushButton>
+
+                </Children>
+                </WidgetGroup>
+
+                </Children>
+                </WidgetGroup>
+
+                <WidgetGroup>
+                <SizePolicy>me,me</SizePolicy>
+                <Layout>vertical</Layout>
+                <Children>
+
+                <WidgetGroup>
+                <SizePolicy>me,me</SizePolicy>
+                <Layout>horizontal</Layout>
+                <Children>
+
+                <WidgetGroup>
+                <SizePolicy>f,f</SizePolicy>
+                <BgColor>#242629</BgColor>
+                <Size>220me,220me</Size>
+                <Layout>horizontal</Layout>
+                <Children>
+
+<Label>
+<Size>20me,30f</Size>
+</Label>
+  		
+				<ObjectName> SpinnySingletonNoCover[Channel1]_handh </ObjectName>
+                <Spinny>
+                <Size>230f,230f</Size>
+                <Channel>1</Channel>
+                <PathBackground scalemode="STRETCH_ASPECT">D区域\光盘-背景-默认1.png</PathBackground>
+                <PathMask scalemode="STRETCH_ASPECT">D区域\光盘-背景-默认.png</PathMask>
+                <PathForeground scalemode="STRETCH_ASPECT">D区域\左光盘-线-提示.png</PathForeground>
+                <PathGhost scalemode="STRETCH_ASPECT">D区域\左光盘-线-提示.png</PathGhost>
+                <ShowCover>ture</ShowCover>
+                </Spinny>
+                </Children>
+                </WidgetGroup>
+       
+                <WidgetGroup>
+                <ObjectName>PitchControl</ObjectName>
+                <SizePolicy>me,me</SizePolicy>
+                <Layout>vertical</Layout>
+                <Children>
+
+<WidgetGroup>
+<Layout>horizontal</Layout>
+<Children>
+                <PushButton>
+				<ObjectName>KeylockButton_[Channel1]</ObjectName>
+                <TooltipId>keylock</TooltipId>
+				<Size>80f,32f</Size>
+                <NumberStates>2</NumberStates>
+				 <!-- <LeftClickIsPushButton>true</LeftClickIsPushButton> -->
+                <State>
+                <Number>0</Number>
+                <Pressed scalemode="STRETCH">KEY LOCK图标（F区域）\KEY LOCK-默认.png</Pressed>
+                <Unpressed scalemode="STRETCH">KEY LOCK图标（F区域）\KEY LOCK-默认.png</Unpressed>
+                </State>
+				 <State>
+                <Number>1</Number>
+                <Pressed scalemode="STRETCH">KEY LOCK图标（F区域）\KEY LOCK-界面左边-点击状态.png</Pressed>
+                <Unpressed scalemode="STRETCH">KEY LOCK图标（F区域）\KEY LOCK-界面左边-点击状态.png</Unpressed>
+                </State>
+				 <Connection>
+                <ConfigKey>[Channel1],keylock</ConfigKey>
+                </Connection>
+                </PushButton>
+
+</Children>
+</WidgetGroup>
+
+<WidgetGroup>
+<Layout>horizontal</Layout>
+<Children>
+<Label>
+<Size>20me,20f</Size>
+</Label>
+</Children>
+</WidgetGroup>
+<!-- 速度数值显示 -->
+<WidgetGroup>
+<Layout>horizontal</Layout>
+<Children>
+<label></label>
+
+                <NumberRate>
+                <Style>QLabel{ font: bold; background-color: transparent; }</Style>
+                <ObjectName>myFont</ObjectName>
+                <TooltipId>rate_display</TooltipId>
+                <Channel>1</Channel>
+                <Connection>
+                <ConfigKey>[Channel1],rate</ConfigKey>
+                </Connection>
+                </NumberRate>
+
+<label></label>
+</Children>
+</WidgetGroup>
+
+<WidgetGroup>
+<Layout>horizontal</Layout>
+<Children>
+<Label>
+<Size>20me,10f</Size>
+</Label>
+</Children>
+</WidgetGroup>
+
+<WidgetGroup>
+<Layout>horizontal</Layout>
+<Children>
+<label></label>
+
+                <SliderComposed>
+                <Size>40f,160me</Size>
+                <Handle scalemode="STRETCH">音量-滑块-默认.png</Handle>
+                <Slider scalemode="STRETCH">节拍速度-背板.png</Slider>
+                <Horizontal>false</Horizontal>
+                <Connection>
+                <ConfigKey>[Channel1],rate</ConfigKey>
+                <EmitOnDownPress>false</EmitOnDownPress>
+                </Connection>
+                </SliderComposed>
+
+<label></label>
+</Children>
+</WidgetGroup>
+
+                </Children>
+                </WidgetGroup>
+                </Children>
+                </WidgetGroup>
+
+                <WidgetGroup>
+                <SizePolicy>me,me</SizePolicy>
+                <Layout>horizontal</Layout>
+                <Children>
+                <Label>
+                    <Size>130me,30f</Size>
+                </Label>
+                <PushButton>
+				<ObjectName>PlayToggle_Deck1_hotcue</ObjectName>
+                <NumberStates>2</NumberStates>
+                <State>
+                    <Number>0</Number>
+                    <Pressed>右-左-点击.png</Pressed>
+                    <Unpressed>右-左-默认.png</Unpressed>
+                </State>
+                <State>
+                    <Number>1</Number>
+                    <Pressed>右-左-点击.png</Pressed>
+                    <Unpressed>右-左-默认.png</Unpressed>
+                </State>
+                <Connection>
+                    <ConfigKey>[Channel1],play</ConfigKey>
+                    <EmitOnDownPress>true</EmitOnDownPress>
+                    <ButtonState>LeftButton</ButtonState>
+                </Connection>
+                <Connection>
+                    <ConfigKey>[Channel1],cue_set</ConfigKey>
+                    <EmitOnDownPress>true</EmitOnDownPress>
+                    <ButtonState>RightButton</ButtonState>
+                </Connection>
+                <Connection>
+                    <ConfigKey>[Channel1],play_indicator</ConfigKey>
+                </Connection>
+                </PushButton>
+
+                <Label>
+                    <Size>10me,30f</Size>
+                </Label>
+
+                <PushButton>
+				<ObjectName>DeckSync_[Channel1]</ObjectName>
+                <Tooltip>sync</Tooltip>
+                <NumberStates>1</NumberStates>
+                <State>
+                <Number>0</Number>
+                <Pressed>SYNC-左-点击.png</Pressed>
+                <Unpressed>SYNC-左-默认.png</Unpressed>
+                </State>
+                <Connection>
+                <ConfigKey>[Channel1],beatsync</ConfigKey>
+                <EmitOnDownPress>true</EmitOnDownPress>
+                <ButtonState>LeftButton</ButtonState>
+                </Connection>
+                </PushButton>
+
+                <Label>
+                    <Size>10me,30f</Size>
+                </Label>
+
+                <PushButton>
+                <TooltipId>cue_default_cue_gotoandstop</TooltipId>
+                <NumberStates>2</NumberStates>
+                <State>
+                <Number>0</Number>
+                <Pressed>CUE-左-点击.png</Pressed>
+                <Unpressed>CUE-左-默认.png</Unpressed>
+                </State>
+                <State>
+                <Number>1</Number>
+                <Pressed>CUE-左-点击.png</Pressed>
+                <Unpressed>CUE-左-默认.png</Unpressed>
+                </State>
+                <Connection>
+                <ConfigKey>[Channel1],cue_default</ConfigKey>
+                <EmitOnDownPress>true</EmitOnDownPress>
+                <ButtonState>LeftButton</ButtonState>
+                </Connection>
+                <Connection>
+                <ConfigKey>[Channel1],cue_gotoandstop</ConfigKey>
+                <EmitOnDownPress>true</EmitOnDownPress>
+                <ButtonState>RightButton</ButtonState>
+                </Connection>
+                <Connection>
+                <ConfigKey>[Channel1],cue_indicator</ConfigKey>
+                </Connection>
+                </PushButton>
+
+                <Label>
+                <Size>10me,30f</Size>
+                </Label>
+
+                </Children>
+                </WidgetGroup>
+
+                </Children>
+                </WidgetGroup>
+
+                </Children>
+                </WidgetGroup>
+                </Children>
+                </WidgetGroup>
+
+				
+                <WidgetGroup>
+                    <ObjectName>Space</ObjectName>
+                    <Size>3f,130me</Size>
+                    <BackPath>VLine.svg</BackPath>
+                </WidgetGroup>
+
+
+				
+<!--中-->       <WidgetGroup>
+                <Size>180me,me</Size>
+                <SizePolicy>me,me</SizePolicy>
+                <Layout>vertical</Layout>
+                <Children>
+				
+                <WidgetGroup>
+                <Size>180me,me</Size>
+                <SizePolicy>me,me</SizePolicy>
+                <Layout>horizontal</Layout>
+                <Children>
+
+                <WidgetGroup>
+                <SizePolicy>me,me</SizePolicy>
+                <Layout>vertical</Layout>
+                <Children>
+
+                <WidgetGroup>
+                <Size>16f,16f</Size>
+                </WidgetGroup>
+
+                <Knob>
+                <NumberStates>25</NumberStates>
+                <Path>F区域\八个旋钮默认状态\HI-中间旋钮-%1.png</Path>
+                <Connection>
+                <ConfigKey>[Channel1],pregain</ConfigKey>
+                </Connection>
+                </Knob>
+
+                <WidgetGroup>
+                <Size>20f,20f</Size>
+                </WidgetGroup>
+
+                <Knob>
+                <NumberStates>25</NumberStates>
+                <Path>F区域\八个旋钮默认状态\HI-中间旋钮-%1.png</Path>
+                <Connection>
+                <ConfigKey>[Channel1],filterHigh</ConfigKey>
+                </Connection>
+                </Knob>
+
+                <WidgetGroup>
+                <Size>20f,20f</Size>
+                </WidgetGroup>
+
+                <Knob>
+                <NumberStates>25</NumberStates>
+                <Path>F区域\八个旋钮默认状态\HI-中间旋钮-%1.png</Path>
+                <Connection>
+                <ConfigKey>[Channel1],filterMid</ConfigKey>
+                </Connection>
+                </Knob>
+
+                <WidgetGroup>
+                <Size>20f,20f</Size>
+                </WidgetGroup>
+
+                <Knob>
+                <NumberStates>25</NumberStates>
+                <Path>F区域\八个旋钮默认状态\HI-中间旋钮-%1.png</Path>
+                <Connection>
+                <ConfigKey>[Channel1],filterLow</ConfigKey>
+                </Connection>
+                </Knob>
+
+                <WidgetGroup>
+                <Size>8f,8f</Size>
+                </WidgetGroup>
+
+                </Children>
+                </WidgetGroup>
+				
+             <!-- 左频率旋钮与耳机音量间隔 -->
+             <Label>
+                <Size>25f,me</Size>
+             </Label>
+				
+
+                <WidgetGroup>
+                <SizePolicy>me,me</SizePolicy>
+                <Layout>vertical</Layout>
+                <Children>
+
+              <!-- master和边缘距离 -->
+                <WidgetGroup>
+                <Size>me,24f</Size>
+                </WidgetGroup>
+
+                <SliderComposed>
+                <Size>226f,40f</Size>
+                <Slider scalemode="STRETCH">MASTER-音量进度1.png</Slider>
+                <Horizontal>true</Horizontal>
+                <Connection>
+                <ConfigKey>[Master],volume</ConfigKey>
+                <EmitOnDownPress>false</EmitOnDownPress>
+                </Connection>
+                </SliderComposed>
+				
+                <!-- master和headphone间距 -->
+                <WidgetGroup>
+                <Size>me,25f</Size>
+                </WidgetGroup>
+
+                <SliderComposed>
+                <Size>226f,40f</Size>
+                <Slider scalemode="STRETCH">HEADPHONE-音量进度1.png</Slider>
+                <Horizontal>true</Horizontal>
+                <Connection>
+                <ConfigKey>[Master],headVolume</ConfigKey>
+                <EmitOnDownPress>false</EmitOnDownPress>
+                </Connection>
+                </SliderComposed>
+
+                <!-- 音量条和headphone间距 -->
+                <WidgetGroup>
+                <Size>me,35f</Size>
+                </WidgetGroup>
+
+                <WidgetGroup>
+                <MaximumSize>-1,150</MaximumSize>
+                <Layout>horizontal</Layout>
+                <Children>
+
+                <SliderComposed>
+                <Size>me,me</Size>
+                <Handle scalemode="STRETCH">音量-滑块-默认.png</Handle>
+                <Slider scalemode="STRETCH">音量-背景.png</Slider>
+                <Horizontal>ture</Horizontal>
+                <Connection>
+                <ConfigKey>[Channel1],volume</ConfigKey>
+                <EmitOnDownPress>false</EmitOnDownPress>
+                </Connection>
+                </SliderComposed>
+
+                <!-- 左音量和左跳动间隔 -->
+                <WidgetGroup>
+                <Size>25f,me</Size>
+                </WidgetGroup>
+					
+             <VuMeter>	
+                <Size>20f,175f</Size>			 
+               <PathVu scalemode="STRETCH">左音-亮化.png</PathVu>
+               <PathBack scalemode="STRETCH">音效-背景.png</PathBack>
+                <Connection>
+                <ConfigKey>[Channel1],VuMeter</ConfigKey>
+                </Connection>
+             </VuMeter>
+		     <VuMeter>
+              <Horizontal>false</Horizontal>
+              <PeakHoldSize>5</PeakHoldSize>
+              <PeakHoldTime>500</PeakHoldTime>
+              <PeakFallTime>50</PeakFallTime>
+              <PeakFallStep>2</PeakFallStep>
+              <Connection>
+                <ConfigKey>[Channel1],VuMeter</ConfigKey>
+              </Connection>
+	         </VuMeter>
+
+		<!-- 跳动声音条间隔 -->
+	    <WidgetGroup>
+              <Size>10f,me</Size>
+        </WidgetGroup>
+		
+         <VuMeter>
+		      <Size>20f,175f</Size>
+			  <PathVu scalemode="STRETCH">右音-亮化.png</PathVu>
+              <PathBack scalemode="STRETCH">音效-背景.png</PathBack>
+			   <Connection>
+                <ConfigKey>[Channel2],VuMeter</ConfigKey>
+               </Connection>
+	     </VuMeter>
+		 <VuMeter>
+              <Horizontal>false</Horizontal>
+              <PeakHoldSize>5</PeakHoldSize>
+              <PeakHoldTime>500</PeakHoldTime>
+              <PeakFallTime>50</PeakFallTime>
+              <PeakFallStep>2</PeakFallStep>
+              <Connection>
+                <ConfigKey>[Channel2],VuMeter</ConfigKey>
+              </Connection>
+          </VuMeter>
+
+                <!-- 右音量和右跳动间隔 -->
+                <WidgetGroup>
+                <Size>25f,me</Size>
+                </WidgetGroup>
+
+                <SliderComposed>
+                <Size>me,me</Size>
+                <Handle scalemode="STRETCH">音量-滑块-默认.png</Handle>
+                <Slider scalemode="STRETCH">音量-背景.png</Slider>
+                <Horizontal>ture</Horizontal>
+                <Connection>
+                <ConfigKey>[Channel2],volume</ConfigKey>
+                <EmitOnDownPress>false</EmitOnDownPress>
+                </Connection>
+                </SliderComposed>
+
+                </Children>
+                </WidgetGroup>
+
+                </Children>
+                </WidgetGroup>
+
+             <!-- 频率旋钮与耳机音量间隔 -->
+             <Label>
+                <Size>25f,me</Size>
+             </Label>
+
+                <WidgetGroup>
+                <SizePolicy>me,me</SizePolicy>
+                <Layout>vertical</Layout>
+                <Children>
+
+                <WidgetGroup>
+                <Size>16f,16f</Size>
+                </WidgetGroup>
+
+                <Knob>
+                <NumberStates>25</NumberStates>
+                <Path>F区域\八个旋钮默认状态\HI-中间旋钮-%1.png</Path>
+                <Connection>
+                <ConfigKey>[Channel2],pregain</ConfigKey>
+                </Connection>
+                </Knob>
+
+                <WidgetGroup>
+                <Size>16f,16f</Size>
+                </WidgetGroup>
+
+                <Knob>
+                <NumberStates>25</NumberStates>
+                <Path>F区域\八个旋钮默认状态\HI-中间旋钮-%1.png</Path>
+                <Connection>
+                <ConfigKey>[Channel2],filterHigh</ConfigKey>
+                </Connection>
+                </Knob>
+
+                <WidgetGroup>
+                <Size>16f,16f</Size>
+                </WidgetGroup>
+
+                <Knob>
+                <NumberStates>25</NumberStates>
+                <Path>F区域\八个旋钮默认状态\HI-中间旋钮-%1.png</Path>
+                <Connection>
+                <ConfigKey>[Channel2],filterMid</ConfigKey>
+                </Connection>
+                </Knob>
+
+                <WidgetGroup>
+                <Size>16f,16f</Size>
+                </WidgetGroup>
+
+                <Knob>
+                <NumberStates>25</NumberStates>
+                <Path>F区域\八个旋钮默认状态\HI-中间旋钮-%1.png</Path>
+                <Connection>
+                <ConfigKey>[Channel2],filterLow</ConfigKey>
+                </Connection>
+                </Knob>
+
+                <WidgetGroup>
+                <Size>16f,16f</Size>
+                </WidgetGroup>
+
+                </Children>
+                </WidgetGroup>
+            
+                </Children>
+                </WidgetGroup>
+				
+			<!-- 跳动声音条下面的空白 -->
+             <WidgetGroup>
+                <Size>16f,16f</Size>
+             </WidgetGroup>
+			 
+                <WidgetGroup>
+                <ObjectName>Space</ObjectName>
+                <Size>30me,3f</Size>
+                <BackPath>HLine.svg</BackPath>
+                </WidgetGroup>
+			
+			<!-- 平衡器居中设置	 -->
+			<WidgetGroup>
+                <Size>me,6f</Size>
+            </WidgetGroup>
+			
+             <WidgetGroup>
+             <SizePolicy>me,me</SizePolicy>
+             <Layout>horizontal</Layout>
+             <Children>			
+			 <!-- <WidgetGroup> -->
+                <!-- <Size>160f,16f</Size> -->
+             <!-- </WidgetGroup> -->				
+			  <SliderComposed>
+              <TooltipId>crossfader</TooltipId>
+			  <Size>350f,50f</Size>
+              <Handle scalemode="STRETCH">平衡器-滑块-右-点击.png</Handle>
+              <Slider scalemode="STRETCH">平衡器-背景-默认.png</Slider>
+              <Horizontal>true</Horizontal>
+              <Connection>
+                <ConfigKey>[Master],crossfader</ConfigKey>
+                <EmitOnDownPress>false</EmitOnDownPress>
+              </Connection>
+              </SliderComposed>
+			  
+			  </Children>	
+			    </WidgetGroup>
+			  
+			  
+              </Children>
+               </WidgetGroup>
+
+                <WidgetGroup>
+                    <ObjectName>Space</ObjectName>
+                    <Size>3f,130me</Size>
+                    <BackPath>VLine.svg</BackPath>
+                </WidgetGroup>
+
+<!--右-->       <WidgetGroup>
+                <ObjectName>Channel1Group</ObjectName>
+                <SizePolicy>me,me</SizePolicy>
+                <Layout>vertical</Layout>
+                <Children>
+                <WidgetGroup>
+                <Size>me,50f</Size>
+                <SizePolicy>me,me</SizePolicy>
+                <Layout>horizontal</Layout>
+                <Children>
+
+                <WidgetGroup>
+                <Size>150f,50f</Size>
+                <SizePolicy>me,me</SizePolicy>
+                <Layout>horizontal</Layout>
+                <Children>
+
+                <WidgetGroup>
+                <SizePolicy>me,me</SizePolicy>
+                <Layout>vertical</Layout>
+                <Children>
+
+                <WidgetGroup>
+                <ObjectName>Space</ObjectName>
+                <Size>30me,10f</Size>
+                <label></label>
+                </WidgetGroup>
+
+<WidgetGroup>
+<SizePolicy>me,me</SizePolicy>
+<Layout>horizontal</Layout>
+<Children>
+<WidgetGroup>
+<ObjectName>Space</ObjectName>
+<Size>1me,10f</Size>
+<label></label>
+</WidgetGroup>
+                <Label>
+                <Style>QLabel{ font: bold; background-color: transparent; }</Style>
+                <Size>40f,10me</Size>
+                <ObjectName>myFont</ObjectName>
+                <BgColor>#242629</BgColor>
+                <Text>BPM</Text>
+                </Label>
+</Children>
+</WidgetGroup>
+
+<WidgetGroup>
+<SizePolicy>me,me</SizePolicy>
+<Layout>horizontal</Layout>
+<Children>
+<WidgetGroup>
+<ObjectName>Space</ObjectName>
+<Size>1me,10f</Size>
+<label></label>
+</WidgetGroup>
+                <Label>
+                <Style>QLabel{ font: bold; background-color: transparent; }</Style>
+                <Size>40f,10me</Size>
+                <ObjectName>myFont</ObjectName>
+                <BgColor>#242629</BgColor>
+                <Text>EBM</Text>
+                </Label>
+</Children>
+</WidgetGroup>
+                </Children>
+                </WidgetGroup>
+
+                <WidgetGroup>
+                <SizePolicy>me,me</SizePolicy>
+                <Layout>vertical</Layout>
+                <Children>
+
+                    <NumberBpm>
+                    <Style>QLabel{ font: bold 29px; background-color: transparent; }</Style>
+                    <ObjectName>Channel2bpmValue</ObjectName>
+                    <Tooltip>Channel2 bpm</Tooltip>
+                    <Channel>2</Channel>
+                    <Alignment>left</Alignment>
+                    <NumberOfDigits>2</NumberOfDigits>
+                    <Connection>
+                    <ConfigKey>[Channel2],bpm</ConfigKey>
+                    </Connection>
+                    </NumberBpm>
+
+                    <NumberPos>
+                    <Style>QLabel{ font: bold; background-color: transparent; }</Style>
+                    <ObjectName>myFont</ObjectName>
+                    <Tooltip>Channel2 emb</Tooltip>
+                    <Channel>2</Channel>
+                    <Alignment>left</Alignment>
+                    <NumberOfDigits>2</NumberOfDigits>
+                    <Connection>
+                    <ConfigKey>[Channel2],playposition</ConfigKey>
+                    </Connection>
+                    </NumberPos>
+
+                </Children>
+                </WidgetGroup>
+
+                </Children>
+                </WidgetGroup>
+
+                <WidgetGroup>
+                <SizePolicy>me,me</SizePolicy>
+                <Layout>vertical</Layout>
+                <Children>
+
+                <TrackProperty>
+                <Size>me,30f</Size>
+                <BgColor>#242629</BgColor>
+                <Alignment>left</Alignment>
+                <Elide>right</Elide>
+                <Property>title</Property>
+                <Channel>2</Channel>
+                </TrackProperty>
+
+                <Overview>
+                <Tooltip>Channel2 controler</Tooltip>
+                <BgColor>#242629</BgColor>
+                <Channel>2</Channel>
+                <SizePolicy>me,me</SizePolicy>
+                <Connection>
+                <ConfigKey>[Channel2],playposition</ConfigKey>
+                </Connection>
+                </Overview>
+
+                </Children>
+                </WidgetGroup>
+
+                <CoverArt>
+                <Size>50f,50f</Size>
+                <Connection>
+                <ConfigKey persist="true">[Library],show_coverart</ConfigKey>
+                <BindProperty>visible</BindProperty>
+                </Connection>
+                </CoverArt>
+
+                </Children>
+                </WidgetGroup>
+
+<WidgetGroup>
+<ObjectName>Space</ObjectName>
+<Size>30me,10f</Size>
+<label></label>
+</WidgetGroup>
+
+<WidgetGroup>
+<ObjectName>Space</ObjectName>
+<Size>30me,3f</Size>
+<BackPath>HLine.svg</BackPath>
+</WidgetGroup>
+
+<WidgetGroup>
+<ObjectName>Space</ObjectName>
+<Size>30me,20f</Size>
+<label></label>
+</WidgetGroup>
+
+                <WidgetGroup>
+                <SizePolicy>me,me</SizePolicy>
+                <Layout>horizontal</Layout>
+                <Children>
+
+                <WidgetGroup>
+                <SizePolicy>me,me</SizePolicy>
+                <Layout>vertical</Layout>
+                <Children>
+
+                <WidgetGroup>
+                <SizePolicy>me,me</SizePolicy>
+                <Layout>horizontal</Layout>
+                <Children>
+
+                <WidgetGroup>
+                <ObjectName>PitchControl</ObjectName>
+                <SizePolicy>me,me</SizePolicy>
+                <Layout>vertical</Layout>
+                <Children>
+
+<WidgetGroup>
+<Layout>horizontal</Layout>
+<Children>
+                <PushButton>
+				<ObjectName>KeylockButton_[Channel2]</ObjectName>
+                <TooltipId>keylock</TooltipId>
+				<Size>80f,32f</Size>
+                <NumberStates>2</NumberStates>
+				 <!-- <LeftClickIsPushButton>true</LeftClickIsPushButton> -->
+                <State>
+                <Number>0</Number>
+                <Pressed scalemode="STRETCH">KEY LOCK图标（F区域）\KEY LOCK-默认.png</Pressed>
+                <Unpressed scalemode="STRETCH">KEY LOCK图标（F区域）\KEY LOCK-默认.png</Unpressed>
+                </State>
+				<State>
+                <Number>1</Number>
+                <Pressed scalemode="STRETCH">KEY LOCK图标（F区域）\KEY LOCK-界面右边-点击状态.png</Pressed>
+                <Unpressed scalemode="STRETCH">KEY LOCK图标（F区域）\KEY LOCK-界面右边-点击状态.png</Unpressed>
+                </State>
+				<Connection>
+                <ConfigKey>[Channel2],keylock</ConfigKey>
+                </Connection>
+                </PushButton>
+                <!-- <PushButton> -->
+				<!-- <ObjectName>KeylockButton_[Channel2]</ObjectName> -->
+                <!-- <TooltipId>keylock</TooltipId> -->
+                <!-- <NumberStates>1</NumberStates> -->
+                <!-- <State> -->
+                <!-- <Number>0</Number> -->
+                <!-- <Pressed>KEY LOCK图标（F区域）\KEY LOCK-界面右边-点击状态.png</Pressed> -->
+                <!-- <Unpressed>KEY LOCK图标（F区域）\KEY LOCK-默认.png</Unpressed> -->
+                <!-- </State> -->
+                <!-- <Connection> -->
+                <!-- <ConfigKey>[Channel2],keylock</ConfigKey> -->
+                <!-- </Connection> -->
+                <!-- </PushButton> -->
+</Children>
+</WidgetGroup>
+
+<WidgetGroup>
+<Layout>horizontal</Layout>
+<Children>
+<Label>
+<Size>20me,20f</Size>
+</Label>
+</Children>
+</WidgetGroup>
+
+<WidgetGroup>
+<Layout>horizontal</Layout>
+<Children>
+<label></label>
+                <NumberRate>
+                <Style>QLabel{ font: bold; background-color: transparent; }</Style>
+                <ObjectName>myFont</ObjectName>
+                <TooltipId>rate_display</TooltipId>
+                <Channel>2</Channel>
+                <Connection>
+                <ConfigKey>[Channel2],rate</ConfigKey>
+                </Connection>
+                </NumberRate>
+<label></label>
+</Children>
+</WidgetGroup>
+
+<WidgetGroup>
+<Layout>horizontal</Layout>
+<Children>
+<Label>
+<Size>20me,10f</Size>
+</Label>
+</Children>
+</WidgetGroup>
+
+<WidgetGroup>
+<Layout>horizontal</Layout>
+<Children>
+<label></label>
+                <SliderComposed>
+                <Size>40f,160me</Size>	
+                <Handle scalemode="STRETCH">音量-滑块-默认.png</Handle>
+                <Slider scalemode="STRETCH">节拍速度-背板.png</Slider>
+                <Horizontal>false</Horizontal>
+                <Connection>
+                <ConfigKey>[Channel2],rate</ConfigKey>
+                <EmitOnDownPress>false</EmitOnDownPress>
+                </Connection>
+                </SliderComposed>
+<label></label>
+</Children>
+</WidgetGroup>
+                </Children>
+                </WidgetGroup>
+
+                <WidgetGroup>
+                <SizePolicy>f,f</SizePolicy>
+                <Size>220me,220me</Size>
+                <Layout>horizontal</Layout>
+                <Children>
+
+                <ObjectName> SpinnySingletonNoCover[Channel2]_handh </ObjectName>
+				<Spinny>
+                <Size>230f,230f</Size>
+                <Channel>2</Channel>
+                <PathBackground scalemode="STRETCH_ASPECT">D区域\光盘-背景-默认1.png</PathBackground>
+                <PathMask scalemode="STRETCH_ASPECT">D区域\光盘-背景-默认1.png</PathMask>
+                <PathForeground scalemode="STRETCH_ASPECT">D区域\右光盘-线-提示.png</PathForeground>
+                <PathGhost scalemode="STRETCH_ASPECT">D区域\右光盘-线-提示.png</PathGhost>
+                <ShowCover>false</ShowCover>
+                </Spinny>
+
+<Label>
+<Size>20me,30f</Size>
+</Label>
+
+                </Children>
+                </WidgetGroup>
+
+                </Children>
+                </WidgetGroup>
+
+                <WidgetGroup>
+                <SizePolicy>me,me</SizePolicy>
+                <Layout>horizontal</Layout>
+                <Children>
+                <Label>
+                <Size>10me,30me</Size>
+                </Label>
+                <PushButton>
+				<ObjectName>PlayToggle_Deck2_hotcue</ObjectName>
+                <TooltipId>play_cue_set</TooltipId>
+                <NumberStates>2</NumberStates>
+                <State>
+                <Number>0</Number>
+                <Pressed>右-右-点击.png</Pressed>
+                <Unpressed>右-左-默认.png</Unpressed>
+                </State>
+                <State>
+                <Number>1</Number>
+                <Pressed>右-右-点击.png</Pressed>
+                <Unpressed>右-左-默认.png</Unpressed>
+                </State>
+                <Connection>
+                <ConfigKey>[Channel2],play</ConfigKey>
+                <EmitOnDownPress>true</EmitOnDownPress>
+                <ButtonState>LeftButton</ButtonState>
+                </Connection>
+                <Connection>
+                <ConfigKey>[Channel2],cue_set</ConfigKey>
+                <EmitOnDownPress>true</EmitOnDownPress>
+                <ButtonState>RightButton</ButtonState>
+                </Connection>
+                <Connection>
+                <ConfigKey>[Channel2],play_indicator</ConfigKey>
+                </Connection>
+                </PushButton>
+
+                <Label>
+                <Size>10me,30f</Size>
+                </Label>
+
+                <PushButton>
+				<ObjectName>DeckSync_[Channel2]</ObjectName>
+                <Tooltip>sync</Tooltip>
+                <NumberStates>1</NumberStates>
+                <State>
+                <Number>0</Number>
+                <Pressed>SYNC-右-点击.png</Pressed>
+                <Unpressed>SYNC-左-默认.png</Unpressed>
+                </State>
+                <Connection>
+                <ConfigKey>[Channel2],beatsync</ConfigKey>
+                <EmitOnDownPress>true</EmitOnDownPress>
+                <ButtonState>LeftButton</ButtonState>
+                </Connection>
+                </PushButton>
+
+                <Label>
+                <Size>10me,30f</Size>
+                </Label>
+
+                <PushButton>
+                <TooltipId>cue_default_cue_gotoandstop</TooltipId>
+                <NumberStates>1</NumberStates>
+                <State>
+                <Number>0</Number>
+                <Pressed>CUE-右-点击.png</Pressed>
+                <Unpressed>CUE-左-默认.png</Unpressed>
+                </State>
+                <State>
+                <Number>1</Number>
+                <Pressed>CUE-右-点击.png</Pressed>
+                <Unpressed>CUE-左-默认.png</Unpressed>
+                </State>
+                <Connection>
+                <ConfigKey>[Channel2],cue_default</ConfigKey>
+                <EmitOnDownPress>true</EmitOnDownPress>
+                <ButtonState>LeftButton</ButtonState>
+                </Connection>
+                <Connection>
+                <ConfigKey>[Channel2],cue_gotoandstop</ConfigKey>
+                <EmitOnDownPress>true</EmitOnDownPress>
+                <ButtonState>RightButton</ButtonState>
+                </Connection>
+                <Connection>
+                <ConfigKey>[Channel2],cue_indicator</ConfigKey>
+                </Connection>
+                </PushButton>
+
+<Label>
+    <Size>130me,30f</Size>
+</Label>
+
+                </Children>
+                </WidgetGroup>
+
+                </Children>
+                </WidgetGroup>
+
+                <WidgetGroup>
+                <SizePolicy>me,me</SizePolicy>
+                <Layout>vertical</Layout>
+                <Children>
+
+                <WidgetGroup>
+                <SizePolicy>me,me</SizePolicy>
+                <Layout>horizontal</Layout>
+                <Children>
+
+                <EffectSelector>
+                <ObjectName>EffectsSelector</ObjectName>
+                <Size>me,me</Size>
+                <EffectRack>2</EffectRack>
+                <EffectUnit><Variable name="unit"/></EffectUnit>
+                <Effect><Variable name="effect"/></Effect>
+                <Elide>middle</Elide>
+                </EffectSelector>
+
+                <WidgetGroup>
+                <Size>16f,16f</Size>
+                </WidgetGroup>
+
+                <EffectSelector>
+                <ObjectName>EffectsSelector</ObjectName>
+                <Size>me,me</Size>
+                <EffectRack>2</EffectRack>
+                <EffectUnit><Variable name="unit"/></EffectUnit>
+                <Effect><Variable name="effect"/></Effect>
+                <Elide>middle</Elide>
+                </EffectSelector>
+
+                <WidgetGroup>
+                <Size>16f,16f</Size>
+                </WidgetGroup>
+
+                <EffectSelector>
+                <ObjectName>EffectsSelector</ObjectName>
+                <Size>me,me</Size>
+                <EffectRack>2</EffectRack>
+                <EffectUnit><Variable name="unit"/></EffectUnit>
+                <Effect><Variable name="effect"/></Effect>
+                <Elide>middle</Elide>
+                </EffectSelector>
+
+                </Children>
+                </WidgetGroup>
+
+                <WidgetGroup>
+                <Size>16f,16f</Size>
+                </WidgetGroup>
+
+                <WidgetGroup>
+                <SizePolicy>me,me</SizePolicy>
+                <Layout>horizontal</Layout>
+                <Children>
+
+                <PushButton>
+                <Size>20me,40me</Size>
+                <NumberStates>1</NumberStates>
+                <State>
+                <Number>0</Number>
+                <Pressed scalemode="STRETCH">C区域\FX-右-提示.png</Pressed>
+                <Unpressed scalemode="STRETCH">C区域\FX-1.png</Unpressed>
+                </State>
+                <!--
+                <Connection>
+                <ConfigKey>[Channelx],repeat</ConfigKey>
+                </Connection>
+                -->
+                </PushButton>
+
+                <WidgetGroup>
+                <Size>16f,16f</Size>
+                </WidgetGroup>
+
+                <PushButton>
+                <Size>20me,40me</Size>
+                <NumberStates>1</NumberStates>
+                <State>
+                <Number>0</Number>
+                <Pressed scalemode="STRETCH">C区域\FX-右-提示.png</Pressed>
+                <Unpressed scalemode="STRETCH">C区域\FX-1.png</Unpressed>
+                </State>
+                <!--
+                <Connection>
+                <ConfigKey>[Channelx],repeat</ConfigKey>
+                </Connection>
+                -->
+                </PushButton>
+
+                <WidgetGroup>
+                <Size>16f,16f</Size>
+                </WidgetGroup>
+
+                <PushButton>
+                <Size>20me,40me</Size>
+                <NumberStates>1</NumberStates>
+                <State>
+                <Number>0</Number>
+                <Pressed scalemode="STRETCH">C区域\FX-右-提示.png</Pressed>
+                <Unpressed scalemode="STRETCH">C区域\FX-1.png</Unpressed>
+                </State>
+                <!--
+                <Connection>
+                <ConfigKey>[Channelx],repeat</ConfigKey>
+                </Connection>
+                -->
+                </PushButton>
+
+                </Children>
+                </WidgetGroup>
+
+<WidgetGroup>
+<ObjectName>Space</ObjectName>
+<Size>30me,10f</Size>
+<label></label>
+</WidgetGroup>
+                <WidgetGroup>
+                <SizePolicy>me,me</SizePolicy>
+                <Layout>horizontal</Layout>
+                <Children>
+
+<WidgetGroup>
+<SizePolicy>me,me</SizePolicy>
+<Layout>vertical</Layout>
+<Children>
+
+<WidgetGroup>
+<ObjectName>Space</ObjectName>
+<Size>30me,15f</Size>
+<label></label>
+</WidgetGroup>
+
+                <SliderComposed>
+                <SizePolicy>me,me</SizePolicy>
+                <Size>80me,20me</Size>
+                <Handle scalemode="STRETCH">滑动-控件-滑块-默认.png</Handle>
+                <Slider scalemode="STRETCH">滑动-控件-背板.png</Slider>
+                <Horizontal>true</Horizontal>
+                <Connection>
+                <ConfigKey>[Channel22],volume</ConfigKey>
+                <EmitOnDownPress>false</EmitOnDownPress>
+                </Connection>
+                </SliderComposed>
+
+<WidgetGroup>
+<ObjectName>Space</ObjectName>
+<Size>30me,15f</Size>
+<label></label>
+</WidgetGroup>
+
+                </Children>
+                </WidgetGroup>
+
+                <WidgetGroup>
+                <SizePolicy>me,me</SizePolicy>
+                <Layout>vertical</Layout>
+                <Children>
+                <WidgetGroup>
+                <SizePolicy>me,me</SizePolicy>
+                <Layout>horizontal</Layout>
+                <Children>
+
+                <PushButton>
+                <TooltipId>repeat</TooltipId>
+                <NumberStates>1</NumberStates>
+                <State>
+                <Number>0</Number>
+                <Pressed>按钮2-点击.png</Pressed>
+                <Unpressed>按钮1-默认.png</Unpressed>
+                </State>
+                <!--
+                <Connection>
+                <ConfigKey>[Channelx],repeat</ConfigKey>
+                </Connection>
+                -->
+                </PushButton>
+
+                <WidgetGroup>
+                <Size>16f,16f</Size>
+                </WidgetGroup>
+
+                <PushButton>
+                <TooltipId>repeat</TooltipId>
+                <NumberStates>1</NumberStates>
+                <State>
+                <Number>0</Number>
+                <Pressed>按钮2-点击.png</Pressed>
+                <Unpressed>按钮1-默认.png</Unpressed>
+                </State>
+                <!--
+                <Connection>
+                <ConfigKey>[Channelx],repeat</ConfigKey>
+                </Connection>
+                -->
+                </PushButton>
+
+                </Children>
+                </WidgetGroup>
+
+                <WidgetGroup>
+                <Size>16f,16f</Size>
+                </WidgetGroup>
+
+                <WidgetGroup>
+                <SizePolicy>me,me</SizePolicy>
+                <Layout>horizontal</Layout>
+                <Children>
+
+                <PushButton>
+                <TooltipId>repeat</TooltipId>
+                <NumberStates>1</NumberStates>
+                <State>
+                <Number>0</Number>
+                <Pressed>按钮2-点击.png</Pressed>
+                <Unpressed>按钮1-默认.png</Unpressed>
+                </State>
+                <!--
+                <Connection>
+                <ConfigKey>[Channelx],repeat</ConfigKey>
+                </Connection>
+                -->
+                </PushButton>
+
+                <WidgetGroup>
+                <Size>16f,16f</Size>
+                </WidgetGroup>
+
+                <PushButton>
+                <TooltipId>repeat</TooltipId>
+                <NumberStates>1</NumberStates>
+                <State>
+                <Number>0</Number>
+                <Pressed>按钮2-点击.png</Pressed>
+                <Unpressed>按钮1-默认.png</Unpressed>
+                </State>
+                <!--
+                <Connection>
+                <ConfigKey>[Channelx],repeat</ConfigKey>
+                </Connection>
+                -->
+                </PushButton>
+
+                </Children>
+                </WidgetGroup>
+                </Children>
+                </WidgetGroup>
+
+                </Children>
+                </WidgetGroup>
+
+<WidgetGroup>
+<ObjectName>Space</ObjectName>
+<Size>30me,10f</Size>
+<label></label>
+</WidgetGroup>
+
+                <WidgetGroup>
+                <SizePolicy>me,me</SizePolicy>
+                <Layout>horizontal</Layout>
+                <Children>
+
+                <PushButton>
+                <Size>60me,30me</Size>
+                <TooltipId>hotcue</TooltipId>
+                <NumberStates>2</NumberStates>
+                <State>
+                <Number>0</Number>
+                <Pressed scalemode="STRETCH">HOT_CUE-右-点击.png</Pressed>
+                <Unpressed scalemode="STRETCH">HOT_CUE-默认.png</Unpressed>
+                </State>
+                <Connection>
+                <ConfigKey>[Channel2],hotcue_Y_activate</ConfigKey>
+                <EmitOnDownPress>true</EmitOnDownPress>
+                <ButtonState>LeftButton</ButtonState>
+                </Connection>
+                <Connection>
+                <ConfigKey>[Channel2],hotcuYe_Y_activate</ConfigKey>
+                <EmitOnDownPress>false</EmitOnDownPress>
+                <ButtonState>LeftButton</ButtonState>
+                </Connection>
+                <Connection>
+                <ConfigKey>[Channel2],hotcue_Y_clear</ConfigKey>
+                <EmitOnDownPress>true</EmitOnDownPress>
+                <ButtonState>RightButton</ButtonState>
+                </Connection>
+                </PushButton>
+
+                <WidgetGroup>
+                <Size>16f,16f</Size>
+                </WidgetGroup>
+
+                <PushButton>
+                <Size>60me,30me</Size>
+                <TooltipId>repeat</TooltipId>
+                <NumberStates>1</NumberStates>
+                <State>
+                <Number>0</Number>
+                <Pressed scalemode="STRETCH">RUTO_LOOP-右-点击.png</Pressed>
+                <Unpressed scalemode="STRETCH">RUTO_LOOP-左-默认.png</Unpressed>
+                </State>
+                <Connection>
+                <ConfigKey>[Channel2],repeat</ConfigKey>
+                </Connection>
+                </PushButton>
+
+                <WidgetGroup>
+                <Size>16f,16f</Size>
+                </WidgetGroup>
+
+                <PushButton>
+                <Size>60me,30me</Size>
+                <TooltipId>loop_in</TooltipId>
+                <NumberStates>1</NumberStates>
+                <State>
+                <Number>0</Number>
+                <Pressed scalemode="STRETCH">MANURL_LOOP-右-点击.png</Pressed>
+                <Unpressed scalemode="STRETCH">MANURL_LOOP-左-默认.png</Unpressed>
+                </State>
+                <Connection>
+                <ConfigKey>[Channel2],loop_in</ConfigKey>
+                <EmitOnDownPress>true</EmitOnDownPress>
+                <ButtonState>LeftButton</ButtonState>
+                </Connection>
+                <Connection>
+                <ConfigKey>[Channel2],loop_in</ConfigKey>
+                <EmitOnDownPress>false</EmitOnDownPress>
+                <ButtonState>LeftButton</ButtonState>
+                </Connection>
+                <Connection>
+                <ConfigKey>[Channel2],loop_out</ConfigKey>
+                <EmitOnDownPress>true</EmitOnDownPress>
+                <ButtonState>RightButton</ButtonState>
+                </Connection>
+                <Connection>
+                <ConfigKey>[Channel2],loop_out</ConfigKey>
+                <EmitOnDownPress>false</EmitOnDownPress>
+                <ButtonState>RightButton</ButtonState>
+                </Connection>
+                </PushButton>
+
+                <WidgetGroup>
+                <Size>16f,16f</Size>
+                </WidgetGroup>
+
+                <PushButton>
+                <Size>60me,30me</Size>
+                <NumberStates>1</NumberStates>
+                <State>
+                <Number>0</Number>
+                <Pressed scalemode="STRETCH">SAMPLER-右-点击.png</Pressed>
+                <Unpressed scalemode="STRETCH">SAMPLER-默认.png</Unpressed>
+                </State>
+                <Connection>
+                <ConfigKey>[Channel2],show_samplers</ConfigKey>
+                </Connection>
+                </PushButton>
+
+                </Children>
+                </WidgetGroup>
+
+                <WidgetGroup>
+                <Size>16f,16f</Size>
+                </WidgetGroup>
+
+                <WidgetGroup>
+                <SizePolicy>me,me</SizePolicy>
+                <Layout>horizontal</Layout>
+                <Children>
+
+                <PushButton>
+                <Size>80me,60me</Size>
+                <TooltipId>repeat</TooltipId>
+                <NumberStates>1</NumberStates>
+                <State>
+                <Number>0</Number>
+                <Pressed scalemode="STRETCH">1-右-点击.png</Pressed>
+                <Unpressed scalemode="STRETCH">1-默认.png</Unpressed>
+                </State>
+                <Connection>
+                <ConfigKey>[Channel2],hotcue_1_activate</ConfigKey>
+                <EmitOnDownPress>true</EmitOnDownPress>
+                <ButtonState>LeftButton</ButtonState>
+                </Connection>
+                <Connection>
+                <ConfigKey>[Channel2],hotcue_1_activate</ConfigKey>
+                <EmitOnDownPress>false</EmitOnDownPress>
+                <ButtonState>LeftButton</ButtonState>
+                </Connection>
+                <Connection>
+                <ConfigKey>[Channel2],hotcue_1_clear</ConfigKey>
+                <EmitOnDownPress>true</EmitOnDownPress>
+                <ButtonState>RightButton</ButtonState>
+                </Connection>
+                </PushButton>
+
+                <WidgetGroup>
+                <Size>16f,16f</Size>
+                </WidgetGroup>
+
+                <PushButton>
+                <Size>80me,60me</Size>
+                <TooltipId>repeat</TooltipId>
+                <NumberStates>1</NumberStates>
+                <State>
+                <Number>0</Number>
+                <Pressed scalemode="STRETCH">2-右-点击.png</Pressed>
+                <Unpressed scalemode="STRETCH">2-默认.png</Unpressed>
+                </State>
+                <Connection>
+                <ConfigKey>[Channel2],hotcue_2_activate</ConfigKey>
+                <EmitOnDownPress>true</EmitOnDownPress>
+                <ButtonState>LeftButton</ButtonState>
+                </Connection>
+                <Connection>
+                <ConfigKey>[Channel2],hotcue_2_activate</ConfigKey>
+                <EmitOnDownPress>false</EmitOnDownPress>
+                <ButtonState>LeftButton</ButtonState>
+                </Connection>
+                <Connection>
+                <ConfigKey>[Channel2],hotcue_2_clear</ConfigKey>
+                <EmitOnDownPress>true</EmitOnDownPress>
+                <ButtonState>RightButton</ButtonState>
+                </Connection>
+                </PushButton>
+
+                <WidgetGroup>
+                <Size>16f,16f</Size>
+                </WidgetGroup>
+
+                <PushButton>
+                <Size>80me,60me</Size>
+                <TooltipId>repeat</TooltipId>
+                <NumberStates>1</NumberStates>
+                <State>
+                <Number>0</Number>
+                <Pressed scalemode="STRETCH">3-右-点击.png</Pressed>
+                <Unpressed scalemode="STRETCH">3-默认.png</Unpressed>
+                </State>
+                <Connection>
+                <ConfigKey>[Channel2],hotcue_3_activate</ConfigKey>
+                <EmitOnDownPress>true</EmitOnDownPress>
+                <ButtonState>LeftButton</ButtonState>
+                </Connection>
+                <Connection>
+                <ConfigKey>[Channel2],hotcue_3_activate</ConfigKey>
+                <EmitOnDownPress>false</EmitOnDownPress>
+                <ButtonState>LeftButton</ButtonState>
+                </Connection>
+                <Connection>
+                <ConfigKey>[Channel2],hotcue_3_clear</ConfigKey>
+                <EmitOnDownPress>true</EmitOnDownPress>
+                <ButtonState>RightButton</ButtonState>
+                </Connection>
+                </PushButton>
+
+                <WidgetGroup>
+                <Size>16f,16f</Size>
+                </WidgetGroup>
+
+                <PushButton>
+                <Size>80me,60me</Size>
+                <TooltipId>repeat</TooltipId>
+                <NumberStates>1</NumberStates>
+                <State>
+                <Number>0</Number>
+                <Pressed scalemode="STRETCH">4-右-点击.png</Pressed>
+                <Unpressed scalemode="STRETCH">4-默认.png</Unpressed>
+                </State>
+                <Connection>
+                <ConfigKey>[Channel2],hotcue_4_activate</ConfigKey>
+                <EmitOnDownPress>true</EmitOnDownPress>
+                <ButtonState>LeftButton</ButtonState>
+                </Connection>
+                <Connection>
+                <ConfigKey>[Channel2],hotcue_4_activate</ConfigKey>
+                <EmitOnDownPress>false</EmitOnDownPress>
+                <ButtonState>LeftButton</ButtonState>
+                </Connection>
+                <Connection>
+                <ConfigKey>[Channel2],hotcue_4_clear</ConfigKey>
+                <EmitOnDownPress>true</EmitOnDownPress>
+                <ButtonState>RightButton</ButtonState>
+                </Connection>
+                </PushButton>
+
+                </Children>
+                </WidgetGroup>
+
+                </Children>
+                </WidgetGroup>
+
+                </Children>
+                </WidgetGroup>
+                </Children>
+                </WidgetGroup>
+
+                </Children>
+            </WidgetGroup>
+
+<!--下-->   <WidgetGroup>
+            <SizePolicy>me,me</SizePolicy>
+            <Layout>vertical</Layout>
+            <Children>
+
+            <WidgetGroup>
+            <ObjectName>Space</ObjectName>
+            <Size>30me,3f</Size>
+            <BackPath>HLine.svg</BackPath>
+            </WidgetGroup>
+
+            <WidgetGroup>
+            <SizePolicy>me,me</SizePolicy>
+            <Layout>horizontal</Layout>
+            <Children>
+
+            <WidgetGroup>
+            <Size>300me,me</Size>
+            <SizePolicy>me,me</SizePolicy>
+            <Layout>vertical</Layout>
+            <Children>
+            <SearchBox>
+            <BgColor>#242629</BgColor>
+            </SearchBox>
+<!--
+            <LibrarySidebar>
+            <BgColor>#242629</BgColor>
+            <FgColor>#000000</FgColor>
+            <BgColorRowEven>#222222</BgColorRowEven>
+            <BgColorRowUneven>#111111</BgColorRowUneven>
+            </LibrarySidebar>
+-->
+            <WidgetGroup>
+            <Size>368me,461me</Size>
+            <SizePolicy>me,me</SizePolicy>
+            <Layout>horizontal</Layout>
+            <BackPath scalemode="STRETCH">search.png</BackPath>
+            </WidgetGroup>
+
+            </Children>
+            </WidgetGroup>
+
+            <WidgetGroup>
+                <ObjectName>Space</ObjectName>
+                <Size>3f,130me</Size>
+                <BackPath>VLine.svg</BackPath>
+            </WidgetGroup>
+
+            <WidgetGroup>
+            <Size>700me,me</Size>
+            <SizePolicy>me,me</SizePolicy>
+            <Layout>horizontal</Layout>
+            <BackPath scalemode="STRETCH">dyn.png</BackPath>
+            </WidgetGroup>
+
+            <WidgetGroup>
+                <ObjectName>Space</ObjectName>
+                <Size>3f,130me</Size>
+                <BackPath>VLine.svg</BackPath>
+            </WidgetGroup>
+
+            <WidgetGroup>
+            <Size>400me,me</Size>
+            <SizePolicy>me,me</SizePolicy>
+            <Layout>vertical</Layout>
+            <Children>
+<!--
+            <Library>
+            <BgColor>#242629</BgColor>
+            <FgColor>#000000</FgColor>
+            <BgColorRowEven>#000000</BgColorRowEven>
+            <BgColorRowUneven>#000000</BgColorRowUneven>
+            <ConfigKey persist="false">[Library],show_coverart</ConfigKey>
+            <BindProperty>invisible</BindProperty>
+            </Library>
+-->
+            <WidgetGroup>
+            <Size>379me,503me</Size>
+            <SizePolicy>me,me</SizePolicy>
+            <Layout>horizontal</Layout>
+            <BackPath scalemode="STRETCH">library.png</BackPath>
+            </WidgetGroup>
+
+            </Children>
+            </WidgetGroup>
+
+            </Children>
+            </WidgetGroup>
+
+            </Children>
+	</WidgetGroup>
+
+	</Children>
+	</Splitter>
+
+    </Children>
+
+</skin> <!-- end Skin opening tag -->
