@@ -72,6 +72,7 @@
 #include "util/screensaver.h"
 #include "util/logger.h"
 #include "util/db/dbconnectionpooled.h"
+#include "widget/mixxxgame/GameWidget.h"
 #include <QLineEdit>
 #include <QVBoxLayout>
 #ifdef __VINYLCONTROL__
@@ -93,6 +94,9 @@
 #endif
 
 #include <windows.h>
+
+#include <QCoreApplication>
+#include <QSettings>
 
 HHOOK hook = NULL;
 LRESULT CALLBACK GetMsgProc(
@@ -221,8 +225,42 @@ MixxxMainWindow::MixxxMainWindow(QApplication* pApp, const CmdlineArgs& args)
     widget->setLayout(boxlayout);
     setCentralWidget(widget);
     m_videoWidget->show();
-}
 
+	//Widget *gameWidget = new Widget(this);
+	//gameWidget->setGeometry(621, 443, 700, 575);
+	//gameWidget->show();
+	//QThread *pThread = new QThread();
+	//m_gameWidget = new GameWidget(this);
+	//m_gameWidget->setGeometry(621, 443, 700, 575);
+	//pThread->start();
+	//m_gameWidget->show();
+
+	m_pThread = new QThread(this);
+	m_pThread->start();
+
+	QString path = QCoreApplication::applicationDirPath();
+	QString filename = path + "/conf.ini";
+	QSettings *configIni = new QSettings(filename, QSettings::IniFormat);
+
+	int x = configIni->value("Geometry/x").toInt();
+	int y = configIni->value("Geometry/y").toInt();
+	int w = configIni->value("Geometry/width").toInt();
+	int h = configIni->value("Geometry/height").toInt();
+
+	int timeDelay = configIni->value("Delay/time").toInt();
+	int positionCoefficient = configIni->value("Position/coefficient").toInt();
+
+	m_gameWidget = new GameWidget(w, h, m_pThread, timeDelay, positionCoefficient, this);
+	//m_gameWidget->setGeometry(462, 432, 1015, 586);
+	m_gameWidget->setGeometry(x, y, w, h);
+	m_gameWidget->show();
+	startTimer(10);
+	delete configIni;
+}
+void MixxxMainWindow::timerEvent(QTimerEvent *event)
+{
+	update();
+}
 MixxxMainWindow::~MixxxMainWindow() {
     // SkinLoader depends on Config;
     delete m_pSkinLoader;
@@ -581,6 +619,8 @@ void MixxxMainWindow::initialize(QApplication* pApp, const CmdlineArgs& args) {
             SIGNAL(currentPlayingDeckChanged(int)),
             this, SLOT(slotChangedPlayingDeck(int)));
 
+	connect(&PlayerInfo::instance(), &PlayerInfo::currentPlayingDeckChanged, this, &MixxxMainWindow::slotChangedPlayingDeckGLX);
+
     m_pSkinLoader->loadConfigCoordinate();
     m_pSkinLoader->connectHid(m_pControllerManager);
     // this has to be after the OpenGL widgets are created or depending on a
@@ -590,6 +630,16 @@ void MixxxMainWindow::initialize(QApplication* pApp, const CmdlineArgs& args) {
     // The launch image widget is automatically disposed, but we still have a
     // pointer to it.
     m_pLaunchImage = nullptr;
+}
+
+void MixxxMainWindow::slotChangedPlayingDeckGLX(int deck)
+{
+	//QMessageBox::warning(this, "sssss",
+	//	QString::number(deck));
+	if (deck != -1)
+	{
+		m_gameWidget->connectSlots();
+	}
 }
 
 void MixxxMainWindow::finalize() {
@@ -1362,6 +1412,7 @@ void MixxxMainWindow::rebootMixxxView() {
 
 void MixxxMainWindow::serialportControl(int control)
 {
+	//QMessageBox::information(NULL, "Title", "MixxxMainWindow::serialportControl", QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes);
     m_serialPortWidget->sendData(control);
 }
 
@@ -1625,6 +1676,7 @@ void VideoWidget::setShow(bool isShow)
 
 void VideoWidget::playNext()
 {
+	//QMessageBox::information(NULL, "Title", "VideoWidget::playNext", QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes);
     m_timer->stop();
     m_timer->start(100);
     if(!m_inMove)

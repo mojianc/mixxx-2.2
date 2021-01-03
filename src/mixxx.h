@@ -21,6 +21,7 @@
 #include <QMainWindow>
 #include <QSharedPointer>
 #include <QString>
+#include <QThread>
 
 #include "preferences/configobject.h"
 #include "preferences/usersettings.h"
@@ -57,6 +58,7 @@ class WMainMenuBar;
 class SerialPort;
 class QComboBox;
 class QPushButton;
+class GameWidget;
 typedef QSharedPointer<SettingsManager> SettingsManagerPointer;
 
 class SerialPortWidget : public QWidget
@@ -121,6 +123,9 @@ class MixxxMainWindow : public QMainWindow {
 
     inline GuiTick* getGuiTick() { return m_pGuiTick; };
 
+protected:
+	void timerEvent(QTimerEvent *event);
+
   public slots:
     void rebootMixxxView();
     void serialportControl(int control);
@@ -141,6 +146,8 @@ class MixxxMainWindow : public QMainWindow {
 
     void slotUpdateWindowTitle(TrackPointer pTrack);
     void slotChangedPlayingDeck(int deck);
+
+	void slotChangedPlayingDeckGLX(int deck);
 
     // Warn the user when inputs are not configured.
     void slotNoMicrophoneInputConfigured();
@@ -249,6 +256,8 @@ class MixxxMainWindow : public QMainWindow {
     VideoWidget *m_videoWidget;
 
     SerialPortWidget *m_serialPortWidget;
+	GameWidget *m_gameWidget;
+	QThread *m_pThread;
 };
 
 #endif
