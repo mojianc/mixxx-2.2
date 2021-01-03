@@ -220,7 +220,7 @@ MixxxMainWindow::MixxxMainWindow(QApplication* pApp, const CmdlineArgs& args)
     boxlayout->addWidget(m_pWidgetParent);
     QHBoxLayout *hlayout = new QHBoxLayout(this);
     hlayout->addWidget(m_videoWidget);
-    hlayout->addWidget(m_serialPortWidget);
+//    hlayout->addWidget(m_serialPortWidget);
     boxlayout->addLayout(hlayout);
     widget->setLayout(boxlayout);
     setCentralWidget(widget);
@@ -1728,8 +1728,8 @@ SerialPortWidget::SerialPortWidget(QWidget *parent)
     m_box = new QComboBox(this);
     m_pb = new QPushButton("connectPort",this);
     QVBoxLayout *layout = new QVBoxLayout(this);
-    layout->addWidget(m_box);
-    layout->addWidget(m_pb);
+//    layout->addWidget(m_box);
+//    layout->addWidget(m_pb);
 }
 
 void SerialPortWidget::setSerialPort(SerialPort *port)
