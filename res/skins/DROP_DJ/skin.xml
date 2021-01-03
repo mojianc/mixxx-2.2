@@ -285,13 +285,13 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
                 <Layout>horizontal</Layout>
                 <Children>
 
-                <CoverArt>
-                <Size>50f,50f</Size>
-                <Connection>
-                <ConfigKey persist="true">[Library],show_coverart</ConfigKey>
-                <BindProperty>visible</BindProperty>
-                </Connection>
-                </CoverArt>
+                <!-- <CoverArt> -->
+                <!-- <Size>50f,50f</Size> -->
+                <!-- <Connection> -->
+                <!-- <ConfigKey persist="true">[Library],show_coverart</ConfigKey> -->
+                <!-- <BindProperty>visible</BindProperty> -->
+                <!-- </Connection> -->
+                <!-- </CoverArt> -->
 
                 <WidgetGroup>
                 <SizePolicy>me,me</SizePolicy>
@@ -321,7 +321,7 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
                 </WidgetGroup>
 
                 <WidgetGroup>
-                <Size>130f,50f</Size>
+                <Size>110f,50f</Size>
                 <SizePolicy>me,me</SizePolicy>
                 <Layout>horizontal</Layout>
                 <Children>
@@ -330,9 +330,17 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
                 <SizePolicy>me,me</SizePolicy>
                 <Layout>vertical</Layout>
                 <Children>
-
+				
+				<!-- 调整左BPM数值和BPM字母位置 -->
+               <WidgetGroup>
+               <ObjectName>Space</ObjectName>
+               <Size>30me,8f</Size>
+               <label></label>
+               </WidgetGroup>
+			   
+			  
                 <NumberBpm>
-                <Style>QLabel{ font: bold 20px; background-color: transparent; }</Style>
+                <Style>QLabel{ font: bold 15px; background-color: transparent; }</Style>
                 <ObjectName>Channel1bpmValue</ObjectName>
                 <Tooltip>Channel1 bpm</Tooltip>
                 <Channel>1</Channel>
@@ -343,7 +351,7 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
                 </Connection>
                 </NumberBpm>
                 <NumberPos>
-                <Style>QLabel{ font: bold 18px; background-color: transparent; }</Style>
+                <Style>QLabel{ font: bold 15px; background-color: transparent; }</Style>
                 <ObjectName>myFont</ObjectName>
                 <Tooltip>Channel1 emb</Tooltip>
                 <Channel>1</Channel>
@@ -353,6 +361,7 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
                 <ConfigKey>[Channel1],playposition</ConfigKey>
                 </Connection>
                 </NumberPos>
+
 
                 </Children>
                 </WidgetGroup>
@@ -367,14 +376,14 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
                 <label></label>
                 </WidgetGroup>
                 <Label>
-                <Style>QLabel{ font: BankGothic Md BT; background-color: transparent; }</Style>
+                <Style>QLabel{ font: bold; background-color: transparent; }</Style>
                 <Size>40f,10me</Size>
                 <ObjectName>myFont</ObjectName>
                 <BgColor>#242629</BgColor>
                 <Text>BPM</Text>
                 </Label>
                 <Label>
-                <Style>QLabel{ font: BankGothic Md BT; background-color: transparent; }</Style>
+                <Style>QLabel{ font: bold; background-color: transparent; }</Style>
                 <Size>40f,10me</Size>
                 <ObjectName>myFont</ObjectName>
                 <BgColor>#242629</BgColor>
@@ -1510,7 +1519,7 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
                 <Children>
 
                 <WidgetGroup>
-                <Size>150f,50f</Size>
+                <Size>110f,50f</Size>
                 <SizePolicy>me,me</SizePolicy>
                 <Layout>horizontal</Layout>
                 <Children>
@@ -1530,11 +1539,11 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
 <SizePolicy>me,me</SizePolicy>
 <Layout>horizontal</Layout>
 <Children>
-<WidgetGroup>
-<ObjectName>Space</ObjectName>
-<Size>1me,10f</Size>
-<label></label>
-</WidgetGroup>
+<!-- <WidgetGroup> -->
+<!-- <ObjectName>Space</ObjectName> -->
+<!-- <Size>1me,10f</Size> -->
+<!-- <label></label> -->
+<!-- </WidgetGroup> -->
                 <Label>
                 <Style>QLabel{ font: bold; background-color: transparent; }</Style>
                 <Size>40f,10me</Size>
@@ -1549,11 +1558,11 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
 <SizePolicy>me,me</SizePolicy>
 <Layout>horizontal</Layout>
 <Children>
-<WidgetGroup>
-<ObjectName>Space</ObjectName>
-<Size>1me,10f</Size>
-<label></label>
-</WidgetGroup>
+<!-- <WidgetGroup> -->
+<!-- <ObjectName>Space</ObjectName> -->
+<!-- <Size>1me,10f</Size> -->
+<!-- <label></label> -->
+<!-- </WidgetGroup> -->
                 <Label>
                 <Style>QLabel{ font: bold; background-color: transparent; }</Style>
                 <Size>40f,10me</Size>
@@ -1571,8 +1580,14 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
                 <Layout>vertical</Layout>
                 <Children>
 
+	           <!-- 调整右BPM数值和BPM字母位置 -->
+                <WidgetGroup>
+                <ObjectName>Space</ObjectName>
+                <Size>me,8f</Size>
+                <label></label>
+                </WidgetGroup>
                     <NumberBpm>
-                    <Style>QLabel{ font: bold 29px; background-color: transparent; }</Style>
+                    <Style>QLabel{ font: bold 15px; background-color: transparent; }</Style>
                     <ObjectName>Channel2bpmValue</ObjectName>
                     <Tooltip>Channel2 bpm</Tooltip>
                     <Channel>2</Channel>
@@ -1584,7 +1599,7 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
                     </NumberBpm>
 
                     <NumberPos>
-                    <Style>QLabel{ font: bold; background-color: transparent; }</Style>
+                    <Style>QLabel{ font: bold 15px; background-color: transparent; }</Style>
                     <ObjectName>myFont</ObjectName>
                     <Tooltip>Channel2 emb</Tooltip>
                     <Channel>2</Channel>
@@ -1628,13 +1643,13 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
                 </Children>
                 </WidgetGroup>
 
-                <CoverArt>
-                <Size>50f,50f</Size>
-                <Connection>
-                <ConfigKey persist="true">[Library],show_coverart</ConfigKey>
-                <BindProperty>visible</BindProperty>
-                </Connection>
-                </CoverArt>
+                <!-- <CoverArt> -->
+                <!-- <Size>50f,50f</Size> -->
+                <!-- <Connection> -->
+                <!-- <ConfigKey persist="true">[Library],show_coverart</ConfigKey> -->
+                <!-- <BindProperty>visible</BindProperty> -->
+                <!-- </Connection> -->
+                <!-- </CoverArt> -->
 
                 </Children>
                 </WidgetGroup>
@@ -2518,36 +2533,38 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
             <Layout>vertical</Layout>
             <Children>
 			
-			<WidgetGroup><!-- Maximized Library -->
-          <Layout>horizontal</Layout>
-          <SizePolicy>me,me</SizePolicy>
-          <Children>
-            <SingletonContainer>
-              <ObjectName>Library</ObjectName>
-            </SingletonContainer>
-          </Children>
-          <Connection>
-            <ConfigKey>[Master],maximize_library</ConfigKey>
-            <BindProperty>visible</BindProperty>
-          </Connection>
-        </WidgetGroup><!-- /Maximized Library -->
+			<!-- Maximized Library -->
+			<!-- <WidgetGroup> -->
+          <!-- <Layout>horizontal</Layout> -->
+          <!-- <SizePolicy>me,me</SizePolicy> -->
+          <!-- <Children> -->
+            <!-- <SingletonContainer> -->
+              <!-- <ObjectName>Library</ObjectName> -->
+            <!-- </SingletonContainer> -->
+          <!-- </Children> -->
+          <!-- <Connection> -->
+            <!-- <ConfigKey>[Master],maximize_library</ConfigKey> -->
+            <!-- <BindProperty>visible</BindProperty> -->
+          <!-- </Connection> -->
+        <!-- </WidgetGroup> -->
+		<!-- /Maximized Library -->
 		
- <WidgetGroup>
-              <Layout>vertical</Layout>
-              <SizePolicy>min,max</SizePolicy>
-              <Children>
-                <SingletonContainer>
-                  <ObjectName>Library</ObjectName>
-                </SingletonContainer>
-              </Children>
-            </WidgetGroup>
+ <!-- <WidgetGroup> -->
+              <!-- <Layout>vertical</Layout> -->
+              <!-- <SizePolicy>min,max</SizePolicy> -->
+              <!-- <Children> -->
+                <!-- <SingletonContainer> -->
+                  <!-- <ObjectName>Library</ObjectName> -->
+                <!-- </SingletonContainer> -->
+              <!-- </Children> -->
+            <!-- </WidgetGroup> -->
 			
             <Library>
             <BgColor>#242629</BgColor>
             <FgColor>#000000</FgColor>
             <BgColorRowEven>#000000</BgColorRowEven>
             <BgColorRowUneven>#000000</BgColorRowUneven>
-            <ConfigKey persist="false">[Library],show_coverart</ConfigKey>
+            <!-- <ConfigKey persist="false">[Library],show_coverart</ConfigKey> -->
             <BindProperty>invisible</BindProperty>
             </Library>
 
