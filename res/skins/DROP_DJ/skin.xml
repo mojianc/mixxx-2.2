@@ -470,7 +470,7 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
                 </WidgetGroup>
 
                 <WidgetGroup>
-                <Size>16f,16f</Size>
+                <Size>me,10f</Size>
                 </WidgetGroup>
 
                 <WidgetGroup>
@@ -566,11 +566,7 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
                 <Pressed scalemode="STRETCH">按钮1-点击.png</Pressed>
                 <Unpressed scalemode="STRETCH">按钮1-默认.png</Unpressed>
                 </State>
-                <!--
-                <Connection>
-                <ConfigKey>[Channelx],repeat</ConfigKey>
-                </Connection>
-                -->
+               
                 </PushButton>
 
                 <WidgetGroup>
@@ -586,18 +582,14 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
                 <Pressed scalemode="STRETCH">按钮1-点击.png</Pressed>
                 <Unpressed scalemode="STRETCH">按钮1-默认.png</Unpressed>
                 </State>
-                <!--
-                <Connection>
-                <ConfigKey>[Channelx],repeat</ConfigKey>
-                </Connection>
-                -->
+               
                 </PushButton>
 
                 </Children>
                 </WidgetGroup>
 
                 <WidgetGroup>
-                <Size>1f,24f</Size>
+                <Size>1f,6f</Size>
                 </WidgetGroup>
 
                 <WidgetGroup>
@@ -614,11 +606,7 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
                 <Pressed scalemode="STRETCH">按钮1-点击.png</Pressed>
                 <Unpressed scalemode="STRETCH">按钮1-默认.png</Unpressed>
                 </State>
-                <!--
-                <Connection>
-                <ConfigKey>[Channelx],repeat</ConfigKey>
-                </Connection>
-                -->
+            
                 </PushButton>
 
                 <WidgetGroup>
@@ -634,11 +622,7 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
                 <Pressed scalemode="STRETCH">按钮1-点击.png</Pressed>
                 <Unpressed scalemode="STRETCH">按钮1-默认.png</Unpressed>
                 </State>
-                <!--
-                <Connection>
-                <ConfigKey>[Channelx],repeat</ConfigKey>
-                </Connection>
-                -->
+           
                 </PushButton>
 
                 </Children>
@@ -646,36 +630,26 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
                 </Children>
                 </WidgetGroup>
 
-<!-- <WidgetGroup> -->
-<!-- <SizePolicy>me,me</SizePolicy> -->
-<!-- <Layout>vertical</Layout> -->
-<!-- <Children> -->
 
+<!-- 备用滑块和备用按钮水平距离 -->
 <WidgetGroup>
 <ObjectName>Space</ObjectName>
-<Size>40f,me</Size>
+<Size>16f,me</Size>
 <label></label>
 </WidgetGroup>
 
-<!-- <WidgetGroup> -->
-<!-- <Layout>vertical</Layout> -->
-<!-- <Children> -->
+
 
         <SliderComposed>
-        <!-- <SizePolicy>me,me</SizePolicy> -->
         <Size>200f,70f</Size>
         <Slider scalemode="STRETCH">滑动-控件-背板.png</Slider>
-		<Handle scalemode="STRETCH">滑动-控件-滑块-点击.png</Handle>
-        <!-- <Slider >滑动-控件-背板.png</Slider> -->
-		<!-- <Handle >滑动-控件-滑块-点击.png</Handle> -->
+		<Handle scalemode="STRETCH">备用组件滑块.png</Handle>
         <Horizontal>true</Horizontal>
          <Connection>
        <ConfigKey>[Channel11],volume</ConfigKey>
        <EmitOnDownPress>false</EmitOnDownPress>
        </Connection>
        </SliderComposed>
-<!-- </Children>	    -->
-<!-- </WidgetGroup> -->
 
 
 <WidgetGroup>
@@ -684,14 +658,13 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
 <label></label>
 </WidgetGroup>
 
-<!-- </Children> -->
-<!-- </WidgetGroup> -->
+
                 </Children>
                 </WidgetGroup>
 
 <WidgetGroup>
 <ObjectName>Space</ObjectName>
-<Size>30me,20f</Size>
+<Size>30me,25f</Size>
 <label></label>
 </WidgetGroup>
 
@@ -701,7 +674,7 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
                 <Children>
 
                 <PushButton>
-                <Size>60me,30me</Size>
+                <Size>84f,30f</Size>
                 <TooltipId>hotcue</TooltipId>
                 <NumberStates>1</NumberStates>
                 <State>
@@ -731,7 +704,7 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
                 </WidgetGroup>
 
                 <PushButton>
-                <Size>60me,30me</Size>
+                <Size>84f,30f</Size>
                 <TooltipId>repeat</TooltipId>
                 <NumberStates>1</NumberStates>
                 <State>
@@ -749,7 +722,7 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
                 </WidgetGroup>
 
                 <PushButton>
-                <Size>60me,30me</Size>
+                <Size>84f,30f</Size>
                 <TooltipId>loop_in</TooltipId>
                 <NumberStates>1</NumberStates>
                 <State>
@@ -784,7 +757,7 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
                 </WidgetGroup>
 
                 <PushButton>
-                <Size>60me,30me</Size>
+                <Size>84f,30f</Size>
                 <NumberStates>1</NumberStates>
                 <State>
                 <Number>0</Number>
@@ -800,7 +773,7 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
                 </WidgetGroup>
 
                 <WidgetGroup>
-                <Size>16f,16f</Size>
+                <Size>16f,6f</Size>
                 </WidgetGroup>
 
                 <WidgetGroup>
@@ -810,7 +783,7 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
 
                 <PushButton>
 				<ObjectName>HotcueButton_Deck1_hotcue1</ObjectName>
-                <Size>80me,60me</Size>
+                <Size>84f,60f</Size>
                 <TooltipId>repeat</TooltipId>
                 <NumberStates>1</NumberStates>
                 <State>
@@ -841,7 +814,7 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
 
                 <PushButton>
 				<ObjectName>HotcueButton_Deck1_hotcue2</ObjectName>
-                <Size>80me,60me</Size>
+                <Size>84f,60f</Size>
                 <TooltipId>repeat</TooltipId>
                 <NumberStates>1</NumberStates>
                 <State>
@@ -872,7 +845,7 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
 
                 <PushButton>
 				<ObjectName>HotcueButton_Deck1_hotcue3</ObjectName>
-                <Size>80me,60me</Size>
+                <Size>84f,60f</Size>
                 <TooltipId>repeat</TooltipId>
                 <NumberStates>1</NumberStates>
                 <State>
@@ -903,7 +876,7 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
 
                 <PushButton>
 				<ObjectName>HotcueButton_Deck1_hotcue4</ObjectName>
-                <Size>80me,60me</Size>
+                <Size>84f,60f</Size>
                 <TooltipId>repeat</TooltipId>
                 <NumberStates>1</NumberStates>
                 <State>
@@ -955,15 +928,16 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
 <Size>20me,30f</Size>
 </Label>
   		
-				<ObjectName>SpinnySingletonNoCover[Channel1]_handh</ObjectName>
+				
                 <Spinny>
+				<ObjectName>SpinnySingletonNoCover[Channel1]_handh</ObjectName>
                 <Size>230f,230f</Size>
                 <Channel>1</Channel>
                 <PathBackground scalemode="STRETCH_ASPECT">D区域\光盘-背景-默认1.png</PathBackground>
                 <PathMask scalemode="STRETCH_ASPECT">D区域\光盘-背景-默认.png</PathMask>
-                <PathForeground scalemode="STRETCH_ASPECT">D区域\左光盘-线-提示.png</PathForeground>
-                <PathGhost scalemode="STRETCH_ASPECT">D区域\左光盘-线-提示.png</PathGhost>
-                <ShowCover>ture</ShowCover>
+                <PathForeground scalemode="STRETCH_ASPECT">D区域\光盘-线-默认.png</PathForeground>
+                <PathGhost scalemode="STRETCH_ASPECT">D区域\光盘-线-默认.png</PathGhost>
+                <ShowCover>false</ShowCover>
                 </Spinny>
                 </Children>
                 </WidgetGroup>
@@ -1197,53 +1171,60 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
                 <Size>16f,16f</Size>
                 </WidgetGroup>
 
-                <Knob>
-				<ObjectName>EffectKnobComposed_[Channel1]_3</ObjectName>
-                <NumberStates>25</NumberStates>
-                <Path>F区域\八个旋钮默认状态\HI-中间旋钮-%1.png</Path>
-                <Connection>
-                <ConfigKey>[Channel1],pregain</ConfigKey>
-                </Connection>
-                </Knob>
+                <!-- <KnobComposed> -->
+				<!-- <ObjectName>EffectKnobComposed_[Channel1]_3</ObjectName> -->
+				
+                <!-- <NumberStates>25</NumberStates> -->
+                <!-- <Path>F区域\八个旋钮默认状态\HI-中间旋钮-%1.png</Path> -->
+                <!-- <Connection> -->
+                <!-- <ConfigKey>[Channel1],pregain</ConfigKey> -->
+                <!-- </Connection> -->
+                <!-- </KnobComposed> -->
+
+                <!-- <WidgetGroup> -->
+                <!-- <Size>20f,20f</Size> -->
+                <!-- </WidgetGroup> -->
+
+                 <!-- <EffectParameterKnobComposed> -->
+				<!-- <ObjectName>EffectKnobComposed_[Channel1]_2</ObjectName> -->
+                <!-- <NumberStates>25</NumberStates> -->
+                <!-- <Path>F区域\八个旋钮默认状态\HI-中间旋钮-%1.png</Path> -->
+                <!-- <Connection> -->
+                <!-- <ConfigKey>[Channel1],filterHigh</ConfigKey> -->
+                <!-- </Connection> -->
+                <!-- </EffectParameterKnobComposed> -->
+
+                <!-- <WidgetGroup> -->
+                <!-- <Size>20f,20f</Size> -->
+                <!-- </WidgetGroup> -->
+
+                <!-- <EffectParameterKnobComposed> -->
+				<!-- <ObjectName>EffectKnobComposed_[Channel1]_1</ObjectName> -->
+                <!-- <NumberStates>25</NumberStates> -->
+                <!-- <Path>F区域\八个旋钮默认状态\HI-中间旋钮-%1.png</Path> -->
+                <!-- <Connection> -->
+                <!-- <ConfigKey>[Channel1],filterMid</ConfigKey> -->
+                <!-- </Connection> -->
+                <!-- </EffectParameterKnobComposed> -->
 
                 <WidgetGroup>
                 <Size>20f,20f</Size>
                 </WidgetGroup>
 
                 <Knob>
-				<ObjectName>EffectKnobComposed_[Channel1]_2</ObjectName>
-                <NumberStates>25</NumberStates>
-                <Path>F区域\八个旋钮默认状态\HI-中间旋钮-%1.png</Path>
-                <Connection>
-                <ConfigKey>[Channel1],filterHigh</ConfigKey>
-                </Connection>
-                </Knob>
-
-                <WidgetGroup>
-                <Size>20f,20f</Size>
-                </WidgetGroup>
-
-                <Knob>
-				<ObjectName>EffectKnobComposed_[Channel1]_1</ObjectName>
-                <NumberStates>25</NumberStates>
-                <Path>F区域\八个旋钮默认状态\HI-中间旋钮-%1.png</Path>
-                <Connection>
-                <ConfigKey>[Channel1],filterMid</ConfigKey>
-                </Connection>
-                </Knob>
-
-                <WidgetGroup>
-                <Size>20f,20f</Size>
-                </WidgetGroup>
-
-                <Knob>
+				<EffectParameterKnobComposed>
 				<ObjectName>KnobComposed_[QuickEffectRack1_[Channel1]]_super1</ObjectName>
+				<Children>
+				
                 <NumberStates>25</NumberStates>
                 <Path>F区域\八个旋钮默认状态\HI-中间旋钮-%1.png</Path>
+				
+				</Children>
                 <Connection>
                 <ConfigKey>[Channel1],filterLow</ConfigKey>
                 </Connection>
-                </Knob>
+                </EffectParameterKnobComposed>
+				</Knob>
 
                 <WidgetGroup>
                 <Size>8f,8f</Size>
@@ -1306,7 +1287,7 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
                 <SliderComposed>
 				<ObjectName>ChannelVolume_[Channel1]</ObjectName>
                 <Size>me,me</Size>
-                <Handle scalemode="STRETCH">音量-滑块-默认.png</Handle>
+                <Handle scalemode="STRETCH">音量调节滑块.png</Handle>
                 <Slider scalemode="STRETCH">音量-背景.png</Slider>
                 <Horizontal>ture</Horizontal>
                 <Connection>
@@ -1371,7 +1352,7 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
                 <SliderComposed>
 				<ObjectName>ChannelVolume_[Channel2]</ObjectName>
                 <Size>me,me</Size>
-                <Handle scalemode="STRETCH">音量-滑块-默认.png</Handle>
+                <Handle scalemode="STRETCH">音量调节滑块.png</Handle>
                 <Slider scalemode="STRETCH">音量-背景.png</Slider>
                 <Horizontal>ture</Horizontal>
                 <Connection>
@@ -1403,7 +1384,7 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
                 <Knob>
 				<ObjectName>EffectKnobComposed_[Channel2]_3</ObjectName>
                 <NumberStates>25</NumberStates>
-                <Path>F区域\八个旋钮默认状态\HI-中间旋钮-%1.png</Path>
+                <BackPath>F区域\八个旋钮默认状态\HI-中间旋钮-%1.png</BackPath>
                 <Connection>
                 <ConfigKey>[Channel2],pregain</ConfigKey>
                 </Connection>
@@ -1475,7 +1456,7 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
             </WidgetGroup>
 			
              <WidgetGroup>
-			 <ObjectName>MainSliderComposed</ObjectName>
+			 
              <SizePolicy>me,me</SizePolicy>
              <Layout>horizontal</Layout>
              <Children>			
@@ -1483,9 +1464,10 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
                 <!-- <Size>160f,16f</Size> -->
              <!-- </WidgetGroup> -->				
 			  <SliderComposed>
+			  <ObjectName>MainSliderComposed</ObjectName>
               <TooltipId>crossfader</TooltipId>
 			  <Size>350f,50f</Size>
-              <Handle scalemode="STRETCH">平衡器-滑块-右-点击.png</Handle>
+              <Handle scalemode="STRETCH">平衡器-滑块-默认.png</Handle>
               <Slider scalemode="STRETCH">平衡器-背景-默认.png</Slider>
               <Horizontal>true</Horizontal>
               <Connection>
@@ -1624,7 +1606,7 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
                 <TrackProperty>
                 <Size>me,30f</Size>
                 <BgColor>#242629</BgColor>
-                <Alignment>left</Alignment>
+                <Alignment>right</Alignment>
                 <Elide>right</Elide>
                 <Property>title</Property>
                 <Channel>2</Channel>
@@ -1653,24 +1635,24 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
 
                 </Children>
                 </WidgetGroup>
+           <!-- 小波形下方的空白 -->
+               <WidgetGroup>
+               <ObjectName>Space</ObjectName>
+               <Size>30me,10f</Size>
+               <label></label>
+               </WidgetGroup>
 
-<WidgetGroup>
-<ObjectName>Space</ObjectName>
-<Size>30me,10f</Size>
-<label></label>
-</WidgetGroup>
-
-<WidgetGroup>
-<ObjectName>Space</ObjectName>
-<Size>30me,3f</Size>
-<BackPath>HLine.svg</BackPath>
-</WidgetGroup>
-
-<WidgetGroup>
-<ObjectName>Space</ObjectName>
-<Size>30me,20f</Size>
-<label></label>
-</WidgetGroup>
+               <WidgetGroup>
+               <ObjectName>Space</ObjectName>
+               <Size>30me,3f</Size>
+               <BackPath>HLine.svg</BackPath>
+               </WidgetGroup>
+           <!-- 下拉菜单上方的空白 -->
+               <WidgetGroup>
+               <ObjectName>Space</ObjectName>
+               <Size>30me,20f</Size>
+               <label></label>
+               </WidgetGroup>
 
                 <WidgetGroup>
                 <SizePolicy>me,me</SizePolicy>
@@ -1693,9 +1675,9 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
                 <Layout>vertical</Layout>
                 <Children>
 
-<WidgetGroup>
-<Layout>horizontal</Layout>
-<Children>
+            <WidgetGroup>
+                <Layout>horizontal</Layout>
+                <Children>
                 <PushButton>
 				<ObjectName>KeylockButton_[Channel2]</ObjectName>
                 <TooltipId>keylock</TooltipId>
@@ -1792,16 +1774,15 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
                 <SizePolicy>f,f</SizePolicy>
                 <Size>220me,220me</Size>
                 <Layout>horizontal</Layout>
-                <Children>
-
-                <ObjectName>SpinnySingletonNoCover{Channel2}_handh</ObjectName>
+                <Children>               
 				<Spinny>
+				<ObjectName>SpinnySingletonNoCover[Channel2]_handh</ObjectName>
                 <Size>230f,230f</Size>
                 <Channel>2</Channel>
                 <PathBackground scalemode="STRETCH_ASPECT">D区域\光盘-背景-默认1.png</PathBackground>
                 <PathMask scalemode="STRETCH_ASPECT">D区域\光盘-背景-默认1.png</PathMask>
-                <PathForeground scalemode="STRETCH_ASPECT">D区域\右光盘-线-提示.png</PathForeground>
-                <PathGhost scalemode="STRETCH_ASPECT">D区域\右光盘-线-提示.png</PathGhost>
+                <PathForeground scalemode="STRETCH_ASPECT">D区域\光盘-线-默认.png</PathForeground>
+                <PathGhost scalemode="STRETCH_ASPECT">D区域\光盘-线-默认.png</PathGhost>
                 <ShowCover>false</ShowCover>
                 </Spinny>
 
@@ -1963,7 +1944,7 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
                 </WidgetGroup>
 
                 <WidgetGroup>
-                <Size>16f,16f</Size>
+                <Size>me,10f</Size>
                 </WidgetGroup>
 
                 <WidgetGroup>
@@ -1972,10 +1953,11 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
                 <Children>
 
                 <PushButton>
+				
+                <Size>20me,40me</Size>
+                <NumberStates>1</NumberStates>
+                <State>
 				<ObjectName>KnobComposed_[EffectRack1_EffectUnit2_Effect1]_meta</ObjectName>
-                <Size>20me,40me</Size>
-                <NumberStates>1</NumberStates>
-                <State>
                 <Number>0</Number>
                 <Pressed scalemode="STRETCH">C区域\FX-右-提示.png</Pressed>
                 <Unpressed scalemode="STRETCH">C区域\FX-1.png</Unpressed>
@@ -1992,10 +1974,11 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
                 </WidgetGroup>
 
                 <PushButton>
+				
+                <Size>20me,40me</Size>
+                <NumberStates>1</NumberStates>
+                <State>
 				<ObjectName>KnobComposed_[EffectRack1_EffectUnit2_Effect2]_meta</ObjectName>
-                <Size>20me,40me</Size>
-                <NumberStates>1</NumberStates>
-                <State>
                 <Number>0</Number>
                 <Pressed scalemode="STRETCH">C区域\FX-右-提示.png</Pressed>
                 <Unpressed scalemode="STRETCH">C区域\FX-1.png</Unpressed>
@@ -2012,10 +1995,11 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
                 </WidgetGroup>
 
                 <PushButton>
-				<ObjectName>KnobComposed_[EffectRack1_EffectUnit2_Effect3]_meta</ObjectName>
+				
                 <Size>20me,40me</Size>
                 <NumberStates>1</NumberStates>
                 <State>
+				<ObjectName>KnobComposed_[EffectRack1_EffectUnit2_Effect3]_meta</ObjectName>
                 <Number>0</Number>
                 <Pressed scalemode="STRETCH">C区域\FX-右-提示.png</Pressed>
                 <Unpressed scalemode="STRETCH">C区域\FX-1.png</Unpressed>
@@ -2030,31 +2014,31 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
                 </Children>
                 </WidgetGroup>
 
-<WidgetGroup>
-<ObjectName>Space</ObjectName>
-<Size>30me,10f</Size>
-<label></label>
-</WidgetGroup>
+                <!-- FX下方空间间隙 -->
+                <WidgetGroup>
+               <ObjectName>Space</ObjectName>
+                <Size>30me,30f</Size>
+                <label></label>
+                </WidgetGroup>
                 <WidgetGroup>
                 <SizePolicy>me,me</SizePolicy>
                 <Layout>horizontal</Layout>
                 <Children>
 
-<WidgetGroup>
-<SizePolicy>me,me</SizePolicy>
-<Layout>vertical</Layout>
-<Children>
-
-<WidgetGroup>
-<ObjectName>Space</ObjectName>
-<Size>30me,15f</Size>
-<label></label>
-</WidgetGroup>
+                <WidgetGroup>
+                <SizePolicy>me,me</SizePolicy>
+                <Layout>horizontal</Layout>
+                  <Children>
+                  <WidgetGroup>
+                  <ObjectName>Space</ObjectName>
+                  <Size>30f,me</Size>
+                  <label></label>
+                  </WidgetGroup>
 
                 <SliderComposed>
                 <SizePolicy>me,me</SizePolicy>
-                <Size>80me,20me</Size>
-                <Handle scalemode="STRETCH">滑动-控件-滑块-默认.png</Handle>
+                <Size>200f,70f</Size>
+                <Handle scalemode="STRETCH">备用组件滑块.png</Handle>
                 <Slider scalemode="STRETCH">滑动-控件-背板.png</Slider>
                 <Horizontal>true</Horizontal>
                 <Connection>
@@ -2065,7 +2049,7 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
 
 <WidgetGroup>
 <ObjectName>Space</ObjectName>
-<Size>30me,15f</Size>
+<Size>10f,me</Size>
 <label></label>
 </WidgetGroup>
 
@@ -2074,6 +2058,7 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
 
                 <WidgetGroup>
                 <SizePolicy>me,me</SizePolicy>
+				<Size>me,70f</Size>
                 <Layout>vertical</Layout>
                 <Children>
                 <WidgetGroup>
@@ -2082,12 +2067,13 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
                 <Children>
 
                 <PushButton>
+				<Size>51.2f,32f</Size>
                 <TooltipId>repeat</TooltipId>
                 <NumberStates>1</NumberStates>
                 <State>
                 <Number>0</Number>
-                <Pressed>按钮2-点击.png</Pressed>
-                <Unpressed>按钮1-默认.png</Unpressed>
+                <Pressed scalemode="STRETCH">按钮2-点击.png</Pressed>
+                <Unpressed scalemode="STRETCH">按钮1-默认.png</Unpressed>
                 </State>
                 <!--
                 <Connection>
@@ -2097,16 +2083,17 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
                 </PushButton>
 
                 <WidgetGroup>
-                <Size>16f,16f</Size>
+                <Size>16f,me</Size>
                 </WidgetGroup>
 
                 <PushButton>
+                <Size>51.2f,32f</Size>
                 <TooltipId>repeat</TooltipId>
                 <NumberStates>1</NumberStates>
                 <State>
                 <Number>0</Number>
-                <Pressed>按钮2-点击.png</Pressed>
-                <Unpressed>按钮1-默认.png</Unpressed>
+                <Pressed scalemode="STRETCH">按钮2-点击.png</Pressed>
+                <Unpressed scalemode="STRETCH">按钮1-默认.png</Unpressed>
                 </State>
                 <!--
                 <Connection>
@@ -2119,7 +2106,7 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
                 </WidgetGroup>
 
                 <WidgetGroup>
-                <Size>16f,16f</Size>
+                <Size>1f,6f</Size>
                 </WidgetGroup>
 
                 <WidgetGroup>
@@ -2128,12 +2115,13 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
                 <Children>
 
                 <PushButton>
+                <Size>51.2f,32f</Size>
                 <TooltipId>repeat</TooltipId>
                 <NumberStates>1</NumberStates>
                 <State>
                 <Number>0</Number>
-                <Pressed>按钮2-点击.png</Pressed>
-                <Unpressed>按钮1-默认.png</Unpressed>
+                <Pressed scalemode="STRETCH">按钮2-点击.png</Pressed>
+                <Unpressed scalemode="STRETCH">按钮1-默认.png</Unpressed>
                 </State>
                 <!--
                 <Connection>
@@ -2143,16 +2131,17 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
                 </PushButton>
 
                 <WidgetGroup>
-                <Size>16f,16f</Size>
+                <Size>16f,me</Size>
                 </WidgetGroup>
 
                 <PushButton>
+                <Size>51.2f,32f</Size>
                 <TooltipId>repeat</TooltipId>
                 <NumberStates>1</NumberStates>
                 <State>
                 <Number>0</Number>
-                <Pressed>按钮2-点击.png</Pressed>
-                <Unpressed>按钮1-默认.png</Unpressed>
+                <Pressed scalemode="STRETCH">按钮2-点击.png</Pressed>
+                <Unpressed scalemode="STRETCH">按钮1-默认.png</Unpressed>
                 </State>
                 <!--
                 <Connection>
@@ -2171,7 +2160,7 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
 
 <WidgetGroup>
 <ObjectName>Space</ObjectName>
-<Size>30me,10f</Size>
+<Size>30me,30f</Size>
 <label></label>
 </WidgetGroup>
 
@@ -2181,7 +2170,7 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
                 <Children>
 
                 <PushButton>
-                <Size>60me,30me</Size>
+                <Size>84f,30f</Size>
                 <TooltipId>hotcue</TooltipId>
                 <NumberStates>2</NumberStates>
                 <State>
@@ -2211,7 +2200,7 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
                 </WidgetGroup>
 
                 <PushButton>
-                <Size>60me,30me</Size>
+                <Size>84f,30f</Size>
                 <TooltipId>repeat</TooltipId>
                 <NumberStates>1</NumberStates>
                 <State>
@@ -2229,7 +2218,7 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
                 </WidgetGroup>
 
                 <PushButton>
-                <Size>60me,30me</Size>
+                <Size>84f,30f</Size>
                 <TooltipId>loop_in</TooltipId>
                 <NumberStates>1</NumberStates>
                 <State>
@@ -2264,7 +2253,7 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
                 </WidgetGroup>
 
                 <PushButton>
-                <Size>60me,30me</Size>
+                <Size>84f,30f</Size>
                 <NumberStates>1</NumberStates>
                 <State>
                 <Number>0</Number>
@@ -2280,7 +2269,7 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
                 </WidgetGroup>
 
                 <WidgetGroup>
-                <Size>16f,16f</Size>
+                <Size>16f,6f</Size>
                 </WidgetGroup>
 
                 <WidgetGroup>
@@ -2290,7 +2279,7 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
 
                 <PushButton>
 				<ObjectName>HotcueButton_Deck2_hotcue1</ObjectName>
-                <Size>80me,60me</Size>
+                <Size>84f,60f</Size>
                 <TooltipId>repeat</TooltipId>
                 <NumberStates>1</NumberStates>
                 <State>
@@ -2321,7 +2310,7 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
 
                 <PushButton>
 				<ObjectName>HotcueButton_Deck2_hotcue2</ObjectName>
-                <Size>80me,60me</Size>
+                <Size>84f,60f</Size>
                 <TooltipId>repeat</TooltipId>
                 <NumberStates>1</NumberStates>
                 <State>
@@ -2352,7 +2341,7 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
 
                 <PushButton>
 				<ObjectName>HotcueButton_Deck2_hotcue3</ObjectName>
-                <Size>80me,60me</Size>
+                <Size>84f,60f</Size>
                 <TooltipId>repeat</TooltipId>
                 <NumberStates>1</NumberStates>
                 <State>
@@ -2383,7 +2372,7 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
 
                 <PushButton>
 				<ObjectName>HotcueButton_Deck2_hotcue4</ObjectName>
-                <Size>80me,60me</Size>
+                <Size>84f,60f</Size>
                 <TooltipId>repeat</TooltipId>
                 <NumberStates>1</NumberStates>
                 <State>
@@ -2452,7 +2441,7 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
 					<SizePolicy>me,me</SizePolicy>
 					<Layout>horizontal</Layout>
 					<Style>
-					QGroupBox { border: 0px solid #565E6B; margin: 0px 0px 0px 0px;}
+					QGroupBox { font: bold; border: 0px solid #565E6B; margin: 0px 0px 0px 0px;}
 					</Style>
 					<Children>
 						<Splitter>
