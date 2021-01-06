@@ -85,6 +85,44 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
 		   </attributes>
     </manifest>
 
+<!-- MinimumSize should not be an exact monitor resolution. There needs
+  to be space for the title bar or other chrome at full screen -->
+  <!-- <MinimumSize>1270,550</MinimumSize> -->
+  <!-- <SizePolicy>me,me</SizePolicy> -->
+  <!-- <Layout>vertical</Layout> -->
+ 
+   <LaunchImageStyle>
+    LaunchImage {
+      background-color: #242629;
+    }
+    QLabel {
+      image: url(skin:drop_dj_logo.svg);
+      padding: 0;
+      margin: 0px 2px 0px 2px;
+      border: none;
+      min-width: 320px;
+      min-height: 80px;
+      max-width: 320px;
+      max-height: 80px;
+    }
+    QProgressBar {
+      background-color: #242629;
+      border: none;
+      min-width: 330px;
+      min-height: 8px;
+      max-width: 330px;
+      max-height: 8px;
+	  border-radius:4px;
+    }
+    QProgressBar::chunk {
+      background-color: #777777;
+	  border-radius:4px;
+    }
+ 
+  </LaunchImageStyle>
+
+
+
     <ObjectName>Mixxx</ObjectName>
     <Background><BgColor>#242629</BgColor></Background>
     <Style src="skin:style.qss"/>
@@ -1212,18 +1250,18 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
                 </WidgetGroup>
 
                 <Knob>
-				<EffectParameterKnobComposed>
+				
 				<ObjectName>KnobComposed_[QuickEffectRack1_[Channel1]]_super1</ObjectName>
-				<Children>
+				
 				
                 <NumberStates>25</NumberStates>
                 <Path>F区域\八个旋钮默认状态\HI-中间旋钮-%1.png</Path>
 				
-				</Children>
+				
                 <Connection>
                 <ConfigKey>[Channel1],filterLow</ConfigKey>
                 </Connection>
-                </EffectParameterKnobComposed>
+                
 				</Knob>
 
                 <WidgetGroup>
