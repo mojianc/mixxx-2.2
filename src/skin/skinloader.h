@@ -67,7 +67,8 @@ public:
         type_WSpinny,
         type_WKnobComposed,
         type_WPushButton,
-        type_WSliderComposed
+        type_WSliderComposed,
+        type_knob
     };
 
     SkinLoader(UserSettingsPointer pConfig);

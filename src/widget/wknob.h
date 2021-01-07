@@ -19,12 +19,15 @@ class WKnob : public WDisplay {
    Q_OBJECT
   public:
     explicit WKnob(QWidget* pParent=nullptr);
-
+    void getComingData(QByteArray data, QRect rect);
+  public slots:
+    void timeupdate();
   protected:
     void wheelEvent(QWheelEvent *e) override;
     void mouseMoveEvent(QMouseEvent *e) override;
     void mousePressEvent(QMouseEvent *e) override;
     void mouseReleaseEvent(QMouseEvent *e) override;
+    void resizeEvent(QResizeEvent* pEvent) override;
     void inputActivity();
 
   private:

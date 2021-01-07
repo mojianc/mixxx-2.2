@@ -98,7 +98,7 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
     QLabel {
       image: url(skin:drop_dj_logo.svg);
       padding: 0;
-      margin: 0px 2px 0px 2px;
+      margin: 0px 2px 0px 2px;<!--上、右、下、左-->
       border: none;
       min-width: 320px;
       min-height: 80px;
@@ -112,11 +112,11 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
       min-height: 8px;
       max-width: 330px;
       max-height: 8px;
-	  border-radius:4px;
+	  border-radius:3px;
     }
     QProgressBar::chunk {
       background-color: #777777;
-	  border-radius:4px;
+	  border-radius:3px;
     }
  
   </LaunchImageStyle>
@@ -1209,59 +1209,52 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
                 <Size>16f,16f</Size>
                 </WidgetGroup>
 
-                <!-- <KnobComposed> -->
-				<!-- <ObjectName>EffectKnobComposed_[Channel1]_3</ObjectName> -->
-				
-                <!-- <NumberStates>25</NumberStates> -->
-                <!-- <Path>F区域\八个旋钮默认状态\HI-中间旋钮-%1.png</Path> -->
-                <!-- <Connection> -->
-                <!-- <ConfigKey>[Channel1],pregain</ConfigKey> -->
-                <!-- </Connection> -->
-                <!-- </KnobComposed> -->
+                <Knob>
+				<ObjectName>EffectKnobComposed_[Channel1]_3</ObjectName>
+                <NumberStates>25</NumberStates>
+                <Path>F区域\八个旋钮默认状态\HI-中间旋钮-%1.png</Path>
+                <Connection>
+                <ConfigKey>[Channel1],pregain</ConfigKey>
+                </Connection>
+                </Knob>
 
-                <!-- <WidgetGroup> -->
-                <!-- <Size>20f,20f</Size> -->
-                <!-- </WidgetGroup> -->
+                <WidgetGroup>
+                <Size>20f,20f</Size>
+                </WidgetGroup>
 
-                 <!-- <EffectParameterKnobComposed> -->
-				<!-- <ObjectName>EffectKnobComposed_[Channel1]_2</ObjectName> -->
-                <!-- <NumberStates>25</NumberStates> -->
-                <!-- <Path>F区域\八个旋钮默认状态\HI-中间旋钮-%1.png</Path> -->
-                <!-- <Connection> -->
-                <!-- <ConfigKey>[Channel1],filterHigh</ConfigKey> -->
-                <!-- </Connection> -->
-                <!-- </EffectParameterKnobComposed> -->
-
-                <!-- <WidgetGroup> -->
-                <!-- <Size>20f,20f</Size> -->
-                <!-- </WidgetGroup> -->
-
-                <!-- <EffectParameterKnobComposed> -->
-				<!-- <ObjectName>EffectKnobComposed_[Channel1]_1</ObjectName> -->
-                <!-- <NumberStates>25</NumberStates> -->
-                <!-- <Path>F区域\八个旋钮默认状态\HI-中间旋钮-%1.png</Path> -->
-                <!-- <Connection> -->
-                <!-- <ConfigKey>[Channel1],filterMid</ConfigKey> -->
-                <!-- </Connection> -->
-                <!-- </EffectParameterKnobComposed> -->
+                 <Knob>
+				<ObjectName>EffectKnobComposed_[Channel1]_2</ObjectName>
+                <NumberStates>25</NumberStates>
+                <Path>F区域\八个旋钮默认状态\HI-中间旋钮-%1.png</Path>
+                <Connection>
+                <ConfigKey>[Channel1],filterHigh</ConfigKey>
+                </Connection>
+                </Knob>
 
                 <WidgetGroup>
                 <Size>20f,20f</Size>
                 </WidgetGroup>
 
                 <Knob>
-				
-				<ObjectName>KnobComposed_[QuickEffectRack1_[Channel1]]_super1</ObjectName>
-				
-				
+				<ObjectName>EffectKnobComposed_[Channel1]_1</ObjectName>
                 <NumberStates>25</NumberStates>
                 <Path>F区域\八个旋钮默认状态\HI-中间旋钮-%1.png</Path>
-				
-				
+                <Connection>
+                <ConfigKey>[Channel1],filterMid</ConfigKey>
+                </Connection>
+                </Knob>
+
+                <WidgetGroup>
+                <Size>20f,20f</Size>
+                </WidgetGroup>
+
+                <Knob>
+				<ObjectName>KnobComposed_[QuickEffectRack1_[Channel1]]_super1</ObjectName>			
+                <NumberStates>25</NumberStates>
+                <Path>F区域\八个旋钮默认状态\HI-中间旋钮-%1.png</Path>			
                 <Connection>
                 <ConfigKey>[Channel1],filterLow</ConfigKey>
-                </Connection>
-                
+                </Connection>     
 				</Knob>
 
                 <WidgetGroup>
@@ -1422,7 +1415,7 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
                 <Knob>
 				<ObjectName>EffectKnobComposed_[Channel2]_3</ObjectName>
                 <NumberStates>25</NumberStates>
-                <BackPath>F区域\八个旋钮默认状态\HI-中间旋钮-%1.png</BackPath>
+                <Path>F区域\八个旋钮默认状态\HI-中间旋钮-%1.png</Path>
                 <Connection>
                 <ConfigKey>[Channel2],pregain</ConfigKey>
                 </Connection>

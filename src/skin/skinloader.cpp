@@ -24,6 +24,7 @@
 #include "recording/recordingmanager.h"
 #include "mixxx.h"
 #include "FtTask.h"
+#include "widget/wknob.h"
 
 //»¡¶È
 #define ¦Ð 3.1415926
@@ -900,6 +901,7 @@ void SkinLoader::dealWithLED(WidgetType type, QString objName, int x, int y, QRe
         }
         break;
      //ÐýÅ¥
+    case type_knob:
     case type_WKnobComposed:
     {
         float posW = x - rct.x();
@@ -1551,6 +1553,11 @@ void SkinLoader::getComingData(QByteArray data)
             {
                 m_widgetType = type_WKnobComposed;
                 knobCompose->getComingData(data, m_knobScale);
+            }
+            else if(WKnob *knob = dynamic_cast<WKnob *>(widget))
+            {
+                m_widgetType = type_knob;
+                knob->getComingData(data, m_knobScale);
             }
             else if(WPushButton *pushbutton = dynamic_cast<WPushButton *>(widget))
             {
