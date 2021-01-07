@@ -4,6 +4,8 @@
 #include <QApplication>
 
 class ControlProxy;
+class FtTask;
+class BootAnimation;
 
 class MixxxApplication : public QApplication {
     Q_OBJECT
@@ -17,6 +19,9 @@ class MixxxApplication : public QApplication {
 #endif
 #endif
 
+  public slots:
+	void startBootAnimation();
+
   private:
     bool touchIsRightButton();
     void registerMetaTypes();
@@ -25,7 +30,8 @@ class MixxxApplication : public QApplication {
     QWidget* m_fakeMouseWidget;
     enum Qt::MouseButton m_activeTouchButton;
     ControlProxy* m_pTouchShift;
-
+	FtTask *m_ftTask;
+	BootAnimation* m_bootAnimation;
 };
 
 #endif // MIXXXAPPLICATION_H

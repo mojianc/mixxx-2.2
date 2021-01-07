@@ -30,20 +30,30 @@ public:
     void setLED_ON(int byte, int bit);
     void setLED_OFF(int byte, int bit);
     void led_update();
+//signals:
+//	void mouseSpeed(int speed);
+//	void keyPressed();
 
 protected:
 	void run();
 	void updateBuff();
+	void updateTest();
+	void readMouseSpeed();
+	void readMouseDirect();
+	void readKey();
 	void ftReset();
+	void flashLed();
 	void setUpdate(bool enable);
 private:
     FtTask(QObject *parent = NULL);
 	bool			m_stopped;
 	FtUnitl         m_ftUnitl;
 	bool            m_connected;
-	unsigned char   *m_displayBuf;
-    unsigned char   *m_displaySwapBuf;
+	unsigned char  *m_displayBuf;
+    unsigned char  *m_displaySwapBuf;
 	bool            m_update;
 	QMutex          m_mutex;
-    static FtTask *m_instance;
+    static FtTask  *m_instance;
+	int             m_preWheelDirect;
+	int             m_preKeyState;
 };

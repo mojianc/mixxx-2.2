@@ -908,7 +908,8 @@ class MixxxCore(Feature):
                    "errordialoghandler.cpp",
                    "FtTask.cpp",
                    "FtUnitl.cpp",
-
+                   "BootAnimation.cpp",
+                   
                    "sources/audiosource.cpp",
                    "sources/audiosourcestereoproxy.cpp",
                    "sources/metadatasourcetaglib.cpp",

@@ -182,6 +182,8 @@ SkinLoader::SkinLoader(UserSettingsPointer pConfig)
     connect(m_timeRightClick,SIGNAL(timeout()), this, SLOT(handleTimeoutRightClick()));
     m_timeRightClick->setSingleShot(true);
 
+    //move below to BootAnimation
+	#if 0
     //³õÊ¼×´Ì¬³£ÁÁ
     //ÁÁD12,D17,D151,D157
     unsigned char result = FtTask::getInstance()->getBuff(1);
@@ -245,7 +247,7 @@ SkinLoader::SkinLoader(UserSettingsPointer pConfig)
     setLED_ON(20,4);
     setLED_ON(21,1);
     led_update();
-
+    #endif
 }
 
 SkinLoader::~SkinLoader() {

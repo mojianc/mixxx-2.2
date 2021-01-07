@@ -6,6 +6,10 @@
 #include "library/crate/crateid.h"
 #include "control/controlproxy.h"
 #include "mixxx.h"
+#include "FtTask.h"
+#include "BootAnimation.h"
+#include <QTimer>
+#include <qvalidator.h>
 
 // When linking Qt statically on Windows we have to Q_IMPORT_PLUGIN all the
 // plugins we link in build/depends.py.
@@ -48,11 +52,33 @@ MixxxApplication::MixxxApplication(int& argc, char** argv)
           m_fakeMouseSourcePointId(0),
           m_fakeMouseWidget(NULL),
           m_activeTouchButton(Qt::NoButton),
-          m_pTouchShift(NULL) {
+          m_pTouchShift(NULL) , m_ftTask(NULL),m_bootAnimation(nullptr){
     registerMetaTypes();
+	m_ftTask = FtTask::getInstance();
+	m_bootAnimation = new BootAnimation(this);
+	m_bootAnimation->setFtTask(m_ftTask);
+	QTimer::singleShot(1000, this, SLOT(startBootAnimation()));
+       qDebug("isMouseEventSynthesized %d",isMouseEventSynthesized());
 }
 
 MixxxApplication::~MixxxApplication() {
+	if (m_bootAnimation){
+		m_bootAnimation->setFtTask(nullptr);
+		delete m_bootAnimation;
+		m_bootAnimation = nullptr;
+	}
+	if(m_ftTask){
+    	m_ftTask->stop();
+		delete m_ftTask;
+		m_ftTask = NULL;
+	}
+}
+
+void MixxxApplication::startBootAnimation()
+{
+	if (m_bootAnimation) {
+		m_bootAnimation->start();
+	}
 }
 
 void MixxxApplication::registerMetaTypes() {

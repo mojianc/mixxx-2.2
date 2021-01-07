@@ -1,4 +1,5 @@
 #include "FtTask.h"
+#include <Windows.h>
 
 #define COLUMN_SIZE 15   //0-14,but for cpld 4bits is 0-15
 #define ROW_SIZE    15
@@ -7,7 +8,7 @@
 FtTask *FtTask::m_instance = NULL;
 
 FtTask::FtTask(QObject *parent)
-	: QThread(parent), m_stopped(true),m_connected(false),m_update(false)
+	: QThread(parent), m_stopped(true),m_connected(false),m_update(false), m_preKeyState(1)
 {
 	m_displayBuf = new unsigned char[DISPLAY_BUFF_SIZE];
 	for(int j=0;j<COLUMN_SIZE;j++){
@@ -116,12 +117,18 @@ void FtTask::run()
 				setUpdate(false);
 				updateBuff();				
 			}
+			//updateTest();
+			readMouseDirect();
+			readMouseSpeed();
+			readKey();
+			//flashLed();
 			QThread::currentThread()->msleep(20);
 		}
 
 	}
 	if (m_ftUnitl.isPortAOpen()) {
 		m_ftUnitl.Write_Short_Add(0, 0);
+		m_ftUnitl.Close_USB_Device();
 	}
 }
 
@@ -152,6 +159,71 @@ void FtTask::updateBuff()
 	m_ftUnitl.Write_Short_Add(3, 0);
 }
 
+void FtTask::updateTest()
+{
+	unsigned char *pBuf = m_displayBuf;
+	static int j = 0;
+	static int number = 0;
+	j++;
+	j = j % 50;
+	if (j == 0) {
+		number+=2;
+		if (number > 14) {
+			number = 0;
+		}
+		memset(pBuf, 0, 30);
+		pBuf[number] = 0xff;
+		pBuf[number + 1] = 0x3f;
+	}
+	update();
+}
+
+void FtTask::readMouseSpeed()
+{
+	int data = m_ftUnitl.Read_Short_Add_Wait(1);
+	if (data >= 0) {
+		m_ftUnitl.Write_Short_Add(0x06, 0);
+		m_ftUnitl.Write_Short_Add(0x06, 1);
+		if (data == 0) {
+			return;
+		}
+		if (m_preWheelDirect == 0) {
+			data = 0 - data;
+		}
+		//emit mouseSpeed(data);
+		if (data > 0) {
+			data = 120;
+		}
+		else
+			data = -120;
+		::mouse_event(MOUSEEVENTF_WHEEL, 0, 0, data, NULL);
+		qDebug("mouse speed %d",data);
+	}
+}
+
+void FtTask::readMouseDirect()
+{
+	int data = m_ftUnitl.Read_Short_Add_Wait(0);
+	if (data >= 0) {
+		m_preWheelDirect = data;
+		//qDebug("mouse direct %d",data);
+	}
+}
+
+void FtTask::readKey()
+{
+	int data = m_ftUnitl.Read_Short_Add_Wait(2);
+	if (data >= 0) {
+		if (m_preKeyState == 1 && data == 0) {
+			//emit keyPressed();
+			qDebug("key pressed");
+			::mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
+			::mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0);
+		}
+		m_preKeyState = data;
+		
+	}
+}
 
 void FtTask::ftReset()
 {
@@ -163,6 +235,25 @@ void FtTask::ftReset()
 		m_ftUnitl.Write_Short_Add(1, 0);
 	}
 	update();
+}
+
+void FtTask::flashLed()
+{
+	static unsigned char index = 0;
+	if (index > 7) {
+		index = 0;
+	}
+	m_ftUnitl.Write_Short_Add(0x04, 0x01<<index);
+	index++;
+	//static unsigned char index = 0;
+	//if (index == 0) {
+	//	index = 1;
+	//	m_ftUnitl.Write_Short_Add(0x04, 0x01);
+	//}
+	//else {
+	//	index = 0;
+	//	m_ftUnitl.Write_Short_Add(0x04, 0x00);
+	//}
 }
 
 void FtTask::setUpdate(bool enable)
