@@ -239,7 +239,10 @@ Size : http://www.mixxx.org/wiki/doku.php/creating_skins#size
 
                         <Mark>
                         <Control>cue_point</Control>
-                        <Text>CUE</Text>
+						<Pixmap>marker_cue.png</Pixmap>
+						<Color>#FF001C</Color>
+                        <TextColor>#FFFFFF</TextColor>
+                       
                         </Mark>
                         <MarkRange>
                         <StartControl>loop_start_position</StartControl>
