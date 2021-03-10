@@ -541,21 +541,21 @@ void BootAnimation::setLedState(int number, int state)
 
 void BootAnimation::testFlash()
 {
-	addAction(3000, 0, true, BUTTON18, LED_ON);
+	addAction(500, 0, true, BUTTON18, LED_ON);
 	addAction(0, 0, true, BUTTON18, LED_OFF);
-	addAction(3000, 0, true, BUTTON49, LED_ON);
+	addAction(500, 0, true, BUTTON49, LED_ON);
 	addAction(0, 0, true, BUTTON49, LED_OFF);
 	for (int i = 1; i <= btn_map[18][0]; i++) {
-		addAction(200, i, false, BUTTON18, LED_ON);
+		addAction(100, i, false, BUTTON18, LED_ON);
 	}
 	for (int i = 1; i <= btn_map[49][0]; i++) {
-		addAction(200, i, false, BUTTON49, LED_ON);
+		addAction(100, i, false, BUTTON49, LED_ON);
 	}
 	for (int i = 1; i <= btn_map[18][0]; i++) {
-		addAction(200, i, false, BUTTON18, LED_OFF);
+		addAction(100, i, false, BUTTON18, LED_OFF);
 	}
 	for (int i = 1; i <= btn_map[49][0]; i++) {
-		addAction(200, i, false, BUTTON49, LED_OFF);
+		addAction(100, i, false, BUTTON49, LED_OFF);
 	}
 }
 
@@ -571,12 +571,12 @@ void BootAnimation::turnOnAlwaysBright()
 
 void BootAnimation::flashDropBtn()
 {
-	addAction(2000, 0, true, 0, LED_ON);
+	addAction(500, 0, true, 0, LED_ON);
 	for (int i = 1; i <= btn_map[16][0]; i++) {
 		addAction(0, i, false, BUTTON16, LED_ON);
 		addAction(100, i, false, BUTTON47, LED_ON);
 	}
-	addAction(2000, 0, true, 0, LED_ON);
+	addAction(500, 0, true, 0, LED_ON);
 }
 
 void BootAnimation::flashBtn31Btn33()
@@ -585,43 +585,43 @@ void BootAnimation::flashBtn31Btn33()
 	for (int i = 1; i < 6; i++) {//31
 		if (i < 7) {
 			addAction(0, 6 - i, false, BUTTON31, LED_ON);
-			addAction(200, 6 + i, false, BUTTON31, LED_ON);
+			addAction(100, 6 + i, false, BUTTON31, LED_ON);
 		}
 	}
 	addAction(200, 6, false, BUTTON31, LED_OFF);
 	for (int i = 1; i < 6; i++) {//31
 		if (i < 7) {
 			addAction(0, 6 - i, false, BUTTON31, LED_OFF);
-			addAction(200, 6 + i, false, BUTTON31, LED_OFF);
+			addAction(100, 6 + i, false, BUTTON31, LED_OFF);
 		}
 	}
-	addAction(1000, 0, true, 0, LED_ON);
-	addAction(1000, 0, true, BUTTON31, LED_OFF);
+	addAction(100, 0, true, 0, LED_ON);
+	addAction(100, 0, true, BUTTON31, LED_OFF);
 	
 	addAction(0, 1, false, BUTTON31, LED_ON);
 	addAction(0, 1, false, BUTTON33, LED_ON);
-	addAction(200, 6, false, BUTTON44, LED_ON);
+	addAction(100, 6, false, BUTTON44, LED_ON);
 	for (int i = 2; i <= btn_map[31][0]; i++) {
 		if (i < 7) {
 			addAction(0, 7-i, false, BUTTON44, LED_ON);
 			addAction(0, 5+i, false, BUTTON44, LED_ON);
 		}
 		addAction(0, i, false, BUTTON31, LED_ON);
-		addAction(200, i, false, BUTTON33, LED_ON);
+		addAction(100, i, false, BUTTON33, LED_ON);
 	}
 
 	addAction(0, 1, false, BUTTON31, LED_OFF);
 	addAction(0, 1, false, BUTTON33, LED_OFF);
-	addAction(200, 6, false, BUTTON44, LED_OFF);
+	addAction(100, 6, false, BUTTON44, LED_OFF);
 	for (int i = 2; i <= btn_map[31][0]; i++) {
 		if (i < 7) {
 			addAction(0, 7 - i, false, BUTTON44, LED_OFF);
 			addAction(0, 5 + i, false, BUTTON44, LED_OFF);
 		}
 		addAction(0, i, false, BUTTON31, LED_OFF);
-		addAction(200, i, false, BUTTON33, LED_OFF);
+		addAction(100, i, false, BUTTON33, LED_OFF);
 	}
-	addAction(2000, 0, true, 0, LED_ON);
+	addAction(100, 0, true, 0, LED_ON);
 }
 
 void BootAnimation::doAction(int ledIndex,bool isAll,int objectIndex,int action){

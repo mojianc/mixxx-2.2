@@ -121,7 +121,7 @@ void FtTask::run()
 			readMouseDirect();
 			readMouseSpeed();
 			readKey();
-			//flashLed();
+			flashLed();
 			QThread::currentThread()->msleep(20);
 		}
 
@@ -240,10 +240,20 @@ void FtTask::ftReset()
 void FtTask::flashLed()
 {
 	static unsigned char index = 0;
-	if (index > 7) {
+	// if (index > 0) {
+		// return;
+	// }
+	// index = 1;
+	// m_ftUnitl.Write_Short_Add(0x04, 0xff);
+	// m_ftUnitl.Write_Short_Add(0x05, 0xff);
+	
+	unsigned int m = 6;
+	if (index > 7*m) {
 		index = 0;
 	}
-	m_ftUnitl.Write_Short_Add(0x04, 0x01<<index);
+	m_ftUnitl.Write_Short_Add(0x04, 0x01<<index/m);
+	m_ftUnitl.Write_Short_Add(0x05, 0x01<<index/m);
+	
 	index++;
 	//static unsigned char index = 0;
 	//if (index == 0) {
