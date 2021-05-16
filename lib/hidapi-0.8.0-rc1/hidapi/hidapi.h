@@ -288,7 +288,9 @@ extern "C" {
 				-1 on error.
 		*/
 		int HID_API_EXPORT HID_API_CALL hid_send_feature_report(hid_device *device, const unsigned char *data, size_t length);
-
+#ifdef _WIN32
+		int HID_API_EXPORT HID_API_CALL hid_set_output_report(hid_device *dev, const unsigned char *data, size_t length);
+#endif
 		/** @brief Get a feature report from a HID device.
 
 			Make sure to set the first byte of @p data[] to the Report

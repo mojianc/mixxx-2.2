@@ -221,6 +221,9 @@ int HidController::open() {
     // Open device by path
     controllerDebug("Opening HID device" << getName() << "by HID path" << hid_path);
 
+    qDebug() << "Opening HID device " << getName() << " by HID path: " << hid_path;
+    qDebug() << "Opening HID device " << getName() << " hid_vendor_id = " << hid_vendor_id << ", hid_product_id = " << hid_product_id;
+
     m_pHidDevice = hid_open_path(hid_path);
 
     // If that fails, try to open device with vendor/product/serial #
@@ -244,6 +247,16 @@ int HidController::open() {
         qWarning()  << "Unable to open HID device" << getName();
         return -1;
     }
+
+#ifdef _WIN32
+    // ILITEK
+    if (0x222A == hid_vendor_id && 0x0001 == hid_product_id) {
+        unsigned char cmd_buf[64] = { 0x03, 0xF1, 0x01 };
+        if (hid_set_output_report(m_pHidDevice, cmd_buf, 0x40) < 0) {
+            qWarning() << "Unable to hid_set_output_report.";
+        }
+    }
+#endif
 
     setOpen(true);
     startEngine();
